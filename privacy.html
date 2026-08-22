@@ -20,7 +20,7 @@
 </head>
 <body>
 <h1>Privacy Policy</h1>
-<p class="muted">Kyu, the desktop companion by GetKyu · Last updated: August 21, 2026</p>
+<p class="muted">Kyu, the desktop companion by GetKyu · Last updated: August 22, 2026</p>
 
 <div class="tldr">
 <strong>The short version:</strong> Kyu runs entirely on your computer. We operate no server, require no account, and collect no analytics, telemetry, or crash reports. What Kyu learns about you is stored on your device and nowhere else. The app talks to the internet only for the specific purposes listed below — most of them only if you turn them on.
@@ -30,13 +30,14 @@
 <p>Kyu has no user accounts, no sign-in, and no backend server operated by us. We do not collect usage analytics, telemetry, crash reports, advertising identifiers, or behavioral data. We do not sell, rent, or share personal information — we never receive it in the first place. Kyu does not read your screen, your keystrokes, your browsing history, or your files, except for the specific items you hand to it yourself (for example, a file you drop on Kyu or an image you paste into chat).</p>
 
 <h2>2. What stays on your device</h2>
-<p>Everything Kyu knows lives in local storage on your computer: the name you give Kyu, chat history, Kyu's diary, your routine rhythm, preferences and wardrobe, things you asked Kyu to remember, and streak records. API keys and mail credentials are stored in a local file readable only by your user account (file permission 600); they are excluded from Kyu's export file by design. Deleting the app's data (or using the in-app reset) removes this information. The export/import feature ("carry") produces a local file under your control — it is never uploaded by us.</p>
+<p>Everything Kyu knows lives in local storage on your computer: the name you give Kyu, chat history, Kyu's diary, your routine rhythm, preferences and wardrobe, things you asked Kyu to remember, and streak records. To mirror your context (for example, strumming along while you play music), Kyu can also note locally which application is in front and for roughly how long; this observation stays on your device, is never transmitted, and has a visible switch in Settings. API keys and mail credentials are stored in a local file readable only by your user account (file permission 600); they are excluded from Kyu's export file by design. Deleting the app's data (or using the in-app reset) removes this information. The export/import feature ("carry") produces a local file under your control — it is never uploaded by us.</p>
 
 <h2>3. When the app talks to the internet</h2>
 <p>Kyu's network access goes through a single module with a short, fixed list of purposes. As of this version:</p>
 <table>
 <tr><th>Purpose</th><th>Where</th><th>What is sent</th><th>When</th></tr>
 <tr><td>Weather</td><td>api.open-meteo.com</td><td>Your latitude/longitude rounded to one decimal (~11&nbsp;km, neighborhood-level) and timezone name. No key, no account, no cookies.</td><td>If weather is on</td></tr>
+<tr><td>Location setup</td><td>geocoding-api.open-meteo.com</td><td>The place name you type (e.g. a city) is sent once to look up its coordinates; afterwards only the rounded coordinates above are used. If you use the Mac's own location service instead, that lookup happens on-device and nothing is sent here.</td><td>Only when you set your location by name</td></tr>
 <tr><td>Calendar</td><td>The ICS URL you provide (Google/Apple/other)</td><td>A fetch of that URL. The URL stays on your device and is stripped from exports.</td><td>If you add a calendar</td></tr>
 <tr><td>News</td><td>Official publisher RSS feeds</td><td>A plain feed request. Headlines and links are shown with sources.</td><td>If news is on</td></tr>
 <tr><td>Markets</td><td>Index quotes (e.g. <code>^GSPC</code>)</td><td>Index symbols only — never your holdings, which we don't know.</td><td>If market brief is on</td></tr>
