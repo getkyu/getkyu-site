@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Kyu">
+<title>Kyu</title>
+<!--
+  큐의 표식 — 말풍선 방울. **벡터 원본.**
+
+  ★ `kyu-icon.html` 의 CSS 를 좌표로 옮긴 것이다. 광고·인쇄·큰 화면은 래스터로
+    감당이 안 되므로 이쪽이 원본 노릇을 한다. 두 판이 **같은 로고인지**는
+    짐작하지 않고 잰다 — `scripts/icon-svg-check.mjs` 가 둘을 512px 로 그려
+    화소로 맞대고, 어긋나면 빨개진다.
+
+  ★★ 좌표는 CSS 에서 계산해 옮겼다:
+     · 타일 512×512, 모서리 23.5% = 120.32
+     · 방울 상자 left 50 · top 44 · 412×404
+     · 모서리 반지름 `50% 48% 47% 13% / 49% 50% 49% 15%`
+       → 가로(412 기준) 206 · 197.76 · 193.64 · 53.56
+       → 세로(404 기준) 197.96 · 202 · 197.96 · 60.6
+     · 눈 60×62, 타일좌표 (170,210) · (298,210) → 중심 (200,241) · (328,241)
+
+  ★★★ CSS `filter: blur(N)` 은 stdDeviation=N 이고, `box-shadow` 의 흐림 반지름은
+    2σ 다. 옮길 때 그걸 갈라 적용했다 — 안 그러면 빛번짐이 두 배로 퍼진다.
+-->
+<defs>
+  <!-- 타일 바탕: radial-gradient(120% 100% at 50% 0%) -->
+  <radialGradient id="tileBg" gradientUnits="userSpaceOnUse"
+      cx="256" cy="0" r="614.4"
+      gradientTransform="translate(256,0) scale(1,0.83333) translate(-256,0)">
+    <stop offset="0" stop-color="#ffffff"/>
+    <stop offset="0.58" stop-color="#f1f6fe"/>
+    <stop offset="1" stop-color="#e4edfc"/>
+  </radialGradient>
+
+  <!-- 방울 본체: radial-gradient(98% 94% at 36% 26%) — 방울 상자 기준 -->
+  <radialGradient id="dropBody" gradientUnits="userSpaceOnUse"
+      cx="148.32" cy="105.04" r="403.76"
+      gradientTransform="translate(148.32,105.04) scale(1,0.94056) translate(-148.32,-105.04)">
+    <stop offset="0"    stop-color="#ffffff" stop-opacity="0.97"/>
+    <stop offset="0.16" stop-color="#e1efff" stop-opacity="0.96"/>
+    <stop offset="0.40" stop-color="#afcffc" stop-opacity="0.97"/>
+    <stop offset="0.62" stop-color="#8bc0fa"/>
+    <stop offset="0.80" stop-color="#66a4f0"/>
+    <stop offset="1"    stop-color="#4d8ada"/>
+  </radialGradient>
+
+  <!-- 두께 — 위·오른쪽 어깨가 짙다 (inset -34px 28px 78px 를 방향 그라디언트로) -->
+  <linearGradient id="shoulder" gradientUnits="userSpaceOnUse" x1="412" y1="0" x2="120" y2="300">
+    <stop offset="0"   stop-color="#6b7a8b" stop-opacity="0.30"/>
+    <stop offset="0.45" stop-color="#6b7a8b" stop-opacity="0.06"/>
+    <stop offset="1"   stop-color="#6b7a8b" stop-opacity="0"/>
+  </linearGradient>
+  <!-- 아래쪽으로 앉는 무게 (inset 0 -26px 46px) -->
+  <linearGradient id="sit" gradientUnits="userSpaceOnUse" x1="0" y1="404" x2="0" y2="300">
+    <stop offset="0"   stop-color="#6a7782" stop-opacity="0.20"/>
+    <stop offset="1"   stop-color="#6a7782" stop-opacity="0"/>
+  </linearGradient>
+  <!-- 왼쪽 위로 도는 반사광 (inset 24px 10px 44px) -->
+  <linearGradient id="lift" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="180" y2="140">
+    <stop offset="0"   stop-color="#6c7f9a" stop-opacity="0.16"/>
+    <stop offset="1"   stop-color="#6c7f9a" stop-opacity="0"/>
+  </linearGradient>
+  <!-- 빛이 빠져나가는 아래·오른쪽 굴절 테 -->
+  <linearGradient id="refract" gradientUnits="userSpaceOnUse" x1="412" y1="404" x2="250" y2="250">
+    <stop offset="0"   stop-color="#e6f2ff" stop-opacity="0.55"/>
+    <stop offset="1"   stop-color="#e6f2ff" stop-opacity="0"/>
+  </linearGradient>
+
+  <filter id="b17" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="17"/></filter>
+  <filter id="b37" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="37"/></filter>
+  <filter id="b155" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="15.5"/></filter>
+  <filter id="b93" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9.3"/></filter>
+  <filter id="b112" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="11.2"/></filter>
+  <filter id="b25" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
+  <filter id="b22" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.2"/></filter>
+
+  <!-- 방울 윤곽. 두 번 쓰므로 정의해 둔다. -->
+  <path id="drop" d="M 206 0
+    L 214.24 0
+    A 197.76 202 0 0 1 412 202
+    L 412 206.04
+    A 193.64 197.96 0 0 1 218.36 404
+    L 53.56 404
+    A 53.56 60.6 0 0 1 0 343.4
+    L 0 197.96
+    A 206 197.96 0 0 1 206 0 Z"/>
+
+  <!-- inset 그림자의 초승달. 원래 모양에서 **옮긴 모양을 빼면** 그 자리가 남는다. -->
+  <mask id="rimTop" maskUnits="userSpaceOnUse" x="-20" y="-20" width="452" height="444">
+    <use href="#drop" fill="#fff"/><use href="#drop" fill="#000" transform="translate(0,3)"/>
+  </mask>
+  <mask id="rimBottom" maskUnits="userSpaceOnUse" x="-20" y="-20" width="452" height="444">
+    <use href="#drop" fill="#fff"/><use href="#drop" fill="#000" transform="translate(0,-3)"/>
+  </mask>
+
+  <clipPath id="tileClip"><rect x="0" y="0" width="512" height="512" rx="120.32" ry="120.32"/></clipPath>
+  <clipPath id="dropClip"><use href="#drop"/></clipPath>
+</defs>
+
+<g>
+
+  <g transform="translate(50,44)">
+    <!-- 스스로 내는 빛 — 옅은 바탕 위에서 번진다 -->
+    <use href="#drop" fill="#91baf9" opacity="0.50" filter="url(#b17)"/>
+    <use href="#drop" fill="#91baf9" opacity="0.30" filter="url(#b37)" transform="translate(0,4)"/>
+
+    <!-- 본체 -->
+    <use href="#drop" fill="url(#dropBody)"/>
+
+    <g clip-path="url(#dropClip)">
+      <!-- 안에 갇힌 빛 — 아래에 고인 코스틱.
+           ★ `.caustic` 의 opacity 는 **묶음에 걸린다**(자식이 먼저 합성된 뒤 곱해진다).
+             그래서 여기서도 <g opacity>로 묶는다 — 자식에 따로 걸면 두 배로 곱해진다.
+           ★★ CSS 에는 `.caustic i` 규칙도 있지만 **마크업에 `<i>` 가 없다.**
+             그 규칙은 아무것도 안 그린다. 처음엔 그걸 SVG 에 옮겨 그려서
+             왼쪽 아래에 없는 빛이 하나 생겼다 — **코드에 있는 것과 그려지는 것은
+             다르다.** 규칙이 아니라 **나온 그림**을 옮겨야 한다. -->
+      <g opacity="0.30">
+        <ellipse cx="197.76" cy="260.58" rx="111.24" ry="54.54" fill="#d3ecff" filter="url(#b155)"/>
+        <ellipse cx="195.53" cy="260.58" rx="51.17"  ry="21.82" fill="#eef7ff" filter="url(#b93)"/>
+      </g>
+
+      <!-- 두께 -->
+      <use href="#drop" fill="url(#shoulder)"/>
+      <use href="#drop" fill="url(#sit)"/>
+      <use href="#drop" fill="url(#lift)"/>
+      <use href="#drop" fill="url(#refract)"/>
+
+      <!-- 표면을 미끄러지는 하이라이트 -->
+      <ellipse cx="144.20" cy="66.66"  rx="103"   ry="50.5"  fill="#ffffff" opacity="0.276"
+               filter="url(#b112)" transform="rotate(-16 144.20 66.66)"/>
+      <ellipse cx="119.48" cy="55.55"  rx="53.56" ry="19.19" fill="#ffffff" opacity="0.294"
+               filter="url(#b25)"  transform="rotate(-20 119.48 55.55)"/>
+      <ellipse cx="275.01" cy="72.72"  rx="19.57" ry="12.12" fill="#ffffff" opacity="0.255"
+               filter="url(#b22)"  transform="rotate(-20 275.01 72.72)"/>
+
+      <!-- 유리 테 — 위는 흰빛, 아래는 굴절된 하늘빛.
+           ★★★ `inset 0 3px 0` 은 **획이 아니다.** 모양을 3px 내린 것과 원래 모양의
+             차집합 — 즉 **위쪽에만 걸린 초승달**이다. 처음엔 내린 모양에 획을
+             둘렀는데, 그러면 사방에 고리가 생겨 유리 테가 아니라 테두리선이 됐다.
+             (실제로 눈에 보였다. 숫자로는 평균 4.2/255 라 안 걸렸다 —
+              **평균은 가는 선을 못 본다.**) -->
+      <use href="#drop" fill="#ffffff" opacity="0.255" mask="url(#rimTop)"/>
+      <use href="#drop" fill="#d5e9ff" opacity="0.255" mask="url(#rimBottom)"/>
+      <use href="#drop" fill="none" stroke="#ffffff" stroke-opacity="0.078" stroke-width="5"/>
+    </g>
+  </g>
+
+  <!-- 눈. **반사도 그림자도 없다 — 단색 한 겹이다.**
+       광택이 붙으면 그게 곧 3D 신호라 "3D 를 줄여라" 와 정면으로 부딪히고,
+       16px 에서 반사는 어차피 사라지면서 눈만 희석시킨다. -->
+  <ellipse cx="200" cy="241" rx="30" ry="31" fill="#1c4b9e"/>
+  <ellipse cx="328" cy="241" rx="30" ry="31" fill="#1c4b9e"/>
+</g>
+</svg>

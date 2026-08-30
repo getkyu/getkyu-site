@@ -30,7 +30,7 @@
 <p>Kyu has no user accounts, no sign-in, and no backend server operated by us. We do not collect usage analytics, telemetry, crash reports, advertising identifiers, or behavioral data. We do not sell, rent, or share personal information — we never receive it in the first place. Kyu does not read your screen, your keystrokes, your browsing history, or your files, except for the specific items you hand to it yourself (for example, a file you drop on Kyu or an image you paste into chat).</p>
 
 <h2>2. What stays on your device</h2>
-<p>Everything Kyu knows lives in local storage on your computer: the name you give Kyu, chat history, Kyu's diary, your routine rhythm, preferences and wardrobe, things you asked Kyu to remember, and streak records. To mirror your context (for example, strumming along while you play music), Kyu can also note locally which application is in front and for roughly how long; this observation stays on your device, is never transmitted, and has a visible switch in Settings. API keys and mail credentials are stored in a local file readable only by your user account (file permission 600); they are excluded from Kyu's export file by design. Deleting the app's data (or using the in-app reset) removes this information. The export/import feature ("carry") produces a local file under your control — it is never uploaded by us.</p>
+<p>Everything Kyu knows lives in local storage on your computer: the name you give Kyu, chat history, Kyu's diary, your routine rhythm, preferences and wardrobe, things you asked Kyu to remember, and streak records. To mirror your context (for example, strumming along while you play music), Kyu can also note locally which application is in front and for roughly how long; this observation stays on your device, is never transmitted, and has a visible switch in Settings. API keys and mail credentials are stored in a local file readable only by your user account (file permission 600); they are excluded from Kyu's export file by design. Deleting the app's data (or using Settings → Forget everything) removes this information. The export/import feature ("carry") produces a local file under your control — it is never uploaded by us.</p>
 
 <h2>3. When the app talks to the internet</h2>
 <p>Kyu's network access goes through a single module with a short, fixed list of purposes. As of this version:</p>
@@ -46,19 +46,19 @@
 <tr><td>Tools (MCP)</td><td>Servers you explicitly attach</td><td>Tool calls you enable. Off by default; each connection is opt-in.</td><td>If you attach tools</td></tr>
 <tr><td>Update check</td><td>getkyu.com (a static file)</td><td>A plain request for the version file. No identifiers are added by the app.</td><td>Direct-download builds; the Steam build does not check</td></tr>
 </table>
-<p>If a feature above is off, the corresponding request simply doesn't happen. There are no other network destinations in the app.</p>
+<p>If a feature above is off, the corresponding request simply doesn't happen. As of this version, there are no other network destinations in the app. If we ever add one — for example, an optional way to pass letters between friends — this policy will be updated before that feature ships, and the table above will name it.</p>
 
 <h2>4. Third-party services you choose</h2>
 <p>When you bring your own AI key, connect mail, or attach an MCP tool server, your data flows directly from your computer to that service under <em>your</em> agreement with them. We are not a party to that traffic, we cannot see it, and we encourage you to review those providers' privacy policies.</p>
 
 <h2>5. Children</h2>
-<p>Kyu is not directed to children under 13, and you must be at least 13 to use it. We do not knowingly collect personal information from anyone — including children — because the app has no collection mechanism.</p>
+<p>Kyu is not directed to children under 13, and you must be at least 13 to use it. We do not knowingly collect personal information from anyone — including children. As of this version the app has no mechanism to collect it: the complete list of what leaves your computer is the table in section 3.</p>
 
 <h2>6. Your choices and rights</h2>
-<p>Because we hold no data about you on any server, there is nothing for us to hand over, correct, or erase on our side — your data is already in your hands. You can export it (Settings → export), delete it (in-app reset or removing the app's data folder), and inspect what the app stores at any time. If you have questions about privacy rights under laws such as the CCPA or GDPR, the honest summary is: we have no records of you.</p>
+<p>Because we hold no data about you on any server, there is nothing for us to hand over, correct, or erase on our side — your data is already in your hands. You can export it (Settings → export), delete it (Settings → Forget everything, or removing the app's two data folders: <code>~/Library/Application Support/com.getkyu.app</code> and <code>~/Library/WebKit/com.getkyu.app</code>), and inspect what the app stores at any time. If you have questions about privacy rights under laws such as the CCPA or GDPR, the honest summary is: as of this version we hold no records of you — there is no server of ours for them to live on. If that ever changes, this policy will say so before it does, and it will say what we hold and for how long.</p>
 
-<h2>7. Purchases (when available)</h2>
-<p>The app currently contains no payment functionality. If we later sell licenses or upgrades through our website or Steam, payment will be processed by the store or a merchant-of-record payment provider; we will not receive or store your card details. This policy will be updated before any such feature ships.</p>
+<h2>7. Purchases</h2>
+<p>GetKyu is a paid app. When you buy it — on Steam, or from our website through a merchant-of-record payment provider (such as Paddle or Lemon Squeezy) — that store processes the payment, any applicable taxes, and your receipt. We never receive or store your card details, and we operate no payment server of our own. If we later add optional paid upgrades or a subscription, the same holds and this policy will be updated to describe them.</p>
 
 <h2>8. Changes</h2>
 <p>If this policy changes in a way that matters, the new version will be posted at this address with an updated date. Because the app makes no silent data collection, changes here will track visible product changes.</p>
