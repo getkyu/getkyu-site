@@ -259,10 +259,13 @@ a { color: inherit; text-decoration: none; }
 #m .m-hero { padding: 40px var(--pad) 0; }
 #m .m-herotop { display: grid; grid-template-columns: 1fr 108px; gap: 8px; align-items: start; }
 #m .m-hero h1 { font: 400 24px/1.26 Inter, system-ui, sans-serif; color: var(--ink); }
-#m .m-herofigs { position: relative; height: 220px; }
+/* ★★★★★★ **키웠다**(창업자 2026-08-30, 아이폰으로 보고: "히어로 왼쪽에 있는
+   강아지와 큐를 좀 사이즈를 키워주고"). 214 → 250 · 79 → 96.
+   ★ 상자도 같이 키운다(220 → 256) — 안 그러면 발이 잘린다. */
+#m .m-herofigs { position: relative; height: 256px; }
 #m .m-herofigs video { position: absolute; width: auto; }
-#m .m-hk { right: 0; top: 6px; height: 214px; }
-#m .m-hp { right: 62px; bottom: 6px; height: 79px; transform: scaleX(-1); }
+#m .m-hk { right: 0; top: 6px; height: 250px; }
+#m .m-hp { right: 70px; bottom: 6px; height: 96px; transform: scaleX(-1); }
 
 /* 목업 — 피그마 32:2974 (높이 239 · 둥글기 16 · 그림자 3/8.7) */
 #m .m-shot { position: relative; margin-top: 24px; height: 239px; overflow: hidden;
@@ -336,10 +339,17 @@ a { color: inherit; text-decoration: none; }
      어느 폰에서 열어도 간격이 같은 비율로 남는다.
    ★★ 값은 재서 옮겼다: 아래에서부터 222 · 216 · 238 · 248px(폭 350 기준). */
 #m .m-cast4 { container-type: inline-size; }
-#m .m-cast4 .n-c1 { left: 13.0%; bottom: 63.4cqw; }
-#m .m-cast4 .n-c2 { left: 33.5%; bottom: 61.7cqw; }
-#m .m-cast4 .n-c3 { left: 59.8%; bottom: 68.0cqw; }
-#m .m-cast4 .n-c4 { left: 82.6%; bottom: 70.9cqw; }
+/* ★★★★★★ **넷의 간격을 같게 맞췄다**(2026-08-30, 재서 알았다). 앞 값은
+   이름표 밑과 머리끝 사이가 51.7 · 51.1 · 41.3 · 42.4px 로 제각각이었다 —
+   Eric·Jina 위만 휑하게 비어서, 창업자가 "캐릭터가 좀더 올라와야할거같아"
+   라고 한 그 느낌이 몸을 18px 올리고도 남아 있었다.
+   ★ 머리끝은 **조각 안에서 재야 한다** — 넷의 그림 높이가 380·418·412·470 이라
+     상자 위끝은 머리끝이 아니다(비율 .068 · .053 · .036 · .051).
+   ★★ 넷 다 26px 로 맞췄다. 통폭 350 기준 1cqw = 3.5px. */
+#m .m-cast4 .n-c1 { left: 13.0%; bottom: 56.1cqw; }
+#m .m-cast4 .n-c2 { left: 33.5%; bottom: 54.5cqw; }
+#m .m-cast4 .n-c3 { left: 59.8%; bottom: 63.6cqw; }
+#m .m-cast4 .n-c4 { left: 82.6%; bottom: 66.2cqw; }
 
 /* ★★★★★★ **넷을 키운다**(창업자 2026-08-30: "겹쳐도 되니까 캐릭터 사이즈를
    키워줘, 네임테그를 좀 올리고"). 재보니 이름표 밑(658)과 머리끝(714) 사이가
@@ -348,15 +358,23 @@ a { color: inherit; text-decoration: none; }
      자리를 네 번 다시 재야 한다. 발끝을 원점으로 잡으면 **바닥은 그대로 두고
      위로만** 자란다 — 발이 카드 밑선에 붙어 있어야 서 있는 것으로 읽힌다.
    ★★ 이름표는 38px 올렸다. 몸이 그만큼 올라오므로 안 올리면 얼굴을 가린다. */
-#m .m-cast4 video { transform: scale(1.24); transform-origin: 50% 100%; }
+/* ★ 위로 18px 올렸다(창업자 2026-08-30: "이름표는 높은데, 캐릭터가 좀더
+   올라와야 할 거 같아"). 아래가 카드 밑선에 붙어 있어서, 키우는 것만으로는
+   위로 못 온다 — 자리를 옮겨야 이름표에 가까워진다. */
+#m .m-cast4 video { transform: translateY(-18px) scale(1.28); transform-origin: 50% 100%; }
 
 /* ★★★★★★ **디에고는 밝기를 올린다**(창업자 2026-08-30: "Diego 가 눈이랑 입이랑
    다 안 보이거든? 좀 밝게 해줄 수 있어?"). 어두운 피부 + 어두운 정장이라
    흰 카드 위에서 얼굴이 실루엣으로 뭉갠다.
-   ★ **밝기만 올리면 뿌예진다** — 회색으로 뜬다. 그래서 대비를 같이 올린다:
-     밝기가 얼굴을 들어올리고, 대비가 눈·입을 다시 눌러 준다.
-   ★★ 이 한 조각에만 건다. 넷에 다 걸면 밝은 셋이 하얗게 날아간다. */
-#m .m-cast4 .c3 { filter: brightness(1.16) contrast(1.1); }
+   ★ **밝기만 올리면 뿌예진다** — 회색으로 뜬다. 그래서 대비를 같이 올렸었다.
+   ★★★★★★ **필터를 뺀다**(2026-08-30, 창업자가 아이폰에서 두 번째로 짚었다:
+     "흑인애가 아직도 눈코입이 안보여 조금 피부색 옅은애로 바꿔도 될거같아").
+     고친 자리는 CSS 가 아니라 **몸**이다 — `web-anim-list.mjs` 에서 Diego 를
+     `Body_04` → `Body_03` 으로 바꿨다. 그러고 재니 얼굴 밝기가 143.9 로,
+     Andre(143.1) 와 같아졌다. 여기서 필터를 남기면 이제 **Diego 만 더 밝다**.
+   ★ 교훈: 어두워서 안 보이면 **칠하지 말고 골라라**. 필터는 이미 구워진
+     그늘·눈동자까지 같이 들어올려서, 얼굴은 밝아져도 이목구비는 더 흐려진다.
+     실제로 그래서 한 번 고치고도 창업자가 또 안 보인다고 했다. */
 
 /* ② 조용해진다 */
 /* ★ 창업자 2026-08-30: "뮤트 버튼이 너무 커 · 중간으로 얼라인먼트하고 센터링".
@@ -369,11 +387,23 @@ a { color: inherit; text-decoration: none; }
 /* ★★★★★★ **글자가 바뀌면서 알약이 계속 움직였다**(창업자 2026-08-30). 스스로
    MUTE ↔ MUTED 로 뒤집는데 글자 한 칸 차이로 폭이 변하고, 가운데 정렬이라
    **양끝이 매번 흔들린다.** 긴 쪽에 맞춰 폭을 못박으면 글자만 바뀐다. */
-#m .m-pillrow .kyu-pill { padding: 0 12px; gap: 5px; min-height: 40px; font-size: 11px;
-  /* ★ 92 는 소용없었다 — 제 폭이 이미 97/106 이라 문턱 아래였다(재서 봤다).
-     긴 쪽(MUTED 106)보다 크게 잡아야 **글자만** 바뀐다. */
-  min-width: 84px; justify-content: center; font-size: 9.5px; letter-spacing: .02em; }
-#m .m-quiet { display: block; margin: 14px auto 0; width: 180px; height: auto; }
+/* ★★★★★★ **작고 얇게**(창업자 2026-08-30, 아이폰: "뮤트 필을 사이즈를 줄여주고
+   얇게 바꾸자"). 높이 40 → 28 · 폭 84 → 72 · 글씨 9.5 → 8.5 · 굵기 700 → 600.
+   ★ 폭은 **여전히 못 박는다** — 이 알약은 MUTE ↔ MUTED 로 글자가 바뀌는데,
+     안 박으면 바뀔 때마다 양끝이 흔들린다(긴 쪽 MUTED 보다 커야 한다). */
+#m .m-pillrow .kyu-pill { padding: 0 10px; gap: 4px; min-height: 28px; height: 28px;
+  min-width: 72px; justify-content: center; font-size: 8.5px; font-weight: 600;
+  letter-spacing: .02em; border-width: .5px;
+  box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 4px 10px rgba(16,24,40,.05); }
+#m .m-pillrow .kyu-pill svg { width: 11px; height: 11px; }
+/* ★★★★★★ **양쪽으로 밀고 키웠다**(창업자 2026-08-30, 아이폰). 앞 판은 한 클립에
+   둘이 같이 있어 가운데 180px 이었다 — 이제 따로라 자리도 크기도 정한다.
+   ★ 바닥을 맞춘다(`flex-end`) — 둘 다 앉아 있으므로 바닥선이 같아야 한 자리에
+     있는 것으로 읽힌다. 카드 밖으로 넘치지 않게 여백은 알약 줄이 갖는다. */
+#m .m-quietrow { display: flex; align-items: flex-end; justify-content: space-between;
+  margin: 10px calc(var(--pad) * -1) -19px; padding: 0 12px; }
+#m .q-pet { width: 132px; height: auto; }
+#m .q-kyu { width: 168px; height: auto; }
 
 /* ③ 날씨 — 피그마 32:2997(358×290): wear-cold x104 w63 · cast-dea x150 w53 ·
    prop-umbrella x244 w69 · 표시 셋 x57/x172/x272. 알갱이(눈·낙엽·비)는 이 카드에 뿌린다. */
@@ -511,8 +541,20 @@ a { color: inherit; text-decoration: none; }
 #m .m-eyebrow > .m-kicker { display: inline; width: auto; }
 #m .m-tools h2, #m .m-day h2 { margin-top: 8px; font: 700 32px/1.2 Inter, system-ui, sans-serif; color: var(--ink); }
 #m .m-sub { margin-top: 8px; font: 400 15px/1.5 Inter, system-ui, sans-serif; color: var(--dim); }
-#m .m-logos { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; margin-top: 28px; }
-#m .m-logos img { width: 100%; aspect-ratio: 1; height: auto; object-fit: contain;
+/* ★★★★★★ **빈칸을 없앴다**(창업자 2026-08-30, 아이폰: "로고가 비어있는 게
+   있는데, 차라리 로고들을 사이즈를 키워서 저 칸을 다 채워줘. 지금 3칸이
+   부족한 거 같은데"). 재보니 로고가 **21개**인데 6칸 격자라 마지막 줄에 3칸이 빈다.
+   ★ 로고를 더 만들 수는 없고 뺄 수도 없다 — 21 은 6으로 안 나눠떨어지고(21 = 3×7),
+     남는 하나(`imap`)는 「야후·네이버·아웃룩도 된다」는 뜻이라 지우면 말이 준다.
+   ★★ 그래서 **격자를 버리고 흐르게** 한다: 줄이 가운데로 모이면 마지막 줄의
+     셋이 가운데 서고, 「빈칸」이 아니라 「끝줄」로 읽힌다.
+     ⚠ 한 줄에 다섯을 넣어 봤더니 21 = 5·5·5·5·**1** 이라 끝줄에 하나만 남아
+       더 나빴다(찍어서 봤다). 여섯이면 6·6·6·**3** — 셋은 줄로 읽힌다.
+   ★★★ 크기는 **타일이 아니라 글리프**를 키웠다. 여섯 줄을 지키려면 타일은
+     54가 상한인데(6×54 + 5×5 = 349), 안쪽 여백을 13 → 8 로 줄이면
+     로고 자체는 34 → 38px 이 된다 — 사람이 「크다」고 느끼는 건 타일이 아니라 그림이다. */
+#m .m-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin-top: 28px; }
+#m .m-logos img { width: 54px; height: 54px; flex: none; object-fit: contain;
   padding: 9px; background: rgba(217,217,217,.2); border-radius: 10px; box-sizing: border-box; }
 /* ★ 피그마 32:3268: kyu-lie x93 w204 — 로고 격자(y254)보다 **위에서 시작**한다.
    창업자 2026-08-30: "큐를 올려야 해." */
@@ -597,8 +639,12 @@ a { color: inherit; text-decoration: none; }
   .kyu-footer .lang { min-height: 44px; }
   #m .m-fine { font-size: 15px; line-height: 22px; }
   /* ★ 창업자 2026-08-30: "App icons 들을 사이즈를 키워야 해". 피그마 32:3024 의
-     타일은 **53.3×53.3** 이다(여섯 칸 x=16·76.6·137.2·199.5·260.1·320.7). 40 이었다. */
-  #m .m-logos img { width: 53px; height: 53px; padding: 14px; }
+     타일은 53.3×53.3 이다(여섯 칸 x=16·76.6·137.2·199.5·260.1·320.7). 40 이었다.
+     ★★ 그 뒤 한 번 더 키웠다(같은 날, 아이폰으로 보고: "로고들을 사이즈를 키워서
+       저 칸을 다 채워줘"). 격자를 버렸으므로 피그마의 여섯 칸에 안 매인다 —
+       ⚠ 60px 은 다섯씩 흘러 끝줄에 **하나**만 남았다 — 54 로 여섯씩 흘린다.
+       크기는 안쪽 여백을 줄여 **글리프**로 낸다(13 → 8). */
+  #m .m-logos img { width: 54px; height: 54px; padding: 8px; }
   /* 머리말의 마크와 단추, 종 알약 — 손가락 크기로 */
   #m .m-logo, .kyu-footer .lockup { display: flex; align-items: center; min-height: 44px; }
   /* ★ 창업자 2026-08-30: "네비에 버튼 필을 얇게". 44 → **40** — 여기가 바닥이다.
@@ -742,6 +788,15 @@ html { scroll-behavior: smooth; }
 [data-kyu="cycle"] p.out, [data-kyu="cycle"] span.out { opacity: 0; transform: translateY(-.26em); }
 [data-kyu="cycle"] p.in, [data-kyu="cycle"] span.in  { opacity: 0; transform: translateY(.3em);
   transition: opacity .26s ease-out, transform .34s cubic-bezier(.18,1.3,.4,1); }
+/* ★★★★★★ **시작 자리로 가는 건 순간이어야 한다**(창업자 2026-08-30, 아이폰으로 보고:
+   "텍스트가 바뀌면서 아래서 위로 올라와야 하는데, 내려와").
+   ★ 까닭: 나가는 낱말은 **위로**(-.26em) 가고, 들어올 낱말의 시작 자리는
+     **아래**(+.3em) 다. 그런데 `out` 을 벗고 `in` 을 입히는 그 순간에도
+     전환이 걸려 있어서, 브라우저가 -.26em → +.3em 을 **애니메이션한다** —
+     즉 새 낱말이 제자리로 가려고 **내려오는 게 보인다.** 그 뒤에야 올라온다.
+   ★★ 그래서 시작 자리에 앉힐 때만 전환을 끈다. 앉힌 뒤 한 프레임 그리고
+     다시 켜면, 사람 눈에는 **아래에서 올라오는 것**만 남는다. */
+[data-kyu="cycle"] p.jump, [data-kyu="cycle"] span.jump { transition: none; }
 
 /* ── ⑥ 종 알약 — 둘을 하나로, 눌러서 바뀐다 ──────────────────
    ★ 색·크기는 원래 판의 그림에서 **재서** 왔다: 빨강 rgb(192,57,43) ·
@@ -2253,7 +2308,13 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <h3>Never interrupts</h3>
       <p>In deep focus, he goes quiet. Only five things ever break through.</p>
       <div class="m-pillrow" data-kyu="mute-slot"></div>
-      <video class="kyu-anim m-quiet" data-kyu-anim="quiet-pair" muted loop playsinline preload="none" data-webm="assets/anim/quiet-pair.webm" data-mp4="assets/anim/quiet-pair.mp4" data-poster="assets/anim/quiet-pair.png" aria-label="Kyu sitting quietly while the pet sleeps"></video>
+      <!-- ★★★★★★ **둘을 갈랐다**(창업자 2026-08-30, 아이폰으로 보고: "큐랑 강아지를
+           양쪽으로 미루고 사이즈를 키우고"). 앞 판은 `quiet-pair` **한 클립에 둘이
+           같이** 구워져 있어서 CSS 로는 자리도 크기도 못 뗐다. 따로 구웠다. -->
+      <div class="m-quietrow">
+        <video class="kyu-anim q-pet" data-kyu-anim="quiet-pet" muted loop playsinline preload="none" data-webm="assets/anim/quiet-pet.webm" data-mp4="assets/anim/quiet-pet.mp4" data-poster="assets/anim/quiet-pet.png" aria-label="The pet sleeping"></video>
+        <video class="kyu-anim q-kyu" data-kyu-anim="quiet-kyu" muted loop playsinline preload="none" data-webm="assets/anim/quiet-kyu.webm" data-mp4="assets/anim/quiet-kyu.mp4" data-poster="assets/anim/quiet-kyu.png" aria-label="Kyu sitting quietly"></video>
+      </div>
     </article>
 
     <!-- ③ 날씨 — 알갱이(눈·낙엽·비)가 이 카드 안에 뿌려진다 -->
@@ -2779,7 +2840,14 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       setTimeout(() => {
         돌릴차례 = (돌릴차례 + 1) % 낱말.length
         돌릴판.textContent = 낱말[돌릴차례]
-        돌릴판.classList.remove('out'); 돌릴판.classList.add('in')
+        // ★★★★★★ **시작 자리로는 순간이동한다**(2026-08-30, 창업자가 폰에서 봤다:
+        //   "아래서 위로 올라와야 하는데 내려와"). `out`(위 -.26em)에서
+        //   `in`(아래 +.3em)으로 갈 때도 전환이 걸려 있어서, 새 낱말이 제자리로
+        //   **내려오는 게 보였다.** 앉힐 때만 전환을 끈다.
+        돌릴판.classList.remove('out')
+        돌릴판.classList.add('in', 'jump')
+        void 돌릴판.offsetWidth           // ★ 시작 자리를 먼저 그린다
+        돌릴판.classList.remove('jump')
         requestAnimationFrame(() => requestAnimationFrame(() => 돌릴판.classList.remove('in')))
       }, 210)
       // ★★★★★★ **더 빨리, 더 부드럽게**(창업자 2026-08-29: "히어로에 스위치되는
