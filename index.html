@@ -267,7 +267,9 @@ a { color: inherit; text-decoration: none; }
 #m .m-herofigs { position: relative; height: 222px; }
 #m .m-herofigs video { position: absolute; width: auto; }
 #m .m-hk { right: 0; top: 6px; height: 215px; }
-#m .m-hp { right: 60px; bottom: 6px; height: 83px; transform: scaleX(-1); }
+/* ★ 창업자 2026-08-31: "히어로에 강아지를 조금 왼쪽으로 옮기고 사이즈를 좀더
+   키워줘." 오른쪽에서 60 → 96px, 키 83 → 104px. */
+#m .m-hp { right: 96px; bottom: 6px; height: 104px; transform: scaleX(-1); }
 
 /* 목업 — 피그마 32:2974 (높이 239 · 둥글기 16 · 그림자 3/8.7) */
 #m .m-shot { position: relative; margin-top: 24px; height: 239px; overflow: hidden;
@@ -760,8 +762,51 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
   background: #fff757; border-radius: 4px; filter: blur(4px);
 }
 /* ★ 휴지통은 카드 가운데. 125px 자리에 256px 그림을 넣는다(2배 여유). */
-#m .m-magic .m-trash {
-  display: block; width: 125px; height: 125px; margin: 18px auto 0;
+#m .m-magic .m-trashbox {
+  position: relative; display: block; width: 125px; height: 125px; margin: 18px auto 0;
+}
+#m .m-magic .m-trash { position: relative; z-index: 2; display: block; width: 100%; height: 100%; }
+/* ★ 떨어지는 것 — 통 **뒤**(z-index 1)라 테두리를 지나면 가려진다. */
+#m .m-magic .t-drop {
+  position: absolute; z-index: 1; left: 50%; width: 34px; height: 34px;
+  margin-left: -17px; background: no-repeat center / contain;
+  top: -34px; opacity: 0;
+}
+#m .m-magic.담는다 .t-drop { animation: kyu-drop .62s cubic-bezier(.4,.1,.7,1) forwards; }
+#m .m-magic.담는다 .t1 { animation-delay: .15s; margin-left: -26px }
+#m .m-magic.담는다 .t2 { animation-delay: .75s; margin-left: -8px }
+/* ★★ 셋째만 **반쯤 걸쳐 남는다** — 다 삼켜 버리면 「비었다」로 돌아간다.
+   통 테두리가 9.4% 부터라, 4% 에 멈추면 윗머리만 삐죽 보인다. */
+#m .m-magic.담는다 .t3 { animation: kyu-drop-rest .62s cubic-bezier(.4,.1,.7,1) 1.35s forwards; margin-left: -20px }
+@keyframes kyu-drop {
+  0%   { top: -38px; opacity: 0; transform: rotate(-14deg) }
+  18%  { opacity: 1 }
+  100% { top: 30px;  opacity: 1; transform: rotate(6deg) }
+}
+@keyframes kyu-drop-rest {
+  0%   { top: -38px; opacity: 0; transform: rotate(10deg) }
+  18%  { opacity: 1 }
+  100% { top: 5px;   opacity: 1; transform: rotate(-8deg) }
+}
+/* ★★★ 담길 때마다 통이 살짝 흔들린다. */
+#m .m-magic.담는다 .m-trash { animation: kyu-wobble 2.1s ease-in-out; transform-origin: 50% 92%; }
+@keyframes kyu-wobble {
+  0%,10%       { transform: rotate(0) }
+  14%          { transform: rotate(2.6deg) }
+  20%          { transform: rotate(-1.8deg) }
+  26%,40%      { transform: rotate(0) }
+  44%          { transform: rotate(-2.6deg) }
+  50%          { transform: rotate(1.8deg) }
+  56%,73%      { transform: rotate(0) }
+  77%          { transform: rotate(2.2deg) }
+  83%          { transform: rotate(-1.4deg) }
+  90%,100%     { transform: rotate(0) }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* ★ 결과만 남긴다 — 하나가 걸쳐 있는 통. */
+  #m .m-magic .t-drop, #m .m-magic.담는다 .t-drop { animation: none; opacity: 0 }
+  #m .m-magic .t3, #m .m-magic.담는다 .t3 { opacity: 1; top: 5px; transform: rotate(-8deg) }
+  #m .m-magic.담는다 .m-trash { animation: none }
 }
 
 /* ── ⓪-2 Hands it back ────────────────────────────────────── */
@@ -802,8 +847,34 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
 /* ★ 그림 위쪽 12%는 **앱 창의 「MUTE ×」 줄**이다(재서 잘랐다: 잉크가 y16~70,
    판은 y80 부터). 작을 땐 안 보였는데 키우니 엉뚱한 단추처럼 보였다.
    ★ `clip-path` 는 자리를 안 바꾸므로 그만큼 `top` 을 올려 준다. */
-#m .m-bagwrap .m-bag     { left: 24.0%; top: 2px; width: 52.0%; z-index: 2;
+#m .m-bagwrap .m-bagbox  { position: absolute; left: 24.0%; top: 2px; width: 52.0%;
+  z-index: 2; display: block; container-type: inline-size;
   clip-path: inset(12% 0 0 0); }
+#m .m-bagwrap .m-bag     { position: static; width: 100%; height: auto; }
+/* ★ 네 칸을 흰 덮개로 가려 두었다가 차례로 걷는다. 자리는 그림(580x664) 안에서
+   재서 왔다 — 칸 상자와 **그 밑 이름줄까지** 덮어야 반쯤 담긴 것처럼 안 보인다. */
+/* ★★★★★★ **기본은 「다 담긴 것」이다.** 덮개를 처음부터 보이게 두면, 움직임
+   층이 죽는 판에서 가방이 **영영 빈 채로** 남는다 — 못 살린 기능이 아니라
+   **부서진 그림**이 된다. 그래서 덮개는 기본이 투명이고, `motion.js` 가
+   「가릴 수 있다」고 말해 준 판에서만 씌워졌다가 걷힌다. */
+#m .m-bagwrap .b-slot { position: absolute; background: #fff; opacity: 0; }
+#m .m-hands.가린다 .b-slot { opacity: 1; }
+#m .m-bagwrap .s1 { left: 7.93%;  top: 22.59%; width: 30.00%; height: 32.38%; }
+#m .m-bagwrap .s2 { left: 41.38%; top: 22.59%; width: 30.34%; height: 32.38%; }
+#m .m-bagwrap .s3 { left: 7.93%;  top: 56.02%; width: 30.00%; height: 32.08%; }
+#m .m-bagwrap .s4 { left: 41.38%; top: 56.02%; width: 30.34%; height: 32.08%; }
+/* ★★ 걷힐 때 살짝 **떨어져 들어온다** — 덮개만 사라지면 나타난 게 아니라
+   그냥 있던 것으로 읽힌다. 덮개를 위로 밀면서 지운다. */
+#m .m-hands.담는다 .b-slot { animation: kyu-slot .34s cubic-bezier(.3,.8,.4,1) forwards; }
+#m .m-hands.담는다 .s1 { animation-delay: .10s }
+#m .m-hands.담는다 .s2 { animation-delay: .46s }
+#m .m-hands.담는다 .s3 { animation-delay: .82s }
+#m .m-hands.담는다 .s4 { animation-delay: 1.18s }
+@keyframes kyu-slot { to { opacity: 0; transform: translateY(-10%) } }
+@media (prefers-reduced-motion: reduce) {
+  /* ★ 결과만 남긴다 — 넷이 다 담긴 채로. */
+  #m .m-bagwrap .b-slot { opacity: 0; animation: none }
+}
 /* ★ `top` 을 그만큼 올리려 했더니 **위쪽 페이드에 통째로 먹혔다**(마스크가 위 7%를
    투명하게 만든다). 자리는 그대로 두고 자르기만 한다 — 판이 18px 내려앉을 뿐이다. */
 /* 파일 일곱 — 자리는 카드 폭에 대한 %, 기울기는 피그마 값 그대로 */
@@ -918,9 +989,29 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
   position: absolute; left: 15.2px; top: 13.6px; width: 47.87px; height: auto;
   transform: translate(-50%, -50%) rotate(19.02deg); pointer-events: none;
 }
-#m .m-namepill span {
+#m .m-namepill .np-txt {
   position: absolute; left: 30.09px; right: 0; top: 0;
+  display: flex; align-items: center; justify-content: center; gap: 1px;
   font: 500 16px/28px 'Onest', Inter, system-ui, sans-serif; color: #5f5f5f;
+}
+/* ★★★★★★ **이름을 지어 준다**(창업자 2026-08-31: "Name 필이있잖아 그걸 애니메이션
+   으로 지우고 애완견 이름을 지어주자"). 자리글이 지워지고 이름이 한 글자씩 찍힌다.
+   ★ 기본은 **자리글이 보이는 상태**다 — 움직임 층이 죽어도 「Name」 이 남지,
+     빈 칸이 남지 않는다(가방 덮개와 같은 규칙). */
+#m .m-namepill .np-ph { font-weight: 500; }
+#m .m-namepill .np-typed { color: #111; font-weight: 600; }
+#m .m-namepill .np-caret {
+  width: 1.5px; height: 17px; background: #111; opacity: 0;
+  display: inline-block; border-radius: 1px;
+}
+#m .m-adopt.짓는다 .np-ph { animation: kyu-ph .26s ease forwards; }
+#m .m-adopt.짓는다 .np-caret { animation: kyu-caret .9s steps(1) .26s 5; }
+@keyframes kyu-ph { to { opacity: 0; width: 0; transform: translateY(-3px) } }
+@keyframes kyu-caret { 0%,49% { opacity: 1 } 50%,100% { opacity: 0 } }
+@media (prefers-reduced-motion: reduce) {
+  /* ★ 결과만 남긴다 — 이름이 이미 적혀 있다. */
+  #m .m-adopt .np-ph { display: none }
+  #m .m-adopt .np-caret { display: none }
 }
 /* ★ 강아지 — 이제 **뒹구는 영상**이다(`adopt-roll`, 107x90).
    ★ 앞 판은 736x206 짜리 시트에서 왼쪽 창만 잘라 쓰던 정지 그림이었다.
@@ -2817,7 +2908,15 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
     <article class="m-card m-magic">
       <h3>Desk Magic<i class="m-new beta">BETA</i></h3>
       <p>Screenshots piling up? He'll offer to tidy.<br>He asks first — and never deletes.</p>
-      <img class="m-trash" src="assets/art/ui-trash.webp" alt="" width="125" height="125" loading="lazy" decoding="async">
+      <!-- ★ 빈 통에 파일이 하나씩 떨어져 담긴다(창업자 2026-08-31: "빈쓰래기통이엿다가
+           쓰래기통이 살짝씩 흔들리면 채워지는"). 통은 속이 안 비치므로, 떨어지는 것을
+           **통 뒤에** 두고 위 구멍으로 넣는다 — 테두리(9.4%)를 지나면 저절로 가려진다. -->
+      <span class="m-trashbox">
+        <i class="t-drop t1" style="background-image:url(assets/art/file-png.svg)"></i>
+        <i class="t-drop t2" style="background-image:url(assets/art/file-jpg.svg)"></i>
+        <i class="t-drop t3" style="background-image:url(assets/art/file-png.svg)"></i>
+        <img class="m-trash" src="assets/art/ui-trash.webp" alt="" width="125" height="125" loading="lazy" decoding="async">
+      </span>
     </article>
 
     <!-- ⓪-2 가방 — 떨어뜨린 것을 받아 든다 -->
@@ -2833,7 +2932,14 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <img class="f f-avi" src="assets/art/file-avi.svg" alt="" loading="lazy" decoding="async">
         <img class="f f-svg" src="assets/art/file-svg.svg" alt="" loading="lazy" decoding="async">
         <img class="m-bagback" src="assets/art/bag-back34.webp" alt="" loading="lazy" decoding="async">
-        <img class="m-bag" src="assets/art/ui-bag.webp" alt="Four things in the bag" loading="lazy" decoding="async">
+        <!-- ★ 가방이 **채워진다**(창업자 2026-08-31: "가짜 떰네일이랑 뭐 파일들이랑
+             가방에 채워지는?"). 그림에는 넷이 이미 담겨 있으므로, 넷을 흰 덮개로
+             가려 두었다가 차례로 걷는다 — 파일이 하나씩 떨어져 담기는 것으로 읽힌다.
+             자리는 그림 안에서 재서 왔다(칸 + 그 밑 이름줄까지). -->
+        <span class="m-bagbox">
+          <img class="m-bag" src="assets/art/ui-bag.webp" alt="Four things in the bag" loading="lazy" decoding="async">
+          <i class="b-slot s1"></i><i class="b-slot s2"></i><i class="b-slot s3"></i><i class="b-slot s4"></i>
+        </span>
       </div>
     </article>
 
@@ -2928,7 +3034,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
          다른 자세가 나온다. -->
   <section class="m-adopt">
     <h2>Adopt me</h2>
-    <div class="m-namepill"><img class="np-bite" src="assets/art/floorprop-biscuit.webp" alt="" loading="lazy" decoding="async"><span>Name</span></div>
+    <div class="m-namepill"><img class="np-bite" src="assets/art/floorprop-biscuit.webp" alt="" loading="lazy" decoding="async"><span class="np-txt"><b class="np-ph">Name</b><b class="np-typed" data-name="Bori"></b><i class="np-caret" aria-hidden="true"></i></span></div>
     <!-- ★ 뒹구는 아이(창업자 2026-08-31: "얘 둥구는 애니메이션 없어?").
          정지 그림(`pets-pompup-sit`)을 `Flip` 클립으로 바꿨다 — 같은 흰 포메다. -->
     <video class="kyu-anim m-adoptpup" data-kyu-anim="adopt-roll" muted loop playsinline preload="none"
@@ -3781,6 +3887,45 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         for (const e of 들) if (e.isIntersecting) 세다(e.target)
       }, { threshold: 0.6 })
       for (const b of 셀것) 눈2.observe(b)
+    }
+    // ★ 가방이 채워진다 — 화면에 들어올 때 한 번. 되풀이하면 담긴 것이 도로
+    //   사라졌다 담기는데, 그건 「채워진다」가 아니라 깜빡임이다.
+    // ★ 아이에게 이름을 지어 준다 — 자리글이 지워지고 이름이 한 글자씩 찍힌다.
+    //   한 번만 한다. 되풀이하면 이름을 지었다 지웠다 하는데, 그건 입양이 아니다.
+    for (const 절 of $$문서('.m-adopt')) {
+      const 칸 = 절.querySelector('.np-typed')
+      if (!칸) continue
+      const 이름 = 칸.dataset.name || ''
+      const 눈5 = new IntersectionObserver((들) => {
+        for (const e of 들) {
+          if (!e.isIntersecting) continue
+          눈5.unobserve(e.target)
+          e.target.classList.add('짓는다')
+          let i = 0
+          setTimeout(() => {
+            const t = setInterval(() => {
+              칸.textContent = 이름.slice(0, ++i)
+              if (i >= 이름.length) clearInterval(t)
+            }, 130)
+          }, 300)
+        }
+      }, { threshold: 0.6 })
+      눈5.observe(절)
+    }
+    // ★ 쓰레기통이 채워진다 — 화면에 들어올 때 한 번.
+    for (const 통 of $$문서('.m-magic')) {
+      const 눈6 = new IntersectionObserver((들) => {
+        for (const e of 들) if (e.isIntersecting) { e.target.classList.add('담는다'); 눈6.unobserve(e.target) }
+      }, { threshold: 0.4 })
+      눈6.observe(통)
+    }
+    for (const 가방 of $$문서('.m-hands')) {
+      // ★ 여기까지 왔다는 건 움직임 층이 산다는 뜻이다 — 그때만 덮개를 씌운다.
+      가방.classList.add('가린다')
+      const 눈4 = new IntersectionObserver((들) => {
+        for (const e of 들) if (e.isIntersecting) { e.target.classList.add('담는다'); 눈4.unobserve(e.target) }
+      }, { threshold: 0.35 })
+      눈4.observe(가방)
     }
     const 그릴것 = $$문서('.m-dayart.d3')
     if (그릴것.length) {
