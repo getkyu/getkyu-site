@@ -81,7 +81,7 @@ a { color: inherit; text-decoration: none; }
   transform-origin: top left;
 }
 /* ★ Q&A 와 푸터가 판 밖으로 나가서, 판은 「Bring him home」 까지다. */
-#shell { position: relative; width: 1440px; height: 6209px; margin: 0 auto; overflow: hidden; }
+#shell { position: relative; width: 1440px; height: 6640px; margin: 0 auto; overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
@@ -820,6 +820,34 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
 #m .m-magic .m-trash {
   display: block; width: 125px; height: 125px; margin: 18px auto 0;
 }
+
+/* ── ⓪-b AI 도구 (피그마 62:25651) ─────────────────────────── */
+/* ★ 피그마 카드는 358×411 이다. 자리를 **카드 폭 기준(cqw)** 으로 적어 화면 폭이
+     달라져도 그림들이 서로 안 어긋나게 한다 — `.m-bagwrap` 이 쓰는 그 법이다.
+   ★★ 그림 판은 카드 **패딩을 음수로 상쇄**해 카드 폭을 꽉 채운다. 큐는 카드
+     아래로 삐져나가고, 카드가 `overflow: hidden` 이라 거기서 잘린다(그게 의도다 —
+     "peek" 이다). 피그마에서도 큐 밑끝이 카드 밑끝과 같은 411 이다. */
+#m .m-ai { text-align: center; }
+#m .m-ai h3 { display: block; }
+#m .m-aiart {
+  position: relative; container-type: inline-size;
+  aspect-ratio: 358 / 261;
+  margin: 14px calc(var(--pad) * -1) -19px;
+}
+#m .m-aiart > * { position: absolute; }
+#m .m-aiart .a-glow { left: 0; top: 20.69%; width: 100%; height: 79.31%; }
+/* ★ 도구 넷은 피그마의 기울기를 그대로 — 살짝 흩어져 있어야 "꽂아 두는" 느낌이 난다 */
+#m .m-aiart .a-gpt { left: 3.35cqw;  top: 30.18%; width: 13.90cqw; transform: rotate(-10.5deg); }
+#m .m-aiart .a-cla { left: 22.29cqw; top: 1.15%;  width: 12.38cqw; transform: rotate(8.57deg); }
+#m .m-aiart .a-gem { left: 63.35cqw; top: 1.15%;  width: 14.18cqw; transform: rotate(7.35deg); }
+#m .m-aiart .a-cc  { left: 83.04cqw; top: 24.14%; width: 13.73cqw; transform: rotate(11.47deg); }
+/* ★ 큐는 **잘려야** 한다. 상자를 잡고 그 안에서 그림을 161% 로 늘린다 —
+     `object-fit: cover` 로 하면 좌우도 같이 잘려서 어깨가 없어진다. */
+#m .m-aiart .a-kyu {
+  left: 29.33cqw; top: 14.56%; width: 38.27cqw; height: 85.44%;
+  overflow: hidden; display: block;
+}
+#m .m-aiart .a-kyu img { position: absolute; left: 0; top: 0; width: 100%; height: 160.85%; display: block; }
 
 /* ── ⓪-2 Hands it back ────────────────────────────────────── */
 /* ★ 파일 아이콘 일곱은 카드 **밖으로 삐져나온다**(피그마 그대로). 카드가
@@ -1761,22 +1789,22 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
 <body>
 <div id="shell">
 <div id="canvas">
-    <div style="position:absolute;background:#fff;height:6911px;left:0;overflow:hidden;width:1440px;top:110px" data-node-id="21:5633">
+    <div style="position:absolute;background:#fff;height:7342px;left:0;overflow:hidden;width:1440px;top:110px" data-node-id="21:5633">
       <!-- 22:6541 는 판 밖에서 흐름으로 그린다(site-build) -->
-      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:61px;font-style:normal;font-size:21px;color:#000;top:4936px;width:742px;transform:translate(0,-50%)" data-node-id="26:7767">
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:61px;font-style:normal;font-size:21px;color:#000;top:5367px;width:742px;transform:translate(0,-50%)" data-node-id="26:7767">
         <p style="line-height:29.7px" class="kyu-flow">Meetings guarded. Breaks nudged. Every day remembered.</p>
       </div>
       <!-- 22:6542 는 판 밖에서 흐름으로 그린다(site-build) -->
-      <div style="position:absolute;display:contents;left:188px;top:4146px" data-node-id="26:7749">
-        <div style="position:absolute;display:contents;left:188px;top:4146px" data-node-id="26:7750">
-          <div style="position:absolute;background:#7bff88;height:27px;left:188px;border-radius:4px;top:4146px;width:58px;filter:blur(2.6px)" data-node-id="26:7751">
+      <div style="position:absolute;display:contents;left:188px;top:4577px" data-node-id="26:7749">
+        <div style="position:absolute;display:contents;left:188px;top:4577px" data-node-id="26:7750">
+          <div style="position:absolute;background:#7bff88;height:27px;left:188px;border-radius:4px;top:4577px;width:58px;filter:blur(2.6px)" data-node-id="26:7751">
           </div>
-          <div style="position:absolute;background:rgba(123,255,136,0.23);height:27px;left:188px;border-radius:4px;top:4146px;width:58px;filter:blur(2.6px)" data-node-id="26:7752">
+          <div style="position:absolute;background:rgba(123,255,136,0.23);height:27px;left:188px;border-radius:4px;top:4577px;width:58px;filter:blur(2.6px)" data-node-id="26:7752">
           </div>
         </div>
       </div>
     </div>
-    <div style="position:absolute;height:7347.08px;left:0;right:0;top:0" data-n="div.figma-qqps48" data-node-id="20:4039">
+    <div style="position:absolute;height:7778.08px;left:0;right:0;top:0" data-n="div.figma-qqps48" data-node-id="20:4039">
       <div style="position:absolute;background:#fff;align-content:stretch;display:flex;align-items:center;justify-content:space-between;left:0;padding-left:62px;padding-right:30px;padding-top:24px;padding-bottom:24px;right:0;top:0" data-n="div.figma-1lwry8o" data-node-id="20:4040">
         <div style="grid-template-columns:max-content;grid-template-rows:max-content;display:inline-grid;line-height:0;place-items:start;position:relative;flex-shrink:0;width:74px;height:74px" data-n="Clip path group" data-node-id="21:4711">
 <!--
@@ -1850,11 +1878,11 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           </div>
         </div>
       </div>
-      <div style="position:absolute;top:1227px;right:1px;bottom:6016.08px;left:0;background-image:linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 64%, rgb(255, 255, 255) 90%, rgb(255, 255, 255) 100%);" data-n="div.fade-out" data-node-id="21:5946">
+      <div style="position:absolute;top:1227px;right:1px;bottom:6447.08px;left:0;background-image:linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 64%, rgb(255, 255, 255) 90%, rgb(255, 255, 255) 100%);" data-n="div.fade-out" data-node-id="21:5946">
       </div>
-      <div style="position:absolute;top:1105px;right:1148px;bottom:6016.08px;left:0;background-image:linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 64%, rgb(255, 255, 255) 90%, rgb(255, 255, 255) 100%);" data-n="div.fade-out" data-node-id="21:6237">
+      <div style="position:absolute;top:1105px;right:1148px;bottom:6447.08px;left:0;background-image:linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 64%, rgb(255, 255, 255) 90%, rgb(255, 255, 255) 100%);" data-n="div.fade-out" data-node-id="21:6237">
       </div>
-      <div style="position:absolute;display:flex;top:1046px;right:8px;bottom:6016.08px;left:1137px;align-items:center;justify-content:center;container-type:size;" data-node-id="21:6239">
+      <div style="position:absolute;display:flex;top:1046px;right:8px;bottom:6447.08px;left:1137px;align-items:center;justify-content:center;container-type:size;" data-node-id="21:6239">
         <div style="flex:none;height:100cqh;width:100cqw;transform:scale(-1,1)">
           <div style="position:relative;width:100%;height:100%;background-image:linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 64%, rgb(255, 255, 255) 90%, rgb(255, 255, 255) 100%);" data-n="div.fade-out">
           </div>
@@ -2016,332 +2044,400 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:60px;font-style:normal;font-size:76px;color:#000;top:1676.19px;letter-spacing:-3.2px;white-space:nowrap;transform:translate(0,-50%)" data-node-id="21:6235" id="what">
         <p style="line-height:88px">While you work, he’s there.</p>
       </div>
-      <div style="position:absolute;height:258px;left:103px;top:1947px;width:198px" data-n="cast-dea 1" data-node-id="23:6873">
+      <div style="position:absolute;height:258px;left:103px;top:2378px;width:198px" data-n="cast-dea 1" data-node-id="23:6873">
       </div>
-      <div style="position:absolute;display:contents;left:883px;top:1810px" data-node-id="23:6901">
-        <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:883px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:1810px;width:490px" data-node-id="23:6870">
+      <div style="position:absolute;display:contents;left:883px;top:2241px" data-node-id="23:6901">
+        <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:883px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:2241px;width:490px" data-node-id="23:6870">
         </div>
       </div>
-      <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:60px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:2241px;width:490px" data-node-id="23:6927" data-kyu="wx-card">
+      <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:60px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:2672px;width:490px" data-node-id="23:6927" data-kyu="wx-card">
       </div>
-      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% - 415.5px);padding-bottom:1px;top:calc(50% - 1399.04px);width:249px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="23:6928">
+      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% - 415.5px);padding-bottom:1px;top:calc(50% - 1183.54px);width:249px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="23:6928">
         <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#111;font-size:24px;width:100%" data-node-id="23:6929">
           <p style="line-height:36px">Dress for the weather</p>
         </div>
       </div>
-      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% - 414.56px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:2309px;width:201px;transform:translate(-50%,-50%)" data-node-id="23:6931">
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% - 414.56px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:2740px;width:201px;transform:translate(-50%,-50%)" data-node-id="23:6931">
         <p style="line-height:24px" class="kyu-flow">He reads the forecast</p>
       </div>
-      <div style="position:absolute;display:contents;left:60px;top:1810px" data-node-id="23:6903">
-        <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:60px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:1810px;width:784px" data-node-id="23:6869">
+      <div style="position:absolute;display:contents;left:60px;top:2241px" data-node-id="23:6903">
+        <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:60px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:1810px;width:915px" data-node-id="62:25631">
         </div>
-        <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% - 268.5px);padding-bottom:1px;top:calc(50% - 1830.04px);width:177px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="23:6884">
+        <div style="word-break:break-word;position:absolute;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;line-height:0;left:60px;font-style:normal;color:#111;font-size:24px;text-align:center;top:1834px;width:915px;white-space:nowrap" data-node-id="62:25633">
+          <p style="line-height:36px">Some quiet morning, a stray pup wanders by.</p>
+        </div>
+        <div style="word-break:break-word;position:absolute;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;line-height:0;left:279px;font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:1878px;width:472px" data-node-id="62:25634">
+          <p style="line-height:24px" class="kyu-flow">Feed her, name her — and she&#x27;s yours. She&#x27;ll nap next to Kyu while you work. (Cat person? A kitten finds you instead.)</p>
+        </div>
+        <div style="position:absolute;border-width:1px;border-style:solid;border-color:#a6a6a6;border-style:solid;height:33px;left:458px;border-radius:50px;top:1967px;width:114.23px" data-node-id="62:25679">
+        </div>
+        <div style="position:absolute;height:25.63px;left:467.7px;top:1971.06px;width:28.7px" data-n="floorprop-biscuit 2" data-node-id="62:25682">
+          <img src="assets/art/floorprop-biscuit.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+        </div>
+        <div style="word-break:break-word;position:absolute;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;line-height:0;left:496.58px;color:#5f5f5f;font-size:18px;text-align:center;top:1969.75px;width:64.48px" data-node-id="62:25680">
+          <p style="line-height:24px" class="kyu-flow">Name</p>
+        </div>
+        <div style="position:absolute;height:160.95px;left:432px;overflow:hidden;top:2012px;width:167px" data-n="pets-pompup-sit 1" data-node-id="62:25697">
+          <img src="assets/art/pets-pompup-sit.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:100%;left:0;max-width:none;top:0;width:345.54%">
+        </div>
+        <div style="position:absolute;height:72px;left:620px;top:2095px;width:91px" data-n="floorprop-bowl1 4" data-node-id="62:25693">
+          <img src="assets/art/floorprop-bowl1.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+        </div>
+        <div style="position:absolute;height:56px;left:672px;top:2111px;width:58px" data-n="prop-ball 4" data-node-id="62:25692">
+          <img src="assets/art/prop-ball.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+        </div>
+        <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:1015px;overflow:hidden;border-radius:15px;box-shadow:0px 5px 8.1px 0px rgba(186,186,186,0.32);top:1810px;width:358px" data-n="FeatureCard_1" data-node-id="57:25144">
+        </div>
+        <div style="position:absolute;height:193px;left:1015px;top:2014px;width:358px" data-n="Element" data-node-id="62:25606">
+          <img src="assets/art/card-aiglow.svg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;pointer-events:none;width:100%;height:100%">
+        </div>
+        <div style="position:absolute;height:207px;left:1125px;overflow:hidden;top:1998px;width:127px" data-n="kyu-peek 4" data-node-id="57:25490">
+          <img src="assets/art/kyu-peek.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:160.85%;left:0;max-width:none;top:0;width:100%">
+        </div>
+        <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:1027px;width:49.75px;height:49.75px;top:2038.78px" data-node-id="57:25546">
+          <div style="flex:none;transform:rotate(-10.5deg)">
+            <div style="position:relative;width:42.69px;height:42.69px" data-n="flat-chatgpt 2">
+              <img src="assets/art/flat-chatgpt.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+            </div>
+          </div>
+        </div>
+        <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:1094.8px;width:44.31px;height:44.31px;top:1963px" data-node-id="57:25501">
+          <div style="flex:none;transform:rotate(8.57deg)">
+            <div style="position:relative;width:38.95px;height:38.95px" data-n="flat-claude 2">
+              <img src="assets/art/flat-claude.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+            </div>
+          </div>
+        </div>
+        <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:1241.8px;width:50.75px;height:50.75px;top:1963px" data-node-id="61:25574">
+          <div style="flex:none;transform:rotate(7.35deg)">
+            <div style="position:relative;width:45.33px;height:45.33px" data-n="gemini 1">
+              <img src="assets/art/flat-gemini.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+            </div>
+          </div>
+        </div>
+        <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:1312.29px;width:49.14px;height:49.14px;top:2023px" data-node-id="61:25586">
+          <div style="flex:none;transform:rotate(11.47deg)">
+            <div style="position:relative;width:41.69px;height:41.69px" data-n="claude-code 2">
+              <img src="assets/art/flat-claude-code.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+            </div>
+          </div>
+        </div>
+        <div style="word-break:break-word;position:absolute;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:600;font-style:normal;font-weight:600;line-height:0;left:1049px;font-style:normal;color:#111;font-size:20px;text-align:center;top:1834px;width:277px" data-node-id="57:25145">
+          <p style="line-height:26px;margin-bottom:0" class="kyu-flow" data-box="box1">Connect your AI tools.</p>
+          <p style="line-height:26px" class="kyu-flow">Kyu gets smarter.</p>
+        </div>
+        <div style="word-break:break-word;position:absolute;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;line-height:0;left:1035px;font-style:normal;font-size:13px;color:rgba(17,17,17,0.6);text-align:center;top:1898px;width:318px" data-node-id="57:25146">
+          <p style="line-height:18.2px" class="kyu-flow">Every tool you plug in teaches him a little more about your day — so he brings you what matters before you ask.</p>
+        </div>
+        <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:60px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:2241px;width:784px" data-node-id="23:6869">
+        </div>
+        <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% - 268.5px);padding-bottom:1px;top:calc(50% - 1614.54px);width:177px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="23:6884">
           <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#111;font-size:24px;white-space:nowrap" data-node-id="23:6885">
             <p style="line-height:36px">Make your own</p>
           </div>
         </div>
-        <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% - 268.5px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:1882px;width:305px;transform:translate(-50%,-50%)" data-node-id="23:6887">
+        <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% - 268.5px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:2313px;width:305px;transform:translate(-50%,-50%)" data-node-id="23:6887">
           <p style="line-height:24px" class="kyu-flow">300+ parts, head to toe. Body, hair, fits</p>
         </div>
-        <div style="position:absolute;height:248px;left:443px;top:1957px;width:196px" data-n="cast-diego-wave 1" data-node-id="23:6872">
+        <div style="position:absolute;height:248px;left:443px;top:2388px;width:196px" data-n="cast-diego-wave 1" data-node-id="23:6872">
           <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
             <video class="kyu-anim" data-kyu-anim="own-diego" muted loop playsinline preload="none" data-poster="assets/anim/own-diego.png" aria-label="own-diego" data-webm="assets/anim/own-diego.webm" data-mp4="assets/anim/own-diego.mp4" style="position:absolute;left:-37.18px;top:-15.85px;width:255.97px;height:263.85px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
-        <div style="position:absolute;height:277px;left:634px;top:1928px;width:185px" data-n="cast-andre 1" data-node-id="23:6874">
+        <div style="position:absolute;height:277px;left:634px;top:2359px;width:185px" data-n="cast-andre 1" data-node-id="23:6874">
           <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
             <video class="kyu-anim" data-kyu-anim="own-andre" muted loop playsinline preload="none" data-poster="assets/anim/own-andre.png" aria-label="own-andre" data-webm="assets/anim/own-andre.webm" data-mp4="assets/anim/own-andre.mp4" style="position:absolute;left:-24.06px;top:1.1px;width:234.65px;height:275.9px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
-        <div style="position:absolute;height:237px;left:261px;top:1968px;width:160px" data-n="cast-sofia 1" data-node-id="23:6876">
+        <div style="position:absolute;height:237px;left:261px;top:2399px;width:160px" data-n="cast-sofia 1" data-node-id="23:6876">
           <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
             <video class="kyu-anim" data-kyu-anim="own-jina" muted loop playsinline preload="none" data-poster="assets/anim/own-jina.png" aria-label="own-jina" data-webm="assets/anim/own-jina.webm" data-mp4="assets/anim/own-jina.mp4" style="position:absolute;left:-30.3px;top:3.29px;width:223.25px;height:233.71px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
-        <div style="position:absolute;display:contents;left:94px;top:1891px" data-node-id="23:6895">
-          <div style="position:absolute;background:rgba(162,198,255,0.2);height:33px;left:94px;border-radius:50px;top:1891px;width:96px" data-node-id="23:6877">
+        <div style="position:absolute;display:contents;left:94px;top:2322px" data-node-id="23:6895">
+          <div style="position:absolute;background:rgba(162,198,255,0.2);height:33px;left:94px;border-radius:50px;top:2322px;width:96px" data-node-id="23:6877">
           </div>
-          <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;height:24px;justify-content:center;line-height:0;left:141.5px;font-size:16px;color:#000;text-align:center;top:1908px;width:45px;transform:translate(-50%,-50%)" data-node-id="23:6889">
+          <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;height:24px;justify-content:center;line-height:0;left:141.5px;font-size:16px;color:#000;text-align:center;top:2339px;width:45px;transform:translate(-50%,-50%)" data-node-id="23:6889">
             <p style="line-height:24px" class="kyu-flow">Eric</p>
           </div>
         </div>
-        <div style="position:absolute;display:contents;left:301px;top:1918px" data-node-id="23:6894">
-          <div style="position:absolute;background:rgba(162,198,255,0.2);height:33px;left:301px;border-radius:50px;top:1918px;width:96px" data-node-id="23:6878">
+        <div style="position:absolute;display:contents;left:301px;top:2349px" data-node-id="23:6894">
+          <div style="position:absolute;background:rgba(162,198,255,0.2);height:33px;left:301px;border-radius:50px;top:2349px;width:96px" data-node-id="23:6878">
           </div>
-          <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;height:24px;justify-content:center;line-height:0;left:348.5px;font-size:16px;color:#000;text-align:center;top:1935px;width:45px;transform:translate(-50%,-50%)" data-node-id="23:6890">
+          <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;height:24px;justify-content:center;line-height:0;left:348.5px;font-size:16px;color:#000;text-align:center;top:2366px;width:45px;transform:translate(-50%,-50%)" data-node-id="23:6890">
             <p style="line-height:24px" class="kyu-flow">Jina</p>
           </div>
         </div>
-        <div style="position:absolute;display:contents;left:490px;top:1914px" data-node-id="23:6893">
-          <div style="position:absolute;background:rgba(162,198,255,0.2);height:33px;left:490px;border-radius:50px;top:1914px;width:96px" data-node-id="23:6879">
+        <div style="position:absolute;display:contents;left:490px;top:2345px" data-node-id="23:6893">
+          <div style="position:absolute;background:rgba(162,198,255,0.2);height:33px;left:490px;border-radius:50px;top:2345px;width:96px" data-node-id="23:6879">
           </div>
-          <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;height:24px;justify-content:center;line-height:0;left:539.5px;font-size:16px;color:#000;text-align:center;top:1931px;width:45px;transform:translate(-50%,-50%)" data-node-id="23:6891">
+          <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;height:24px;justify-content:center;line-height:0;left:539.5px;font-size:16px;color:#000;text-align:center;top:2362px;width:45px;transform:translate(-50%,-50%)" data-node-id="23:6891">
             <p style="line-height:24px" class="kyu-flow">Diego</p>
           </div>
         </div>
-        <div style="position:absolute;display:contents;left:703px;top:1874px" data-node-id="23:6896">
-          <div style="position:absolute;background:rgba(162,198,255,0.2);height:33px;left:703px;border-radius:50px;top:1874px;width:96px" data-node-id="23:6880">
+        <div style="position:absolute;display:contents;left:703px;top:2305px" data-node-id="23:6896">
+          <div style="position:absolute;background:rgba(162,198,255,0.2);height:33px;left:703px;border-radius:50px;top:2305px;width:96px" data-node-id="23:6880">
           </div>
-          <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;height:24px;justify-content:center;line-height:0;left:751px;font-size:16px;color:#000;text-align:center;top:1891px;width:48px;transform:translate(-50%,-50%)" data-node-id="23:6892">
+          <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;height:24px;justify-content:center;line-height:0;left:751px;font-size:16px;color:#000;text-align:center;top:2322px;width:48px;transform:translate(-50%,-50%)" data-node-id="23:6892">
             <p style="line-height:24px" class="kyu-flow">Andre</p>
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:contents;left:60px;top:2672px" data-node-id="24:6964">
-        <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:60px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:2672px;width:635px" data-node-id="24:6965">
+      <div style="position:absolute;display:contents;left:60px;top:3103px" data-node-id="24:6964">
+        <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:60px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:3103px;width:635px" data-node-id="24:6965">
         </div>
-        <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% - 347.5px);padding-bottom:1px;top:calc(50% - 968.04px);width:157px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="24:6966">
+        <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% - 347.5px);padding-bottom:1px;top:calc(50% - 752.54px);width:157px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="24:6966">
           <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#111;font-size:24px;white-space:nowrap" data-node-id="24:6967">
             <p style="line-height:36px">Hands it back</p>
           </div>
         </div>
-        <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% - 347px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:2743px;width:202px;transform:translate(-50%,-50%)" data-node-id="24:6969">
+        <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% - 347px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:3174px;width:202px;transform:translate(-50%,-50%)" data-node-id="24:6969">
           <p style="line-height:24px" class="kyu-flow">Drop a file or a link on him</p>
         </div>
       </div>
-      <div style="position:absolute;display:contents;left:58px;top:3771px" data-node-id="26:7340">
-        <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:58px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:3771px;width:635px" data-node-id="26:7341">
+      <div style="position:absolute;display:contents;left:58px;top:4202px" data-node-id="26:7340">
+        <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:58px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:4202px;width:635px" data-node-id="26:7341">
         </div>
-        <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% - 344.5px);padding-bottom:1px;top:calc(50% + 136.96px);width:247px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="26:7342">
+        <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% - 344.5px);padding-bottom:1px;top:calc(50% + 352.46px);width:247px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="26:7342">
           <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#111;font-size:24px;white-space:nowrap" data-node-id="26:7343">
             <p style="line-height:36px">No account. No cloud</p>
           </div>
         </div>
-        <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% - 344.5px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:3877px;width:357px;transform:translate(-50%,-50%)" data-node-id="26:7344">
+        <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% - 344.5px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:4308px;width:357px;transform:translate(-50%,-50%)" data-node-id="26:7344">
           <p style="line-height:24px" class="kyu-flow">Kyu works without a server. Every switch in settings says exactly what would leave this machine — most say &#x27;nothing.&#x27;</p>
         </div>
       </div>
-      <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:734px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:2672px;width:639px" data-node-id="24:6992">
+      <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:734px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:3103px;width:639px" data-node-id="24:6992">
       </div>
-      <div style="position:absolute;display:flex;height:613px;align-items:center;justify-content:center;left:58px;top:3113px;width:395px" data-node-id="26:7224">
+      <div style="position:absolute;display:flex;height:613px;align-items:center;justify-content:center;left:58px;top:3544px;width:395px" data-node-id="26:7224">
         <div style="flex:none;transform:rotate(90deg)">
-          <div style="background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:613px" data-box="box1">
+          <div style="background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:613px" data-box="box2">
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;height:285px;align-items:center;justify-content:center;left:493px;top:3113px;width:880px" data-node-id="26:7226">
+      <div style="position:absolute;display:flex;height:285px;align-items:center;justify-content:center;left:493px;top:3544px;width:880px" data-node-id="26:7226">
         <div style="flex:none;transform:rotate(180deg)">
-          <div style="background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:285px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:880px" data-box="box2">
+          <div style="background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:285px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:880px" data-box="box3">
           </div>
         </div>
       </div>
-      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% + 407.78px);padding-bottom:1px;top:calc(50% - 1826.04px);width:187px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="24:6993">
+      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% + 407.78px);padding-bottom:1px;top:calc(50% - 1610.54px);width:187px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="24:6993">
         <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#111;font-size:24px;white-space:nowrap" data-node-id="24:6994">
           <p style="line-height:36px">Never interrupts</p>
         </div>
       </div>
-      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% + 408px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:1882px;width:218px;transform:translate(-50%,-50%)" data-node-id="24:6996">
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% + 408px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:2313px;width:218px;transform:translate(-50%,-50%)" data-node-id="24:6996">
         <p style="line-height:24px" class="kyu-flow">In deep focus, he goes quiet</p>
       </div>
-      <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:589px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:2241px;width:784px" data-node-id="23:6906">
+      <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:589px;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);top:2672px;width:784px" data-node-id="23:6906">
       </div>
-      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% + 265px);padding-bottom:1px;top:calc(50% - 1399.04px);width:250px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="23:6907">
+      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% + 265px);padding-bottom:1px;top:calc(50% - 1183.54px);width:250px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="23:6907">
         <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#111;font-size:24px;width:100%" data-node-id="23:6908">
           <p style="line-height:36px">While you were away,</p>
         </div>
       </div>
-      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% + 261px);overflow:hidden;padding-bottom:1px;padding-left:93.94px;padding-right:93.06px;top:calc(50% - 1364.04px);width:388px;transform:translate(-50%,-50%)" data-n="div.framer-1f4m529" data-node-id="23:6909">
+      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% + 261px);overflow:hidden;padding-bottom:1px;padding-left:93.94px;padding-right:93.06px;top:calc(50% - 1148.54px);width:388px;transform:translate(-50%,-50%)" data-n="div.framer-1f4m529" data-node-id="23:6909">
         <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;width:100%" data-node-id="23:6910">
           <p style="line-height:24px" class="kyu-flow">Kyu wasn&#x27;t.</p>
         </div>
       </div>
-      <div style="position:absolute;height:251px;left:389px;top:2360px;width:118px" data-n="prop-umbrella 1" data-node-id="23:6934" data-kyu="wx" data-wx="rain" class="kyu-fade-bottom">
+      <div style="position:absolute;height:251px;left:389px;top:2791px;width:118px" data-n="prop-umbrella 1" data-node-id="23:6934" data-kyu="wx" data-wx="rain" class="kyu-fade-bottom">
         <img src="assets/art/prop-umbrella.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;height:218px;left:255px;top:2393px;width:91px" data-n="cast-dea 2" data-node-id="23:6938" data-kyu="wx" data-wx="leaves" class="kyu-fade-bottom">
+      <div style="position:absolute;height:218px;left:255px;top:2824px;width:91px" data-n="cast-dea 2" data-node-id="23:6938" data-kyu="wx" data-wx="leaves" class="kyu-fade-bottom">
         <img src="assets/art/cast-dea.webp" alt="" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;display:flex;height:231px;align-items:center;justify-content:center;left:89px;top:2383px;width:107px" data-node-id="23:6939" data-kyu="wx" data-wx="snow" class="kyu-fade-bottom">
+      <div style="position:absolute;display:flex;height:231px;align-items:center;justify-content:center;left:89px;top:2814px;width:107px" data-node-id="23:6939" data-kyu="wx" data-wx="snow" class="kyu-fade-bottom">
         <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
           <div style="height:231px;position:relative;width:107px" data-n="wear-cold 1">
             <img src="assets/art/wear-cold.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;left:435px;width:39px;height:39px;top:2304px" data-n="Image" data-node-id="24:6946">
+      <div style="position:absolute;left:435px;width:39px;height:39px;top:2735px" data-n="Image" data-node-id="24:6946">
         <img src="assets/art/wx-1.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;left:117px;width:36px;height:36px;top:2324px" data-n="Image" data-node-id="24:6953">
+      <div style="position:absolute;left:117px;width:36px;height:36px;top:2755px" data-n="Image" data-node-id="24:6953">
         <img src="assets/art/wx-2.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;left:292px;width:32px;height:32px;top:2344px" data-n="Image" data-node-id="24:6957">
+      <div style="position:absolute;left:292px;width:32px;height:32px;top:2775px" data-n="Image" data-node-id="24:6957">
         <img src="assets/art/wx-3.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;height:180px;left:625px;border-radius:11px;top:2315px;width:168px" data-n="ui-agent-card 1" data-node-id="24:6959">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:11px" data-box="box3">
+      <div style="position:absolute;height:180px;left:625px;border-radius:11px;top:2746px;width:168px" data-n="ui-agent-card 1" data-node-id="24:6959">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:11px" data-box="box4">
           <img src="assets/art/ui-agent-card.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:125.78%;left:0;max-width:none;top:-17.33%;width:138.1%">
         </div>
       </div>
-      <div style="position:absolute;height:177px;left:715px;border-radius:23px;top:2401px;width:214px" data-n="ui-agent-list 1" data-node-id="24:6960">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:23px" data-box="box4">
+      <div style="position:absolute;height:177px;left:715px;border-radius:23px;top:2832px;width:214px" data-n="ui-agent-list 1" data-node-id="24:6960">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:23px" data-box="box5">
           <img src="assets/art/ui-agent-list.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:130.64%;left:0;max-width:none;top:-16.87%;width:100%">
         </div>
       </div>
-      <div style="position:absolute;height:317px;left:1171px;top:2283px;width:139px" data-n="prop-drink 1" data-node-id="24:6961">
+      <div style="position:absolute;height:317px;left:1171px;top:2714px;width:139px" data-n="prop-drink 1" data-node-id="24:6961">
         <video class="kyu-anim" data-kyu-anim="away-drink" muted loop playsinline preload="none" data-poster="assets/anim/away-drink.png" aria-label="away-drink" data-webm="assets/anim/away-drink.webm" data-mp4="assets/anim/away-drink.mp4" style="position:absolute;left:-13.8px;top:-4.55px;width:166.29px;height:313.74px;max-width:none;pointer-events:none"></video>
       </div>
-      <div style="position:absolute;left:879px;top:2368px;width:234px;height:67px" data-n="ui-chart 1" data-node-id="24:6962">
+      <div style="position:absolute;left:879px;top:2799px;width:234px;height:67px" data-n="ui-chart 1" data-node-id="24:6962">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/ui-chart.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none">
         </div>
       </div>
-      <div style="position:absolute;display:flex;height:145.64px;align-items:center;justify-content:center;left:1043px;top:2454px;width:140.009px" data-node-id="24:6963">
+      <div style="position:absolute;display:flex;height:145.64px;align-items:center;justify-content:center;left:1043px;top:2885px;width:140.009px" data-node-id="24:6963">
         <div style="flex:none;transform:rotate(3.43deg)">
           <div style="height:138px;position:relative;width:132px" data-n="pet-asktoplay 1">
             <video class="kyu-anim" data-kyu-anim="away-pet" muted loop playsinline preload="none" data-poster="assets/anim/away-pet.png" aria-label="away-pet" data-webm="assets/anim/away-pet.webm" data-mp4="assets/anim/away-pet.mp4" style="position:absolute;left:38.02px;top:77.38px;width:56.95px;height:52.93px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:calc(50% - 530.25px);width:136.586px;height:136.586px;top:calc(50% - 953.79px);transform:translate(-50%,-50%)" data-node-id="25:7045">
+      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:calc(50% - 530.25px);width:136.586px;height:136.586px;top:calc(50% - 738.29px);transform:translate(-50%,-50%)" data-node-id="25:7045">
         <div style="flex:none;transform:rotate(-6.31deg)">
           <div style="position:relative;width:123.728px;height:123.728px" data-n="AEP - After Effects Project">
             <img src="assets/art/file-aep.svg" alt="" loading="lazy" decoding="async" style="position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:calc(50% - 452.79px);width:124.412px;height:124.412px;top:calc(50% - 793.33px);transform:translate(-50%,-50%)" data-node-id="25:7087">
+      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:calc(50% - 452.79px);width:124.412px;height:124.412px;top:calc(50% - 577.83px);transform:translate(-50%,-50%)" data-node-id="25:7087">
         <div style="flex:none;transform:rotate(-9.19deg)">
           <div style="position:relative;width:108.486px;height:108.486px" data-n="PDF - Portable Document Format">
             <img src="assets/art/file-pdf.svg" alt="" loading="lazy" decoding="async" style="position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:calc(50% - 292.42px);width:97.154px;height:97.154px;top:calc(50% - 698.96px);transform:translate(-50%,-50%)" data-node-id="25:7024">
+      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:calc(50% - 292.42px);width:97.154px;height:97.154px;top:calc(50% - 483.46px);transform:translate(-50%,-50%)" data-node-id="25:7024">
         <div style="flex:none;transform:rotate(-5.79deg)">
           <div style="position:relative;width:88.662px;height:88.662px" data-n="AVI - Audio Video Interleave">
             <img src="assets/art/file-avi.svg" alt="" loading="lazy" decoding="async" style="position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:calc(50% - 605.7px);width:152.597px;height:152.597px;top:calc(50% - 695.24px);transform:translate(-50%,-50%)" data-node-id="25:7066">
+      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:calc(50% - 605.7px);width:152.597px;height:152.597px;top:calc(50% - 479.74px);transform:translate(-50%,-50%)" data-node-id="25:7066">
         <div style="flex:none;transform:rotate(-4.93deg)">
           <div style="position:relative;width:141.006px;height:141.006px" data-n="ZIP - ZIP Archive">
             <img src="assets/art/file-zip.svg" alt="" loading="lazy" decoding="async" style="position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:27px;width:121.697px;height:121.697px;top:2766px" data-node-id="25:7148">
+      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:27px;width:121.697px;height:121.697px;top:3197px" data-node-id="25:7148">
         <div style="flex:none;transform:rotate(15.02deg)">
           <div style="position:relative;width:99.346px;height:99.346px" data-n="JPG - JPEG Image">
             <img src="assets/art/file-jpg.svg" alt="" loading="lazy" decoding="async" style="position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:347px;width:106.559px;height:106.559px;top:2776px" data-node-id="25:7160">
+      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:347px;width:106.559px;height:106.559px;top:3207px" data-node-id="25:7160">
         <div style="flex:none;transform:rotate(13.9deg)">
           <div style="position:relative;width:88px;height:88px" data-n="PNG - Portable Network Graphics">
             <img src="assets/art/file-png.svg" alt="" loading="lazy" decoding="async" style="position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;height:188px;left:416px;border-radius:11px;box-shadow:0px 4px 7px 0px rgba(173,173,173,0.25);top:2774px;width:142px" data-n="ui-bag 1" data-node-id="24:6997">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:11px" data-box="box5">
+      <div style="position:absolute;height:188px;left:416px;border-radius:11px;box-shadow:0px 4px 7px 0px rgba(173,173,173,0.25);top:3205px;width:142px" data-n="ui-bag 1" data-node-id="24:6997">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:11px" data-box="box6">
           <img src="assets/art/ui-bag.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:117.53%;left:-4.23%;max-width:none;top:-14.08%;width:135.92%">
         </div>
       </div>
-      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:212px;width:133.983px;height:133.983px;top:2956px" data-node-id="25:7167">
+      <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:212px;width:133.983px;height:133.983px;top:3387px" data-node-id="25:7167">
         <div style="flex:none;transform:rotate(11.41deg)">
           <div style="position:relative;width:113.731px;height:113.731px" data-n="SVG - Scalable Vector Graphics">
             <img src="assets/art/file-svg.svg" alt="" loading="lazy" decoding="async" style="position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;height:186px;left:977px;top:1995px;width:292px" data-n="moment-quiet 1" data-node-id="26:7222">
+      <div style="position:absolute;height:186px;left:977px;top:2426px;width:292px" data-n="moment-quiet 1" data-node-id="26:7222">
         <img src="assets/art/moment-quiet.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;height:43px;left:1028px;border-radius:43.5px;top:1928px;width:105px" data-n="ui-agent-card 2" data-node-id="26:7223" data-kyu="mute-on">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:43.5px" data-box="box6">
+      <div style="position:absolute;height:43px;left:1028px;border-radius:43.5px;top:2359px;width:105px" data-n="ui-agent-card 2" data-node-id="26:7223" data-kyu="mute-on">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:43.5px" data-box="box7">
           <img src="assets/art/ui-agent-card.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:650.57%;left:-150.48%;max-width:none;top:0;width:276.19%">
         </div>
       </div>
-      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% + 334px);padding-bottom:1px;top:calc(50% - 964.04px);width:190px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="23:6897">
+      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% + 334px);padding-bottom:1px;top:calc(50% - 748.54px);width:190px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="23:6897">
         <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#111;font-size:24px;white-space:nowrap" data-node-id="23:6898">
           <p style="line-height:36px">One wanders by</p>
         </div>
       </div>
-      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% + 209px);padding-bottom:1px;top:calc(50% - 516.04px);width:126px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="26:7235">
+      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% + 209px);padding-bottom:1px;top:calc(50% - 300.54px);width:126px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="26:7235">
         <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#111;font-size:24px;white-space:nowrap" data-node-id="26:7236">
           <p style="line-height:36px">Learns you</p>
         </div>
       </div>
-      <div style="position:absolute;height:167px;left:1178px;top:3179px;width:176px" data-n="ui-learn-profile 1" data-node-id="26:7289">
+      <div style="position:absolute;height:167px;left:1178px;top:3610px;width:176px" data-n="ui-learn-profile 1" data-node-id="26:7289">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/ui-learn-profile.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:124.42%;left:-0.02%;max-width:none;top:-24.42%;width:100.04%">
         </div>
       </div>
-      <div style="position:absolute;height:18px;left:546px;top:3274px;width:204px" data-n="ui-learn-mix 2" data-node-id="39:7204">
+      <div style="position:absolute;height:18px;left:546px;top:3705px;width:204px" data-n="ui-learn-mix 2" data-node-id="39:7204">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/ui-learn-mix.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:742.53%;max-width:none;top:-254.6%;width:100%">
         </div>
       </div>
-      <div style="position:absolute;height:18px;left:554px;top:3348px;width:130px" data-n="ui-learn-mix 3" data-node-id="39:7205">
+      <div style="position:absolute;height:18px;left:554px;top:3779px;width:130px" data-n="ui-learn-mix 3" data-node-id="39:7205">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/ui-learn-mix.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:742.53%;max-width:none;top:-347.93%;width:156.92%">
         </div>
       </div>
-      <div style="position:absolute;height:26px;left:508px;top:3232px;width:204px" data-n="ui-learn-mix 5" data-node-id="39:7207">
+      <div style="position:absolute;height:26px;left:508px;top:3663px;width:204px" data-n="ui-learn-mix 5" data-node-id="39:7207">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/ui-learn-mix.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:506.27%;left:-2.23%;max-width:none;top:-308.77%;width:100%">
         </div>
       </div>
-      <div style="position:absolute;height:24px;left:508px;top:3308px;width:171px" data-n="ui-learn 1" data-node-id="26:7290">
+      <div style="position:absolute;height:24px;left:508px;top:3739px;width:171px" data-n="ui-learn 1" data-node-id="26:7290">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/ui-learn.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:674.67%;left:-4.26%;max-width:none;top:-274.67%;width:109.93%">
         </div>
       </div>
-      <div style="position:absolute;height:165px;left:644px;top:3232px;width:125px" data-n="kyu-think 1" data-node-id="24:6999" data-kyu="learn-kyu">
+      <div style="position:absolute;height:165px;left:644px;top:3663px;width:125px" data-n="kyu-think 1" data-node-id="24:6999" data-kyu="learn-kyu">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/kyu-think.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:211.81%;left:-0.1%;max-width:none;width:100.19%">
         </div>
       </div>
-      <div style="position:absolute;height:18px;left:823px;top:3248px;width:204px" data-n="ui-learn-mix 1" data-node-id="26:7288">
+      <div style="position:absolute;height:18px;left:823px;top:3679px;width:204px" data-n="ui-learn-mix 1" data-node-id="26:7288">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/ui-learn-mix.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:742.53%;max-width:none;top:-154.6%;width:100%">
         </div>
       </div>
-      <div style="position:absolute;height:22px;left:786px;top:3326px;width:160px" data-n="ui-learn 2" data-node-id="39:7210">
+      <div style="position:absolute;height:22px;left:786px;top:3757px;width:160px" data-n="ui-learn 2" data-node-id="39:7210">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/ui-learn.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:674.67%;left:-4.26%;max-width:none;top:-372.74%;width:109.93%">
         </div>
       </div>
-      <div style="position:absolute;height:24px;left:803px;top:3284px;width:169px" data-n="ui-learn 3" data-node-id="39:7211">
+      <div style="position:absolute;height:24px;left:803px;top:3715px;width:169px" data-n="ui-learn 3" data-node-id="39:7211">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/ui-learn.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:674.67%;left:-4.26%;max-width:none;top:-475.07%;width:109.93%">
         </div>
       </div>
-      <div style="position:absolute;height:134px;left:900px;top:3263px;width:124px" data-n="kyu-shrug 1" data-node-id="26:7281" data-kyu="learn-kyu">
+      <div style="position:absolute;height:134px;left:900px;top:3694px;width:124px" data-n="kyu-shrug 1" data-node-id="26:7281" data-kyu="learn-kyu">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/kyu-shrug.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:218.44%;max-width:none;top:-0.13%;width:100%">
         </div>
       </div>
-      <div style="position:absolute;height:135px;left:1092px;top:3263px;width:103px" data-n="kyu-bashful 1" data-node-id="26:7282" data-kyu="learn-kyu">
+      <div style="position:absolute;height:135px;left:1092px;top:3694px;width:103px" data-n="kyu-bashful 1" data-node-id="26:7282" data-kyu="learn-kyu">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/kyu-bashful.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:214.63%;left:-0.4%;max-width:none;width:100.8%">
         </div>
       </div>
-      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% + 334px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:2743px;width:420px;transform:translate(-50%,-50%)" data-node-id="23:6900">
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% + 334px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:3174px;width:420px;transform:translate(-50%,-50%)" data-node-id="23:6900">
         <p style="line-height:24px" class="kyu-flow">Some quiet morning, a stray pup crosses your screen.</p>
       </div>
-      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% + 212.5px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:3192px;width:271px;transform:translate(-50%,-50%)" data-node-id="26:7238">
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% + 212.5px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:3623px;width:271px;transform:translate(-50%,-50%)" data-node-id="26:7238">
         <p style="line-height:24px" class="kyu-flow">Your hours, your rhythm, your tone</p>
       </div>
-      <div style="position:absolute;display:contents;height:320.783px;left:487.51px;top:3423.11px;width:890.929px" data-node-id="26:7247">
-        <div style="position:absolute;display:flex;height:320.782px;align-items:center;justify-content:center;left:487.51px;top:3423.11px;width:890.928px" data-node-id="26:7228" data-kyu="twinkle">
+      <div style="position:absolute;display:contents;height:320.783px;left:487.51px;top:3854.11px;width:890.929px" data-node-id="26:7247">
+        <div style="position:absolute;display:flex;height:320.782px;align-items:center;justify-content:center;left:487.51px;top:3854.11px;width:890.928px" data-node-id="26:7228" data-kyu="twinkle">
           <div style="flex:none;transform:rotate(177.65deg)">
-            <div style="background:#000;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:285px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:880px" data-box="box7">
+            <div style="background:#000;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:285px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:880px" data-box="box8">
             </div>
           </div>
         </div>
-        <div style="position:absolute;display:flex;height:42.372px;align-items:center;justify-content:center;left:calc(50% + 207.72px);top:calc(50% - 193.91px);width:133.404px;transform:translate(-50%,-50%)" data-node-id="26:7243">
+        <div style="position:absolute;display:flex;height:42.372px;align-items:center;justify-content:center;left:calc(50% + 207.72px);top:calc(50% + 21.59px);width:133.404px;transform:translate(-50%,-50%)" data-node-id="26:7243">
           <div style="flex:none;transform:rotate(-2.35deg)">
-            <div style="background:#000;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding-bottom:1px;position:relative;width:132px" data-n="div.framer-xphunr" data-box="box8">
+            <div style="background:#000;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding-bottom:1px;position:relative;width:132px" data-n="div.framer-xphunr" data-box="box9">
               <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#fff;white-space:nowrap" data-node-id="26:7244">
                 <p style="line-height:36px">Horoscope </p>
               </div>
             </div>
           </div>
         </div>
-        <div style="position:absolute;display:flex;height:59.909px;align-items:center;justify-content:center;left:calc(50% + 212.82px);top:3523.95px;width:293.634px;transform:translate(-50%,-50%)" data-node-id="26:7246">
+        <div style="position:absolute;display:flex;height:59.909px;align-items:center;justify-content:center;left:calc(50% + 212.82px);top:3954.95px;width:293.634px;transform:translate(-50%,-50%)" data-node-id="26:7246">
           <div style="flex:none;transform:rotate(-2.35deg)">
             <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;font-size:16px;color:rgba(255,255,255,0.6);text-align:center;width:291.913px">
               <p style="line-height:24px" class="kyu-flow">Tell him your birthday — a little star-reading at the end of the day</p>
@@ -2349,51 +2445,51 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           </div>
         </div>
       </div>
-      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% - 464px);padding-bottom:1px;top:calc(50% - 516.04px);width:172px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="26:7229">
+      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% - 464px);padding-bottom:1px;top:calc(50% - 300.54px);width:172px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="26:7229">
         <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#111;font-size:24px;white-space:nowrap" data-node-id="26:7230">
           <p style="line-height:36px">The two of you</p>
         </div>
       </div>
-      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% - 462.5px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:3204px;width:201px;transform:translate(-50%,-50%)" data-node-id="26:7232">
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% - 462.5px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:3635px;width:201px;transform:translate(-50%,-50%)" data-node-id="26:7232">
         <p style="line-height:24px" class="kyu-flow">Your adoption card marks the first day</p>
       </div>
-      <div style="position:absolute;display:contents;left:499px;top:3423px" data-node-id="26:7269">
-        <div style="position:absolute;display:flex;height:209.787px;align-items:center;justify-content:center;left:499px;top:3445px;width:458.327px" data-node-id="26:7259">
+      <div style="position:absolute;display:contents;left:499px;top:3854px" data-node-id="26:7269">
+        <div style="position:absolute;display:flex;height:209.787px;align-items:center;justify-content:center;left:499px;top:3876px;width:458.327px" data-node-id="26:7259">
           <div style="flex:none;transform:rotate(-2.67deg)">
             <div style="height:189px;position:relative;width:450px" data-n="sign-gemini 1">
               <img src="assets/art/sign-gemini.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
             </div>
           </div>
         </div>
-        <div style="position:absolute;display:flex;height:209.787px;align-items:center;justify-content:center;left:499px;top:3445px;width:458.327px" data-node-id="26:7263">
+        <div style="position:absolute;display:flex;height:209.787px;align-items:center;justify-content:center;left:499px;top:3876px;width:458.327px" data-node-id="26:7263">
           <div style="flex:none;transform:rotate(-2.67deg)">
             <div style="height:189px;position:relative;width:450px" data-n="sign-gemini 4">
               <img src="assets/art/sign-gemini.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
             </div>
           </div>
         </div>
-        <div style="position:absolute;display:flex;height:209.787px;align-items:center;justify-content:center;left:499px;top:3445px;width:458.327px" data-node-id="26:7265">
+        <div style="position:absolute;display:flex;height:209.787px;align-items:center;justify-content:center;left:499px;top:3876px;width:458.327px" data-node-id="26:7265">
           <div style="flex:none;transform:rotate(-2.67deg)">
             <div style="height:189px;position:relative;width:450px" data-n="sign-gemini 5">
               <img src="assets/art/sign-gemini.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
             </div>
           </div>
         </div>
-        <div style="position:absolute;display:flex;height:210.367px;align-items:center;justify-content:center;left:900px;top:3423px;width:458.548px" data-node-id="26:7260">
+        <div style="position:absolute;display:flex;height:210.367px;align-items:center;justify-content:center;left:900px;top:3854px;width:458.548px" data-node-id="26:7260">
           <div style="flex:none;transform:rotate(177.25deg)">
             <div style="height:189px;position:relative;width:450px" data-n="sign-gemini 2">
               <img src="assets/art/sign-gemini.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
             </div>
           </div>
         </div>
-        <div style="position:absolute;display:flex;height:210.367px;align-items:center;justify-content:center;left:900px;top:3423px;width:458.548px" data-node-id="26:7261">
+        <div style="position:absolute;display:flex;height:210.367px;align-items:center;justify-content:center;left:900px;top:3854px;width:458.548px" data-node-id="26:7261">
           <div style="flex:none;transform:rotate(177.25deg)">
             <div style="height:189px;position:relative;width:450px" data-n="sign-gemini 3">
               <img src="assets/art/sign-gemini.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
             </div>
           </div>
         </div>
-        <div style="position:absolute;display:flex;height:209.787px;align-items:center;justify-content:center;left:499px;top:3445px;width:458.327px" data-node-id="26:7267">
+        <div style="position:absolute;display:flex;height:209.787px;align-items:center;justify-content:center;left:499px;top:3876px;width:458.327px" data-node-id="26:7267">
           <div style="flex:none;transform:rotate(-2.67deg)">
             <div style="height:189px;position:relative;width:450px" data-n="sign-gemini 6">
               <img src="assets/art/sign-gemini.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
@@ -2401,72 +2497,72 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           </div>
         </div>
       </div>
-      <div style="position:absolute;height:77px;left:866px;top:2883px;width:96px" data-n="pets-cat3-idle 1" data-node-id="26:7291">
+      <div style="position:absolute;height:77px;left:866px;top:3314px;width:96px" data-n="pets-cat3-idle 1" data-node-id="26:7291">
         <img src="assets/art/pets-cat3-idle.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;display:flex;height:290.937px;align-items:center;justify-content:center;left:537px;top:2756px;width:116.619px" data-node-id="26:7253">
+      <div style="position:absolute;display:flex;height:290.937px;align-items:center;justify-content:center;left:537px;top:3187px;width:116.619px" data-node-id="26:7253">
         <div style="flex:none;transform:rotate(0.58deg)">
           <div style="height:289.797px;position:relative;width:113.68px" data-n="bag-back34 1">
             <video class="kyu-anim" data-kyu-anim="bag-reveal" muted loop playsinline preload="none" data-poster="assets/anim/bag-reveal.png" aria-label="bag-reveal" data-webm="assets/anim/bag-reveal.webm" data-mp4="assets/anim/bag-reveal.mp4" style="position:absolute;left:-18.11px;top:-0.88px;width:150.78px;height:283.9px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;height:113px;align-items:center;justify-content:center;left:1216px;top:2851px;width:157px" data-node-id="26:7280">
+      <div style="position:absolute;display:flex;height:113px;align-items:center;justify-content:center;left:1216px;top:3282px;width:157px" data-node-id="26:7280">
         <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
           <div style="height:113px;position:relative;width:157px" data-n="pets-lab2-run 1">
             <img src="assets/art/pets-lab2-run.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;height:94px;align-items:center;justify-content:center;left:1200px;top:2897px;width:102px" data-node-id="26:7285">
+      <div style="position:absolute;display:flex;height:94px;align-items:center;justify-content:center;left:1200px;top:3328px;width:102px" data-node-id="26:7285">
         <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
           <div style="height:94px;position:relative;width:102px" data-n="pets-pompup-bark 1">
             <img src="assets/art/pets-pompup-bark.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;height:90px;align-items:center;justify-content:center;left:1072px;top:2921px;width:114px" data-node-id="26:7284">
+      <div style="position:absolute;display:flex;height:90px;align-items:center;justify-content:center;left:1072px;top:3352px;width:114px" data-node-id="26:7284">
         <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
           <div style="height:90px;position:relative;width:114px" data-n="pets-cat4-stretch 1">
             <img src="assets/art/pets-cat4-stretch.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;height:144px;left:735px;top:2831px;width:106px" data-n="pets-dob2-idle 1" data-node-id="26:7279">
+      <div style="position:absolute;height:144px;left:735px;top:3262px;width:106px" data-n="pets-dob2-idle 1" data-node-id="26:7279">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/pets-dob2-idle.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:100.26%;left:-38.95%;max-width:none;top:-0.13%;width:138.95%">
         </div>
       </div>
-      <div style="position:absolute;display:flex;height:157px;align-items:center;justify-content:center;left:1114px;top:2881px;width:181px" data-node-id="26:7277">
+      <div style="position:absolute;display:flex;height:157px;align-items:center;justify-content:center;left:1114px;top:3312px;width:181px" data-node-id="26:7277">
         <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
           <div style="height:157px;position:relative;width:181px" data-n="pets-dachs-sit 1">
             <img src="assets/art/pets-dachs-sit.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;height:135px;left:1230px;top:2908px;width:143px" data-n="pet-lie 1" data-node-id="26:7276">
+      <div style="position:absolute;height:135px;left:1230px;top:3339px;width:143px" data-n="pet-lie 1" data-node-id="26:7276">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/pet-lie.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:100.29%;left:0;max-width:none;top:-0.14%;width:125%">
         </div>
       </div>
-      <div style="position:absolute;height:102px;left:848px;top:2911px;width:164px" data-n="pets-dachs2-flip 1" data-node-id="26:7278">
+      <div style="position:absolute;height:102px;left:848px;top:3342px;width:164px" data-n="pets-dachs2-flip 1" data-node-id="26:7278">
         <img src="assets/art/pets-dachs2-flip.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;height:219px;left:736px;top:2828px;width:187px" data-n="pets-dob-asktoplay 1" data-node-id="26:7275" id="pets">
+      <div style="position:absolute;height:219px;left:736px;top:3259px;width:187px" data-n="pets-dob-asktoplay 1" data-node-id="26:7275" id="pets">
         <img src="assets/art/pets-dob-asktoplay.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;height:112px;left:918px;top:2932px;width:106px" data-n="pets-cat2-walk 1" data-node-id="26:7283">
+      <div style="position:absolute;height:112px;left:918px;top:3363px;width:106px" data-n="pets-cat2-walk 1" data-node-id="26:7283">
         <img src="assets/art/pets-cat2-walk.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;height:44px;left:1128px;top:1926px;width:102px" data-n="ui-bell-muted 1" data-node-id="26:7287" data-kyu="mute-off">
+      <div style="position:absolute;height:44px;left:1128px;top:2357px;width:102px" data-n="ui-bell-muted 1" data-node-id="26:7287" data-kyu="mute-off">
         <img src="assets/art/ui-bell-muted.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;height:452px;left:77px;top:3248px;width:361px" data-n="ui-idcards 2" data-node-id="26:7292" data-kyu="idcards">
+      <div style="position:absolute;height:452px;left:77px;top:3679px;width:361px" data-n="ui-idcards 2" data-node-id="26:7292" data-kyu="idcards">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/ui-idcards.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:116.25%;left:0;max-width:none;top:-16.25%;width:100%">
         </div>
       </div>
-      <div style="position:absolute;display:flex;height:150.552px;align-items:center;justify-content:center;left:511px;top:3593px;width:165.103px" data-node-id="26:7298">
+      <div style="position:absolute;display:flex;height:150.552px;align-items:center;justify-content:center;left:511px;top:4024px;width:165.103px" data-node-id="26:7298">
         <div style="flex:none;transform:rotate(-11.95deg)">
           <div style="height:123.715px;position:relative;width:142.58px" data-n="sign-w-gemini 1">
             <div style="position:absolute;inset:0;pointer-events:none">
@@ -2483,7 +2579,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;height:131.17px;align-items:center;justify-content:center;left:1104px;top:3503px;width:213.473px" data-node-id="26:7305">
+      <div style="position:absolute;display:flex;height:131.17px;align-items:center;justify-content:center;left:1104px;top:3934px;width:213.473px" data-node-id="26:7305">
         <div style="flex:none;transform:rotate(5.24deg)">
           <div style="height:113px;position:relative;width:204px" data-n="sign-w-scorpio 1">
             <div style="position:absolute;inset:0;pointer-events:none">
@@ -2500,7 +2596,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           </div>
         </div>
       </div>
-      <div style="position:absolute;height:89px;left:573px;top:3514px;width:243px" data-n="sign-w-taurus 1" data-node-id="26:7311">
+      <div style="position:absolute;height:89px;left:573px;top:3945px;width:243px" data-n="sign-w-taurus 1" data-node-id="26:7311">
         <div style="position:absolute;inset:0;pointer-events:none">
           <div style="position:absolute;inset:0;overflow:hidden">
             <img src="assets/art/sign-w-taurus.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:250.56%;left:-0.21%;max-width:none;top:-25.84%;width:218.94%">
@@ -2516,7 +2612,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;height:183.049px;align-items:center;justify-content:center;left:855px;top:3545px;width:132.963px" data-node-id="26:7330">
+      <div style="position:absolute;display:flex;height:183.049px;align-items:center;justify-content:center;left:855px;top:3976px;width:132.963px" data-node-id="26:7330">
         <div style="flex:none;transform:rotate(-2.44deg)">
           <div style="height:177.862px;position:relative;width:125.497px" data-n="kyu-nodyes 1">
             <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
@@ -2525,276 +2621,276 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:contents;height:417.462px;left:725.18px;top:3759.77px;width:652.636px" data-node-id="26:7350">
-        <div style="position:absolute;display:flex;height:417.462px;align-items:center;justify-content:center;left:725.18px;top:3759.77px;width:652.636px" data-node-id="26:7345">
+      <div style="position:absolute;display:contents;height:417.462px;left:725.18px;top:4190.77px;width:652.636px" data-node-id="26:7350">
+        <div style="position:absolute;display:flex;height:417.462px;align-items:center;justify-content:center;left:725.18px;top:4190.77px;width:652.636px" data-node-id="26:7345">
           <div style="flex:none;transform:rotate(2.04deg)">
-            <div style="background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:639px" data-box="box9">
+            <div style="background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:639px" data-box="box10">
             </div>
           </div>
         </div>
-        <div style="position:absolute;display:flex;height:45.258px;align-items:center;justify-content:center;left:calc(50% + 337.12px);top:calc(50% + 137.06px);width:234.168px;transform:translate(-50%,-50%)" data-node-id="26:7347">
+        <div style="position:absolute;display:flex;height:45.258px;align-items:center;justify-content:center;left:calc(50% + 337.12px);top:calc(50% + 352.56px);width:234.168px;transform:translate(-50%,-50%)" data-node-id="26:7347">
           <div style="flex:none;transform:rotate(2.04deg)">
-            <div style="align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding-bottom:1px;position:relative;width:233px" data-n="div.framer-xphunr" data-box="box10">
+            <div style="align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding-bottom:1px;position:relative;width:233px" data-n="div.framer-xphunr" data-box="box11">
               <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#111;font-size:24px;white-space:nowrap" data-node-id="26:7348" id="price">
                 <p style="line-height:36px">$9.99 Yours forever</p>
               </div>
             </div>
           </div>
         </div>
-        <div style="position:absolute;display:flex;height:60.658px;align-items:center;justify-content:center;left:calc(50% + 337.18px);top:3865.14px;width:358.48px;transform:translate(-50%,-50%)" data-node-id="26:7349">
+        <div style="position:absolute;display:flex;height:60.658px;align-items:center;justify-content:center;left:calc(50% + 337.18px);top:4296.14px;width:358.48px;transform:translate(-50%,-50%)" data-node-id="26:7349">
           <div style="flex:none;transform:rotate(2.04deg)">
             <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;width:357px;white-space:pre-wrap">
-              <p style="line-height:24px;margin-bottom:0" class="kyu-flow" data-box="box11">One-time purchase — no subscription / </p>
+              <p style="line-height:24px;margin-bottom:0" class="kyu-flow" data-box="box12">One-time purchase — no subscription / </p>
               <p style="line-height:24px" class="kyu-flow">Free updates</p>
             </div>
           </div>
         </div>
       </div>
-      <div style="position:absolute;height:348px;left:548px;top:3792px;width:118px" data-n="ui-head-tick 1" data-node-id="26:7352">
+      <div style="position:absolute;height:348px;left:548px;top:4223px;width:118px" data-n="ui-head-tick 1" data-node-id="26:7352">
         <video class="kyu-anim" data-kyu-anim="noaccount-tick" muted loop playsinline preload="none" data-poster="assets/anim/noaccount-tick.png" aria-label="noaccount-tick" data-webm="assets/anim/noaccount-tick.webm" data-mp4="assets/anim/noaccount-tick.mp4" style="position:absolute;left:-20.54px;top:-5.1px;width:163.08px;height:345.9px;max-width:none;pointer-events:none"></video>
       </div>
-      <div style="position:absolute;height:110px;left:86px;top:4030px;width:126px" data-n="pets-pom-bark 1" data-node-id="26:7363">
+      <div style="position:absolute;height:110px;left:86px;top:4461px;width:126px" data-n="pets-pom-bark 1" data-node-id="26:7363">
         <video class="kyu-anim" data-kyu-anim="noaccount-spin" muted loop playsinline preload="none" data-poster="assets/anim/noaccount-spin.png" aria-label="noaccount-spin" data-webm="assets/anim/noaccount-spin.webm" data-mp4="assets/anim/noaccount-spin.mp4" style="position:absolute;left:-15.9px;top:-10.04px;width:156.46px;height:112.11px;max-width:none;pointer-events:none"></video>
       </div>
-      <div style="position:absolute;display:flex;height:344.925px;align-items:center;justify-content:center;left:1205px;top:3806px;width:136.844px" data-node-id="26:7368">
+      <div style="position:absolute;display:flex;height:344.925px;align-items:center;justify-content:center;left:1205px;top:4237px;width:136.844px" data-node-id="26:7368">
         <div style="flex:none;transform:rotate(2.25deg)">
           <div style="height:340.334px;position:relative;width:123.569px" data-n="kyu-clap 1">
             <video class="kyu-anim" data-kyu-anim="forever-clap" muted loop playsinline preload="none" data-poster="assets/anim/forever-clap.png" aria-label="forever-clap" data-webm="assets/anim/forever-clap.webm" data-mp4="assets/anim/forever-clap.mp4" style="position:absolute;left:-26.75px;top:-4.83px;width:176.72px;height:336.87px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;height:104.043px;align-items:center;justify-content:center;left:911px;top:4046px;width:102.475px" data-node-id="26:7371">
+      <div style="position:absolute;display:flex;height:104.043px;align-items:center;justify-content:center;left:911px;top:4477px;width:102.475px" data-node-id="26:7371">
         <div style="flex:none;transform:rotate(104.69deg)">
           <div style="height:83.478px;position:relative;width:85.675px" data-n="prop-ball 1">
             <img src="assets/art/prop-ball.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:flex;height:169.663px;align-items:center;justify-content:center;left:746px;top:3961px;width:181.723px" data-node-id="26:7369">
+      <div style="position:absolute;display:flex;height:169.663px;align-items:center;justify-content:center;left:746px;top:4392px;width:181.723px" data-node-id="26:7369">
         <div style="flex:none;transform:rotate(-178.42deg) scale(1,-1)">
           <div style="height:164.836px;position:relative;width:177.243px" data-n="pet-givepaw 1">
             <video class="kyu-anim" data-kyu-anim="forever-paw" muted loop playsinline preload="none" data-poster="assets/anim/forever-paw.png" aria-label="forever-paw" data-webm="assets/anim/forever-paw.webm" data-mp4="assets/anim/forever-paw.mp4" style="position:absolute;left:-9.53px;top:6.2px;width:181.66px;height:150.65px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
-      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:600;font-style:normal;font-weight:600;justify-content:center;line-height:0;left:60px;font-style:normal;font-size:17px;color:#000;top:4270px;white-space:nowrap;transform:translate(0,-50%)" data-node-id="22:6537">
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:600;font-style:normal;font-weight:600;justify-content:center;line-height:0;left:60px;font-style:normal;font-size:17px;color:#000;top:4701px;white-space:nowrap;transform:translate(0,-50%)" data-node-id="22:6537">
         <p style="line-height:25.2px" class="kyu-flow">WORKS WITH</p>
       </div>
-      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:61px;font-style:normal;font-size:76px;color:#000;top:4359px;letter-spacing:-3.2px;white-space:nowrap;transform:translate(0,-50%)" data-node-id="22:6538">
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:61px;font-style:normal;font-size:76px;color:#000;top:4790px;letter-spacing:-3.2px;white-space:nowrap;transform:translate(0,-50%)" data-node-id="22:6538">
         <p style="line-height:88px">Friends with your tools.</p>
       </div>
-      <div style="position:absolute;display:contents;left:644px;top:4374px" data-node-id="26:7726">
-        <div style="position:absolute;display:contents;left:671.25px;top:4374px" data-node-id="26:7721">
-          <div style="position:absolute;display:contents;left:743.01px;top:4374px" data-node-id="26:7719">
-            <div style="position:absolute;display:contents;left:743.01px;top:4374px" data-node-id="26:7715">
-              <div style="position:absolute;display:contents;left:871.1px;top:4632.89px" data-node-id="26:7618">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:871.1px;border-radius:15px;width:86.296px;height:86.296px;top:4632.89px" data-node-id="26:7616">
+      <div style="position:absolute;display:contents;left:644px;top:4805px" data-node-id="26:7726">
+        <div style="position:absolute;display:contents;left:671.25px;top:4805px" data-node-id="26:7721">
+          <div style="position:absolute;display:contents;left:743.01px;top:4805px" data-node-id="26:7719">
+            <div style="position:absolute;display:contents;left:743.01px;top:4805px" data-node-id="26:7715">
+              <div style="position:absolute;display:contents;left:871.1px;top:5063.89px" data-node-id="26:7618">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:871.1px;border-radius:15px;width:86.296px;height:86.296px;top:5063.89px" data-node-id="26:7616">
                 </div>
-                <div style="position:absolute;left:885.63px;width:57.228px;height:57.228px;top:4647.42px" data-n="flat-claude 2" data-node-id="26:7617">
+                <div style="position:absolute;left:885.63px;width:57.228px;height:57.228px;top:5078.42px" data-n="flat-claude 2" data-node-id="26:7617">
                   <img src="assets/art/flat-claude.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:969.2px;top:4632.89px" data-node-id="26:7654">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:969.2px;border-radius:15px;width:86.296px;height:86.296px;top:4632.89px" data-node-id="26:7655">
+              <div style="position:absolute;display:contents;left:969.2px;top:5063.89px" data-node-id="26:7654">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:969.2px;border-radius:15px;width:86.296px;height:86.296px;top:5063.89px" data-node-id="26:7655">
                 </div>
-                <div style="position:absolute;left:983.73px;width:57.228px;height:57.228px;top:4647.42px" data-n="flat-notion 1" data-node-id="26:7678">
+                <div style="position:absolute;left:983.73px;width:57.228px;height:57.228px;top:5078.42px" data-n="flat-notion 1" data-node-id="26:7678">
                   <img src="assets/art/flat-notion.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:743.01px;top:4529.33px" data-node-id="26:7624">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:743.01px;border-radius:15px;width:86.296px;height:86.296px;top:4529.33px" data-node-id="26:7625">
+              <div style="position:absolute;display:contents;left:743.01px;top:4960.33px" data-node-id="26:7624">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:743.01px;border-radius:15px;width:86.296px;height:86.296px;top:4960.33px" data-node-id="26:7625">
                 </div>
-                <div style="position:absolute;left:757.55px;width:57.228px;height:57.228px;top:4543.87px" data-n="flat-figma 1" data-node-id="26:7630">
+                <div style="position:absolute;left:757.55px;width:57.228px;height:57.228px;top:4974.87px" data-n="flat-figma 1" data-node-id="26:7630">
                   <img src="assets/art/flat-figma.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:1174.49px;top:4423.05px" data-node-id="26:7657">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1174.49px;border-radius:15px;width:86.296px;height:86.296px;top:4423.05px" data-node-id="26:7658">
+              <div style="position:absolute;display:contents;left:1174.49px;top:4854.05px" data-node-id="26:7657">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1174.49px;border-radius:15px;width:86.296px;height:86.296px;top:4854.05px" data-node-id="26:7658">
                 </div>
-                <div style="position:absolute;left:1189.03px;width:57.228px;height:57.228px;top:4437.59px" data-n="flat-calendar 1" data-node-id="26:7686">
+                <div style="position:absolute;left:1189.03px;width:57.228px;height:57.228px;top:4868.59px" data-n="flat-calendar 1" data-node-id="26:7686">
                   <img src="assets/art/flat-calendar.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:1138.16px;top:4529.33px" data-node-id="26:7694">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1138.16px;border-radius:15px;width:86.296px;height:86.296px;top:4529.33px" data-node-id="26:7695">
+              <div style="position:absolute;display:contents;left:1138.16px;top:4960.33px" data-node-id="26:7694">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1138.16px;border-radius:15px;width:86.296px;height:86.296px;top:4960.33px" data-node-id="26:7695">
                 </div>
-                <div style="position:absolute;left:1152.69px;width:57.228px;height:57.228px;top:4543.87px" data-n="flat-mail 1" data-node-id="26:7706">
+                <div style="position:absolute;left:1152.69px;width:57.228px;height:57.228px;top:4974.87px" data-n="flat-mail 1" data-node-id="26:7706">
                   <img src="assets/art/flat-mail.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:939.22px;top:4529.33px" data-node-id="26:7634">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:939.22px;border-radius:15px;width:86.296px;height:86.296px;top:4529.33px" data-node-id="26:7635">
+              <div style="position:absolute;display:contents;left:939.22px;top:4960.33px" data-node-id="26:7634">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:939.22px;border-radius:15px;width:86.296px;height:86.296px;top:4960.33px" data-node-id="26:7635">
                 </div>
-                <div style="position:absolute;left:954.67px;width:55.411px;height:55.411px;top:4543.87px" data-n="flat-cursor 1" data-node-id="26:7652">
+                <div style="position:absolute;left:954.67px;width:55.411px;height:55.411px;top:4974.87px" data-n="flat-cursor 1" data-node-id="26:7652">
                   <img src="assets/art/flat-cursor.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:1370.7px;top:4423.05px" data-node-id="26:7660">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1370.7px;border-radius:15px;width:86.296px;height:86.296px;top:4423.05px" data-node-id="26:7661">
+              <div style="position:absolute;display:contents;left:1370.7px;top:4854.05px" data-node-id="26:7660">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1370.7px;border-radius:15px;width:86.296px;height:86.296px;top:4854.05px" data-node-id="26:7661">
                 </div>
-                <div style="position:absolute;left:1386.15px;width:56.32px;height:56.32px;top:4437.59px" data-n="flat-sheets 1" data-node-id="26:7690">
+                <div style="position:absolute;left:1386.15px;width:56.32px;height:56.32px;top:4868.59px" data-n="flat-sheets 1" data-node-id="26:7690">
                   <img src="assets/art/flat-gemini.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:1334.37px;top:4529.33px" data-node-id="26:7697">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1334.37px;border-radius:15px;width:86.296px;height:86.296px;top:4529.33px" data-node-id="26:7698">
+              <div style="position:absolute;display:contents;left:1334.37px;top:4960.33px" data-node-id="26:7697">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1334.37px;border-radius:15px;width:86.296px;height:86.296px;top:4960.33px" data-node-id="26:7698">
                 </div>
-                <div style="position:absolute;left:1349.81px;width:57.228px;height:57.228px;top:4543.87px" data-n="flat-linear 1" data-node-id="26:7708">
+                <div style="position:absolute;left:1349.81px;width:57.228px;height:57.228px;top:4974.87px" data-n="flat-linear 1" data-node-id="26:7708">
                   <img src="assets/art/flat-linear.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:975.56px;top:4423.05px" data-node-id="26:7644">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:975.56px;border-radius:15px;width:86.296px;height:86.296px;top:4423.05px" data-node-id="26:7645">
+              <div style="position:absolute;display:contents;left:975.56px;top:4854.05px" data-node-id="26:7644">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:975.56px;border-radius:15px;width:86.296px;height:86.296px;top:4854.05px" data-node-id="26:7645">
                 </div>
-                <div style="position:absolute;left:991px;width:55.411px;height:55.411px;top:4437.59px" data-n="flat-slack 1" data-node-id="26:7646">
+                <div style="position:absolute;left:991px;width:55.411px;height:55.411px;top:4868.59px" data-n="flat-slack 1" data-node-id="26:7646">
                   <img src="assets/art/flat-slack.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:1165.41px;top:4632.89px" data-node-id="26:7663">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1165.41px;border-radius:15px;width:86.296px;height:86.296px;top:4632.89px" data-node-id="26:7664">
+              <div style="position:absolute;display:contents;left:1165.41px;top:5063.89px" data-node-id="26:7663">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1165.41px;border-radius:15px;width:86.296px;height:86.296px;top:5063.89px" data-node-id="26:7664">
                 </div>
-                <div style="position:absolute;left:1180.85px;width:55.411px;height:55.411px;top:4647.42px" data-n="flat-spotify 1" data-node-id="26:7682">
+                <div style="position:absolute;left:1180.85px;width:55.411px;height:55.411px;top:5078.42px" data-n="flat-spotify 1" data-node-id="26:7682">
                   <img src="assets/art/flat-spotify.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:877.45px;top:4423.05px" data-node-id="26:7619">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:877.45px;border-radius:15px;width:86.296px;height:86.296px;top:4423.05px" data-node-id="26:7620">
+              <div style="position:absolute;display:contents;left:877.45px;top:4854.05px" data-node-id="26:7619">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:877.45px;border-radius:15px;width:86.296px;height:86.296px;top:4854.05px" data-node-id="26:7620">
                 </div>
-                <div style="position:absolute;height:53.595px;left:893.8px;top:4439.4px;width:53.594px" data-n="flat-discord 1" data-node-id="26:7622">
+                <div style="position:absolute;height:53.595px;left:893.8px;top:4870.4px;width:53.594px" data-n="flat-discord 1" data-node-id="26:7622">
                   <img src="assets/art/flat-discord.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:1067.31px;top:4632.89px" data-node-id="26:7666">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1067.31px;border-radius:15px;width:86.296px;height:86.296px;top:4632.89px" data-node-id="26:7667">
+              <div style="position:absolute;display:contents;left:1067.31px;top:5063.89px" data-node-id="26:7666">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1067.31px;border-radius:15px;width:86.296px;height:86.296px;top:5063.89px" data-node-id="26:7667">
                 </div>
-                <div style="position:absolute;height:53.595px;left:1083.66px;top:4649.24px;width:53.594px" data-n="flat-vercel 1" data-node-id="26:7680">
+                <div style="position:absolute;height:53.595px;left:1083.66px;top:5080.24px;width:53.594px" data-n="flat-vercel 1" data-node-id="26:7680">
                   <img src="assets/art/flat-vercel.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:841.12px;top:4529.33px" data-node-id="26:7627">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:841.12px;border-radius:15px;width:86.296px;height:86.296px;top:4529.33px" data-node-id="26:7628">
+              <div style="position:absolute;display:contents;left:841.12px;top:4960.33px" data-node-id="26:7627">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:841.12px;border-radius:15px;width:86.296px;height:86.296px;top:4960.33px" data-node-id="26:7628">
                 </div>
-                <div style="position:absolute;height:53.595px;left:857.47px;top:4545.68px;width:53.594px" data-n="flat-shopify 1" data-node-id="26:7632">
+                <div style="position:absolute;height:53.595px;left:857.47px;top:4976.68px;width:53.594px" data-n="flat-shopify 1" data-node-id="26:7632">
                   <img src="assets/art/flat-shopify.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:1272.6px;top:4423.05px" data-node-id="26:7669">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1272.6px;border-radius:15px;width:86.296px;height:86.296px;top:4423.05px" data-node-id="26:7670">
+              <div style="position:absolute;display:contents;left:1272.6px;top:4854.05px" data-node-id="26:7669">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1272.6px;border-radius:15px;width:86.296px;height:86.296px;top:4854.05px" data-node-id="26:7670">
                 </div>
-                <div style="position:absolute;left:1288.95px;width:55.411px;height:55.411px;top:4439.4px" data-n="flat-docs 1" data-node-id="26:7688">
+                <div style="position:absolute;left:1288.95px;width:55.411px;height:55.411px;top:4870.4px" data-n="flat-docs 1" data-node-id="26:7688">
                   <img src="assets/art/flat-meet.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:1236.26px;top:4529.33px" data-node-id="26:7700">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1236.26px;border-radius:15px;width:86.296px;height:86.296px;top:4529.33px" data-node-id="26:7701">
+              <div style="position:absolute;display:contents;left:1236.26px;top:4960.33px" data-node-id="26:7700">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1236.26px;border-radius:15px;width:86.296px;height:86.296px;top:4960.33px" data-node-id="26:7701">
                 </div>
-                <div style="position:absolute;left:1252.61px;width:55.411px;height:55.411px;top:4545.68px" data-n="flat-docs 1" data-node-id="26:7702">
+                <div style="position:absolute;left:1252.61px;width:55.411px;height:55.411px;top:4976.68px" data-n="flat-docs 1" data-node-id="26:7702">
                   <img src="assets/art/flat-todoist.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:1037.33px;top:4529.33px" data-node-id="26:7637">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1037.33px;border-radius:15px;width:86.296px;height:86.296px;top:4529.33px" data-node-id="26:7638">
+              <div style="position:absolute;display:contents;left:1037.33px;top:4960.33px" data-node-id="26:7637">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1037.33px;border-radius:15px;width:86.296px;height:86.296px;top:4960.33px" data-node-id="26:7638">
                 </div>
-                <div style="position:absolute;left:1053.68px;width:54.503px;height:54.503px;top:4545.68px" data-n="flat-chatgpt 2" data-node-id="26:7642">
+                <div style="position:absolute;left:1053.68px;width:54.503px;height:54.503px;top:4976.68px" data-n="flat-chatgpt 2" data-node-id="26:7642">
                   <img src="assets/art/flat-chatgpt.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:1073.66px;top:4423.05px" data-node-id="26:7647">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1073.66px;border-radius:15px;width:86.296px;height:86.296px;top:4423.05px" data-node-id="26:7648">
+              <div style="position:absolute;display:contents;left:1073.66px;top:4854.05px" data-node-id="26:7647">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1073.66px;border-radius:15px;width:86.296px;height:86.296px;top:4854.05px" data-node-id="26:7648">
                 </div>
-                <div style="position:absolute;left:1090.02px;width:54.503px;height:54.503px;top:4439.4px" data-n="flat-claude-code 1" data-node-id="26:7650">
+                <div style="position:absolute;left:1090.02px;width:54.503px;height:54.503px;top:4870.4px" data-n="flat-claude-code 1" data-node-id="26:7650">
                   <img src="assets/art/flat-claude-code.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;display:contents;left:1263.52px;top:4632.89px" data-node-id="26:7675">
-                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1263.52px;border-radius:15px;width:86.296px;height:86.296px;top:4632.89px" data-node-id="26:7676">
+              <div style="position:absolute;display:contents;left:1263.52px;top:5063.89px" data-node-id="26:7675">
+                <div style="position:absolute;background:rgba(217,217,217,0.2);left:1263.52px;border-radius:15px;width:86.296px;height:86.296px;top:5063.89px" data-node-id="26:7676">
                 </div>
-                <div style="position:absolute;left:1279.87px;width:51.778px;height:51.778px;top:4649.24px" data-n="flat-apple 1" data-node-id="26:7684">
+                <div style="position:absolute;left:1279.87px;width:51.778px;height:51.778px;top:5080.24px" data-n="flat-apple 1" data-node-id="26:7684">
                   <img src="assets/art/flat-apple.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
                 </div>
               </div>
-              <div style="position:absolute;height:426.031px;left:997.36px;top:4374px;width:310.666px" data-n="kyu-lie 2" data-node-id="26:7713">
+              <div style="position:absolute;height:426.031px;left:997.36px;top:4805px;width:310.666px" data-n="kyu-lie 2" data-node-id="26:7713">
                 <video class="kyu-anim" data-kyu-anim="tools-lie" muted loop playsinline preload="none" data-poster="assets/anim/tools-lie.png" aria-label="tools-lie" data-webm="assets/anim/tools-lie.webm" data-mp4="assets/anim/tools-lie.mp4" style="position:absolute;left:-41.94px;top:16.08px;width:388.67px;height:395.66px;max-width:none;pointer-events:none"></video>
               </div>
             </div>
-            <div style="position:absolute;display:contents;left:1370.7px;top:4632.89px" data-node-id="26:7716">
-              <div style="position:absolute;background:rgba(217,217,217,0.2);left:1370.7px;border-radius:15px;width:86.296px;height:86.296px;top:4632.89px" data-node-id="26:7717">
+            <div style="position:absolute;display:contents;left:1370.7px;top:5063.89px" data-node-id="26:7716">
+              <div style="position:absolute;background:rgba(217,217,217,0.2);left:1370.7px;border-radius:15px;width:86.296px;height:86.296px;top:5063.89px" data-node-id="26:7717">
               </div>
-              <div style="position:absolute;left:1387.05px;width:54.503px;height:54.503px;top:4649.24px" data-n="flat-github 1" data-node-id="26:7718">
+              <div style="position:absolute;left:1387.05px;width:54.503px;height:54.503px;top:5080.24px" data-n="flat-github 1" data-node-id="26:7718">
                 <img src="assets/art/flat-github.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
               </div>
             </div>
           </div>
-          <div style="position:absolute;display:contents;left:671.25px;top:4631.98px" data-node-id="26:7720">
-            <div style="position:absolute;display:contents;left:671.25px;top:4631.98px" data-node-id="26:7672">
-              <div style="position:absolute;background:rgba(217,217,217,0.2);left:671.25px;border-radius:15px;width:86.296px;height:86.296px;top:4631.98px" data-node-id="26:7673">
+          <div style="position:absolute;display:contents;left:671.25px;top:5062.98px" data-node-id="26:7720">
+            <div style="position:absolute;display:contents;left:671.25px;top:5062.98px" data-node-id="26:7672">
+              <div style="position:absolute;background:rgba(217,217,217,0.2);left:671.25px;border-radius:15px;width:86.296px;height:86.296px;top:5062.98px" data-node-id="26:7673">
               </div>
-              <div style="position:absolute;left:687.6px;width:54.503px;height:54.503px;top:4648.33px" data-n="flat-github 1" data-node-id="26:7692">
+              <div style="position:absolute;left:687.6px;width:54.503px;height:54.503px;top:5079.33px" data-n="flat-github 1" data-node-id="26:7692">
                 <img src="assets/art/flat-github.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
               </div>
             </div>
-            <div style="position:absolute;display:contents;left:771.17px;top:4632.89px" data-node-id="26:7703">
-              <div style="position:absolute;background:rgba(217,217,217,0.2);left:771.17px;border-radius:15px;width:86.296px;height:86.296px;top:4632.89px" data-node-id="26:7704">
+            <div style="position:absolute;display:contents;left:771.17px;top:5063.89px" data-node-id="26:7703">
+              <div style="position:absolute;background:rgba(217,217,217,0.2);left:771.17px;border-radius:15px;width:86.296px;height:86.296px;top:5063.89px" data-node-id="26:7704">
               </div>
-              <div style="position:absolute;left:787.52px;width:54.503px;height:54.503px;top:4649.24px" data-n="flat-mcp 1" data-node-id="26:7710">
+              <div style="position:absolute;left:787.52px;width:54.503px;height:54.503px;top:5080.24px" data-n="flat-mcp 1" data-node-id="26:7710">
                 <img src="assets/art/flat-mcp.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
               </div>
             </div>
           </div>
         </div>
-        <div style="position:absolute;display:contents;left:644px;top:4529.33px" data-node-id="26:7722">
-          <div style="position:absolute;background:rgba(217,217,217,0.2);left:644px;border-radius:15px;width:86.296px;height:86.296px;top:4529.33px" data-node-id="26:7723">
+        <div style="position:absolute;display:contents;left:644px;top:4960.33px" data-node-id="26:7722">
+          <div style="position:absolute;background:rgba(217,217,217,0.2);left:644px;border-radius:15px;width:86.296px;height:86.296px;top:4960.33px" data-node-id="26:7723">
           </div>
-          <div style="position:absolute;left:659.44px;width:56.32px;height:56.32px;top:4543.87px" data-n="flat-sheets 1" data-node-id="26:7724">
+          <div style="position:absolute;left:659.44px;width:56.32px;height:56.32px;top:4974.87px" data-n="flat-sheets 1" data-node-id="26:7724">
             <img src="assets/art/flat-imap.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
           </div>
         </div>
       </div>
-      <div style="position:absolute;bottom:2502.08px;display:flex;align-items:center;justify-content:center;left:1341px;top:4359px;width:99px;container-type:size;" data-node-id="21:6230">
+      <div style="position:absolute;bottom:2502.08px;display:flex;align-items:center;justify-content:center;left:1341px;top:4790px;width:99px;container-type:size;" data-node-id="21:6230">
         <div style="flex:none;height:100cqh;width:100cqw;transform:rotate(180deg)">
           <div style="position:relative;width:100%;height:100%;background-image:linear-gradient(to right,#fff 15.504%,rgba(255,255,255,0))" data-n="div.gradient-left">
           </div>
         </div>
       </div>
-      <div style="position:absolute;align-content:stretch;display:flex;align-items:flex-start;left:62px;padding-bottom:0.19px;padding-right:0.2px;top:4869px" data-n="p.figma-q5v3ta" data-node-id="26:7729">
+      <div style="position:absolute;align-content:stretch;display:flex;align-items:flex-start;left:62px;padding-bottom:0.19px;padding-right:0.2px;top:5300px" data-n="p.figma-q5v3ta" data-node-id="26:7729">
         <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:600;font-style:normal;font-weight:600;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;font-size:17px;color:#000;white-space:nowrap" data-node-id="26:7730">
           <p style="line-height:25.2px" class="kyu-flow">DAILY MODE</p>
         </div>
       </div>
-      <div style="position:absolute;height:26.19px;left:62px;top:4819px;width:41.2px" data-n="p.figma-q5v3ta" data-node-id="26:7741">
+      <div style="position:absolute;height:26.19px;left:62px;top:5250px;width:41.2px" data-n="p.figma-q5v3ta" data-node-id="26:7741">
       </div>
-      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:62px;font-style:normal;font-size:77px;color:#000;top:4963.34px;letter-spacing:-3.2px;white-space:nowrap;transform:translate(0,-50%)" data-node-id="26:7733">
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:62px;font-style:normal;font-size:77px;color:#000;top:5394.34px;letter-spacing:-3.2px;white-space:nowrap;transform:translate(0,-50%)" data-node-id="26:7733">
         <p style="line-height:88px">Your day, in good hands.</p>
       </div>
-      <div style="position:absolute;height:487px;left:703px;top:5197px;width:174px" data-n="kyu-victory 1" data-node-id="26:7777">
+      <div style="position:absolute;height:487px;left:703px;top:5628px;width:174px" data-n="kyu-victory 1" data-node-id="26:7777">
         <img src="assets/art/kyu-victory.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;height:446px;left:1141px;top:5260px;width:172px" data-n="kyu-neckstretch 1" data-node-id="26:7778">
+      <div style="position:absolute;height:446px;left:1141px;top:5691px;width:172px" data-n="kyu-neckstretch 1" data-node-id="26:7778">
         <img src="assets/art/kyu-neckstretch.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;height:444px;left:245px;top:5251px;width:194px" data-n="prop-drink 2" data-node-id="26:7779">
+      <div style="position:absolute;height:444px;left:245px;top:5682px;width:194px" data-n="prop-drink 2" data-node-id="26:7779">
         <img src="assets/art/prop-drink.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
-      <div style="position:absolute;display:contents;left:179px;top:4868px" data-node-id="26:7810">
-        <div style="position:absolute;display:contents;left:179px;top:4868px" data-node-id="26:7786">
-          <div style="position:absolute;display:contents;left:179px;top:4868px" data-node-id="26:7748">
-            <div style="position:absolute;display:contents;left:179px;top:4868px" data-node-id="26:7743">
-              <div style="position:absolute;background:#7bff88;height:27px;left:179px;border-radius:4px;top:4868px;width:58px;filter:blur(2.6px)" data-node-id="26:7740">
+      <div style="position:absolute;display:contents;left:179px;top:5299px" data-node-id="26:7810">
+        <div style="position:absolute;display:contents;left:179px;top:5299px" data-node-id="26:7786">
+          <div style="position:absolute;display:contents;left:179px;top:5299px" data-node-id="26:7748">
+            <div style="position:absolute;display:contents;left:179px;top:5299px" data-node-id="26:7743">
+              <div style="position:absolute;background:#7bff88;height:27px;left:179px;border-radius:4px;top:5299px;width:58px;filter:blur(2.6px)" data-node-id="26:7740">
               </div>
-              <div style="position:absolute;background:rgba(123,255,136,0.23);height:27px;left:179px;border-radius:4px;top:4868px;width:58px;filter:blur(2.6px)" data-node-id="26:7745">
+              <div style="position:absolute;background:rgba(123,255,136,0.23);height:27px;left:179px;border-radius:4px;top:5299px;width:58px;filter:blur(2.6px)" data-node-id="26:7745">
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div style="position:absolute;display:contents;left:189px;top:4256px" data-node-id="26:7753">
-        <div style="position:absolute;display:contents;left:189px;top:4256px" data-node-id="26:7754">
-          <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:600;font-style:italic;font-weight:600;height:27px;font-style:italic;justify-content:center;line-height:0;left:217px;font-size:17px;color:#000;text-align:center;top:4269.5px;width:56px;transform:translate(-50%,-50%)" data-node-id="26:7755">
+      <div style="position:absolute;display:contents;left:189px;top:4687px" data-node-id="26:7753">
+        <div style="position:absolute;display:contents;left:189px;top:4687px" data-node-id="26:7754">
+          <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:600;font-style:italic;font-weight:600;height:27px;font-style:italic;justify-content:center;line-height:0;left:217px;font-size:17px;color:#000;text-align:center;top:4700.5px;width:56px;transform:translate(-50%,-50%)" data-node-id="26:7755">
             <p style="line-height:25.2px" class="kyu-flow">NEW</p>
           </div>
         </div>
       </div>
-      <div style="position:absolute;height:178px;left:912px;top:5229px;width:266px" data-n="ui-checklist 1" data-node-id="26:7780">
+      <div style="position:absolute;height:178px;left:912px;top:5660px;width:266px" data-n="ui-checklist 1" data-node-id="26:7780">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/ui-checklist.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:120.46%;left:0;max-width:none;top:-20.46%;width:100%">
         </div>
@@ -2826,58 +2922,58 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           </div>
         </div>
       </div>
-      <div style="position:absolute;height:89px;left:447px;top:5273px;width:265px" data-n="ui-say 1" data-node-id="26:7826">
+      <div style="position:absolute;height:89px;left:447px;top:5704px;width:265px" data-n="ui-say 1" data-node-id="26:7826">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/ui-say.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:142.56%;left:0;max-width:none;top:-42.56%;width:100%">
         </div>
       </div>
-      <div style="position:absolute;height:241px;left:62px;top:5232px;width:222px" data-n="ui-meeting-open 1" data-node-id="26:7837">
+      <div style="position:absolute;height:241px;left:62px;top:5663px;width:222px" data-n="ui-meeting-open 1" data-node-id="26:7837">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/ui-meeting-open.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:112.38%;left:0;max-width:none;top:-12.38%;width:100%">
         </div>
       </div>
-      <div style="position:absolute;bottom:1624.08px;display:contents;left:4px;top:5476px" data-node-id="26:7776">
-        <div style="position:absolute;bottom:1624.08px;display:flex;align-items:center;justify-content:center;left:4px;top:5476px;width:1436px;container-type:size;" data-node-id="26:7770">
+      <div style="position:absolute;bottom:1624.08px;display:contents;left:4px;top:5907px" data-node-id="26:7776">
+        <div style="position:absolute;bottom:1624.08px;display:flex;align-items:center;justify-content:center;left:4px;top:5907px;width:1436px;container-type:size;" data-node-id="26:7770">
           <div style="flex:none;height:100cqw;width:100cqh;transform:rotate(-90deg)">
             <div style="position:relative;width:100%;height:100%;background-image:linear-gradient(to right,#fff 15.504%,rgba(255,255,255,0))" data-n="div.gradient-left">
             </div>
           </div>
         </div>
-        <div style="position:absolute;bottom:1624.08px;display:flex;align-items:center;justify-content:center;left:4px;top:5476px;width:1436px;container-type:size;" data-node-id="26:7772">
+        <div style="position:absolute;bottom:1624.08px;display:flex;align-items:center;justify-content:center;left:4px;top:5907px;width:1436px;container-type:size;" data-node-id="26:7772">
           <div style="flex:none;height:100cqw;width:100cqh;transform:rotate(-90deg)">
             <div style="position:relative;width:100%;height:100%;background-image:linear-gradient(to right,#fff 15.504%,rgba(255,255,255,0))" data-n="div.gradient-left">
             </div>
           </div>
         </div>
-        <div style="position:absolute;bottom:1624.08px;display:flex;align-items:center;justify-content:center;left:4px;top:5476px;width:1436px;container-type:size;" data-node-id="26:7774">
+        <div style="position:absolute;bottom:1624.08px;display:flex;align-items:center;justify-content:center;left:4px;top:5907px;width:1436px;container-type:size;" data-node-id="26:7774">
           <div style="flex:none;height:100cqw;width:100cqh;transform:rotate(-90deg)">
             <div style="position:relative;width:100%;height:100%;background-image:linear-gradient(to right,#fff 15.504%,rgba(255,255,255,0))" data-n="div.gradient-left">
             </div>
           </div>
         </div>
       </div>
-      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:723px;font-style:normal;color:#121212;font-size:61px;text-align:center;top:5944.5px;letter-spacing:-1.9215px;white-space:nowrap;transform:translate(-50%,-50%)" data-node-id="26:7839" data-kyu="rise">
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:723px;font-style:normal;color:#121212;font-size:61px;text-align:center;top:6375.5px;letter-spacing:-1.9215px;white-space:nowrap;transform:translate(-50%,-50%)" data-node-id="26:7839" data-kyu="rise">
         <p style="line-height:65px">Bring him home — $9.99</p>
       </div>
-      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:722.04px;font-style:normal;color:#121212;font-size:16px;text-align:center;top:6004.5px;letter-spacing:0.008px;white-space:nowrap;transform:translate(-50%,-50%)" data-node-id="26:7840">
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:722.04px;font-style:normal;color:#121212;font-size:16px;text-align:center;top:6435.5px;letter-spacing:0.008px;white-space:nowrap;transform:translate(-50%,-50%)" data-node-id="26:7840">
         <p style="line-height:23px" class="kyu-flow">One-time purchase. No subscription or account required.</p>
       </div>
-      <div style="position:absolute;align-content:center;display:flex;flex-wrap:wrap;align-items:center;left:427.09px;padding-left:223.78px;padding-right:223.78px;top:6037px" data-n="div.BlockSectionHeader_cta__oaUOU" data-node-id="26:7841">
+      <div style="position:absolute;align-content:center;display:flex;flex-wrap:wrap;align-items:center;left:427.09px;padding-left:223.78px;padding-right:223.78px;top:6468px" data-n="div.BlockSectionHeader_cta__oaUOU" data-node-id="26:7841">
         <div style="background:#2563eb;align-content:stretch;filter:drop-shadow(0px 0.326px 0.367px rgba(0,0,0,0.12),0px 1.541px 1.433px rgba(0,0,0,0.07),0px 4px 4.5px rgba(0,0,0,0.05));display:flex;align-items:flex-start;min-height:36px;padding-bottom:7.5px;padding-left:13px;padding-right:14.72px;padding-top:5.5px;position:relative;border-radius:5px;flex-shrink:0" data-n="Link" data-node-id="26:7842" data-kyu="cta" data-href="#price">
           <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:600;font-style:normal;font-weight:600;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;font-size:16px;text-align:center;color:#fff;letter-spacing:0.008px;white-space:nowrap" data-node-id="26:7843">
             <p style="line-height:23px" class="kyu-flow">Coming soon</p>
           </div>
         </div>
       </div>
-      <div style="position:absolute;height:163px;left:1130px;top:6004px;width:263px" data-n="pets-dachs2-liehappy 1" data-node-id="26:7958">
+      <div style="position:absolute;height:163px;left:1130px;top:6435px;width:263px" data-n="pets-dachs2-liehappy 1" data-node-id="26:7958">
         <video class="kyu-anim" data-kyu-anim="bring-flip" muted loop playsinline preload="none" data-poster="assets/anim/bring-flip.png" aria-label="bring-flip" data-webm="assets/anim/bring-flip.webm" data-mp4="assets/anim/bring-flip.mp4" style="position:absolute;left:-25.5px;top:-39.48px;width:286.25px;height:184.25px;max-width:none;pointer-events:none"></video>
       </div>
-      <div style="position:absolute;height:220px;left:0;top:5927px;width:278px;visibility:hidden" data-n="pets-cat1-stretch 1" data-node-id="26:7961">
+      <div style="position:absolute;height:220px;left:0;top:6358px;width:278px;visibility:hidden" data-n="pets-cat1-stretch 1" data-node-id="26:7961">
         <img src="assets/art/pets-cat1-stretch.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
     </div>
     <div style="position:absolute;display:contents;left:0;top:0" data-node-id="23:6904">
-      <div style="position:absolute;display:flex;height:268px;align-items:center;justify-content:center;width:178px;left:73px;top:1936px" data-node-id="23:6875">
+      <div style="position:absolute;display:flex;height:268px;align-items:center;justify-content:center;width:178px;left:73px;top:2367px" data-node-id="23:6875">
         <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
           <div style="height:268px;position:relative;width:178px" data-n="cast-eric 1">
             <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
@@ -2892,7 +2988,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <div style="position:absolute;display:contents;left:0;top:0" data-node-id="26:7768">
           <div style="position:absolute;display:contents;left:0;top:0" data-node-id="26:7747">
             <div style="position:absolute;display:contents;left:0;top:0" data-node-id="26:7744">
-              <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:600;font-style:italic;font-weight:600;height:27px;font-style:italic;justify-content:center;line-height:0;font-size:17px;color:#000;text-align:center;width:56px;transform:translate(-50%,-50%);left:208px;top:4881.5px" data-node-id="26:7742">
+              <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:600;font-style:italic;font-weight:600;height:27px;font-style:italic;justify-content:center;line-height:0;font-size:17px;color:#000;text-align:center;width:56px;transform:translate(-50%,-50%);left:208px;top:5312.5px" data-node-id="26:7742">
                 <p style="line-height:25.2px" class="kyu-flow">NEW</p>
               </div>
             </div>
@@ -2900,22 +2996,22 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         </div>
       </div>
     </div>
-    <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;color:#111;font-size:24px;white-space:nowrap;transform:translate(0,-50%);left:173px;top:5707px" data-node-id="26:7828">
+    <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;color:#111;font-size:24px;white-space:nowrap;transform:translate(0,-50%);left:173px;top:6138px" data-node-id="26:7828">
       <p style="line-height:36px">Guards your meetings</p>
     </div>
-    <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;width:212px;transform:translate(-50%,-50%);left:300px;top:5749px" data-node-id="26:7829">
+    <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;width:212px;transform:translate(-50%,-50%);left:300px;top:6180px" data-node-id="26:7829">
       <p style="line-height:24px" class="kyu-flow">Five minutes early, always.</p>
     </div>
-    <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;color:#111;font-size:24px;text-align:center;white-space:nowrap;transform:translate(-50%,-50%);left:719.5px;top:5707px" data-node-id="26:7831">
+    <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;color:#111;font-size:24px;text-align:center;white-space:nowrap;transform:translate(-50%,-50%);left:719.5px;top:6138px" data-node-id="26:7831">
       <p style="line-height:36px">Looks after you, too</p>
     </div>
-    <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;width:215px;transform:translate(-50%,-50%);left:719.5px;top:5749px" data-node-id="26:7832">
+    <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;width:215px;transform:translate(-50%,-50%);left:719.5px;top:6180px" data-node-id="26:7832">
       <p style="line-height:24px" class="kyu-flow">Water, eyes, stretch, meds.</p>
     </div>
-    <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;color:#111;font-size:24px;width:238px;transform:translate(0,-50%);left:1033px;top:5707px;white-space:nowrap" data-node-id="26:7834">
+    <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;color:#111;font-size:24px;width:238px;transform:translate(0,-50%);left:1033px;top:6138px;white-space:nowrap" data-node-id="26:7834">
       <p style="line-height:36px">The day you&#x27;d forget</p>
     </div>
-    <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;width:130px;transform:translate(-50%,-50%);left:1152px;top:5749px" data-node-id="26:7835">
+    <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;width:130px;transform:translate(-50%,-50%);left:1152px;top:6180px" data-node-id="26:7835">
       <p style="line-height:24px" class="kyu-flow">— written down</p>
     </div>
     <!-- 26:7852 는 판 밖에서 흐름으로 그린다(site-build) -->
@@ -3021,6 +3117,20 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <h3>Desk Magic<i class="m-new beta">BETA</i></h3>
       <p>Screenshots piling up? He'll offer to tidy.<br>He asks first — and never deletes.</p>
       <img class="m-trash" src="assets/art/ui-trash.webp" alt="" width="125" height="125" loading="lazy" decoding="async">
+    </article>
+
+    <!-- ⓪-b AI 도구 — 피그마 62:25651 (358×411). 넓은 판 57:25144 와 같은 카드다. -->
+    <article class="m-card m-ai">
+      <h3>Connect your AI tools.<br>Kyu gets smarter.</h3>
+      <p>Every tool you plug in teaches him a little more about your day — so he brings you what matters before you ask.</p>
+      <div class="m-aiart">
+        <img class="a-glow" src="assets/art/card-aiglow.svg" alt="" loading="lazy" decoding="async">
+        <img class="a-tool a-gpt" src="assets/art/flat-chatgpt.webp" alt="" loading="lazy" decoding="async">
+        <img class="a-tool a-cla" src="assets/art/flat-claude.webp" alt="" loading="lazy" decoding="async">
+        <img class="a-tool a-gem" src="assets/art/flat-gemini.webp" alt="" loading="lazy" decoding="async">
+        <img class="a-tool a-cc" src="assets/art/flat-claude-code.png" alt="" loading="lazy" decoding="async">
+        <span class="a-kyu"><img src="assets/art/kyu-peek.webp" alt="Kyu looking up at the tools you plug in" loading="lazy" decoding="async"></span>
+      </div>
     </article>
 
     <!-- ⓪-2 가방 — 떨어뜨린 것을 받아 든다 -->
