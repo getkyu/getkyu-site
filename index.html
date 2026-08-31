@@ -806,34 +806,11 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
 /* ★ 그림 위쪽 12%는 **앱 창의 「MUTE ×」 줄**이다(재서 잘랐다: 잉크가 y16~70,
    판은 y80 부터). 작을 땐 안 보였는데 키우니 엉뚱한 단추처럼 보였다.
    ★ `clip-path` 는 자리를 안 바꾸므로 그만큼 `top` 을 올려 준다. */
-#m .m-bagwrap .m-bagbox  { position: absolute; left: 24.0%; top: 2px; width: 52.0%;
-  z-index: 2; display: block; container-type: inline-size;
+/* ★ 가방은 **가만히 있는다**(창업자 2026-08-31: "여기도 모션 없애자").
+   네 칸이 하나씩 담기는 것을 넣었다가 도로 걷었다. 그림 위쪽 12%는 여전히
+   앱 창의 「MUTE ×」 줄이라 잘라 낸다. */
+#m .m-bagwrap .m-bag     { left: 24.0%; top: 2px; width: 52.0%; z-index: 2;
   clip-path: inset(12% 0 0 0); }
-#m .m-bagwrap .m-bag     { position: static; width: 100%; height: auto; }
-/* ★ 네 칸을 흰 덮개로 가려 두었다가 차례로 걷는다. 자리는 그림(580x664) 안에서
-   재서 왔다 — 칸 상자와 **그 밑 이름줄까지** 덮어야 반쯤 담긴 것처럼 안 보인다. */
-/* ★★★★★★ **기본은 「다 담긴 것」이다.** 덮개를 처음부터 보이게 두면, 움직임
-   층이 죽는 판에서 가방이 **영영 빈 채로** 남는다 — 못 살린 기능이 아니라
-   **부서진 그림**이 된다. 그래서 덮개는 기본이 투명이고, `motion.js` 가
-   「가릴 수 있다」고 말해 준 판에서만 씌워졌다가 걷힌다. */
-#m .m-bagwrap .b-slot { position: absolute; background: #fff; opacity: 0; }
-#m .m-hands.가린다 .b-slot { opacity: 1; }
-#m .m-bagwrap .s1 { left: 7.93%;  top: 22.59%; width: 30.00%; height: 32.38%; }
-#m .m-bagwrap .s2 { left: 41.38%; top: 22.59%; width: 30.34%; height: 32.38%; }
-#m .m-bagwrap .s3 { left: 7.93%;  top: 56.02%; width: 30.00%; height: 32.08%; }
-#m .m-bagwrap .s4 { left: 41.38%; top: 56.02%; width: 30.34%; height: 32.08%; }
-/* ★★ 걷힐 때 살짝 **떨어져 들어온다** — 덮개만 사라지면 나타난 게 아니라
-   그냥 있던 것으로 읽힌다. 덮개를 위로 밀면서 지운다. */
-#m .m-hands.담는다 .b-slot { animation: kyu-slot .34s cubic-bezier(.3,.8,.4,1) forwards; }
-#m .m-hands.담는다 .s1 { animation-delay: .10s }
-#m .m-hands.담는다 .s2 { animation-delay: .46s }
-#m .m-hands.담는다 .s3 { animation-delay: .82s }
-#m .m-hands.담는다 .s4 { animation-delay: 1.18s }
-@keyframes kyu-slot { to { opacity: 0; transform: translateY(-10%) } }
-@media (prefers-reduced-motion: reduce) {
-  /* ★ 결과만 남긴다 — 넷이 다 담긴 채로. */
-  #m .m-bagwrap .b-slot { opacity: 0; animation: none }
-}
 /* ★ `top` 을 그만큼 올리려 했더니 **위쪽 페이드에 통째로 먹혔다**(마스크가 위 7%를
    투명하게 만든다). 자리는 그대로 두고 자르기만 한다 — 판이 18px 내려앉을 뿐이다. */
 /* 파일 일곱 — 자리는 카드 폭에 대한 %, 기울기는 피그마 값 그대로 */
@@ -2883,14 +2860,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <img class="f f-avi" src="assets/art/file-avi.svg" alt="" loading="lazy" decoding="async">
         <img class="f f-svg" src="assets/art/file-svg.svg" alt="" loading="lazy" decoding="async">
         <img class="m-bagback" src="assets/art/bag-back34.webp" alt="" loading="lazy" decoding="async">
-        <!-- ★ 가방이 **채워진다**(창업자 2026-08-31: "가짜 떰네일이랑 뭐 파일들이랑
-             가방에 채워지는?"). 그림에는 넷이 이미 담겨 있으므로, 넷을 흰 덮개로
-             가려 두었다가 차례로 걷는다 — 파일이 하나씩 떨어져 담기는 것으로 읽힌다.
-             자리는 그림 안에서 재서 왔다(칸 + 그 밑 이름줄까지). -->
-        <span class="m-bagbox">
-          <img class="m-bag" src="assets/art/ui-bag.webp" alt="Four things in the bag" loading="lazy" decoding="async">
-          <i class="b-slot s1"></i><i class="b-slot s2"></i><i class="b-slot s3"></i><i class="b-slot s4"></i>
-        </span>
+        <img class="m-bag" src="assets/art/ui-bag.webp" alt="Four things in the bag" loading="lazy" decoding="async">
       </div>
     </article>
 
@@ -3862,14 +3832,6 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         }
       }, { threshold: 0.6 })
       눈5.observe(절)
-    }
-    for (const 가방 of $$문서('.m-hands')) {
-      // ★ 여기까지 왔다는 건 움직임 층이 산다는 뜻이다 — 그때만 덮개를 씌운다.
-      가방.classList.add('가린다')
-      const 눈4 = new IntersectionObserver((들) => {
-        for (const e of 들) if (e.isIntersecting) { e.target.classList.add('담는다'); 눈4.unobserve(e.target) }
-      }, { threshold: 0.35 })
-      눈4.observe(가방)
     }
     const 그릴것 = $$문서('.m-dayart.d3')
     if (그릴것.length) {
