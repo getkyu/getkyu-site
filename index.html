@@ -285,7 +285,14 @@ a { color: inherit; text-decoration: none; }
 #m .m-card > p { margin-top: 6px; font: 400 15px/1.45 Inter, system-ui, sans-serif; color: var(--dim); }
 #m .m-card.dark { background: #000; }
 #m .m-card.dark h3 { color: #fff; }
-#m .m-card.dark > p { color: rgba(255,255,255,.6); font-size: 14px; line-height: 1.5; }
+/* ★★★★★★ **14px 이 여기 숨어 있었다**(2026-08-30, 살아 있는 판에서 잡았다).
+   이 저장소는 폰 본문 바닥을 **14.5px** 로 세워 뒀다 — 폰에서 본문이 4.3px 이던
+   사고 뒤에 세운 선이다. 그런데 이 한 줄만 그 밑이었고, **자가 못 잡았다**:
+   카드가 177.65° 돌아 있어서 축 정렬 상자가 커졌고, 자는 그걸 「글씨가 크다」로
+   읽어 14px 을 18.57px 으로 보고했다(자는 같이 고쳤다 — 행렬에서 배율만 뽑는다).
+   ★ 다른 카드와 같은 15px 로 올린다. 색이 흐린 건 그대로 둔다 — 검은 카드에서
+     흰 글씨가 100% 면 눈이 아프다. */
+#m .m-card.dark > p { color: rgba(255,255,255,.6); font-size: 15px; line-height: 1.5; }
 
 /* ① 만들기 — **피그마처럼 넷이 한 줄에 겹친다**(창업자 2026-08-30: "피그마
    목업이랑 똑같이"). 358 폭 기준 좌표를 %로 옮겼다:
@@ -1248,14 +1255,14 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <div style="position:absolute;display:flex;height:124.867px;align-items:center;justify-content:center;top:293px;width:140.822px;left:986px" data-node-id="23:6545">
         <div style="flex:none;transform:rotate(178.16deg) scale(1,-1)">
           <div style="height:120.531px;position:relative;width:137.024px" data-n="pet-bark 1">
-            <video class="kyu-anim" data-kyu-anim="hero-pet" muted loop playsinline preload="none" poster="assets/anim/hero-pet.png" aria-label="hero-pet" data-webm="assets/anim/hero-pet.webm" data-mp4="assets/anim/hero-pet.mp4" style="position:absolute;left:0.48px;top:-12.05px;width:135.11px;height:125.6px;max-width:none;pointer-events:none"></video>
+            <video class="kyu-anim" data-kyu-anim="hero-pet" muted loop playsinline preload="none" data-poster="assets/anim/hero-pet.png" aria-label="hero-pet" data-webm="assets/anim/hero-pet.webm" data-mp4="assets/anim/hero-pet.mp4" style="position:absolute;left:0.48px;top:-12.05px;width:135.11px;height:125.6px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
       <div style="position:absolute;display:flex;height:291px;align-items:center;justify-content:center;top:131px;width:132px;left:1141px" data-node-id="23:6546">
         <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
           <div style="height:291px;position:relative;width:132px" data-n="kyu-sing 1">
-            <video class="kyu-anim" data-kyu-anim="hero-dance" muted loop playsinline preload="none" poster="assets/anim/hero-dance.png" aria-label="hero-dance" data-webm="assets/anim/hero-dance.webm" data-mp4="assets/anim/hero-dance.mp4" style="position:absolute;left:-9.94px;top:-5.12px;width:154.27px;height:289.25px;max-width:none;pointer-events:none"></video>
+            <video class="kyu-anim" data-kyu-anim="hero-dance" muted loop playsinline preload="none" data-poster="assets/anim/hero-dance.png" aria-label="hero-dance" data-webm="assets/anim/hero-dance.webm" data-mp4="assets/anim/hero-dance.mp4" style="position:absolute;left:-9.94px;top:-5.12px;width:154.27px;height:289.25px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
@@ -1307,17 +1314,17 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         </div>
         <div style="position:absolute;height:248px;left:443px;top:1762px;width:196px" data-n="cast-diego-wave 1" data-node-id="23:6872">
           <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
-            <video class="kyu-anim" data-kyu-anim="own-diego" muted loop playsinline preload="none" poster="assets/anim/own-diego.png" aria-label="own-diego" data-webm="assets/anim/own-diego.webm" data-mp4="assets/anim/own-diego.mp4" style="position:absolute;left:-37.18px;top:-15.85px;width:255.97px;height:263.85px;max-width:none;pointer-events:none"></video>
+            <video class="kyu-anim" data-kyu-anim="own-diego" muted loop playsinline preload="none" data-poster="assets/anim/own-diego.png" aria-label="own-diego" data-webm="assets/anim/own-diego.webm" data-mp4="assets/anim/own-diego.mp4" style="position:absolute;left:-37.18px;top:-15.85px;width:255.97px;height:263.85px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
         <div style="position:absolute;height:277px;left:634px;top:1733px;width:185px" data-n="cast-andre 1" data-node-id="23:6874">
           <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
-            <video class="kyu-anim" data-kyu-anim="own-andre" muted loop playsinline preload="none" poster="assets/anim/own-andre.png" aria-label="own-andre" data-webm="assets/anim/own-andre.webm" data-mp4="assets/anim/own-andre.mp4" style="position:absolute;left:-24.06px;top:1.1px;width:234.65px;height:275.9px;max-width:none;pointer-events:none"></video>
+            <video class="kyu-anim" data-kyu-anim="own-andre" muted loop playsinline preload="none" data-poster="assets/anim/own-andre.png" aria-label="own-andre" data-webm="assets/anim/own-andre.webm" data-mp4="assets/anim/own-andre.mp4" style="position:absolute;left:-24.06px;top:1.1px;width:234.65px;height:275.9px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
         <div style="position:absolute;height:237px;left:261px;top:1773px;width:160px" data-n="cast-sofia 1" data-node-id="23:6876">
           <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
-            <video class="kyu-anim" data-kyu-anim="own-jina" muted loop playsinline preload="none" poster="assets/anim/own-jina.png" aria-label="own-jina" data-webm="assets/anim/own-jina.webm" data-mp4="assets/anim/own-jina.mp4" style="position:absolute;left:-30.3px;top:3.29px;width:223.25px;height:233.71px;max-width:none;pointer-events:none"></video>
+            <video class="kyu-anim" data-kyu-anim="own-jina" muted loop playsinline preload="none" data-poster="assets/anim/own-jina.png" aria-label="own-jina" data-webm="assets/anim/own-jina.webm" data-mp4="assets/anim/own-jina.mp4" style="position:absolute;left:-30.3px;top:3.29px;width:223.25px;height:233.71px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
         <div style="position:absolute;display:contents;left:94px;top:1696px" data-node-id="23:6895">
@@ -1440,7 +1447,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         </div>
       </div>
       <div style="position:absolute;height:317px;left:1171px;top:2088px;width:139px" data-n="prop-drink 1" data-node-id="24:6961">
-        <video class="kyu-anim" data-kyu-anim="away-drink" muted loop playsinline preload="none" poster="assets/anim/away-drink.png" aria-label="away-drink" data-webm="assets/anim/away-drink.webm" data-mp4="assets/anim/away-drink.mp4" style="position:absolute;left:-13.8px;top:-4.55px;width:166.29px;height:313.74px;max-width:none;pointer-events:none"></video>
+        <video class="kyu-anim" data-kyu-anim="away-drink" muted loop playsinline preload="none" data-poster="assets/anim/away-drink.png" aria-label="away-drink" data-webm="assets/anim/away-drink.webm" data-mp4="assets/anim/away-drink.mp4" style="position:absolute;left:-13.8px;top:-4.55px;width:166.29px;height:313.74px;max-width:none;pointer-events:none"></video>
       </div>
       <div style="position:absolute;left:879px;top:2173px;width:234px;height:67px" data-n="ui-chart 1" data-node-id="24:6962">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
@@ -1450,7 +1457,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <div style="position:absolute;display:flex;height:145.64px;align-items:center;justify-content:center;left:1043px;top:2259px;width:140.009px" data-node-id="24:6963">
         <div style="flex:none;transform:rotate(3.43deg)">
           <div style="height:138px;position:relative;width:132px" data-n="pet-asktoplay 1">
-            <video class="kyu-anim" data-kyu-anim="away-pet" muted loop playsinline preload="none" poster="assets/anim/away-pet.png" aria-label="away-pet" data-webm="assets/anim/away-pet.webm" data-mp4="assets/anim/away-pet.mp4" style="position:absolute;left:38.02px;top:76.71px;width:56.95px;height:53.6px;max-width:none;pointer-events:none"></video>
+            <video class="kyu-anim" data-kyu-anim="away-pet" muted loop playsinline preload="none" data-poster="assets/anim/away-pet.png" aria-label="away-pet" data-webm="assets/anim/away-pet.webm" data-mp4="assets/anim/away-pet.mp4" style="position:absolute;left:38.02px;top:76.71px;width:56.95px;height:53.6px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
@@ -1524,7 +1531,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         </div>
       </div>
       <div style="position:absolute;height:186px;left:977px;top:1800px;width:292px" data-n="moment-quiet 1" data-node-id="26:7222">
-        <video class="kyu-anim" data-kyu-anim="quiet-pair" muted loop playsinline preload="none" poster="assets/anim/quiet-pair.png" aria-label="quiet-pair" data-webm="assets/anim/quiet-pair.webm" data-mp4="assets/anim/quiet-pair.mp4" style="position:absolute;left:-30.04px;top:4.38px;width:352.31px;height:173.96px;max-width:none;pointer-events:none"></video>
+        <video class="kyu-anim" data-kyu-anim="quiet-pair" muted loop playsinline preload="none" data-poster="assets/anim/quiet-pair.png" aria-label="quiet-pair" data-webm="assets/anim/quiet-pair.webm" data-mp4="assets/anim/quiet-pair.mp4" style="position:absolute;left:-30.04px;top:4.38px;width:352.31px;height:173.96px;max-width:none;pointer-events:none"></video>
       </div>
       <div style="position:absolute;height:43px;left:1028px;border-radius:43.5px;top:1733px;width:105px" data-n="ui-agent-card 2" data-node-id="26:7223" data-kyu="mute-on">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:43.5px" data-box="box7">
@@ -1629,12 +1636,12 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <div style="position:absolute;display:flex;height:290.937px;align-items:center;justify-content:center;left:537px;top:2561px;width:116.619px" data-node-id="26:7253">
         <div style="flex:none;transform:rotate(0.58deg)">
           <div style="height:289.797px;position:relative;width:113.68px" data-n="bag-back34 1">
-            <video class="kyu-anim" data-kyu-anim="bag-reveal" muted loop playsinline preload="none" poster="assets/anim/bag-reveal.png" aria-label="bag-reveal" data-webm="assets/anim/bag-reveal.webm" data-mp4="assets/anim/bag-reveal.mp4" style="position:absolute;left:-18.11px;top:-0.88px;width:150.78px;height:283.9px;max-width:none;pointer-events:none"></video>
+            <video class="kyu-anim" data-kyu-anim="bag-reveal" muted loop playsinline preload="none" data-poster="assets/anim/bag-reveal.png" aria-label="bag-reveal" data-webm="assets/anim/bag-reveal.webm" data-mp4="assets/anim/bag-reveal.mp4" style="position:absolute;left:-18.11px;top:-0.88px;width:150.78px;height:283.9px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
       <div style="position:absolute;height:361px;left:996px;top:835px;width:160px" data-n="kyu-wave 1" data-node-id="26:7249">
-        <video class="kyu-anim" data-kyu-anim="screen-arrive" muted loop playsinline preload="none" poster="assets/anim/screen-arrive.png" aria-label="screen-arrive" data-webm="assets/anim/screen-arrive.webm" data-mp4="assets/anim/screen-arrive.mp4" style="position:absolute;left:-95.99px;top:-3.65px;width:356.94px;height:356.21px;max-width:none;pointer-events:none"></video>
+        <video class="kyu-anim" data-kyu-anim="screen-arrive" muted loop playsinline preload="none" data-poster="assets/anim/screen-arrive.png" aria-label="screen-arrive" data-webm="assets/anim/screen-arrive.webm" data-mp4="assets/anim/screen-arrive.mp4" style="position:absolute;left:-95.99px;top:-3.65px;width:356.94px;height:356.21px;max-width:none;pointer-events:none"></video>
       </div>
       <div style="position:absolute;display:flex;height:113px;align-items:center;justify-content:center;left:1216px;top:2656px;width:157px" data-node-id="26:7280">
         <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
@@ -1794,15 +1801,15 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         </div>
       </div>
       <div style="position:absolute;height:348px;left:548px;top:3597px;width:118px" data-n="ui-head-tick 1" data-node-id="26:7352">
-        <video class="kyu-anim" data-kyu-anim="noaccount-tick" muted loop playsinline preload="none" poster="assets/anim/noaccount-tick.png" aria-label="noaccount-tick" data-webm="assets/anim/noaccount-tick.webm" data-mp4="assets/anim/noaccount-tick.mp4" style="position:absolute;left:-20.54px;top:-5.73px;width:163.08px;height:346.54px;max-width:none;pointer-events:none"></video>
+        <video class="kyu-anim" data-kyu-anim="noaccount-tick" muted loop playsinline preload="none" data-poster="assets/anim/noaccount-tick.png" aria-label="noaccount-tick" data-webm="assets/anim/noaccount-tick.webm" data-mp4="assets/anim/noaccount-tick.mp4" style="position:absolute;left:-20.54px;top:-5.73px;width:163.08px;height:346.54px;max-width:none;pointer-events:none"></video>
       </div>
       <div style="position:absolute;height:110px;left:86px;top:3835px;width:126px" data-n="pets-pom-bark 1" data-node-id="26:7363">
-        <video class="kyu-anim" data-kyu-anim="noaccount-spin" muted loop playsinline preload="none" poster="assets/anim/noaccount-spin.png" aria-label="noaccount-spin" data-webm="assets/anim/noaccount-spin.webm" data-mp4="assets/anim/noaccount-spin.mp4" style="position:absolute;left:-16.52px;top:-10.46px;width:158.13px;height:112.11px;max-width:none;pointer-events:none"></video>
+        <video class="kyu-anim" data-kyu-anim="noaccount-spin" muted loop playsinline preload="none" data-poster="assets/anim/noaccount-spin.png" aria-label="noaccount-spin" data-webm="assets/anim/noaccount-spin.webm" data-mp4="assets/anim/noaccount-spin.mp4" style="position:absolute;left:-16.52px;top:-10.46px;width:158.13px;height:112.11px;max-width:none;pointer-events:none"></video>
       </div>
       <div style="position:absolute;display:flex;height:344.925px;align-items:center;justify-content:center;left:1205px;top:3611px;width:136.844px" data-node-id="26:7368">
         <div style="flex:none;transform:rotate(2.25deg)">
           <div style="height:340.334px;position:relative;width:123.569px" data-n="kyu-clap 1">
-            <video class="kyu-anim" data-kyu-anim="forever-clap" muted loop playsinline preload="none" poster="assets/anim/forever-clap.png" aria-label="forever-clap" data-webm="assets/anim/forever-clap.webm" data-mp4="assets/anim/forever-clap.mp4" style="position:absolute;left:-26.75px;top:-5.18px;width:176.72px;height:337.56px;max-width:none;pointer-events:none"></video>
+            <video class="kyu-anim" data-kyu-anim="forever-clap" muted loop playsinline preload="none" data-poster="assets/anim/forever-clap.png" aria-label="forever-clap" data-webm="assets/anim/forever-clap.webm" data-mp4="assets/anim/forever-clap.mp4" style="position:absolute;left:-26.75px;top:-5.18px;width:176.72px;height:337.56px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
@@ -1816,7 +1823,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <div style="position:absolute;display:flex;height:169.663px;align-items:center;justify-content:center;left:746px;top:3766px;width:181.723px" data-node-id="26:7369">
         <div style="flex:none;transform:rotate(-178.42deg) scale(1,-1)">
           <div style="height:164.836px;position:relative;width:177.243px" data-n="pet-givepaw 1">
-            <video class="kyu-anim" data-kyu-anim="forever-paw" muted loop playsinline preload="none" poster="assets/anim/forever-paw.png" aria-label="forever-paw" data-webm="assets/anim/forever-paw.webm" data-mp4="assets/anim/forever-paw.mp4" style="position:absolute;left:-9.53px;top:3.54px;width:181.66px;height:153.31px;max-width:none;pointer-events:none"></video>
+            <video class="kyu-anim" data-kyu-anim="forever-paw" muted loop playsinline preload="none" data-poster="assets/anim/forever-paw.png" aria-label="forever-paw" data-webm="assets/anim/forever-paw.webm" data-mp4="assets/anim/forever-paw.mp4" style="position:absolute;left:-9.53px;top:3.54px;width:181.66px;height:153.31px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
@@ -1957,7 +1964,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
                 </div>
               </div>
               <div style="position:absolute;height:426.031px;left:997.36px;top:4179px;width:310.666px" data-n="kyu-lie 2" data-node-id="26:7713">
-                <video class="kyu-anim" data-kyu-anim="tools-lie" muted loop playsinline preload="none" poster="assets/anim/tools-lie.png" aria-label="tools-lie" data-webm="assets/anim/tools-lie.webm" data-mp4="assets/anim/tools-lie.mp4" style="position:absolute;left:-26.21px;top:16.08px;width:357.91px;height:395.66px;max-width:none;pointer-events:none"></video>
+                <video class="kyu-anim" data-kyu-anim="tools-lie" muted loop playsinline preload="none" data-poster="assets/anim/tools-lie.png" aria-label="tools-lie" data-webm="assets/anim/tools-lie.webm" data-mp4="assets/anim/tools-lie.mp4" style="position:absolute;left:-26.21px;top:16.08px;width:357.91px;height:395.66px;max-width:none;pointer-events:none"></video>
               </div>
             </div>
             <div style="position:absolute;display:contents;left:1370.7px;top:4437.89px" data-node-id="26:7716">
@@ -2113,7 +2120,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         </div>
       </div>
       <div style="position:absolute;height:163px;left:1130px;top:5809px;width:263px" data-n="pets-dachs2-liehappy 1" data-node-id="26:7958">
-        <video class="kyu-anim" data-kyu-anim="bring-flip" muted loop playsinline preload="none" poster="assets/anim/bring-flip.png" aria-label="bring-flip" data-webm="assets/anim/bring-flip.webm" data-mp4="assets/anim/bring-flip.mp4" style="position:absolute;left:-25.09px;top:-35.37px;width:286.25px;height:179.32px;max-width:none;pointer-events:none"></video>
+        <video class="kyu-anim" data-kyu-anim="bring-flip" muted loop playsinline preload="none" data-poster="assets/anim/bring-flip.png" aria-label="bring-flip" data-webm="assets/anim/bring-flip.webm" data-mp4="assets/anim/bring-flip.mp4" style="position:absolute;left:-25.09px;top:-35.37px;width:286.25px;height:179.32px;max-width:none;pointer-events:none"></video>
       </div>
       <div style="position:absolute;height:220px;left:0;top:5732px;width:278px;visibility:hidden" data-n="pets-cat1-stretch 1" data-node-id="26:7961">
         <img src="assets/art/pets-cat1-stretch.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
@@ -2124,7 +2131,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
           <div style="height:268px;position:relative;width:178px" data-n="cast-eric 1">
             <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
-              <video class="kyu-anim" data-kyu-anim="own-eric" muted loop playsinline preload="none" poster="assets/anim/own-eric.png" aria-label="own-eric" data-webm="assets/anim/own-eric.webm" data-mp4="assets/anim/own-eric.mp4" style="position:absolute;left:-49.1px;top:6.14px;width:274.74px;height:261.86px;max-width:none;pointer-events:none"></video>
+              <video class="kyu-anim" data-kyu-anim="own-eric" muted loop playsinline preload="none" data-poster="assets/anim/own-eric.png" aria-label="own-eric" data-webm="assets/anim/own-eric.webm" data-mp4="assets/anim/own-eric.mp4" style="position:absolute;left:-49.1px;top:6.14px;width:274.74px;height:261.86px;max-width:none;pointer-events:none"></video>
             </div>
           </div>
         </div>
@@ -2196,8 +2203,8 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
     <div class="m-herotop">
       <h1>Your <b>desk</b><br>just got a <b class="m-cycle" data-kyu="cycle"><span>companion.</span></b><br>Make your own Kyu <b class="m-blue">+ Pet</b></h1>
       <div class="m-herofigs">
-        <video class="kyu-anim m-hk" data-kyu-anim="hero-dance" muted loop playsinline preload="none" data-webm="assets/anim/hero-dance.webm" data-mp4="assets/anim/hero-dance.mp4" poster="assets/anim/hero-dance.png" aria-label="Kyu singing and dancing"></video>
-        <video class="kyu-anim m-hp" data-kyu-anim="hero-pet" muted loop playsinline preload="none" data-webm="assets/anim/hero-pet.webm" data-mp4="assets/anim/hero-pet.mp4" poster="assets/anim/hero-pet.png" aria-label="The pet asking to play"></video>
+        <video class="kyu-anim m-hk" data-kyu-anim="hero-dance" muted loop playsinline preload="none" data-webm="assets/anim/hero-dance.webm" data-mp4="assets/anim/hero-dance.mp4" data-poster="assets/anim/hero-dance.png" aria-label="Kyu singing and dancing"></video>
+        <video class="kyu-anim m-hp" data-kyu-anim="hero-pet" muted loop playsinline preload="none" data-webm="assets/anim/hero-pet.webm" data-mp4="assets/anim/hero-pet.mp4" data-poster="assets/anim/hero-pet.png" aria-label="The pet asking to play"></video>
       </div>
     </div>
 
@@ -2222,10 +2229,10 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
            eric x-3 w91.8 y127 · sofia x76 w79 y150 · diego x165 w96 y145 · andre x259 w90 y131
            이름표 Eric(7,96) Jina(97,111) Diego(188,106) Andre(291,94) -->
       <div class="m-cast4">
-        <span class="m-name n-c1">Eric</span><video class="kyu-anim c1" data-kyu-anim="own-eric" muted loop playsinline preload="none" data-webm="assets/anim/own-eric.webm" data-mp4="assets/anim/own-eric.mp4" poster="assets/anim/own-eric.png" aria-label="Eric"></video>
-        <span class="m-name n-c2">Jina</span><video class="kyu-anim c2" data-kyu-anim="own-jina" muted loop playsinline preload="none" data-webm="assets/anim/own-jina.webm" data-mp4="assets/anim/own-jina.mp4" poster="assets/anim/own-jina.png" aria-label="Jina"></video>
-        <span class="m-name n-c3">Diego</span><video class="kyu-anim c3" data-kyu-anim="own-diego" muted loop playsinline preload="none" data-webm="assets/anim/own-diego.webm" data-mp4="assets/anim/own-diego.mp4" poster="assets/anim/own-diego.png" aria-label="Diego"></video>
-        <span class="m-name n-c4">Andre</span><video class="kyu-anim c4" data-kyu-anim="own-andre" muted loop playsinline preload="none" data-webm="assets/anim/own-andre.webm" data-mp4="assets/anim/own-andre.mp4" poster="assets/anim/own-andre.png" aria-label="Andre"></video>
+        <span class="m-name n-c1">Eric</span><video class="kyu-anim c1" data-kyu-anim="own-eric" muted loop playsinline preload="none" data-webm="assets/anim/own-eric.webm" data-mp4="assets/anim/own-eric.mp4" data-poster="assets/anim/own-eric.png" aria-label="Eric"></video>
+        <span class="m-name n-c2">Jina</span><video class="kyu-anim c2" data-kyu-anim="own-jina" muted loop playsinline preload="none" data-webm="assets/anim/own-jina.webm" data-mp4="assets/anim/own-jina.mp4" data-poster="assets/anim/own-jina.png" aria-label="Jina"></video>
+        <span class="m-name n-c3">Diego</span><video class="kyu-anim c3" data-kyu-anim="own-diego" muted loop playsinline preload="none" data-webm="assets/anim/own-diego.webm" data-mp4="assets/anim/own-diego.mp4" data-poster="assets/anim/own-diego.png" aria-label="Diego"></video>
+        <span class="m-name n-c4">Andre</span><video class="kyu-anim c4" data-kyu-anim="own-andre" muted loop playsinline preload="none" data-webm="assets/anim/own-andre.webm" data-mp4="assets/anim/own-andre.mp4" data-poster="assets/anim/own-andre.png" aria-label="Andre"></video>
       </div>
     </article>
 
@@ -2234,7 +2241,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <h3>Never interrupts</h3>
       <p>In deep focus, he goes quiet. Only five things ever break through.</p>
       <div class="m-pillrow" data-kyu="mute-slot"></div>
-      <video class="kyu-anim m-quiet" data-kyu-anim="quiet-pair" muted loop playsinline preload="none" data-webm="assets/anim/quiet-pair.webm" data-mp4="assets/anim/quiet-pair.mp4" poster="assets/anim/quiet-pair.png" aria-label="Kyu sitting quietly while the pet sleeps"></video>
+      <video class="kyu-anim m-quiet" data-kyu-anim="quiet-pair" muted loop playsinline preload="none" data-webm="assets/anim/quiet-pair.webm" data-mp4="assets/anim/quiet-pair.mp4" data-poster="assets/anim/quiet-pair.png" aria-label="Kyu sitting quietly while the pet sleeps"></video>
     </article>
 
     <!-- ③ 날씨 — 알갱이(눈·낙엽·비)가 이 카드 안에 뿌려진다 -->
@@ -2261,8 +2268,8 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <img class="a1" src="assets/art/ui-agent-card.webp" alt="A GitHub summary card" loading="lazy" decoding="async">
         <img class="a2" src="assets/art/ui-chart.png" alt="Markets card — S&amp;P 500, Nasdaq, Dow" loading="lazy" decoding="async">
         <img class="a3" src="assets/art/ui-agent-list.png" alt="Slack, Shopify and Notion — what came in" loading="lazy" decoding="async">
-        <video class="kyu-anim a4" data-kyu-anim="away-drink" muted loop playsinline preload="none" data-webm="assets/anim/away-drink.webm" data-mp4="assets/anim/away-drink.mp4" poster="assets/anim/away-drink.png" aria-label="Kyu drinking coffee"></video>
-        <video class="kyu-anim a5" data-kyu-anim="away-pet" muted loop playsinline preload="none" data-webm="assets/anim/away-pet.webm" data-mp4="assets/anim/away-pet.mp4" poster="assets/anim/away-pet.png" aria-label="The pet sitting"></video>
+        <video class="kyu-anim a4" data-kyu-anim="away-drink" muted loop playsinline preload="none" data-webm="assets/anim/away-drink.webm" data-mp4="assets/anim/away-drink.mp4" data-poster="assets/anim/away-drink.png" aria-label="Kyu drinking coffee"></video>
+        <video class="kyu-anim a5" data-kyu-anim="away-pet" muted loop playsinline preload="none" data-webm="assets/anim/away-pet.webm" data-mp4="assets/anim/away-pet.mp4" data-poster="assets/anim/away-pet.png" aria-label="The pet sitting"></video>
       </div>
     </article>
 
@@ -2314,7 +2321,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
     <h2>Friends with your tools.</h2>
     <p class="m-sub">Plug in your calendar, mail and AI — keys stay on your Mac. The rest comes through MCP servers you already run, read-only and off by default.</p>
     <div class="m-logos" aria-label="Tools Kyu works with"></div>
-    <video class="kyu-anim m-lie" data-kyu-anim="tools-lie" muted loop playsinline preload="none" data-webm="assets/anim/tools-lie.webm" data-mp4="assets/anim/tools-lie.mp4" poster="assets/anim/tools-lie.png" aria-label="Kyu lying among the tools"></video>
+    <video class="kyu-anim m-lie" data-kyu-anim="tools-lie" muted loop playsinline preload="none" data-webm="assets/anim/tools-lie.webm" data-mp4="assets/anim/tools-lie.mp4" data-poster="assets/anim/tools-lie.png" aria-label="Kyu lying among the tools"></video>
   </section>
 
   <!-- ── 하루 ── 피그마 `32:3054` (2026-08-30 개정: 447 → 1421px).
@@ -2353,7 +2360,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
   <!-- ── 사기 ── -->
   <section class="m-price" id="price">
     <!-- 피그마 32:3290: 아이가 제목 **위** 가운데(x107 w144 h89) -->
-    <video class="kyu-anim m-roll" data-kyu-anim="bring-flip" muted loop playsinline preload="none" data-webm="assets/anim/bring-flip.webm" data-mp4="assets/anim/bring-flip.mp4" poster="assets/anim/bring-flip.png" aria-label="A dachshund rolling on its back"></video>
+    <video class="kyu-anim m-roll" data-kyu-anim="bring-flip" muted loop playsinline preload="none" data-webm="assets/anim/bring-flip.webm" data-mp4="assets/anim/bring-flip.mp4" data-poster="assets/anim/bring-flip.png" aria-label="A dachshund rolling on its back"></video>
     <h2>Bring him home — $9.99</h2>
     <p class="m-fine">One-time purchase. No subscription or account required.</p>
     <a href="/getkyu-0.2.0.dmg" class="m-cta">Get Kyu Now</a>
@@ -2699,14 +2706,30 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
     else 못찾음.push(`${v.dataset.kyuAnim}: ${길} 주소가 없다`)
   }
 
+  // ★★★★★★ **겉장은 `src` 와 같은 문으로 간다**(2026-08-30, 받은 바이트를 재서 알았다).
+  //   `poster` 가 HTML 에 박혀 있으면 **주소를 안 달아도 그림은 받는다.** 그래서
+  //   위에서 보이는 판만 골라 주소를 달아 놓고도, 겉장 17장(1.17MB)은 언제나 다
+  //   내려왔다 — 데스크탑에서는 그중 14장 0.97MB 가 첫 화면 밖의 것이었고,
+  //   좁은 판에서는 **숨어 있는 넓은 판의 겉장까지** 받고 있었다.
+  //   ★ 그림이 없는 동안 빈 자리가 보이지 않을까 — 안 보인다. 알파 조각이라
+  //     겉장도 투명하고, 아래 눈이 **300px 미리** 달아 준다.
+  const 겉장달기 = (v) => {
+    const p = v.dataset.poster
+    if (p && !v.getAttribute('poster')) v.setAttribute('poster', p)
+  }
+
   if (덜) {
-    for (const v of 보이는것) v.removeAttribute('loop')   // 겉장만 보인다
+    // ★ 안 움직이는 판에서는 **겉장이 전부**다 — 여기서는 바로 단다.
+    for (const v of 보이는것) { 겉장달기(v); v.removeAttribute('loop') }
   } else {
     const 눈 = new IntersectionObserver((들) => {
       for (const e of 들) {
         const v = e.target
-        if (e.isIntersecting) { if (v.preload !== 'auto') { v.preload = 'auto'; v.load() } v.play().catch(() => {}) }
-        else v.pause()
+        if (e.isIntersecting) {
+          겉장달기(v)
+          if (v.preload !== 'auto') { v.preload = 'auto'; v.load() }
+          v.play().catch(() => {})
+        } else v.pause()
       }
     }, { rootMargin: '300px 0px' })
     for (const v of 보이는것) 눈.observe(v)
