@@ -1249,12 +1249,29 @@ html { scroll-behavior: smooth; }
   animation: kyu-wipe .52s cubic-bezier(.42,0,.4,1) forwards;
 }
 /* 나타난다 — 검정이 왼쪽에서 들어와 오른쪽으로 차오른다. 시작은 **아무것도 없다.** */
+/* ★★★★★★ **나타나는 쪽이 아예 안 돌고 있었다**(창업자 2026-08-31: "새로운
+   텍스트는 그냥 뚝 떨어지는 느낌"). 재서 잡았다 — `.in` 이 붙는 순간 애니메이션의
+   현재 시각이 이미 **525/660ms** 였고, 마스크 자리가 100%(안 보임)가 아니라
+   **0.9%(거의 다 보임)** 로 시작했다. 즉 쓸려 들어오는 그림이 통째로 없었다.
+   ★ 까닭: `.out` 과 `.in` 이 **같은 `kyu-wipe`** 를 쓴다. CSS 는 애니메이션 **이름
+     목록이 안 바뀌면 다시 시작하지 않는다** — 시간·이징만 갈아 끼우고 흐르던
+     시각을 그대로 이어받는다. `.out` 이 520ms 를 다 쓴 뒤라 `.in` 은 660 중 525
+     지점에서 시작했다.
+   → **이름을 갈랐다**(`kyu-wipe-in`). 판이 같아도 이름이 다르면 새로 시작한다.
+   ★★ 이징도 고쳤다. `(.22,.7,…)` 은 시작 기울기가 **3.18** 이라 시간의 20%에
+     이미 59% 나타난다 — 그것만으로도 「뚝」이다. `.out` 과 같은 (.42,0,.4,1) 로
+     맞췄다(20%에 10%). 지우는 쪽과 나타나는 쪽이 **같은 곡선**이라야 한 동작으로 읽힌다. */
 [data-kyu="cycle"] p.in, [data-kyu="cycle"] span.in {
   -webkit-mask-image: linear-gradient(90deg, #000 0 25%, transparent 75%, transparent 100%);
           mask-image: linear-gradient(90deg, #000 0 25%, transparent 75%, transparent 100%);
-  animation: kyu-wipe .66s cubic-bezier(.22,.7,.25,1) both;
+  animation: kyu-wipe-in .66s cubic-bezier(.42,0,.4,1) both;
 }
 @keyframes kyu-wipe {
+  from { -webkit-mask-position: 100% 0; mask-position: 100% 0 }
+  to   { -webkit-mask-position: 0% 0;   mask-position: 0% 0 }
+}
+/* ★ 판은 위와 같다. **이름만** 다르면 된다 — 그게 다시 시작하게 하는 유일한 열쇠다. */
+@keyframes kyu-wipe-in {
   from { -webkit-mask-position: 100% 0; mask-position: 100% 0 }
   to   { -webkit-mask-position: 0% 0;   mask-position: 0% 0 }
 }
@@ -3571,7 +3588,13 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
 // ★ 좁은 화면에서는 **판을 통째로 줄인다.** 자리를 다시 잡으면 그건 다른 그림이다.
 //   줄인 만큼 감싸는 상자의 높이도 줄여야 아래에 빈자리가 안 생긴다.
 (() => {
-  const W = 1440, H = 6014   // 보이는 높이(자리를 잡는 상자는 7997.08 이다)
+  // ★★★★★★ **여기가 판 높이의 일곱 번째 자리다**(2026-08-31에 데었다).
+  //   `#shell` 의 높이는 shell-head 의 CSS 에도 있고 **여기에도** 있다. 판이
+  //   자랄 때(닥 +195 · 카드 줄 +431) 여기만 6014 로 남아서, **좁은 화면에서만**
+  //   판이 626px 짧게 잘렸다 — 1440 에서는 이 줄이 안 돌아서 안 보였다.
+  //   ★ 두 곳이 갈라지지 않게 **CSS 에서 읽어 온다.** 손으로 베끼는 자리를 없앤다.
+  const W = 1440
+  const H = parseFloat(getComputedStyle(document.getElementById('shell')).height) || 6640
   const canvas = document.getElementById('canvas')
   const shell = document.getElementById('shell')
   const 맞춘다 = () => {
@@ -4635,7 +4658,9 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
     const b = document.createElement('button')
     b.type = 'button'
     b.className = 'kyu-pill'
-    if (가운데) { b.style.left = 가운데.x + 'px'; b.style.top = 가운데.y + 'px' }
+    // ★ 캔버스와 **같은 이유**로 배율을 되돌린다 — 이 자리도 잰 값에서 왔다.
+    if (가운데) { const s = 판배율()
+      b.style.left = (가운데.x / s) + 'px'; b.style.top = (가운데.y / s) + 'px' }
     let 조용 = false
     const 새로 = () => {
       b.classList.toggle('on', 조용)
@@ -4673,7 +4698,27 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
   }
 
   /** 판 위에 캔버스를 하나 얹는다. 판의 자리를 안 건드린다. */
+  /**
+   * **판이 줄어 있으면 그 배율.** 좁은 화면(<1440)에서는 `shell-tail` 이 `#canvas` 를
+   * `scale(s)` 로 통째로 줄인다. 그런데 `getBoundingClientRect()` 는 **줄어든 뒤** 값을
+   * 준다 — 그 값을 그대로 CSS 자리로 쓰면 판 안에서 다시 s 배로 줄어 **s² 자리**에 앉는다.
+   * ★ 실제로 그랬다(창업자 2026-08-31: "눈, 낙엽 비가 박스밖으로 나왔어").
+   *   1280 화면에서 날씨 캔버스가 카드보다 **264px 위**에 그려졌다. 1440 에서는 s=1 이라
+   *   안 보이던 사고다 — **잣대가 1에서만 맞았다.**
+   */
+  function 판배율() {
+    const 판 = document.getElementById('canvas')
+    if (!판) return 1
+    const 잰폭 = 판.getBoundingClientRect().width
+    const 참폭 = 판.offsetWidth || 1440
+    const s = 잰폭 / 참폭
+    return s > 0.01 && s < 10 ? s : 1
+  }
+
   function 캔버스(부모, 상자, 클) {
+    // ★ 잰 값(화면 좌표)을 판 좌표로 되돌린다. s=1 이면 아무 일도 안 일어난다.
+    const s = 판배율()
+    if (s !== 1) 상자 = { x: 상자.x / s, y: 상자.y / s, w: 상자.w / s, h: 상자.h / s }
     const c = document.createElement('canvas')
     c.className = 클
     c.style.left = 상자.x + 'px'; c.style.top = 상자.y + 'px'
