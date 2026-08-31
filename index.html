@@ -32,7 +32,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Onest:wght@400;500;600;700&display=swap" onload="this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <!-- ★★ **첫 그림을 미리 건다.** 잰 결과 LCP 요소는 데스크탑 화면 그림이다. -->
-<link rel="preload" as="image" href="assets/art/desktop-screen.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/art/cast-danny.webp" fetchpriority="high">
 <style>
 /* ─────────────────────────────────────────────────────────────
    getkyu.com — 창업자의 피그마(4KizibHVL5Q3dz9pBJsGHo · 27-81)를
@@ -721,6 +721,161 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
 #shell [data-node-id="23:6546"] { transform: translateY(18px) scale(1.20); transform-origin: 50% 100%; }
 #shell [data-node-id="23:6545"] { transform: translateY(6px) scale(1.28); transform-origin: 50% 100%; z-index: 2; }
 
+/* ═══ 좁은 판 — 새로 들어온 카드 셋 ════════════════════════════
+   창업자 2026-08-31, 피그마 32:2927. 값은 358 폭 카드 기준 피그마 좌표를
+   그대로 옮긴 것이다(카드 테 1 + 안쪽 여백 19 = 내용이 x20 에서 시작하므로
+   피그마의 x20/y20 프레임과 화소로 맞는다).
+   ★ 가로 자리는 **%로** 매단다 — 폰마다 폭이 다른데 화소로 박으면 좁은 폰에서
+     조각이 카드 밖으로 나간다(이름표에서 이미 겪었다). */
+
+/* ── ⓪ Desk Magic ─────────────────────────────────────────── */
+/* ★ BETA 배지. `.m-new` 의 상자·글자를 그대로 쓰고 **색만** 바꾼다 —
+     따로 만들면 NEW 와 BETA 가 언젠가 서로 다른 물건이 된다.
+   ★★ 피그마는 이 배지에 **흐림(blur)** 을 걸어 놨다. 글자까지 흐려지면 안 되므로
+     바탕만 가짜 층(::before)으로 깔고 거기에만 흐림을 준다. */
+#m .m-magic h3 { display: flex; align-items: center; gap: 8px; }
+#m .m-new.beta { background: none; position: relative; }
+#m .m-new.beta::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: #fff757; border-radius: 4px; filter: blur(4px);
+}
+/* ★ 휴지통은 카드 가운데. 125px 자리에 256px 그림을 넣는다(2배 여유). */
+#m .m-magic .m-trash {
+  display: block; width: 125px; height: 125px; margin: 18px auto 0;
+}
+
+/* ── ⓪-2 Hands it back ────────────────────────────────────── */
+/* ★ 파일 아이콘 일곱은 카드 **밖으로 삐져나온다**(피그마 그대로). 카드가
+     `overflow: hidden` 이라 삐져나온 만큼은 잘리는데, 그게 의도다 —
+     책상 밖으로 흘러나온 파일처럼 읽힌다. */
+#m .m-bagwrap {
+  position: relative; container-type: inline-size;
+  height: 291px; margin: 0 calc(var(--pad) * -1) -19px;
+}
+#m .m-bagwrap img { position: absolute; max-width: none; }
+/* 가방과 그 뒤판 — 뒤판이 먼저(뒤), 가방이 나중(앞) */
+#m .m-bagwrap .m-bagback { left: 61.5%; top: 6.5px; width: 25.8%; }
+#m .m-bagwrap .m-bag     { left: 37.6%; top: 10px;  width: 29.6%; }
+/* 파일 일곱 — 자리는 카드 폭에 대한 %, 기울기는 피그마 값 그대로 */
+#m .m-bagwrap .f { width: 17.9%; }
+#m .m-bagwrap .f-aep { left:  0.3%; top: -12.1px; width: 17.8%; transform: rotate(-10.75deg); }
+#m .m-bagwrap .f-jpg { left: 17.3%; top:  71.9px; width: 19.6%; transform: rotate(15.02deg); }
+#m .m-bagwrap .f-pdf { left: 84.7%; top:  42.3px; width: 20.2%; transform: rotate(-9.19deg); }
+#m .m-bagwrap .f-png { left:  3.8%; top: 140.6px; width: 18.1%; transform: rotate(-5.55deg); }
+#m .m-bagwrap .f-zip { left: -1.3%; top: 234.4px; width: 16.7%; transform: rotate(11.61deg); }
+#m .m-bagwrap .f-avi { left: 29.3%; top: 220.9px; width: 16.8%; transform: rotate(-5.79deg); }
+#m .m-bagwrap .f-svg { left: 79.3%; top: 219.8px; width: 21.6%; transform: rotate(-6.76deg); }
+
+/* ── ⓪-3 Focus Mode ───────────────────────────────────────── */
+/* ★ 피그마의 `moment-quiet` 상자는 321px 로 내용 폭(318)보다 3px 넓다.
+     양옆으로 1.5px 씩 흘려 보낸다 — 그래야 가운데가 맞는다. */
+#m .m-focus .m-moment {
+  display: block; width: calc(100% + 3px); height: auto;
+  margin: 18px -1.5px 0;
+}
+
+/* ═══ 좁은 판 — 히어로 밑의 띠 ══════════════════════════════════
+   창업자 2026-08-31, 피그마 39:7068. 465×407 인데 판은 390 이다 —
+   **왼 49 · 오 26 이 일부러 넘친다.** 넘치는 자리에 개 둘이 걸쳐 있어야
+   장면이 화면 밖으로 이어지는 것처럼 읽힌다.
+   ★ 자리는 전부 **띠 폭(465)에 대한 %** 다. 화소로 박으면 좁은 폰에서
+     장면이 통째로 어긋난다(이름표에서 이미 겪었다).
+   ★★ 제목은 흐름에 둔다 — 말 바꾸기가 글 마디를 찾아야 하고, 절대 배치는
+     번역이 길어질 때 겹친다. */
+#m .m-everydesk { margin: 8px 0 0; overflow: hidden; }
+#m .m-everydesk h2 { margin: 0; padding: 0 var(--pad); font: 400 24px/1.2 Inter, system-ui, sans-serif; color: #111; text-align: center; }
+/* 띠 자체 — 판보다 넓게 왼쪽으로 밀어 놓는다(49/390) */
+#m .m-desks {
+  position: relative; width: 119.231%; margin-left: -12.564%;
+  height: 353px;
+}
+#m .m-desks img, #m .m-desks .d-dock, #m .m-desks .d-fade, #m .m-desks .d-badge { position: absolute; }
+#m .m-desks img { max-width: none; height: auto; }
+/* ★ 다섯은 좌우가 뒤집혀 있다(피그마 그대로) — 안 뒤집으면 서로 등을 돌린다. */
+#m .m-desks .flip { transform: scaleX(-1); }
+#m .m-desks .d-kyu { left: 73.978%; top: 0.0px; width: 21.29%; }
+#m .m-desks .d-dea { left: 10.968%; top: 10.0px; width: 18.065%; }
+#m .m-desks .d-danny { left: 26.452%; top: 5.0px; width: 27.938%; }
+#m .m-desks .d-rin { left: 57.441%; top: 12.8px; width: 17.972%; }
+#m .m-desks .d-cat3 { left: 22.344%; top: 146.2px; width: 16.576%; }
+#m .m-desks .d-dachsflip { left: 22.344%; top: 156.5px; width: 28.411%; }
+#m .m-desks .d-dob { left: 0.0%; top: 86.3px; width: 32.151%; }
+#m .m-desks .d-cat2 { left: 27.333%; top: 183.0px; width: 18.37%; }
+#m .m-desks .d-bowl { left: 41.505%; top: 203.0px; width: 13.118%; }
+#m .m-desks .d-lab { left: 74.086%; top: 129.0px; width: 25.92%; }
+#m .m-desks .d-cat4 { left: 52.559%; top: 157.7px; width: 18.735%; }
+#m .m-desks .d-dachssit { left: 57.763%; top: 139.2px; width: 29.742%; }
+#m .m-desks .d-pom { left: 51.419%; top: 194.7px; width: 15.804%; }
+/* ★★ `pet-lie` 만 **잘린 조각**이다(피그마가 125%로 키워 오른쪽을 잘랐다).
+     상자를 만들고 그 안에서 왼쪽을 붙잡아 넘치게 둔다 — `object-fit: cover` 는
+     가운데를 잡아서 다른 그림이 된다. */
+#m .m-desks .d-lie { left: 72.624%; top: 172.0px; width: 21.391%; aspect-ratio: 99.47 / 93.62;
+  overflow: hidden; }
+#m .m-desks .d-lie { object-fit: cover; object-position: left center; }
+/* 독 — 바탕은 그림이 아니라 상자다. 흰 판 위에 얹히면 평평한 #d8d8d8 로 보인다
+   (재서 골랐다). backdrop-filter 는 안 쓴다 — 폰에서 비싸고 뒤에 흰색뿐이다. */
+#m .m-desks .d-dock { left: 14.624%; top: 277.0px; width: 75.882%; height: 51.87px;
+  border-radius: 6px; background: #d8d8d8; border: 1px solid rgba(255,255,255,.15);
+  box-shadow: 0 0 2px rgba(0,0,0,.30), 0 0 40px rgba(0,0,0,.25); }
+#m .m-desks .d-ic { top: 280.5px; width: 8.884%; }
+#m .m-desks .d-finder { left: 15.376%; }
+#m .m-desks .d-app1 { left: 24.86%; }
+#m .m-desks .d-app3 { left: 34.323%; }
+#m .m-desks .d-app4 { left: 43.183%; }
+#m .m-desks .d-slack { left: 52.065%; }
+#m .m-desks .d-figma { left: 61.613%; }
+#m .m-desks .d-folder { left: 70.989%; }
+#m .m-desks .d-trash { left: 80.473%; }
+/* 알림 방울 — 빨간 원에 흰 숫자. 그림이 아니라 글자다(선명하게 남는다). */
+#m .m-desks .d-badge { top: 280.0px; width: 14.5px; height: 14.33px;
+  border-radius: 50%; background: #ff3b30; color: #fff; font: 700 9px/14.33px Inter, system-ui, sans-serif;
+  text-align: center; }
+#m .m-desks .d-b1 { left: 49.247%; }
+#m .m-desks .d-b2 { left: 58.065%; }
+#m .m-desks .d-b3 { left: 67.742%; }
+/* 아래로 스며든다 — 판 폭(389)만 덮는다. 넘치는 개들은 안 덮는다. */
+#m .m-desks .d-fade { left: 10.538%; top: 290.0px; width: 83.656%; height: 63px;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 64%, #fff 100%); pointer-events: none; }
+
+/* ★ 띠가 히어로 절을 가르므로, 눈썹글부터는 두 번째 히어로 절이 이어받는다.
+   위 여백만 새로 준다 — 나머지는 `.m-hero` 규칙을 그대로 쓴다. */
+#m .m-hero2 { padding-top: 26px; }
+
+/* ═══ 좁은 판 — 입양의 순간 ════════════════════════════════════
+   피그마 39:7202 + 39:7203. 판 좌표 그대로 옮긴 간격이다:
+     「The two of you」 밑선 3355.3 → 제목 3389 (33.7) → 알약 3468 (50)
+     → 강아지 3501 (3). */
+#m .m-adopt { padding: 34px var(--pad) 0; text-align: center; }
+#m .m-adopt h2 {
+  margin: 0; font: 400 24px/1.2 Inter, system-ui, sans-serif; color: #111;
+}
+/* ★ 알약 — 채움 없이 **테두리만**. 왼 칸에 비스킷, 구분선, 오른 칸에 자리글.
+   ★★ 피그마의 알약 가운데는 판 가운데에서 9.5px 왼쪽인데, 제목도 강아지도
+     정가운데라 그 하나만 어긋나면 **끌다 만 것**으로 읽힌다. 가운데로 맞춘다. */
+#m .m-namepill {
+  position: relative; box-sizing: border-box;
+  width: 95px; height: 30px; margin: 50px auto 0;
+  border: 1px solid #a6a6a6; border-radius: 50px;
+}
+/* 두 칸을 가르는 선 — 테두리와 같은 색이라 끝까지 그어도 안 보인다 */
+#m .m-namepill::before {
+  content: ""; position: absolute; left: 29.09px; top: 0; bottom: 0;
+  width: 1px; background: #a6a6a6;
+}
+#m .m-namepill .np-bite {
+  position: absolute; left: 15.2px; top: 13.6px; width: 47.87px; height: auto;
+  transform: translate(-50%, -50%) rotate(19.02deg); pointer-events: none;
+}
+#m .m-namepill span {
+  position: absolute; left: 30.09px; right: 0; top: 0;
+  font: 500 16px/28px 'Onest', Inter, system-ui, sans-serif; color: #5f5f5f;
+}
+/* ★ 강아지 — 시트의 왼쪽 창만 쓰고 좌우를 뒤집는다. */
+#m .m-adoptpup {
+  display: block; width: 138px; height: 133px; margin: 3px auto 0;
+  object-fit: cover; object-position: left center; transform: scaleX(-1);
+}
+
 /* ═══════════════════════════════════════════════════════════════
    움직임 층 — 창업자(2026-08-29) 의 열다섯 가지.
 
@@ -945,9 +1100,7 @@ div:has(> video.kyu-anim) { overflow: visible !important; }
 /* ★★ **UI 를 키우고 큐 뒤로 보낸다**(창업자: "UI가 너무 작게 보이거든?
    UI들을 다 키우고 큐뒤에 좀 가려져도 되니까 큐뒤에 배치해줘").
    상자는 그대로 두고 **보이는 크기만** 키운다 — 자리를 다시 잡으면 그건 다른 그림이다. */
-[data-kyu="learn-ui"] { transform: scale(1.5); transform-origin: 50% 50%; z-index: 0; }
 /* ★ 표만 조금 왼쪽으로 — 키우면 카드 오른쪽 테를 넘는다(재서 24px). */
-[data-node-id="26:7289"][data-kyu="learn-ui"] { transform: scale(1.45) translateX(-20px); }
 [data-kyu="learn-kyu"] { z-index: 3; }
 
 
@@ -977,10 +1130,8 @@ canvas.kyu-stars { z-index: 1; }
 /* ★ ⑩ **왼쪽·가운데 UI를 오른쪽 아래로**(창업자: "UI가 박스 밖으로 나왔는데
    왼쪽, 중간 UI를 오른쪽 밑으로 더 넣어줘 큐랑 겹쳐도 돼"). 1.5배로 키우면서
    카드 왼쪽 테를 넘었다. 키운 건 그대로 두고 **밀어 넣는다.** */
-[data-kyu="learn-ui"]:has(img[src*="ui-learn-mix"]) { transform: scale(1.45) translate(34px, 26px); }
 /* ★ 확장자를 박지 않는다 — 판은 `ui-learn.webp` 를 쓴다(`.png` 로 적어 놨더니
    이 규칙이 **한 번도 안 걸렸다**). 이 저장소가 WebP 로 바꾸면서 겪은 그 자리다. */
-[data-kyu="learn-ui"]:has(img[src*="ui-learn."]) { transform: scale(1.45) translate(22px, 22px); }
 
 /* ★ ⑧⑨ **아이들의 자리.** 창업자: 「Bring him home」 오른쪽 아이는 단추에
    가깝게 왼쪽으로, 「No account」 의 아이는 오른쪽으로 조금.
@@ -1264,6 +1415,15 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
    뮤트 버튼은 더 작게". 조각은 발밑을 잡고 키운다. */
 #m video[data-kyu-anim="quiet-pair"] { transform: scale(1.26); transform-origin: 50% 100%; }
 
+/* ★★★★★★ **`learn-ui` 키우기를 걷어냈다**(2026-08-31). 그 네 줄은 창업자의
+   옛 지적("UI가 너무 작게 보이거든?")에 대한 **옛 배치용 보정**이었다 —
+   한 장짜리 UI 그림 셋을 1.45~1.5배로 키우고 자리를 손으로 밀어 놓은 것.
+   ★ 그런데 창업자가 피그마에서 이 카드를 다시 짰다(2026-08-31): 이제 알약이
+     **줄마다 따로 잘린 조각 열한 개**고, 상자 크기가 조각마다 정해져 있다.
+     그 위에 옛 배율을 또 걸면 새로 정한 크기가 통째로 어긋난다 — 실제로
+     재보니 셋이 (1178,2984,176,167) 대신 (1109,2946,255,242) 로 나왔다.
+   ★★ 그래서 **새 값이 이긴다.** 키우는 일은 이제 피그마가 한다. */
+
 </style>
 </head>
 <body>
@@ -1284,7 +1444,30 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         </div>
       </div>
     </div>
-    <div style="position:absolute;height:7152.08px;left:0;right:0;top:0" data-n="div.figma-qqps48" data-node-id="20:4039">
+    <div style="position:absolute;height:7152.08px;left:0;right:0;top:0" data-n="div.figma-qqps48" data-node-id="20:4039">{/* ★★★★★★ **띠는 페이드 위에 그린다**(2026-08-31, Figma 원본과 견줘서 알았다).
+            처음엔 목업이 있던 자리(페이드 **앞**)에 넣었더니, 흰 페이드가 사람들의
+            다리를 가로로 뚝 잘랐다 — 화면으로 보기 전엔 몰랐다.
+          ★ Figma 에서 이 두 묶음(39:7160 · 39:7178)은 `div.figma-qqps48`(페이드가
+            든 나무) **다음 형제**다. 그래서 페이드 위에 얹힌다 — 페이드는 옛 목업의
+            둥근 모서리를 녹이려던 것이지, 이 사람들을 녹이려는 것이 아니다. */}
+        {/* ★★★★★★ **목업을 들어내고 이 띠를 넣었다**(창업자 2026-08-31: &quot;데스크탑도
+            히어로 밑에 목업을 그냥 다 빼고 디자인있으니 이걸 넣어줘&quot;).
+          ★ 같이 나간 것 셋: `Desktop screen 4`(21:5758, 1313x848) · 그 위에 서 있던
+            `kyu-wave 1`(26:7249) · `pet-run 1`(26:7250). 새 디자인에 그 셋이 다 없다.
+          ★★ **이름표 글은 파일 이름과 다르다.** 「Arun」은 cast-dea, 「Louis」는
+            cast-danny, 「Kyu」는 kyu-sing, 오른쪽 「Arun」은 cast-kwame 다. 파일
+            이름을 믿고 cast-arun/cast-louis 로 바꾸면 **다른 사람**이 선다.
+          ★★★ 제목의 레이어 이름은 「Co-create in one space」지만 **실제 글은
+            &quot;Every desk is different.&quot;** 다 — 좁은 판의 같은 띠와 한 문장이다.
+          ★★★★ 페이드 셋(21:5946/21:6237/21:6239)은 **건드리지 않는다** — 새
+            디자인의 것과 좌표가 같다. 이 띠는 그 아래로 스며든다. */}{/* ★★★★★★ **「Learns you」를 다시 짰다**(창업자 2026-08-31: &quot;그 그래픽
+            위치들이야, 그래픽있는것들은 다 같은데 구조적으로 좀 배치를 바꿔봤어&quot;).
+          ★ 그림은 하나도 안 바뀌었다 — `ui-learn-mix.png` 와 `ui-learn.png` **한 장에서
+            알약 줄을 하나씩 잘라내** 큐 셋 주위에 흩어 놓은 것이다(화소로 대조해서
+            원본이 같은 파일임을 확인했다). 그래서 상자마다 잘라 보는 창이 다르다.
+          ★★ **칠하는 순서가 바뀌었다.** 앞 판은 알약이 큐 **앞**이었는데 이제 큐가
+            앞이다 — 알약이 큐 뒤에서 떠오르는 것으로 읽힌다.
+          ★★★ 큐 셋은 조금 커졌다(109→125 · 114→124 · 93→103). */}
       <div style="position:absolute;background:#fff;align-content:stretch;display:flex;align-items:center;justify-content:space-between;left:0;padding-left:62px;padding-right:30px;padding-top:24px;padding-bottom:24px;right:0;top:0" data-n="div.figma-1lwry8o" data-node-id="20:4040">
         <div style="grid-template-columns:max-content;grid-template-rows:max-content;display:inline-grid;line-height:0;place-items:start;position:relative;flex-shrink:0;width:74px;height:74px" data-n="Clip path group" data-node-id="21:4711">
 <!--
@@ -1347,7 +1530,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <div style="position:absolute;display:flex;height:124.867px;align-items:center;justify-content:center;top:293px;width:140.822px;left:986px" data-node-id="23:6545">
         <div style="flex:none;transform:rotate(178.16deg) scale(1,-1)">
           <div style="height:120.531px;position:relative;width:137.024px" data-n="pet-bark 1">
-            <video class="kyu-anim" data-kyu-anim="hero-pet" muted loop playsinline preload="none" data-poster="assets/anim/hero-pet.png" aria-label="hero-pet" data-webm="assets/anim/hero-pet.webm" data-mp4="assets/anim/hero-pet.mp4" style="position:absolute;left:0.48px;top:-12.05px;width:135.11px;height:125.6px;max-width:none;pointer-events:none"></video>
+            <video class="kyu-anim" data-kyu-anim="hero-pet" muted loop playsinline preload="none" data-poster="assets/anim/hero-pet.png" aria-label="hero-pet" data-webm="assets/anim/hero-pet.webm" data-mp4="assets/anim/hero-pet.mp4" style="position:absolute;left:0.63px;top:-10.15px;width:135.11px;height:123.7px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
@@ -1357,9 +1540,6 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
             <video class="kyu-anim" data-kyu-anim="hero-dance" muted loop playsinline preload="none" data-poster="assets/anim/hero-dance.png" aria-label="hero-dance" data-webm="assets/anim/hero-dance.webm" data-mp4="assets/anim/hero-dance.mp4" style="position:absolute;left:-9.94px;top:-5.12px;width:154.27px;height:289.25px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
-      </div>
-      <div style="position:absolute;border-width:1px;border-style:solid;border-color:#d3d3d3;border-style:solid;height:848px;left:60px;border-radius:32px;box-shadow:0px 3px 8.7px 2px rgba(207,207,207,0.25);top:449px;width:1313px" data-n="Desktop screen 4" data-node-id="21:5758" id="what">
-        <img src="assets/art/desktop-screen.webp" alt="" fetchpriority="high" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;border-radius:32px;width:100%;height:100%" data-box="box1">
       </div>
       <div style="position:absolute;top:1227px;right:1px;bottom:5821.08px;left:0;background-image:linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 64%, rgb(255, 255, 255) 90%, rgb(255, 255, 255) 100%);" data-n="div.fade-out" data-node-id="21:5946">
       </div>
@@ -1374,7 +1554,111 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:600;font-style:normal;font-weight:600;justify-content:center;line-height:0;left:60px;font-style:normal;font-size:17px;color:#000;top:1400px;white-space:nowrap;transform:translate(0,-50%)" data-node-id="21:6234">
         <p style="line-height:25.2px" class="kyu-flow">WHAT KYU DOES</p>
       </div>
-      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:60px;font-style:normal;font-size:76px;color:#000;top:1481.19px;letter-spacing:-3.2px;white-space:nowrap;transform:translate(0,-50%)" data-node-id="21:6235">
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:425px;font-style:normal;font-size:64px;color:#000;top:653px;letter-spacing:-3.2px;white-space:nowrap;transform:translate(0,-50%)" data-node-id="39:7159">
+        <p style="line-height:88px">Every desk is different.</p>
+      </div>
+      <div style="position:absolute;background:rgba(162,198,255,0.2);height:53.625px;left:39.5px;border-radius:50px;top:810.75px;width:117px" data-node-id="39:7161">
+      </div>
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:98.0px;font-style:normal;font-size:16px;color:#000;text-align:center;top:838.38px;width:58.5px;transform:translate(-50%,-50%)" data-node-id="39:7163">
+        <p style="line-height:24px" class="kyu-flow">Arun</p>
+      </div>
+      <div style="position:absolute;background:rgba(162,198,255,0.2);height:53.625px;left:205.25px;border-radius:50px;top:788.0px;width:117px" data-node-id="39:7167">
+      </div>
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:263.75px;font-style:normal;font-size:16px;color:#000;text-align:center;top:815.63px;width:68.25px;transform:translate(-50%,-50%)" data-node-id="39:7169">
+        <p style="line-height:24px" class="kyu-flow">Kenji</p>
+      </div>
+      <div style="position:absolute;background:rgba(162,198,255,0.2);height:53.625px;left:375.88px;border-radius:50px;top:797.75px;width:117px" data-node-id="39:7164">
+      </div>
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:433.56px;font-style:normal;font-size:16px;color:#000;text-align:center;top:825.38px;width:66.62px;transform:translate(-50%,-50%)" data-node-id="39:7166">
+        <p style="line-height:24px" class="kyu-flow">Louis</p>
+      </div>
+      <div style="position:absolute;height:398.95px;left:174.38px;top:859.5px;width:154.06px" data-n="cast-kenji 1" data-node-id="39:7170">
+        <img src="assets/art/cast-kenji.webp" alt="" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+      </div>
+      <div style="position:absolute;height:457.07px;left:281.9px;top:851.38px;width:284.1px" data-n="cast-danny 1" data-node-id="39:7171">
+        <img src="assets/art/cast-danny.webp" alt="" fetchpriority="high" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+      </div>
+      <div style="position:absolute;height:426.3px;left:-20.63px;top:882.25px;width:176.9px" data-n="cast-dea 3" data-node-id="39:7172">
+        <img src="assets/art/cast-dea.webp" alt="" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+      </div>
+      <div style="position:absolute;height:128.48px;left:169.5px;top:1129.25px;width:159.12px" data-n="pets-cat3-idle 1" data-node-id="39:7173">
+        <img src="assets/art/pets-cat3-idle.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+      </div>
+      <div style="position:absolute;height:169.16px;left:169.5px;top:1150.37px;width:272.74px" data-n="pets-dachs2-flip 1" data-node-id="39:7174">
+        <img src="assets/art/pets-dachs2-flip.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+      </div>
+      <div style="position:absolute;height:360.89px;left:-45.0px;top:1005.61px;width:308.63px" data-n="pets-dob-asktoplay 1" data-node-id="39:7175">
+        <img src="assets/art/pets-dob-asktoplay.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+      </div>
+      <div style="position:absolute;height:184.44px;left:322.25px;top:1174.75px;width:176.35px" data-n="pets-cat2-walk 1" data-node-id="39:7176">
+        <img src="assets/art/pets-cat2-walk.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+      </div>
+      <div style="position:absolute;background:rgba(162,198,255,0.2);height:52.2px;left:964.78px;border-radius:50px;top:811.22px;width:113.89px" data-node-id="39:7188">
+      </div>
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:1021.73px;font-style:normal;font-size:16px;color:#000;text-align:center;top:837.32px;width:47.45px;transform:translate(-50%,-50%)" data-node-id="39:7189">
+        <p style="line-height:24px" class="kyu-flow">Rin</p>
+      </div>
+      <div style="position:absolute;background:rgba(162,198,255,0.2);height:52.2px;left:1141.95px;border-radius:50px;top:784.33px;width:113.89px" data-node-id="39:7181">
+      </div>
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:1198.9px;font-style:normal;font-size:16px;color:#000;text-align:center;top:810.43px;width:47.45px;transform:translate(-50%,-50%)" data-node-id="39:7182">
+        <p style="line-height:24px" class="kyu-flow">Kyu</p>
+      </div>
+      <div style="position:absolute;background:rgba(162,198,255,0.2);height:52.2px;left:1336.51px;border-radius:50px;top:778.0px;width:113.89px" data-node-id="39:7184">
+      </div>
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:1393.46px;font-style:normal;font-size:16px;color:#000;text-align:center;top:804.1px;width:56.95px;transform:translate(-50%,-50%)" data-node-id="39:7185">
+        <p style="line-height:24px" class="kyu-flow">Arun</p>
+      </div>
+      <div style="position:absolute;height:385.98px;left:941.06px;top:882.4px;width:161.34px" data-n="cast-rin-wave 1" data-node-id="39:7190">
+        <img src="assets/art/cast-rin-wave.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+      </div>
+      <div style="position:absolute;display:flex;height:422.24px;align-items:center;justify-content:center;left:1126.08px;top:847.6px;width:191.45px" data-node-id="39:7179">
+        <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
+          <div style="height:422.24px;position:relative;width:191.45px" data-n="kyu-sing 2">
+            <img src="assets/art/kyu-sing.webp" alt="" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute;height:403.44px;left:1293.83px;top:847.6px;width:170.81px" data-n="cast-kwame 1" data-node-id="39:7191">
+        <img src="assets/art/cast-kwame.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+      </div>
+      <div style="position:absolute;height:109.29px;left:1303.52px;top:917.23px;width:150.08px" data-n="floorprop-box 1" data-node-id="39:7197">
+        <img src="assets/art/floorprop-box.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+      </div>
+      <div style="position:absolute;display:flex;height:144.58px;align-items:center;justify-content:center;left:959.25px;top:1144.99px;width:182.69px" data-node-id="39:7193">
+        <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
+          <div style="height:144.58px;position:relative;width:182.69px" data-n="pets-cat4-stretch 1">
+            <img src="assets/art/pets-cat4-stretch.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute;display:flex;height:252.4px;align-items:center;justify-content:center;left:1010.09px;top:1106.13px;width:290.04px" data-node-id="39:7194">
+        <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
+          <div style="height:252.4px;position:relative;width:290.04px" data-n="pets-dachs-sit 1">
+            <img src="assets/art/pets-dachs-sit.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute;display:flex;height:180.56px;align-items:center;justify-content:center;left:1169.16px;top:1084.88px;width:252.78px" data-node-id="39:7192">
+        <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
+          <div style="height:180.56px;position:relative;width:252.78px" data-n="pets-lab2-run 1">
+            <img src="assets/art/pets-lab2-run.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute;height:196.33px;left:1233.7px;top:1137.08px;width:208.6px" data-n="pet-lie 1" data-node-id="39:7195">
+        <img src="assets/art/pet-lie.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+      </div>
+      <div style="position:absolute;height:114.18px;left:824.0px;top:1176.62px;width:145.17px" data-n="floorprop-bowl1 1" data-node-id="39:7198">
+        <img src="assets/art/floorprop-bowl1.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+      </div>
+      <div style="position:absolute;display:flex;height:96.07px;align-items:center;justify-content:center;left:948.29px;top:1222.5px;width:154.11px" data-node-id="39:7196">
+        <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
+          <div style="height:96.07px;position:relative;width:154.11px" data-n="pets-pom-sleep 1">
+            <img src="assets/art/pets-pom-sleep.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+          </div>
+        </div>
+      </div>
+      <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:60px;font-style:normal;font-size:76px;color:#000;top:1481.19px;letter-spacing:-3.2px;white-space:nowrap;transform:translate(0,-50%)" data-node-id="21:6235" id="what">
         <p style="line-height:88px">While you work, he’s there.</p>
       </div>
       <div style="position:absolute;height:258px;left:103px;top:1752px;width:198px" data-n="cast-dea 1" data-node-id="23:6873">
@@ -1476,13 +1760,13 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       </div>
       <div style="position:absolute;display:flex;height:613px;align-items:center;justify-content:center;left:58px;top:2918px;width:395px" data-node-id="26:7224">
         <div style="flex:none;transform:rotate(90deg)">
-          <div style="background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:613px" data-box="box2">
+          <div style="background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:613px" data-box="box1">
           </div>
         </div>
       </div>
       <div style="position:absolute;display:flex;height:285px;align-items:center;justify-content:center;left:493px;top:2918px;width:880px" data-node-id="26:7226">
         <div style="flex:none;transform:rotate(180deg)">
-          <div style="background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:285px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:880px" data-box="box3">
+          <div style="background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:285px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:880px" data-box="box2">
           </div>
         </div>
       </div>
@@ -1510,7 +1794,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <img src="assets/art/prop-umbrella.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
       <div style="position:absolute;height:218px;left:255px;top:2198px;width:91px" data-n="cast-dea 2" data-node-id="23:6938" data-kyu="wx" data-wx="leaves" class="kyu-fade-bottom">
-        <img src="assets/art/cast-dea.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+        <img src="assets/art/cast-dea.webp" alt="" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
       <div style="position:absolute;display:flex;height:231px;align-items:center;justify-content:center;left:89px;top:2188px;width:107px" data-node-id="23:6939" data-kyu="wx" data-wx="snow" class="kyu-fade-bottom">
         <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
@@ -1529,12 +1813,12 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <img src="assets/art/wx-3.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
       <div style="position:absolute;height:180px;left:625px;border-radius:11px;top:2120px;width:168px" data-n="ui-agent-card 1" data-node-id="24:6959">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:11px" data-box="box4">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:11px" data-box="box3">
           <img src="assets/art/ui-agent-card.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:125.78%;left:0;max-width:none;top:-17.33%;width:138.1%">
         </div>
       </div>
       <div style="position:absolute;height:177px;left:715px;border-radius:23px;top:2206px;width:214px" data-n="ui-agent-list 1" data-node-id="24:6960">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:23px" data-box="box5">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:23px" data-box="box4">
           <img src="assets/art/ui-agent-list.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:130.64%;left:0;max-width:none;top:-16.87%;width:100%">
         </div>
       </div>
@@ -1549,7 +1833,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <div style="position:absolute;display:flex;height:145.64px;align-items:center;justify-content:center;left:1043px;top:2259px;width:140.009px" data-node-id="24:6963">
         <div style="flex:none;transform:rotate(3.43deg)">
           <div style="height:138px;position:relative;width:132px" data-n="pet-asktoplay 1">
-            <video class="kyu-anim" data-kyu-anim="away-pet" muted loop playsinline preload="none" data-poster="assets/anim/away-pet.png" aria-label="away-pet" data-webm="assets/anim/away-pet.webm" data-mp4="assets/anim/away-pet.mp4" style="position:absolute;left:38.02px;top:76.71px;width:56.95px;height:53.6px;max-width:none;pointer-events:none"></video>
+            <video class="kyu-anim" data-kyu-anim="away-pet" muted loop playsinline preload="none" data-poster="assets/anim/away-pet.png" aria-label="away-pet" data-webm="assets/anim/away-pet.webm" data-mp4="assets/anim/away-pet.mp4" style="position:absolute;left:38.02px;top:77.38px;width:56.95px;height:52.93px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
@@ -1596,23 +1880,8 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         </div>
       </div>
       <div style="position:absolute;height:188px;left:416px;border-radius:11px;box-shadow:0px 4px 7px 0px rgba(173,173,173,0.25);top:2579px;width:142px" data-n="ui-bag 1" data-node-id="24:6997">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:11px" data-box="box6">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:11px" data-box="box5">
           <img src="assets/art/ui-bag.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:117.53%;left:-4.23%;max-width:none;top:-14.08%;width:135.92%">
-        </div>
-      </div>
-      <div style="position:absolute;height:144px;left:674px;top:3058px;width:109px" data-n="kyu-think 1" data-node-id="24:6999" data-kyu="learn-kyu">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
-          <img src="assets/art/kyu-think.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:211.81%;left:-0.1%;max-width:none;top:0;width:100.19%">
-        </div>
-      </div>
-      <div style="position:absolute;height:122px;left:905px;top:3080px;width:114px" data-n="kyu-shrug 1" data-node-id="26:7281" data-kyu="learn-kyu">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
-          <img src="assets/art/kyu-shrug.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:218.44%;left:0;max-width:none;top:-0.13%;width:100%">
-        </div>
-      </div>
-      <div style="position:absolute;height:123px;left:1093px;top:3080px;width:93px" data-n="kyu-bashful 1" data-node-id="26:7282" data-kyu="learn-kyu">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
-          <img src="assets/art/kyu-bashful.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:214.63%;left:-0.4%;max-width:none;top:0;width:100.8%">
         </div>
       </div>
       <div style="position:absolute;display:flex;align-items:center;justify-content:center;left:212px;width:133.983px;height:133.983px;top:2761px" data-node-id="25:7167">
@@ -1623,10 +1892,10 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         </div>
       </div>
       <div style="position:absolute;height:186px;left:977px;top:1800px;width:292px" data-n="moment-quiet 1" data-node-id="26:7222">
-        <video class="kyu-anim" data-kyu-anim="quiet-pair" muted loop playsinline preload="none" data-poster="assets/anim/quiet-pair.png" aria-label="quiet-pair" data-webm="assets/anim/quiet-pair.webm" data-mp4="assets/anim/quiet-pair.mp4" style="position:absolute;left:-30.04px;top:4.38px;width:352.31px;height:173.96px;max-width:none;pointer-events:none"></video>
+        <video class="kyu-anim" data-kyu-anim="quiet-pair" muted loop playsinline preload="none" data-poster="assets/anim/quiet-pair.png" aria-label="quiet-pair" data-webm="assets/anim/quiet-pair.webm" data-mp4="assets/anim/quiet-pair.mp4" style="position:absolute;left:-34.26px;top:-33.48px;width:361.07px;height:211.51px;max-width:none;pointer-events:none"></video>
       </div>
       <div style="position:absolute;height:43px;left:1028px;border-radius:43.5px;top:1733px;width:105px" data-n="ui-agent-card 2" data-node-id="26:7223" data-kyu="mute-on">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:43.5px" data-box="box7">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:43.5px" data-box="box6">
           <img src="assets/art/ui-agent-card.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:650.57%;left:-150.48%;max-width:none;top:0;width:276.19%">
         </div>
       </div>
@@ -1640,6 +1909,61 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           <p style="line-height:36px">Learns you</p>
         </div>
       </div>
+      <div style="position:absolute;height:167px;left:1178px;top:2984px;width:176px" data-n="ui-learn-profile 1" data-node-id="26:7289">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+          <img src="assets/art/ui-learn-profile.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:124.42%;left:-0.02%;max-width:none;top:-24.42%;width:100.04%">
+        </div>
+      </div>
+      <div style="position:absolute;height:18px;left:546px;top:3080px;width:204px" data-n="ui-learn-mix 2" data-node-id="39:7204">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+          <img src="assets/art/ui-learn-mix.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:742.53%;max-width:none;top:-254.6%;width:100%">
+        </div>
+      </div>
+      <div style="position:absolute;height:18px;left:554px;top:3137px;width:130px" data-n="ui-learn-mix 3" data-node-id="39:7205">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+          <img src="assets/art/ui-learn-mix.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:742.53%;max-width:none;top:-347.93%;width:156.92%">
+        </div>
+      </div>
+      <div style="position:absolute;height:26px;left:508px;top:3049px;width:204px" data-n="ui-learn-mix 5" data-node-id="39:7207">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+          <img src="assets/art/ui-learn-mix.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:506.27%;left:-2.23%;max-width:none;top:-308.77%;width:100%">
+        </div>
+      </div>
+      <div style="position:absolute;height:24px;left:508px;top:3105px;width:171px" data-n="ui-learn 1" data-node-id="26:7290">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+          <img src="assets/art/ui-learn.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:674.67%;left:-4.26%;max-width:none;top:-274.67%;width:109.93%">
+        </div>
+      </div>
+      <div style="position:absolute;height:165px;left:644px;top:3037px;width:125px" data-n="kyu-think 1" data-node-id="24:6999" data-kyu="learn-kyu">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+          <img src="assets/art/kyu-think.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:211.81%;left:-0.1%;max-width:none;width:100.19%">
+        </div>
+      </div>
+      <div style="position:absolute;height:18px;left:823px;top:3053px;width:204px" data-n="ui-learn-mix 1" data-node-id="26:7288">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+          <img src="assets/art/ui-learn-mix.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:742.53%;max-width:none;top:-154.6%;width:100%">
+        </div>
+      </div>
+      <div style="position:absolute;height:22px;left:786px;top:3131px;width:160px" data-n="ui-learn 2" data-node-id="39:7210">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+          <img src="assets/art/ui-learn.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:674.67%;left:-4.26%;max-width:none;top:-372.74%;width:109.93%">
+        </div>
+      </div>
+      <div style="position:absolute;height:24px;left:803px;top:3089px;width:169px" data-n="ui-learn 3" data-node-id="39:7211">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+          <img src="assets/art/ui-learn.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:674.67%;left:-4.26%;max-width:none;top:-475.07%;width:109.93%">
+        </div>
+      </div>
+      <div style="position:absolute;height:134px;left:900px;top:3068px;width:124px" data-n="kyu-shrug 1" data-node-id="26:7281" data-kyu="learn-kyu">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+          <img src="assets/art/kyu-shrug.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:218.44%;max-width:none;top:-0.13%;width:100%">
+        </div>
+      </div>
+      <div style="position:absolute;height:135px;left:1092px;top:3068px;width:103px" data-n="kyu-bashful 1" data-node-id="26:7282" data-kyu="learn-kyu">
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+          <img src="assets/art/kyu-bashful.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:214.63%;left:-0.4%;max-width:none;width:100.8%">
+        </div>
+      </div>
       <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% + 334px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:2548px;width:420px;transform:translate(-50%,-50%)" data-node-id="23:6900">
         <p style="line-height:24px" class="kyu-flow">Some quiet morning, a stray pup crosses your screen.</p>
       </div>
@@ -1649,13 +1973,13 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <div style="position:absolute;display:contents;height:320.783px;left:487.51px;top:3228.11px;width:890.929px" data-node-id="26:7247">
         <div style="position:absolute;display:flex;height:320.782px;align-items:center;justify-content:center;left:487.51px;top:3228.11px;width:890.928px" data-node-id="26:7228" data-kyu="twinkle">
           <div style="flex:none;transform:rotate(177.65deg)">
-            <div style="background:#000;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:285px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:880px" data-box="box8">
+            <div style="background:#000;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:285px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:880px" data-box="box7">
             </div>
           </div>
         </div>
         <div style="position:absolute;display:flex;height:42.372px;align-items:center;justify-content:center;left:calc(50% + 207.72px);top:calc(50% - 291.41px);width:133.404px;transform:translate(-50%,-50%)" data-node-id="26:7243">
           <div style="flex:none;transform:rotate(-2.35deg)">
-            <div style="background:#000;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding-bottom:1px;position:relative;width:132px" data-n="div.framer-xphunr" data-box="box9">
+            <div style="background:#000;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding-bottom:1px;position:relative;width:132px" data-n="div.framer-xphunr" data-box="box8">
               <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#fff;white-space:nowrap" data-node-id="26:7244">
                 <p style="line-height:36px">Horoscope </p>
               </div>
@@ -1732,18 +2056,12 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           </div>
         </div>
       </div>
-      <div style="position:absolute;height:361px;left:996px;top:835px;width:160px" data-n="kyu-wave 1" data-node-id="26:7249">
-        <video class="kyu-anim" data-kyu-anim="screen-arrive" muted loop playsinline preload="none" data-poster="assets/anim/screen-arrive.png" aria-label="screen-arrive" data-webm="assets/anim/screen-arrive.webm" data-mp4="assets/anim/screen-arrive.mp4" style="position:absolute;left:-95.99px;top:-3.65px;width:356.94px;height:356.21px;max-width:none;pointer-events:none"></video>
-      </div>
       <div style="position:absolute;display:flex;height:113px;align-items:center;justify-content:center;left:1216px;top:2656px;width:157px" data-node-id="26:7280">
         <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
           <div style="height:113px;position:relative;width:157px" data-n="pets-lab2-run 1">
             <img src="assets/art/pets-lab2-run.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
           </div>
         </div>
-      </div>
-      <div style="position:absolute;height:126px;left:1146px;top:1070px;width:167px;visibility:hidden" data-n="pet-run 1" data-node-id="26:7250">
-        <img src="assets/art/pet-run.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
       <div style="position:absolute;display:flex;height:94px;align-items:center;justify-content:center;left:1200px;top:2702px;width:102px" data-node-id="26:7285">
         <div style="flex:none;transform:rotate(180deg) scale(1,-1)">
@@ -1787,21 +2105,6 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       </div>
       <div style="position:absolute;height:44px;left:1128px;top:1731px;width:102px" data-n="ui-bell-muted 1" data-node-id="26:7287" data-kyu="mute-off">
         <img src="assets/art/ui-bell-muted.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
-      </div>
-      <div style="position:absolute;height:88px;left:515px;top:3035px;width:170px" data-n="ui-learn-mix 1" data-node-id="26:7288" data-kyu="learn-ui">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
-          <img src="assets/art/ui-learn-mix.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:126.57%;left:0;max-width:none;top:-26.35%;width:100%">
-        </div>
-      </div>
-      <div style="position:absolute;height:167px;left:1178px;top:2985px;width:176px" data-n="ui-learn-profile 1" data-node-id="26:7289" data-kyu="learn-ui">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
-          <img src="assets/art/ui-learn-profile.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:124.42%;left:-0.02%;max-width:none;top:-24.42%;width:100.04%">
-        </div>
-      </div>
-      <div style="position:absolute;height:80px;left:788px;top:3035px;width:155px" data-n="ui-learn 1" data-node-id="26:7290" data-kyu="learn-ui">
-        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
-          <img src="assets/art/ui-learn.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:168.67%;left:0;max-width:none;top:-68.67%;width:100%">
-        </div>
       </div>
       <div style="position:absolute;height:452px;left:77px;top:3053px;width:361px" data-n="ui-idcards 2" data-node-id="26:7292" data-kyu="idcards">
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
@@ -1870,13 +2173,13 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <div style="position:absolute;display:contents;height:417.462px;left:725.18px;top:3564.77px;width:652.636px" data-node-id="26:7350">
         <div style="position:absolute;display:flex;height:417.462px;align-items:center;justify-content:center;left:725.18px;top:3564.77px;width:652.636px" data-node-id="26:7345">
           <div style="flex:none;transform:rotate(2.04deg)">
-            <div style="background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:639px" data-box="box10">
+            <div style="background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;position:relative;border-radius:32px;box-shadow:0px 5px 16.2px -1px rgba(186,186,186,0.32);width:639px" data-box="box9">
             </div>
           </div>
         </div>
         <div style="position:absolute;display:flex;height:45.258px;align-items:center;justify-content:center;left:calc(50% + 337.12px);top:calc(50% + 39.56px);width:234.168px;transform:translate(-50%,-50%)" data-node-id="26:7347">
           <div style="flex:none;transform:rotate(2.04deg)">
-            <div style="align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding-bottom:1px;position:relative;width:233px" data-n="div.framer-xphunr" data-box="box11">
+            <div style="align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding-bottom:1px;position:relative;width:233px" data-n="div.framer-xphunr" data-box="box10">
               <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#111;font-size:24px;white-space:nowrap" data-node-id="26:7348" id="price">
                 <p style="line-height:36px">$9.99 Yours forever</p>
               </div>
@@ -1886,22 +2189,22 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <div style="position:absolute;display:flex;height:60.658px;align-items:center;justify-content:center;left:calc(50% + 337.18px);top:3670.14px;width:358.48px;transform:translate(-50%,-50%)" data-node-id="26:7349">
           <div style="flex:none;transform:rotate(2.04deg)">
             <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;width:357px;white-space:pre-wrap">
-              <p style="line-height:24px;margin-bottom:0" class="kyu-flow" data-box="box12">One-time purchase — no subscription / </p>
+              <p style="line-height:24px;margin-bottom:0" class="kyu-flow" data-box="box11">One-time purchase — no subscription / </p>
               <p style="line-height:24px" class="kyu-flow">Free updates</p>
             </div>
           </div>
         </div>
       </div>
       <div style="position:absolute;height:348px;left:548px;top:3597px;width:118px" data-n="ui-head-tick 1" data-node-id="26:7352">
-        <video class="kyu-anim" data-kyu-anim="noaccount-tick" muted loop playsinline preload="none" data-poster="assets/anim/noaccount-tick.png" aria-label="noaccount-tick" data-webm="assets/anim/noaccount-tick.webm" data-mp4="assets/anim/noaccount-tick.mp4" style="position:absolute;left:-20.54px;top:-5.73px;width:163.08px;height:346.54px;max-width:none;pointer-events:none"></video>
+        <video class="kyu-anim" data-kyu-anim="noaccount-tick" muted loop playsinline preload="none" data-poster="assets/anim/noaccount-tick.png" aria-label="noaccount-tick" data-webm="assets/anim/noaccount-tick.webm" data-mp4="assets/anim/noaccount-tick.mp4" style="position:absolute;left:-20.54px;top:-5.1px;width:163.08px;height:345.9px;max-width:none;pointer-events:none"></video>
       </div>
       <div style="position:absolute;height:110px;left:86px;top:3835px;width:126px" data-n="pets-pom-bark 1" data-node-id="26:7363">
-        <video class="kyu-anim" data-kyu-anim="noaccount-spin" muted loop playsinline preload="none" data-poster="assets/anim/noaccount-spin.png" aria-label="noaccount-spin" data-webm="assets/anim/noaccount-spin.webm" data-mp4="assets/anim/noaccount-spin.mp4" style="position:absolute;left:-16.52px;top:-10.46px;width:158.13px;height:112.11px;max-width:none;pointer-events:none"></video>
+        <video class="kyu-anim" data-kyu-anim="noaccount-spin" muted loop playsinline preload="none" data-poster="assets/anim/noaccount-spin.png" aria-label="noaccount-spin" data-webm="assets/anim/noaccount-spin.webm" data-mp4="assets/anim/noaccount-spin.mp4" style="position:absolute;left:-15.9px;top:-10.04px;width:156.46px;height:112.11px;max-width:none;pointer-events:none"></video>
       </div>
       <div style="position:absolute;display:flex;height:344.925px;align-items:center;justify-content:center;left:1205px;top:3611px;width:136.844px" data-node-id="26:7368">
         <div style="flex:none;transform:rotate(2.25deg)">
           <div style="height:340.334px;position:relative;width:123.569px" data-n="kyu-clap 1">
-            <video class="kyu-anim" data-kyu-anim="forever-clap" muted loop playsinline preload="none" data-poster="assets/anim/forever-clap.png" aria-label="forever-clap" data-webm="assets/anim/forever-clap.webm" data-mp4="assets/anim/forever-clap.mp4" style="position:absolute;left:-26.75px;top:-5.18px;width:176.72px;height:337.56px;max-width:none;pointer-events:none"></video>
+            <video class="kyu-anim" data-kyu-anim="forever-clap" muted loop playsinline preload="none" data-poster="assets/anim/forever-clap.png" aria-label="forever-clap" data-webm="assets/anim/forever-clap.webm" data-mp4="assets/anim/forever-clap.mp4" style="position:absolute;left:-26.75px;top:-4.83px;width:176.72px;height:336.87px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
@@ -1915,7 +2218,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <div style="position:absolute;display:flex;height:169.663px;align-items:center;justify-content:center;left:746px;top:3766px;width:181.723px" data-node-id="26:7369">
         <div style="flex:none;transform:rotate(-178.42deg) scale(1,-1)">
           <div style="height:164.836px;position:relative;width:177.243px" data-n="pet-givepaw 1">
-            <video class="kyu-anim" data-kyu-anim="forever-paw" muted loop playsinline preload="none" data-poster="assets/anim/forever-paw.png" aria-label="forever-paw" data-webm="assets/anim/forever-paw.webm" data-mp4="assets/anim/forever-paw.mp4" style="position:absolute;left:-9.53px;top:3.54px;width:181.66px;height:153.31px;max-width:none;pointer-events:none"></video>
+            <video class="kyu-anim" data-kyu-anim="forever-paw" muted loop playsinline preload="none" data-poster="assets/anim/forever-paw.png" aria-label="forever-paw" data-webm="assets/anim/forever-paw.webm" data-mp4="assets/anim/forever-paw.mp4" style="position:absolute;left:-9.53px;top:6.2px;width:181.66px;height:150.65px;max-width:none;pointer-events:none"></video>
           </div>
         </div>
       </div>
@@ -2056,7 +2359,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
                 </div>
               </div>
               <div style="position:absolute;height:426.031px;left:997.36px;top:4179px;width:310.666px" data-n="kyu-lie 2" data-node-id="26:7713">
-                <video class="kyu-anim" data-kyu-anim="tools-lie" muted loop playsinline preload="none" data-poster="assets/anim/tools-lie.png" aria-label="tools-lie" data-webm="assets/anim/tools-lie.webm" data-mp4="assets/anim/tools-lie.mp4" style="position:absolute;left:-26.21px;top:16.08px;width:357.91px;height:395.66px;max-width:none;pointer-events:none"></video>
+                <video class="kyu-anim" data-kyu-anim="tools-lie" muted loop playsinline preload="none" data-poster="assets/anim/tools-lie.png" aria-label="tools-lie" data-webm="assets/anim/tools-lie.webm" data-mp4="assets/anim/tools-lie.mp4" style="position:absolute;left:-41.94px;top:16.08px;width:388.67px;height:395.66px;max-width:none;pointer-events:none"></video>
               </div>
             </div>
             <div style="position:absolute;display:contents;left:1370.7px;top:4437.89px" data-node-id="26:7716">
@@ -2212,7 +2515,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         </div>
       </div>
       <div style="position:absolute;height:163px;left:1130px;top:5809px;width:263px" data-n="pets-dachs2-liehappy 1" data-node-id="26:7958">
-        <video class="kyu-anim" data-kyu-anim="bring-flip" muted loop playsinline preload="none" data-poster="assets/anim/bring-flip.png" aria-label="bring-flip" data-webm="assets/anim/bring-flip.webm" data-mp4="assets/anim/bring-flip.mp4" style="position:absolute;left:-25.09px;top:-35.37px;width:286.25px;height:179.32px;max-width:none;pointer-events:none"></video>
+        <video class="kyu-anim" data-kyu-anim="bring-flip" muted loop playsinline preload="none" data-poster="assets/anim/bring-flip.png" aria-label="bring-flip" data-webm="assets/anim/bring-flip.webm" data-mp4="assets/anim/bring-flip.mp4" style="position:absolute;left:-25.5px;top:-39.48px;width:286.25px;height:184.25px;max-width:none;pointer-events:none"></video>
       </div>
       <div style="position:absolute;height:220px;left:0;top:5732px;width:278px;visibility:hidden" data-n="pets-cat1-stretch 1" data-node-id="26:7961">
         <img src="assets/art/pets-cat1-stretch.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
@@ -2309,11 +2612,89 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
          그 걸음은 목업 테두리에서 시작해야 뜻이 있다. 좁은 판이 763KB 를
          덜 받는다. -->
 
+  </section>
+
+  <!-- ★★★★★★ **히어로 밑의 띠**(창업자 2026-08-31, 피그마 39:7068).
+       ★ 465 폭이라 390 판 **양옆으로 넘친다**(왼 49 · 오 26). 넘치는 쪽에
+         강아지와 라브라도가 걸쳐 있어야 「책상이 이어진다」로 읽힌다.
+       ★★ 넓은 판의 같은 띠와 **한 문장**이다 — "Every desk is different." -->
+  <section class="m-everydesk">
+    <h2>Every desk is different.</h2>
+    <div class="m-desks">
+      <img class="d-kyu flip" src="assets/art/kyu-sing.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-dea" src="assets/art/cast-dea.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-danny" src="assets/art/cast-danny.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-rin" src="assets/art/cast-rin-wave.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-cat3" src="assets/art/pets-cat3-idle.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-dachsflip" src="assets/art/pets-dachs2-flip.png" alt="" loading="lazy" decoding="async">
+      <img class="d-dob" src="assets/art/pets-dob-asktoplay.png" alt="" loading="lazy" decoding="async">
+      <img class="d-cat2" src="assets/art/pets-cat2-walk.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-bowl" src="assets/art/floorprop-bowl1.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-lab flip" src="assets/art/pets-lab2-run.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-cat4 flip" src="assets/art/pets-cat4-stretch.png" alt="" loading="lazy" decoding="async">
+      <img class="d-dachssit flip" src="assets/art/pets-dachs-sit.png" alt="" loading="lazy" decoding="async">
+      <img class="d-lie" src="assets/art/pet-lie.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-pom flip" src="assets/art/pets-pom-sleep.webp" alt="" loading="lazy" decoding="async">
+      <div class="d-dock"></div>
+      <img class="d-ic d-finder" src="assets/art/dock-finder.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-ic d-app1" src="assets/art/dock-appicon1.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-ic d-app3" src="assets/art/dock-appicon3.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-ic d-app4" src="assets/art/dock-appicon4.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-ic d-slack" src="assets/art/dock-slack.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-ic d-figma" src="assets/art/dock-figma.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-ic d-folder" src="assets/art/dock-folder.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-ic d-trash" src="assets/art/dock-trash.webp" alt="" loading="lazy" decoding="async">
+      <span class="d-badge d-b1">4</span>
+      <span class="d-badge d-b2">9</span>
+      <span class="d-badge d-b3">4</span>
+      <div class="d-fade"></div>
+    </div>
+  </section>
+
+  <section class="m-hero m-hero2">
     <div class="m-eyebrow"><span>WHAT KYU DOES</span><i class="m-new">NEW</i></div>
     <h2 id="what">While you work, he's there.</h2>
   </section>
 
   <section class="m-cards">
+    <!-- ★★★★★★ **새로 들어온 카드 셋**(창업자 2026-08-31, Figma 32:2927).
+         피그마 순서 그대로 — Desk Magic(y930) · Hands it back(y1224) · Focus Mode(y1541)
+         가 「Make your own」(y1939) **앞**에 온다. -->
+
+    <!-- ⓪ 지팡이 — 큐만 하는 능력. 배지는 BETA -->
+    <article class="m-card m-magic">
+      <h3>Desk Magic<i class="m-new beta">BETA</i></h3>
+      <p>Screenshots piling up? He'll offer to tidy.<br>He asks first — and never deletes.</p>
+      <img class="m-trash" src="assets/art/ui-trash.webp" alt="" width="125" height="125" loading="lazy" decoding="async">
+    </article>
+
+    <!-- ⓪-2 가방 — 떨어뜨린 것을 받아 든다 -->
+    <article class="m-card m-hands">
+      <h3>Hands it back</h3>
+      <p>Drop a file or a link on him</p>
+      <div class="m-bagwrap">
+        <img class="f f-aep" src="assets/art/file-aep.svg" alt="" loading="lazy" decoding="async">
+        <img class="f f-jpg" src="assets/art/file-jpg.svg" alt="" loading="lazy" decoding="async">
+        <img class="f f-pdf" src="assets/art/file-pdf.svg" alt="" loading="lazy" decoding="async">
+        <img class="f f-png" src="assets/art/file-png.svg" alt="" loading="lazy" decoding="async">
+        <img class="f f-zip" src="assets/art/file-zip.svg" alt="" loading="lazy" decoding="async">
+        <img class="f f-avi" src="assets/art/file-avi.svg" alt="" loading="lazy" decoding="async">
+        <img class="f f-svg" src="assets/art/file-svg.svg" alt="" loading="lazy" decoding="async">
+        <img class="m-bagback" src="assets/art/bag-back34.webp" alt="" loading="lazy" decoding="async">
+        <img class="m-bag" src="assets/art/ui-bag.webp" alt="Four things in the bag" loading="lazy" decoding="async">
+      </div>
+    </article>
+
+    <!-- ⓪-3 몰입 — 뮤트를 새로 짠 자리(창업자: "뮤트도 새로 구조해서 넣어놨어").
+         ★ 알약은 그림이 아니라 **진짜 단추**다. `motion.js` 가 `mute-slot` 을 보고
+           눌러서 바뀌는 알약을 꽂는다 — 피그마의 `ui-bell-muted` 는 그 알약의 사진이다. -->
+    <article class="m-card m-focus">
+      <h3>Focus Mode</h3>
+      <p>In deep focus, he goes quiet</p>
+      <div class="m-pillrow" data-kyu="mute-slot"></div>
+      <img class="m-moment" src="assets/art/moment-quiet.png" alt="Kyu sitting quietly while you work" loading="lazy" decoding="async">
+    </article>
+
     <!-- ① 만들기 — 이름표는 피그마 값 그대로(알약 50×20 · rgba(162,198,255,.2) · 11px) -->
     <article class="m-card">
       <h3>Make your own</h3>
@@ -2377,6 +2758,21 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <img src="assets/art/ui-idcards.webp" alt="Kyu's adoption card" loading="lazy" decoding="async">
       </div>
     </article>
+  </section>
+
+  <!-- ★★★★★★ **입양의 순간**(창업자 2026-08-31: "여기 사이에 들어간 입양해줘!
+       라는 아이도 넣어줘"). 피그마 39:7202 + 39:7203, 「The two of you」와
+       「Horoscope」 사이.
+       ★ 알약은 **진짜 입력칸이 아니라 그림**이다 — 앱에서 이름을 지어 주는 그
+         순간의 사진이다. 그래서 `<input>`·`<button>` 이 아니라 글 상자다
+         (손가락 자리 40px 규칙은 **누를 수 있는 것**에만 걸린다).
+       ★★ 강아지는 736x206 짜리 **스프라이트 시트**다. 왼쪽 창만 잘라 쓰고
+         (`object-position: left`) 그 다음 좌우를 뒤집는다 — 순서가 바뀌면
+         다른 자세가 나온다. -->
+  <section class="m-adopt">
+    <h2>Adopt me</h2>
+    <div class="m-namepill"><img class="np-bite" src="assets/art/floorprop-biscuit.webp" alt="" loading="lazy" decoding="async"><span>Name</span></div>
+    <img class="m-adoptpup" src="assets/art/pets-pompup-sit.webp" alt="A stray pup waiting to be named" loading="lazy" decoding="async">
   </section>
 
   <!-- ── 별자리 — 피그마: 검은 카드가 2.48° 기울어져 있다 ── -->
@@ -3134,10 +3530,13 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         }, 4200)
       }, 120)
     }
-    // ★★★★★★ **좁은 판에는 없는 게 맞다**(창업자 2026-08-30: 목업을 지웠다).
-    //   여기서 그냥 못찾음에 넣으면, **일부러 없앤 것**을 자가 사고로 읽는다 —
-    //   그러면 그 자는 다음부터 아무도 안 믿는다.
-  } else if (판.id !== 'm') 못찾음.push('창 안에서 걸어 들어오는 큐 (screen-arrive)')
+    // ★★★★★★ **이제 두 판 다 없는 게 맞다.** 좁은 판은 2026-08-30 에, 넓은 판은
+    //   2026-08-31 에 목업이 빠졌다("데스크탑도 히어로 밑에 목업을 그냥 다 빼고").
+    //   그 걸음은 창 테두리에서 시작해야 뜻이 있으므로 목업과 함께 은퇴했다.
+    //   ★ 그래서 **못찾음에 안 넣는다.** 일부러 없앤 것을 사고로 읽는 자는
+    //     다음부터 아무도 안 본다 — 늘 빨간 불은 꺼진 불과 같다.
+    //   ★★ 되살리려면 `motion-map.json` 의 `_.은퇴` 에 적어 둔 줄을 되돌리면 된다.
+  }
 
   /* ── ⑥ 종 알약 — 둘을 하나로, 눌러서 바뀐다 ──────────────────
      ★ 창업자: "뮤트 뮤디드 필을 하나로 합쳐주고 유저가 눌러서 바뀌는 모션."
