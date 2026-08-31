@@ -762,51 +762,10 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
   background: #fff757; border-radius: 4px; filter: blur(4px);
 }
 /* ★ 휴지통은 카드 가운데. 125px 자리에 256px 그림을 넣는다(2배 여유). */
-#m .m-magic .m-trashbox {
-  position: relative; display: block; width: 125px; height: 125px; margin: 18px auto 0;
-}
-#m .m-magic .m-trash { position: relative; z-index: 2; display: block; width: 100%; height: 100%; }
-/* ★ 떨어지는 것 — 통 **뒤**(z-index 1)라 테두리를 지나면 가려진다. */
-#m .m-magic .t-drop {
-  position: absolute; z-index: 1; left: 50%; width: 34px; height: 34px;
-  margin-left: -17px; background: no-repeat center / contain;
-  top: -34px; opacity: 0;
-}
-#m .m-magic.담는다 .t-drop { animation: kyu-drop .62s cubic-bezier(.4,.1,.7,1) forwards; }
-#m .m-magic.담는다 .t1 { animation-delay: .15s; margin-left: -26px }
-#m .m-magic.담는다 .t2 { animation-delay: .75s; margin-left: -8px }
-/* ★★ 셋째만 **반쯤 걸쳐 남는다** — 다 삼켜 버리면 「비었다」로 돌아간다.
-   통 테두리가 9.4% 부터라, 4% 에 멈추면 윗머리만 삐죽 보인다. */
-#m .m-magic.담는다 .t3 { animation: kyu-drop-rest .62s cubic-bezier(.4,.1,.7,1) 1.35s forwards; margin-left: -20px }
-@keyframes kyu-drop {
-  0%   { top: -38px; opacity: 0; transform: rotate(-14deg) }
-  18%  { opacity: 1 }
-  100% { top: 30px;  opacity: 1; transform: rotate(6deg) }
-}
-@keyframes kyu-drop-rest {
-  0%   { top: -38px; opacity: 0; transform: rotate(10deg) }
-  18%  { opacity: 1 }
-  100% { top: 5px;   opacity: 1; transform: rotate(-8deg) }
-}
-/* ★★★ 담길 때마다 통이 살짝 흔들린다. */
-#m .m-magic.담는다 .m-trash { animation: kyu-wobble 2.1s ease-in-out; transform-origin: 50% 92%; }
-@keyframes kyu-wobble {
-  0%,10%       { transform: rotate(0) }
-  14%          { transform: rotate(2.6deg) }
-  20%          { transform: rotate(-1.8deg) }
-  26%,40%      { transform: rotate(0) }
-  44%          { transform: rotate(-2.6deg) }
-  50%          { transform: rotate(1.8deg) }
-  56%,73%      { transform: rotate(0) }
-  77%          { transform: rotate(2.2deg) }
-  83%          { transform: rotate(-1.4deg) }
-  90%,100%     { transform: rotate(0) }
-}
-@media (prefers-reduced-motion: reduce) {
-  /* ★ 결과만 남긴다 — 하나가 걸쳐 있는 통. */
-  #m .m-magic .t-drop, #m .m-magic.담는다 .t-drop { animation: none; opacity: 0 }
-  #m .m-magic .t3, #m .m-magic.담는다 .t3 { opacity: 1; top: 5px; transform: rotate(-8deg) }
-  #m .m-magic.담는다 .m-trash { animation: none }
+/* ★ 통은 **가만히 있는다**(창업자 2026-08-31: "쓰래기통 그냥 애니메이션 빼자").
+   파일이 떨어져 담기고 통이 흔들리는 것을 넣었다가 도로 걷었다. */
+#m .m-magic .m-trash {
+  display: block; width: 125px; height: 125px; margin: 18px auto 0;
 }
 
 /* ── ⓪-2 Hands it back ────────────────────────────────────── */
@@ -2908,15 +2867,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
     <article class="m-card m-magic">
       <h3>Desk Magic<i class="m-new beta">BETA</i></h3>
       <p>Screenshots piling up? He'll offer to tidy.<br>He asks first — and never deletes.</p>
-      <!-- ★ 빈 통에 파일이 하나씩 떨어져 담긴다(창업자 2026-08-31: "빈쓰래기통이엿다가
-           쓰래기통이 살짝씩 흔들리면 채워지는"). 통은 속이 안 비치므로, 떨어지는 것을
-           **통 뒤에** 두고 위 구멍으로 넣는다 — 테두리(9.4%)를 지나면 저절로 가려진다. -->
-      <span class="m-trashbox">
-        <i class="t-drop t1" style="background-image:url(assets/art/file-png.svg)"></i>
-        <i class="t-drop t2" style="background-image:url(assets/art/file-jpg.svg)"></i>
-        <i class="t-drop t3" style="background-image:url(assets/art/file-png.svg)"></i>
-        <img class="m-trash" src="assets/art/ui-trash.webp" alt="" width="125" height="125" loading="lazy" decoding="async">
-      </span>
+      <img class="m-trash" src="assets/art/ui-trash.webp" alt="" width="125" height="125" loading="lazy" decoding="async">
     </article>
 
     <!-- ⓪-2 가방 — 떨어뜨린 것을 받아 든다 -->
@@ -3911,13 +3862,6 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         }
       }, { threshold: 0.6 })
       눈5.observe(절)
-    }
-    // ★ 쓰레기통이 채워진다 — 화면에 들어올 때 한 번.
-    for (const 통 of $$문서('.m-magic')) {
-      const 눈6 = new IntersectionObserver((들) => {
-        for (const e of 들) if (e.isIntersecting) { e.target.classList.add('담는다'); 눈6.unobserve(e.target) }
-      }, { threshold: 0.4 })
-      눈6.observe(통)
     }
     for (const 가방 of $$문서('.m-hands')) {
       // ★ 여기까지 왔다는 건 움직임 층이 산다는 뜻이다 — 그때만 덮개를 씌운다.
