@@ -262,10 +262,12 @@ a { color: inherit; text-decoration: none; }
 /* ★★★★★★ **키웠다**(창업자 2026-08-30, 아이폰으로 보고: "히어로 왼쪽에 있는
    강아지와 큐를 좀 사이즈를 키워주고"). 214 → 250 · 79 → 96.
    ★ 상자도 같이 키운다(220 → 256) — 안 그러면 발이 잘린다. */
-#m .m-herofigs { position: relative; height: 256px; }
+/* ★ 창업자 2026-08-31: "큐랑 애완견이랑 사이즈를 줄여도 될거같아." 둘 다 0.86배.
+   통도 같이 줄인다 — 안 줄이면 제목과 아래 띠 사이가 헛되이 벌어진다. */
+#m .m-herofigs { position: relative; height: 222px; }
 #m .m-herofigs video { position: absolute; width: auto; }
-#m .m-hk { right: 0; top: 6px; height: 250px; }
-#m .m-hp { right: 70px; bottom: 6px; height: 96px; transform: scaleX(-1); }
+#m .m-hk { right: 0; top: 6px; height: 215px; }
+#m .m-hp { right: 60px; bottom: 6px; height: 83px; transform: scaleX(-1); }
 
 /* 목업 — 피그마 32:2974 (높이 239 · 둥글기 16 · 그림자 3/8.7) */
 #m .m-shot { position: relative; margin-top: 24px; height: 239px; overflow: hidden;
@@ -456,7 +458,7 @@ a { color: inherit; text-decoration: none; }
    세로는 제일 위 판(y93)을 0 으로 잡아 옮겼다 — 우리 글이 피그마보다 한 줄 길다.
    ★ 큐와 아이는 안 건드렸다. 창업자가 지난 판에서 **UI 만** 피그마로 하라고 했고,
      큐 크기·아이 자리는 그때 직접 정한 값이다. */
-#m .m-away .a1 { left: 2.0%; top: 62px; width: 38.7%; border-radius: 11px; clip-path: inset(13.5% 0 0 0); }
+#m .m-away .a1 { left: 2.0%; top: 0; width: 38.7%; border-radius: 11px; clip-path: inset(13.5% 0 0 0); }
 /* ★ 창업자 2026-08-30: "주식 UI를 좀 더 키우고 밑으로 좀 내려줘". 피그마 값(52.5%/12px/41.9%)
    에서 폭 1.24배, 아래로 26px. 오른끝이 카드를 넘지 않게 왼쪽도 같이 당겼다. */
 /* ★★★★★★ **시세는 두 장만 보인다**(창업자 2026-08-30: "영상들에 흰색 테두리가
@@ -478,9 +480,13 @@ a { color: inherit; text-decoration: none; }
 /* ★ 셋이 다 보이려면 차트를 **왼쪽 위**로 보내고 큐를 조금 오른쪽으로 민다.
    재서 맞췄다: 차트 잉크는 그림의 1.5%~91% 구간이고, 큐의 잉크는 카드 안
    197px 에서 시작한다. 그 앞에서 끝나야 셋째 칸(Dow)이 안 가린다. */
-#m .m-away .a2 { left: 5.0%; top: 0; width: 64.0%; }
+/* ★ 창업자 2026-08-31: "주식창도 다른 UI 랑 살짝 겹치게 위치를 바꿔줘, 원래있던
+   자리도 좋았는데 거기로 다시 위치." 원래 자리(top 24)로 돌리되, **셋이 다
+   보이게** 왼쪽에 둔다 — 큐의 잉크는 카드 안 213px 에서 시작하고 차트 잉크는
+   여기서 199px 에 끝난다. GitHub 카드(6~129)와는 일부러 겹친다. */
+#m .m-away .a2 { left: 8.0%; top: 24px; width: 60.0%; }
 /* 메일 — 조금 줄였다(창업자: "중간 카드가 너무 커서"). 49.8% → 44.5% */
-#m .m-away .a3 { left: 21.0%; top: 112px; width: 44.5%; border-radius: 10px; clip-path: inset(13.5% 0 0 0); z-index: 2; }
+#m .m-away .a3 { left: 21.0%; top: 66px; width: 44.5%; border-radius: 10px; clip-path: inset(13.5% 0 0 0); z-index: 2; }
 /* ★ 큐가 **제일 앞**이다(창업자가 그렇게 말했다). 메일 카드가 z-index:2 라
    그냥 두면 손과 컵이 카드 뒤로 들어간다. */
 #m .m-away .a4 { right: -8%; top: 26px; height: 300px; width: auto; z-index: 3; }   /* 큐 — 크게 · 차트를 안 가리게 조금 오른쪽 */
@@ -779,8 +785,16 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
 }
 #m .m-bagwrap img { position: absolute; max-width: none; }
 /* 가방과 그 뒤판 — 뒤판이 먼저(뒤), 가방이 나중(앞) */
-#m .m-bagwrap .m-bagback { left: 61.5%; top: 6.5px; width: 25.8%; }
-#m .m-bagwrap .m-bag     { left: 37.6%; top: 10px;  width: 29.6%; }
+/* ★ 창업자 2026-08-31: "중간 UI가 작아졋어 큐랑 겹쳐도 되니까 다시 키워줘."
+   가방 판을 29.6% → 42%, 뒤에 선 큐도 같은 배로. 겹치는 건 의도다. */
+#m .m-bagwrap .m-bagback { left: 58.0%; top: 4px;  width: 33.0%; }
+/* ★ 그림 위쪽 12%는 **앱 창의 「MUTE ×」 줄**이다(재서 잘랐다: 잉크가 y16~70,
+   판은 y80 부터). 작을 땐 안 보였는데 키우니 엉뚱한 단추처럼 보였다.
+   ★ `clip-path` 는 자리를 안 바꾸므로 그만큼 `top` 을 올려 준다. */
+#m .m-bagwrap .m-bag     { left: 26.0%; top: 6px; width: 42.0%; z-index: 2;
+  clip-path: inset(12% 0 0 0); }
+/* ★ `top` 을 그만큼 올리려 했더니 **위쪽 페이드에 통째로 먹혔다**(마스크가 위 7%를
+   투명하게 만든다). 자리는 그대로 두고 자르기만 한다 — 판이 18px 내려앉을 뿐이다. */
 /* 파일 일곱 — 자리는 카드 폭에 대한 %, 기울기는 피그마 값 그대로 */
 #m .m-bagwrap .f { width: 17.9%; }
 #m .m-bagwrap .f-aep { left:  0.3%; top: -12.1px; width: 17.8%; transform: rotate(-10.75deg); }
@@ -807,7 +821,9 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
      장면이 통째로 어긋난다(이름표에서 이미 겪었다).
    ★★ 제목은 흐름에 둔다 — 말 바꾸기가 글 마디를 찾아야 하고, 절대 배치는
      번역이 길어질 때 겹친다. */
-#m .m-everydesk { margin: 8px 0 0; overflow: hidden; }
+/* ★ 창업자 2026-08-31: "히어로랑 Every desk is different. 사이에 패딩좀 주자."
+   8 → 34px. 히어로의 아이 발밑과 띠의 제목이 붙어 있었다. */
+#m .m-everydesk { margin: 34px 0 0; overflow: hidden; }
 #m .m-everydesk h2 { margin: 0; padding: 0 var(--pad); font: 400 24px/1.2 Inter, system-ui, sans-serif; color: #111; text-align: center; }
 /* 띠 자체 — 판보다 넓게 왼쪽으로 밀어 놓는다(49/390) */
 #m .m-desks {
@@ -3258,6 +3274,23 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
     // ★ 안 움직이는 판에서는 **겉장이 전부**다 — 여기서는 바로 단다.
     for (const v of 보이는것) { 겉장달기(v); v.removeAttribute('loop') }
   } else {
+    // ★★★★★★ **접힘 위의 조각은 관찰자를 기다리지 않는다**(창업자 2026-08-31:
+    //   "히어로 애니메이션이 좀 느리게 뜨는데" · "Make your own - 너무 늦게
+    //   애니메이션이 로딩되").
+    //   ★ `preload="none"` + 관찰자는 **화면 밖 조각에는 맞는 규칙**이다. 그런데
+    //     히어로는 판이 뜨는 순간 이미 화면 안인데도, 관찰자가 한 바퀴 돌 때까지
+    //     겉장조차 안 달려 있었다 — 사람 눈에는 「빈 자리에 나중에 뭐가 뜬다」다.
+    //   ★★ 이름으로 짚지 않고 **재서 고른다**: 첫 화면 안에 걸쳐 있으면 바로 받는다.
+    //     이름으로 짚으면 판이 바뀔 때마다 목록이 낡는다.
+    for (const v of 보이는것) {
+      const r = v.getBoundingClientRect()
+      if (r.bottom <= 0 || r.top >= innerHeight) continue
+      겉장달기(v)
+      v.preload = 'auto'; v.load()
+      v.play().catch(() => {})
+    }
+    // ★★★ 나머지는 **더 일찍** 받는다(300 → 900px). 폰에서 한 번 튕기면 300px 는
+    //   손가락보다 느려서, 카드에 닿았을 때 아직 받는 중이었다.
     const 눈 = new IntersectionObserver((들) => {
       for (const e of 들) {
         const v = e.target
@@ -3267,7 +3300,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           v.play().catch(() => {})
         } else v.pause()
       }
-    }, { rootMargin: '300px 0px' })
+    }, { rootMargin: '900px 0px' })
     for (const v of 보이는것) 눈.observe(v)
   }
 
@@ -4134,7 +4167,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           if (e.isIntersecting && !시계 && !사람이눌렀다) 시계 = setInterval(() => {
             if (사람이눌렀다) { clearInterval(시계); 시계 = null; return }
             뒤집기()
-          }, 2600)
+          }, 1700)   // ★ 2600 → 1700 (창업자 2026-08-31: "필을 조금더 빠르게 바꿔줘")
           else if (!e.isIntersecting && 시계) { clearInterval(시계); 시계 = null }
         }
       }, { threshold: 0.5 }).observe(b)
