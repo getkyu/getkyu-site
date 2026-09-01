@@ -1036,6 +1036,30 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
    으로 지우고 애완견 이름을 지어주자"). 자리글이 지워지고 이름이 한 글자씩 찍힌다.
    ★ 기본은 **자리글이 보이는 상태**다 — 움직임 층이 죽어도 「Name」 이 남지,
      빈 칸이 남지 않는다(가방 덮개와 같은 규칙). */
+/* ★★★★★★ **넓은 판에도 같은 이름 짓기**(창업자 2026-08-31: "강아지 이름
+   편집하는거 모바일처럼 똑같이 넣어줘"). 좁은 판은 알약을 손으로 지었고, 넓은 판은
+   피그마가 준 마디 셋(테·비스킷·글)이 **서로 형제**다 — 그래서 글 마디 안에만
+   조각 셋을 넣고 그 마디를 손잡이로 삼는다.
+   ★ 기본은 자리글이 보이는 상태다 — 움직임 층이 죽어도 「Name」 이 남는다. */
+/* ★★★★★★ **inline 에는 width 가 안 먹는다**(찍어서 봤다 — 「Bori」가 접혀 알약
+   밖으로 나갔다). 자리글이 사라질 때 쓰는 규칙은 width: 0 인데, 좁은 판은 감싸는
+   상자가 flex 라 자식이 블록이 되어 먹고, 넓은 판은 그냥 <p> 라 안 먹는다.
+   자리글이 안 줄어드니 「Name」 자리가 그대로 남고 그 뒤로 이름이 밀려 접혔다.
+   → inline-block 으로 만들어 폭을 갖게 한다. */
+#shell [data-kyu="adopt-name"] .np-ph { font-weight: 500; display: inline-block; }
+#shell [data-kyu="adopt-name"] p { white-space: nowrap; }
+#shell [data-kyu="adopt-name"] .np-typed { color: #111; font-weight: 600; }
+#shell [data-kyu="adopt-name"] .np-caret {
+  width: 1.6px; height: 18px; background: #111; opacity: 0;
+  display: inline-block; border-radius: 1px; vertical-align: -3px; margin-left: 1px;
+}
+#shell [data-kyu="adopt-name"].짓는다 .np-ph { animation: kyu-ph .26s ease forwards; }
+#shell [data-kyu="adopt-name"].짓는다 .np-caret { animation: kyu-caret .9s steps(1) .26s 5; }
+@media (prefers-reduced-motion: reduce) {
+  #shell [data-kyu="adopt-name"] .np-ph,
+  #shell [data-kyu="adopt-name"] .np-caret { display: none }
+}
+
 #m .m-namepill .np-ph { font-weight: 500; }
 #m .m-namepill .np-typed { color: #111; font-weight: 600; }
 #m .m-namepill .np-caret {
@@ -1274,6 +1298,27 @@ html { scroll-behavior: smooth; }
 @keyframes kyu-wipe-in {
   from { -webkit-mask-position: 100% 0; mask-position: 100% 0 }
   to   { -webkit-mask-position: 0% 0;   mask-position: 0% 0 }
+}
+
+/* ── ⑤b AI 카드의 번짐 — 은은하게 숨쉰다 ──────────────────────
+   ★ 창업자 2026-08-31: "그라데이션이 은은하게 애니메이션되는 — 그리고 좀더 위로
+     파지게해줘 로고들까지 살짝 부딛히게".
+   ★★ **자리를 안 옮긴다.** 번짐은 카드 밑에 붙어 있어야 큐가 거기서 올라오는 것으로
+     읽힌다 — 움직이면 떠다니는 얼룩이 된다. 대신 **밝기와 크기만** 아주 조금 바꾼다.
+     밑을 붙잡고(50% 100%) 키우므로 위로만 자란다 — 로고 쪽으로 숨을 쉰다.
+   ★★★ 6.5초다. 사람이 「움직인다」고 알아채지 못하고 **살아 있다**고만 느끼는 빠르기.
+     빠르면 그건 숨이 아니라 깜빡임이다. */
+#shell [data-node-id="62:25606"] {
+  transform-origin: 50% 100%;
+  animation: kyu-aiglow 6.5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+@keyframes kyu-aiglow {
+  0%, 100% { transform: scale(1);        opacity: .82 }
+  50%      { transform: scale(1.06, 1.1); opacity: 1 }
+}
+@media (prefers-reduced-motion: reduce) {
+  #shell [data-node-id="62:25606"] { animation: none; opacity: .92 }
 }
 
 /* ── ⑥ 종 알약 — 둘을 하나로, 눌러서 바뀐다 ──────────────────
@@ -2091,7 +2136,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <div style="position:absolute;height:25.63px;left:467.7px;top:1971.06px;width:28.7px" data-n="floorprop-biscuit 2" data-node-id="62:25682">
           <img src="assets/art/floorprop-biscuit.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
         </div>
-        <div style="word-break:break-word;position:absolute;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;line-height:0;left:496.58px;color:#5f5f5f;font-size:18px;text-align:center;top:1969.75px;width:64.48px" data-node-id="62:25680">
+        <div style="word-break:break-word;position:absolute;font-family:Onest,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;line-height:0;left:496.58px;color:#5f5f5f;font-size:18px;text-align:center;top:1969.75px;width:64.48px" data-node-id="62:25680" data-kyu="adopt-name">
           <p style="line-height:24px" class="kyu-flow">Name</p>
         </div>
         <div style="position:absolute;height:160.95px;left:432px;overflow:hidden;top:2012px;width:167px" data-n="pets-pompup-sit 1" data-node-id="62:25697">
@@ -2105,7 +2150,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         </div>
         <div style="position:absolute;background:#fff;border-width:1px;border-style:solid;border-color:#e3e3e3;border-style:solid;height:395px;left:1015px;overflow:hidden;border-radius:15px;box-shadow:0px 5px 8.1px 0px rgba(186,186,186,0.32);top:1810px;width:358px" data-n="FeatureCard_1" data-node-id="57:25144">
         </div>
-        <div style="position:absolute;height:193px;left:1015px;top:2014px;width:358px" data-n="Element" data-node-id="62:25606">
+        <div style="position:absolute;height:232px;left:1015px;top:1975px;width:358px" data-n="Element" data-node-id="62:25606">
           <img src="assets/art/card-aiglow.svg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;pointer-events:none;width:100%;height:100%">
         </div>
         <div style="position:absolute;height:207px;left:1125px;overflow:hidden;top:1998px;width:127px" data-n="kyu-peek 4" data-node-id="57:25490">
@@ -4126,7 +4171,23 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
     //   사라졌다 담기는데, 그건 「채워진다」가 아니라 깜빡임이다.
     // ★ 아이에게 이름을 지어 준다 — 자리글이 지워지고 이름이 한 글자씩 찍힌다.
     //   한 번만 한다. 되풀이하면 이름을 지었다 지웠다 하는데, 그건 입양이 아니다.
-    for (const 절 of $$문서('.m-adopt')) {
+    // ★ 넓은 판에도 같은 것이 있다(창업자 2026-08-31). 좁은 판은 절 전체가
+    //   손잡이(.m-adopt)이고, 넓은 판은 **이름 칸 그 자체**가 손잡이다
+    //   (카드의 조각들이 서로 형제라 감싸는 상자가 없다).
+    for (const 절 of $$문서('.m-adopt, [data-kyu="adopt-name"]')) {
+      // ★★★★★★ **넓은 판의 조각 셋은 여기서 짓는다**(2026-08-31에 데었다).
+      //   page.jsx 에 `<b class="np-ph">` 로 적어 봤더니 변환기가 **태그와 클래스를
+      //   버리고 `<div style="">` 로** 냈다 — 그건 Tailwind 낱말만 아는 기계다.
+      //   좁은 판은 손으로 지은 HTML 이라 그대로 살아 있고, 넓은 판은 여기서 짓는다.
+      //   ★ 글은 판에 「Name」 으로 남아 있다 — 이 층이 죽어도 자리글은 보인다.
+      if (절.matches('[data-kyu="adopt-name"]') && !절.querySelector('.np-typed')) {
+        const p2 = 절.querySelector('p') ?? 절
+        p2.textContent = ''
+        const ph = document.createElement('b'); ph.className = 'np-ph'; ph.textContent = 'Name'
+        const ty = document.createElement('b'); ty.className = 'np-typed'; ty.dataset.name = 'Bori'
+        const ca = document.createElement('i'); ca.className = 'np-caret'; ca.setAttribute('aria-hidden', 'true')
+        p2.append(ph, ty, ca)
+      }
       const 칸 = 절.querySelector('.np-typed')
       if (!칸) continue
       const 이름 = 칸.dataset.name || ''
