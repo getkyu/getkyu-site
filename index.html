@@ -2412,9 +2412,9 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           <img src="assets/art/ui-agent-card.webp" alt="" loading="lazy" decoding="async" style="position:absolute;height:650.57%;left:-150.48%;max-width:none;top:0;width:276.19%">
         </div>
       </div>
-      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% + 334px);padding-bottom:1px;top:calc(50% - 748.54px);width:190px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="23:6897">
+      <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:center;justify-content:center;left:calc(50% + 334px);padding-bottom:1px;top:calc(50% - 748.54px);width:190px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="23:6897">
         <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#111;font-size:24px;white-space:nowrap" data-node-id="23:6898">
-          <p style="line-height:36px">One wanders by</p>
+          <p style="line-height:36px">Waves a wand</p>
         </div>
       </div>
       <div style="position:absolute;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;left:calc(50% + 209px);padding-bottom:1px;top:calc(50% - 300.54px);width:126px;transform:translate(-50%,-50%)" data-n="div.framer-xphunr" data-node-id="26:7235">
@@ -2478,7 +2478,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         </div>
       </div>
       <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% + 334px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:3174px;width:420px;transform:translate(-50%,-50%)" data-node-id="23:6900">
-        <p style="line-height:24px" class="kyu-flow">Some quiet morning, a stray pup crosses your screen.</p>
+        <p style="line-height:24px" class="kyu-flow">Screenshots pile up. One wave and they go in a folder.</p>
       </div>
       <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% + 212.5px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:3623px;width:271px;transform:translate(-50%,-50%)" data-node-id="26:7238">
         <p style="line-height:24px" class="kyu-flow">Your hours, your rhythm, your tone</p>
@@ -3767,19 +3767,47 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       v.preload = 'auto'; v.load()
       v.play().catch(() => {})
     }
-    // ★★★ 나머지는 **더 일찍** 받는다(300 → 900px). 폰에서 한 번 튕기면 300px 는
-    //   손가락보다 느려서, 카드에 닿았을 때 아직 받는 중이었다.
-    const 눈 = new IntersectionObserver((들) => {
+    // ★★★★★★ **싣는 일과 트는 일은 다른 일이다**(창업자 2026-08-31: "애니메이션이
+    //   그 페이지로 가면 사람들이 볼 수 있게 틀어지는 걸 설정해줘").
+    //   한 관찰자가 둘을 같이 하고 있었다 — 900px 앞에서 받고 **거기서 바로 틀었다.**
+    //   받는 데는 900px 가 맞다(폰에서 한 번 튕기면 300px 는 손가락보다 느려서,
+    //   카드에 닿았을 때 아직 받는 중이었다). 그런데 **트는 데는 너무 이르다**:
+    //   조각이 화면 밑 900px 에 있을 때 시작하니, 사람이 닿았을 땐 이미 한복판이다.
+    //   실측(2026-08-31): tools-lie 5.35/6초 · own-eric 3.87/4초 · forever-clap 2.26/3초.
+    //   전부 loop 이라 안 도는 건 아니지만, **처음부터 본 사람이 아무도 없다.**
+    //   ★ 그래서 눈을 둘로 나눈다.
+    //     · 받는 눈: 900px 앞에서 겉장 달고 파일을 받는다 — 닿았을 때 준비돼 있게.
+    //     · 트는 눈: **진짜로 보일 때** 0초로 되감아 튼다 — 사람이 처음부터 본다.
+    //   ★★ 되감기는 **떠났다 돌아올 때마다** 한다. 되감지 않으면 다시 올 때 또
+    //     한복판이라, 한 번 지나친 사람은 영영 처음을 못 본다.
+    //   ★★★ 0초로 돌리는 건 **뼈대가 온 뒤**라야 한다. 안 왔으면 조용히 무시되어
+    //     되감기가 없던 일이 된다 — 그때는 오길 기다렸다 되감는다.
+    const 받는눈 = new IntersectionObserver((들) => {
+      for (const e of 들) {
+        if (!e.isIntersecting) continue
+        const v = e.target
+        겉장달기(v)
+        if (v.preload !== 'auto') { v.preload = 'auto'; v.load() }
+      }
+    }, { rootMargin: '900px 0px' })
+    const 되감아틀기 = (v) => {
+      const 감기 = () => { try { v.currentTime = 0 } catch { /* 아직 못 감는다 */ } v.play().catch(() => {}) }
+      if (v.readyState >= 1) 감기()
+      else v.addEventListener('loadedmetadata', 감기, { once: true })
+    }
+    const 트는눈 = new IntersectionObserver((들) => {
       for (const e of 들) {
         const v = e.target
         if (e.isIntersecting) {
           겉장달기(v)
           if (v.preload !== 'auto') { v.preload = 'auto'; v.load() }
-          v.play().catch(() => {})
+          되감아틀기(v)
         } else v.pause()
       }
-    }, { rootMargin: '900px 0px' })
-    for (const v of 보이는것) 눈.observe(v)
+      // ★ 문턱 0.35 다. 0 이면 한 줄만 걸쳐도 트니 여전히 화면 밖에서 시작하고,
+      //   1 이면 큰 조각은 영영 다 안 들어와서 아예 안 튼다. 셋 다 재보고 골랐다.
+    }, { threshold: 0.35 })
+    for (const v of 보이는것) { 받는눈.observe(v); 트는눈.observe(v) }
   }
 
   /* ── ① 머리말 · 누를 수 있는 것은 진짜 단추로 ────────────────
