@@ -1846,6 +1846,87 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
 }
 #shell [data-node-id="26:7289"] { transform: scale(1.2); transform-origin: right center; }
 
+
+/* ══ 지팡이 — 촉의 광 · 별 · 회전 (2026-08-31) ══════════════════
+   창업자: "실제 완드로 넣어주고 완드에 끝트머리에 광이나게" ·
+   "완드를 회전할수있게끔 돌려줘" · "완드 중간에 별들이 빤짝이는".
+   ★ 도는 것은 **지팡이 판 전체**다 — 그래야 촉의 광이 촉을 안 떠난다.
+     광을 따로 돌리면 두 개가 어긋나고, 어긋난 광은 얼룩으로 읽힌다.
+   ★★ 18초다. 사람이 「돈다」고 알아채기 전에 **살아 있다**고 먼저 느끼는 빠르기다.
+     빠르면 그건 마법이 아니라 프로펠러다. */
+/* ★★★★★★ **서 있는 채로 돈다**(창업자 2026-08-31: "완드를 회전할수있게끔
+   돌려줘" 그리고 "중간에 지팡이가 세워져있는거야").
+   앞 판은 판째로 360° 돌렸는데, 그건 **누워서 도는 것**이라 「세워져 있다」와
+   어긋난다. 이제 **제 축으로**(rotateY) 돈다 — 서 있는 지팡이가 제자리에서
+   도는 그것이다.
+   ★ ±48° 까지만 간다. 90° 를 지나면 납작한 그림이 **모로 서서 사라진다** —
+     한 바퀴에 두 번 깜빡이는 셈이라 고장으로 읽힌다. 48° 면 폭이 0.67배로
+     줄었다 늘 뿐, 한 번도 안 없어진다.
+   ★★ **그림만 돈다.** 광까지 같이 돌리면 점광이 타원으로 찌그러진다 —
+     빛은 물건이 아니라 물건에서 나오는 것이라 같이 안 돌아야 맞다. */
+/* ★★★★★★ **안 돈다. 그냥 서 있다**(창업자 2026-08-31: "회전시키지말고 그냥
+   끝이 위에서 살짝 틀어진 모습으로 그냥 냅두자").
+   회전을 세 판 만들어 봤고(판째 360° · 제 긴축 rotateY · 밑을 축으로 360°)
+   창업자가 셋 다 안 골랐다. 남는 건 **가만히 있는 것**이다.
+   ★ 그래도 곧추 세우지는 않는다 — 자로 잰 듯 수직인 막대는 물건이 아니라 눈금이다.
+     14° 기울이면 「누가 방금 꽂아 놓은 것」으로 읽힌다.
+   ★★ 축은 **밑**이다. 가운데를 축으로 기울이면 촉과 손잡이가 같이 옆으로 밀려
+     가운데 빈자리(48px)를 벗어나 강아지에 닿는다. 밑을 붙잡으면 촉만 기운다.
+   ★★★ 움직임은 **촉과 별에만** 남는다. 그 둘은 빛이라 흔들려도 물건이 안 흔들린다. */
+#shell [data-kyu="wand"] {
+  transform-origin: 50% 100%;
+  transform: rotate(-14deg);
+}
+
+
+/* 촉의 광 — 맨 위 가운데. 그림을 구울 때 촉을 위로 세웠으므로 여기가 촉이다.
+   ★ 두 겹이다: 속의 흰 심과 바깥의 따뜻한 번짐. 한 겹이면 「빛나는 점」이
+     아니라 「동그란 얼룩」이 된다. */
+#shell [data-kyu="wand"] .kyu-wandglow {
+  position: absolute; left: 50%; top: 0; width: 34px; height: 34px;
+  margin: -17px 0 0 -17px; border-radius: 50%; pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(255,255,255,.95) 0%, rgba(255,255,255,.55) 18%, rgba(255,255,255,0) 42%),
+    radial-gradient(circle, rgba(255,205,130,.85) 0%, rgba(255,168,74,.34) 38%, rgba(255,168,74,0) 70%);
+  animation: kyu-wandtip 2.4s ease-in-out infinite;
+}
+@keyframes kyu-wandtip {
+  0%, 100% { transform: scale(.86); opacity: .78 }
+  50%      { transform: scale(1.14); opacity: 1 }
+}
+
+/* 별 — 네 갈래 반짝임. 동그라미로 두면 먼지처럼 보인다.
+   ★ 두 막대를 겹쳐 십자를 만들고, 가운데를 밝게 둔다. */
+#shell [data-kyu="wandstars"] { pointer-events: none }
+#shell [data-kyu="wandstars"] .kyu-wandstar {
+  position: absolute; display: block; pointer-events: none;
+  /* ★ 흰 카드 위다. 가운데를 흰색으로 두면 **바탕에 녹는다** — 심을 주황으로
+     채우고 가장자리만 흐린다. 처음엔 흰 심이었고, 찍어 보니 안 보였다. */
+  background:
+    radial-gradient(circle, rgba(255,176,74,1) 0%, rgba(255,160,60,.92) 40%, rgba(255,160,60,.35) 72%, rgba(255,160,60,0) 100%);
+  clip-path: polygon(50% 0%, 57% 43%, 100% 50%, 57% 57%, 50% 100%, 43% 57%, 0% 50%, 43% 43%);
+  opacity: 0;
+  animation: kyu-wandtwinkle 4.2s ease-in-out infinite;
+}
+/* ★★ **오래 머문다.** 앞 판은 4.2초 중 1초만 보이고 3초는 없어서, 카드를
+   보는 대부분의 순간에 별이 **하나도 없었다**. 이제 반쯤은 켜져 있다 —
+   반짝임은 「가끔 켜지는 것」이 아니라 「숨 쉬듯 오르내리는 것」이다. */
+@keyframes kyu-wandtwinkle {
+  0%, 100% { opacity: .18; transform: scale(.62) rotate(0deg) }
+  22%      { opacity: 1;   transform: scale(1) rotate(24deg) }
+  44%      { opacity: .5;  transform: scale(.82) rotate(46deg) }
+  68%      { opacity: .9;  transform: scale(.94) rotate(70deg) }
+}
+
+/* ★★★★★★ **덜 움직이게** 를 켠 사람에겐 다 멈춘다 — 그런데 **안 사라진다.**
+   지팡이는 이 카드의 그림이다. 움직임을 껐다고 그림이 없어지면 그건 배려가
+   아니라 손실이다. 별은 반짝임을 멈추고 **켜진 채로** 남는다. */
+@media (prefers-reduced-motion: reduce) {
+  /* 지팡이는 원래 안 움직인다 — 여기서 더 끌 것이 없다. 광과 별만 멈춘다. */
+  #shell [data-kyu="wand"] .kyu-wandglow { animation: none; opacity: .9 }
+  #shell [data-kyu="wandstars"] .kyu-wandstar { animation: none; opacity: .8; transform: scale(.9) }
+}
+
 </style>
 </head>
 <body>
@@ -2476,6 +2557,11 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
           <img src="assets/art/kyu-bashful.png" alt="" loading="lazy" decoding="async" style="position:absolute;height:214.63%;left:-0.4%;max-width:none;width:100.8%">
         </div>
+      </div>
+      <div style="position:absolute;height:88px;left:1044px;top:3236px;width:9px" data-n="prop-wand 1" data-node-id="99:9001" data-kyu="wand">
+        <img src="assets/art/prop-wand.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+      </div>
+      <div style="position:absolute;height:200px;left:953px;top:3206px;width:190px" data-n="wand-stars" data-node-id="99:9002" data-kyu="wandstars">
       </div>
       <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;font-weight:500;justify-content:center;line-height:0;left:calc(50% + 334px);font-style:normal;font-size:16px;color:rgba(17,17,17,0.6);text-align:center;top:3174px;width:420px;transform:translate(-50%,-50%)" data-node-id="23:6900">
         <p style="line-height:24px" class="kyu-flow">Screenshots pile up. One wave and they go in a folder.</p>
@@ -3808,6 +3894,48 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       //   1 이면 큰 조각은 영영 다 안 들어와서 아예 안 튼다. 셋 다 재보고 골랐다.
     }, { threshold: 0.35 })
     for (const v of 보이는것) { 받는눈.observe(v); 트는눈.observe(v) }
+  }
+
+  /* ── 지팡이 — 촉이 빛나고, 별이 반짝이고, 천천히 돈다 ──────────
+     창업자 2026-08-31: "실제 완드로 넣어주고 완드에 끝트머리에 광이나게" ·
+     "완드를 회전할수있게끔 돌려줘" · "완드 중간에 별들이 빤짝이는".
+     ★ **여기서 짓는다** — 변환기는 제가 모르는 태그와 클래스를 버린다(판에
+       적어 봐야 `<div style="">` 로 나온다). 이 저장소가 이미 두 번 데인 자리다.
+     ★★ 광은 **도는 판 안**, 별은 **안 도는 판**에 산다. 별이 같이 돌면 그건
+       반짝이는 별이 아니라 바퀴살이다.
+     ★★★ 별자리는 **손으로 정한다.** 무작위로 뿌리면 새로고침마다 그림이 달라지고,
+       뭉치는 판이 반드시 나온다. 여덟 자리를 눈으로 놓고 크기를 달리했다. */
+  {
+    const 지팡이 = $문서('[data-kyu="wand"]')
+    if (지팡이 && !지팡이.querySelector('.kyu-wandglow')) {
+      const 광 = document.createElement('i')
+      광.className = 'kyu-wandglow'
+      광.setAttribute('aria-hidden', 'true')
+      지팡이.append(광)
+    }
+    const 별판 = $문서('[data-kyu="wandstars"]')
+    if (별판 && !별판.children.length) {
+      // [왼%, 위%, 크기px, 늦음s] — 가운데(지팡이 자리)는 비워 둔다.
+      // ★ 판이 작아졌다(카드 전체 → 지팡이 언저리 192x250). 강아지들이 돌아왔으니
+      //   카드에 넓게 뿌리면 별이 개 위에 얹혀 그림이 시끄러워진다.
+      // ★★ 가운데 세로줄(45~55%)은 비운다 — 거기 지팡이가 서 있다.
+      const 자리 = [
+        [10, 16, 14, 0], [24, 44, 11, 1.5], [14, 70, 13, 2.7], [31, 88, 10, 0.8],
+        [70, 12, 15, 2.0], [83, 38, 12, 0.4], [76, 68, 13, 3.2], [89, 84, 11, 1.2],
+        [47, 3, 12, 2.4],
+      ]
+      for (const [x, y, 크기, 늦음] of 자리) {
+        const 별 = document.createElement('i')
+        별.className = 'kyu-wandstar'
+        별.setAttribute('aria-hidden', 'true')
+        별.style.left = x + '%'
+        별.style.top = y + '%'
+        별.style.width = 크기 + 'px'
+        별.style.height = 크기 + 'px'
+        별.style.animationDelay = 늦음 + 's'
+        별판.append(별)
+      }
+    }
   }
 
   /* ── ① 머리말 · 누를 수 있는 것은 진짜 단추로 ────────────────
