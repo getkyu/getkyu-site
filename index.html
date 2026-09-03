@@ -1022,12 +1022,18 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
 #m .m-adopt h2 {
   margin: 0; font: 400 24px/1.2 Inter, system-ui, sans-serif; color: #111;
 }
+/* ★ 설명 — `m-daylist p` 와 같은 결로 둔다. 절마다 다른 크기를 쓰면 화면이 삐뚤어진다. */
+#m .m-adopt p {
+  margin: 10px auto 0; max-width: 30ch;
+  font: 400 15px/1.45 Inter, system-ui, sans-serif; color: var(--dim);
+}
 /* ★ 알약 — 채움 없이 **테두리만**. 왼 칸에 비스킷, 구분선, 오른 칸에 자리글.
    ★★ 피그마의 알약 가운데는 판 가운데에서 9.5px 왼쪽인데, 제목도 강아지도
      정가운데라 그 하나만 어긋나면 **끌다 만 것**으로 읽힌다. 가운데로 맞춘다. */
 #m .m-namepill {
   position: relative; box-sizing: border-box;
-  width: 95px; height: 30px; margin: 50px auto 0;
+  /* ★ 50px 이었다 — 설명이 없던 시절 빈칸을 메우려던 값이다. 글이 들어왔으니 당긴다. */
+  width: 95px; height: 30px; margin: 22px auto 0;
   border: 1px solid #a6a6a6; border-radius: 50px;
 }
 /* 두 칸을 가르는 선 — 테두리와 같은 색이라 끝까지 그어도 안 보인다 */
@@ -2050,7 +2056,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
   ★★ **누를 수 있게** 만든다(창업자: "버튼으로 만들 수 있는 건 버튼으로").
     로고는 맨 위로 돌아가는 자리다.
 -->
-<a href="#top" class="kyu-logo" aria-label="Kyu — 맨 위로"
+<a href="#top" class="kyu-logo" aria-label="Kyu — back to top"
    style="position:absolute;left:0;top:19px;width:81px;height:36px;display:block">
   <img src="assets/art/kyu-lockup-h.svg" alt="Kyu" style="width:81px;height:36px;display:block">
 </a>
@@ -3494,6 +3500,13 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
          다른 자세가 나온다. -->
   <section class="m-adopt">
     <h2>Adopt me</h2>
+    <!-- ★★★★★★ **좁은 판엔 설명이 없었다**(창업자 2026-09-03: "모바일에서 Adopt me
+         이름 바뀌는게 위치가 이상한데잇어"). 자리가 이상한 게 아니라 **그 자리에
+         있어야 할 글이 없어서** 알약이 허공에 혼자 떠 있었다 — 제목과 알약 사이가
+         50px 비어 있었고, 그 빈칸이 설명 자리였다.
+         ★ 넓은 판과 **같은 말**을 쓴다. 좁은 판만 다른 약속을 하면 안 된다
+           (고양이 얘기까지 그대로 — 그게 없으면 고양이를 좋아하는 사람은 모른다). -->
+    <p>Feed her, name her &mdash; and she&rsquo;s yours. She&rsquo;ll nap next to Kyu while you work. (Cat person? A kitten finds you instead.)</p>
     <div class="m-namepill"><img class="np-bite" src="assets/art/floorprop-biscuit.webp" alt="" loading="lazy" decoding="async"><span class="np-txt"><b class="np-ph">Name</b><b class="np-typed" data-name="Bori" data-names="Bori · Mochi · Pepper · Yuzu"></b><i class="np-caret" aria-hidden="true"></i></span></div>
     <!-- ★ 뒹구는 아이(창업자 2026-08-31: "얘 둥구는 애니메이션 없어?").
          정지 그림(`pets-pompup-sit`)을 `Flip` 클립으로 바꿨다 — 같은 흰 포메다. -->
