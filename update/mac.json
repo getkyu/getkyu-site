@@ -1,7 +1,7 @@
 {
-  "version": "0.2.0",
-  "notes": "",
-  "notesEn": "",
-  "sha256": "24f65a1e3a98370ad3f09f204cf12936a54ffe14e111d027d8a154a2c658b84f",
-  "bytes": 63137339
+  "version": "0.2.1",
+  "notes": "방금 한 말을 기억해. 뭔가 적어두면 머리 위에 작게 불이 켜져.",
+  "notesEn": "He remembers what he just said, and lights up when he notes something.",
+  "sha256": "47ff4ee23f0e82c2867206dfce08d88988126b6e71c97a67128be09a3307e8b3",
+  "bytes": 58756405
 }
