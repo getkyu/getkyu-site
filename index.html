@@ -118,7 +118,9 @@ a { color: inherit; text-decoration: none; }
 .pmark { display: inline-block; vertical-align: -2px; margin-right: 5px; opacity: .9 }
 /* ★ 히어로 밑 한 줄 — 어느 기계에서 도는지. 작고 조용하게. */
 .m-plat { margin: 7px 0 0; padding: 0 var(--pad, 24px); text-align: center; font: 600 16px/24px Inter, system-ui, sans-serif; color: #374151; letter-spacing: .01em; }
-@media (max-width: 860px) { .m-plat { font-size: 14px; margin-top: 14px } }
+/* ★ 14px 은 좁은 판에서 **너무 작다**(움직임 자의 문턱 14.5). 오늘 아침 내가
+       넣은 줄이고, 창업자는 이 글씨를 "좀더 찐하게" 라고 했었다 — 1px 올린다. */
+    @media (max-width: 860px) { .m-plat { font-size: 15px; margin-top: 14px } }
 .kyu-faq { width: 1318px; margin: 0 auto; padding: 58px 0 120px; color: #121212; }
 .kyu-faq .eyebrow { margin: 0; font: 600 15px/26px Inter, system-ui, sans-serif; letter-spacing: .02em; }
 .kyu-faq h2 { margin: 24px 0 0; font: 400 76px/88px Inter, system-ui, sans-serif; }
@@ -1904,16 +1906,26 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
   transform: rotate(-14deg);
   animation: kyu-wandwave 4.8s infinite;
 }
+/* ★★★★★★ **더 빠르게 올리고, 내려치듯 내린다**(창업자 2026-09-03: "지팡이가
+   위로 휠때 더 빨리 그리고 내려치듯이 좀 더 빠르게 내려와야해").
+   ★ 앞판은 준비 336ms · 휘두름 480ms 였다. 휘두름이 **튀어나가듯 시작해서
+     감속**하는 이징이라(ease-out) 「내려친다」가 아니라 「스윽 지나간다」로 읽혔다.
+   ★★ 내려치는 것은 **가속해서 부딪힌다**(ease-in). 그래서 ②의 이징을 뒤집었다 —
+     느리게 떠나 빠르게 도착한다. 도착의 세기는 ③의 되튐이 받는다.
+   ★★★ 준비는 192ms 로, 내려치기는 240ms 로 줄였다(각각 −43% · −50%).
+     각도는 오히려 넓혔다(-32° → +22°, 54°) — 빠른데 짧으면 툭 치는 것으로 보인다.
+   ★★★★ 쉼은 그대로 남긴다. 움직임이 1.25초, 쉼이 3.55초 — 쉬지 않으면 휘두름이
+     「한 번 있었던 일」이 아니라 「계속되는 떨림」이 된다. */
 @keyframes kyu-wandwave {
-  /* ① 준비 — 뒤로. 느리게 들어가서 끝에서 멈칫한다(ease-in) */
-  0%   { transform: rotate(-14deg); animation-timing-function: cubic-bezier(.35, 0, .75, .28) }
-  /* ② 휘두름 — 여기서 49° 를 한 번에 지난다. 튀어나가듯 빠르게 시작해서 감속한다 */
-  7%   { transform: rotate(-29deg); animation-timing-function: cubic-bezier(.14, .86, .3, 1) }
-  /* ③ 넘어감 — 관성. 멈추려다 지나친 자리 */
-  17%  { transform: rotate(20deg);  animation-timing-function: cubic-bezier(.4, 0, .5, 1) }
-  24%  { transform: rotate(4deg);   animation-timing-function: cubic-bezier(.25, .9, .35, 1) }
-  /* ④ 쉼 — 한 바퀴의 3분의 2 */
-  33%  { transform: rotate(-14deg) }
+  /* ① 준비 — 뒤로. 짧고 단단하게 뺀다(가속해서 끝에서 멈칫) */
+  0%   { transform: rotate(-14deg); animation-timing-function: cubic-bezier(.5, 0, .6, .22) }
+  /* ② 내려치기 — 54° 를 240ms 에. **가속해서 도착한다**(ease-in) */
+  4%   { transform: rotate(-32deg); animation-timing-function: cubic-bezier(.55, .06, .68, .19) }
+  /* ③ 되튐 — 세게 도착했으니 튄다. 빠르게 되돌아온다 */
+  9%   { transform: rotate(22deg);  animation-timing-function: cubic-bezier(.3, 0, .4, 1) }
+  14%  { transform: rotate(2deg);   animation-timing-function: cubic-bezier(.25, .9, .35, 1) }
+  /* ④ 쉼 — 한 바퀴의 4분의 3 */
+  26%  { transform: rotate(-14deg) }
   100% { transform: rotate(-14deg) }
 }
 
@@ -2053,7 +2065,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
                높이가 46 → 35 로 줄어 메뉴 줄과 같은 결이 된다 — 필이 도드라지는
                자리가 아니라 **상태를 알리는 곁다리**다. 좌우는 거의 그대로 둔다:
                같이 줄이면 글자가 테에 붙어 답답해 보인다. -->
-          <div style="position:absolute;background:#2563eb;align-content:stretch;display:flex;align-items:flex-start;justify-content:center;left:661.19px;padding-bottom:9px;padding-left:22px;padding-right:22.42px;padding-top:8px;border-radius:10px;top:50%;transform:translate(0,-50%)" data-n="Link" data-node-id="20:4068" data-kyu="cta" data-href="#price">
+          <div style="position:absolute;background:#2563eb;align-content:stretch;display:flex;align-items:flex-start;justify-content:center;left:661.19px;padding-bottom:9px;padding-left:24px;padding-right:24.42px;padding-top:8px;border-radius:10px;top:50%;transform:translate(0,-50%)" data-n="Link" data-node-id="20:4068" data-kyu="cta" data-href="#price">
             <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:700;font-style:normal;font-weight:700;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;font-size:18px;text-align:center;color:#fff;white-space:nowrap" data-node-id="20:4069">
               <p style="line-height:18px" class="kyu-flow">Almost ready</p>
             </div>
@@ -3482,7 +3494,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
          다른 자세가 나온다. -->
   <section class="m-adopt">
     <h2>Adopt me</h2>
-    <div class="m-namepill"><img class="np-bite" src="assets/art/floorprop-biscuit.webp" alt="" loading="lazy" decoding="async"><span class="np-txt"><b class="np-ph">Name</b><b class="np-typed" data-name="Bori"></b><i class="np-caret" aria-hidden="true"></i></span></div>
+    <div class="m-namepill"><img class="np-bite" src="assets/art/floorprop-biscuit.webp" alt="" loading="lazy" decoding="async"><span class="np-txt"><b class="np-ph">Name</b><b class="np-typed" data-name="Bori" data-names="Bori · Mochi · Pepper · Yuzu"></b><i class="np-caret" aria-hidden="true"></i></span></div>
     <!-- ★ 뒹구는 아이(창업자 2026-08-31: "얘 둥구는 애니메이션 없어?").
          정지 그림(`pets-pompup-sit`)을 `Flip` 클립으로 바꿨다 — 같은 흰 포메다. -->
     <video class="kyu-anim m-adoptpup" data-kyu-anim="adopt-roll" muted loop playsinline preload="none"
@@ -3615,7 +3627,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
      까지 포함하도록 고쳤으니, 이 답도 같은 사실을 말해야 한다 — 두 자리가
      갈라지면 둘 중 하나는 반드시 거짓이 된다. 끌 수 있다는 것도 사실이다
      (`main.js` 가 `agenda.config.update === false` 면 아예 안 부른다). -->
-<div><p>No. Kyu runs on your own machine — Mac or PC — with no sign-up, no server, nothing to log into. If you connect your own AI key or a calendar, that traffic goes from your machine straight to that service; it never passes through us. The one thing that reaches us at all is a version check — no account, no device id, not even which version you're on — and you can switch that off too.</p></div></div>
+<div><p>No. Kyu runs on your own machine — Mac or PC — with no sign-up, no server, nothing to log into. If you connect your own AI key or a calendar, that traffic goes from your machine straight to that service; it never passes through us. Two things go out on their own. A version check to getkyu.com — no account, no device id, not even which version you're on — and you can switch that off. And if you bought Kyu directly, a licence check that carries your key and nothing else: once when you enter it, then only if a week has gone by. Offline, Kyu keeps working for a month. Everything else stays on your machine.</p></div></div>
     </div>
 
     <div class="row">
@@ -3634,6 +3646,19 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
       <div class="a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div><p>$9.99, once. No subscription and no trial that runs out. Updates are free.</p></div></div>
+      <!-- ★★★★★★ **사는 사람이 제일 먼저 묻는 것**(2026-09-03, 결제가 실개통된 날).
+           값은 다 사실이다: 열쇠는 메일로 오고, 한 열쇠로 **다섯 대**까지,
+           확인은 넣을 때 한 번 그 뒤엔 일주일에 한 번, 못 닿아도 **한 달**은 그대로 돈다.
+           ★ 「인터넷이 끊기면 어떻게 되나」를 먼저 적는다 — 상주 앱을 사는 사람이
+             제일 무서워하는 게 그것이고, 우리 답이 좋기 때문이다.
+           ★★ 계정을 안 만든다는 것도 여기 다시 적는다. 열쇠가 곧 신분이라
+             로그인이 없다 — 그게 이 제품이 파는 방식이다. -->
+      <button type="button" class="q" aria-expanded="false" aria-controls="faq-a12" id="faq-q12">
+        <img class="ico" src="assets/art/floorprop-suitcase.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <span class="t">What happens after I buy?</span>
+        <span class="plus" aria-hidden="true"><i></i><i></i></span>
+      </button>
+      <div class="a" id="faq-a12" role="region" aria-labelledby="faq-q12"><div><p>A licence key arrives by email. You paste it in once and that&rsquo;s it &mdash; no account to make, nothing to sign into. One key covers <b>five machines</b>, so your laptop and your desk both count.</p><p>Kyu checks the key when you enter it, then at most once a week. If you&rsquo;re offline, or we are, he keeps working for a month before he asks again.</p></div></div>
     </div>
 
     <div class="row">
@@ -3648,6 +3673,21 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
            ★★ 「좋은 그래픽카드가 필요한가」에 먼저 답한다 — 3D 캐릭터라 그렇게
              묻는 사람이 많고, 답은 아니오다. 내장 그래픽으로 돈다. -->
 <div><p><b>Mac</b> — macOS 13.3 (Ventura) or newer, Apple silicon.<br><b>Windows</b> — Windows 10 (version 1809) or newer, 64-bit; Windows 11 works out of the box. Intel/AMD and ARM (Copilot+) machines each get their own build.</p><p>No graphics card needed. Kyu is one small 3D character, not a game — built-in graphics are plenty, and he idles at a few percent of one core. About 200 MB on disk.</p></div></div>
+      <!-- ★★★★★★ **첫 설치에서 윈도우스가 경고를 낸다**(2026-09-03).
+           설치 파일은 실명 인증서로 서명돼 있는데(CN=Kyu Kim), 갓 만든 인증서는
+           **평판이 없어서** 마이크로소프트가 쌓일 때까지 경고를 띄운다.
+           ★ 서명은 경고를 없애는 게 아니라 **누가 만들었는지를 붙이는 것**이다.
+             그 차이를 안 적으면 사람은 「이거 바이러스인가」에서 멈춘다 —
+             광고를 시작하기 전에 이 자리가 있어야 한다.
+           ★★ 문구는 겁주지 않고 **무엇을 누르면 되는지**까지 적는다. 그리고
+             「저절로 없어진다」를 말해 준다 — 우리가 고칠 수 있는 게 아니라
+             시간이 푸는 문제라서, 안 적으면 영영 그런 줄 안다. -->
+      <button type="button" class="q" aria-expanded="false" aria-controls="faq-a11" id="faq-q11">
+        <img class="ico" src="assets/art/floorprop-water.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <span class="t">Installing on Windows</span>
+        <span class="plus" aria-hidden="true"><i></i><i></i></span>
+      </button>
+      <div class="a" id="faq-a11" role="region" aria-labelledby="faq-q11"><div><p>The first time you run the installer, Windows SmartScreen may show &ldquo;Windows protected your PC.&rdquo; This appears for any newly released app while Microsoft builds reputation for its certificate &mdash; the installer is signed and verified (publisher: Kyu Kim). Click <b>More info</b> &rarr; <b>Run anyway</b> to continue. This warning disappears on its own as more people install Kyu.</p></div></div>
     </div>
 
     <div class="row">
@@ -3803,6 +3843,8 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <div class="grp">
           <h3>Support</h3>
           <a href="#faq">FAQ</a>
+          <!-- ★ 짧은 주소로 보낸다(`/discord` → 초대). 초대가 바뀌면 거기 한 줄만 고친다. -->
+          <a href="/discord">Discord</a>
           <a href="mailto:getkyu.ai@gmail.com">Email us</a>
         </div>
       </div>
@@ -4498,7 +4540,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         const p2 = 절.querySelector('p') ?? 절
         p2.textContent = ''
         const ph = document.createElement('b'); ph.className = 'np-ph'; ph.textContent = 'Name'
-        const ty = document.createElement('b'); ty.className = 'np-typed'; ty.dataset.name = 'Bori'
+        const ty = document.createElement('b'); ty.className = 'np-typed'; ty.dataset.name = 'Bori'; ty.dataset.names = 'Bori · Mochi · Pepper · Yuzu'
         const ca = document.createElement('i'); ca.className = 'np-caret'; ca.setAttribute('aria-hidden', 'true')
         p2.append(ph, ty, ca)
       }
@@ -4521,13 +4563,44 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           if (!e.isIntersecting) continue
           눈5.unobserve(e.target)
           절.classList.add('짓는다')
-          let i = 0
-          setTimeout(() => {
-            const t = setInterval(() => {
-              칸.textContent = 이름.slice(0, ++i)
-              if (i >= 이름.length) clearInterval(t)
-            }, 130)
-          }, 300)
+          // ★★★★★★ **이름은 하나가 아니다**(창업자 2026-09-03: "보리를 치고 커서로
+          //   지우고 다른 이름 치고, 지우고 다른 이름 치고 루핑으로").
+          //   여기 적힌 건 「이름을 지어준다」는 이야기다 — 한 이름을 치고 멈추면
+          //   그건 **그 아이의 이름**처럼 읽힌다. 지웠다 다시 치면 비로소
+          //   「네가 정한다」가 된다.
+          //   ★ 지우기는 치기보다 **빠르다**(65ms vs 130ms). 사람이 지울 때도 그렇고,
+          //     같은 속도로 지우면 기다리는 시간이 두 배가 된다.
+          //   ★★ 다 치고 **1.1초 머문다** — 읽을 틈이다. 바로 지우면 이름을 못 읽는다.
+          //   ★★★ 화면 밖으로 나가면 **멈춘다.** 안 보이는 곳에서 도는 타이머는
+          //     배터리만 먹는다(상주 앱을 파는 사람들이 제일 싫어하는 것).
+          const 이름들 = (칸.dataset.names || 이름).split('·').map((x) => x.trim()).filter(Boolean)
+          let n = 0
+          let 타이머 = null
+          const 멈춰 = () => { clearTimeout(타이머); 타이머 = null }
+          const 치기 = () => {
+            const 말 = 이름들[n % 이름들.length]
+            let i = 0
+            const 한글자 = () => {
+              칸.textContent = 말.slice(0, ++i)
+              타이머 = setTimeout(i >= 말.length ? 머물기 : 한글자, 130)
+            }
+            const 머물기 = () => { 타이머 = setTimeout(지우기, 1100) }
+            const 지우기 = () => {
+              if (i <= 0) { n++; 타이머 = setTimeout(치기, 260); return }
+              칸.textContent = 말.slice(0, --i)
+              타이머 = setTimeout(지우기, 65)
+            }
+            타이머 = setTimeout(한글자, 0)
+          }
+          타이머 = setTimeout(치기, 300)
+          // ★ **탭이 숨으면 멈춘다.** 처음엔 화면 밖으로 나가도 멈추게 눈을 하나 더
+          //   달았는데, 그 눈의 첫 콜백이 「아직 안 보인다」로 와서 **막 시작한
+          //   타이머를 죽였다** — 좁은 판에서 이름이 한 글자도 안 쳐졌다.
+          //   갈래를 줄인다: 배터리를 먹는 건 숨은 탭이지 스크롤한 자리가 아니다.
+          document.addEventListener('visibilitychange', () => {
+            if (document.hidden) 멈춰()
+            else if (!타이머) 치기()
+          })
         }
       //   ★★★ 문턱만으로는 모자랐다(재서 알았다): 알약이 **화면 맨 밑 줄**에
       //     걸친 순간 90% 가 보이므로 거기서 시작한다. 치는 데 0.8초가 걸리는데

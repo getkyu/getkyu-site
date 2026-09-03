@@ -44,7 +44,14 @@
 <tr><td>AI chat</td><td>The AI provider you configure (using your own API key)</td><td>The messages and attachments you choose to send. This traffic is between your machine and your chosen provider, under their terms and privacy policy.</td><td>When you chat with AI configured</td></tr>
 <tr><td>Mail</td><td>Your IMAP server, if you connect one</td><td>Sign-in with the app password you provide (stored locally). Kyu reads <em>message headers only</em> — sender, subject line metadata, list markers — not message bodies.</td><td>If you connect mail</td></tr>
 <tr><td>Tools (MCP)</td><td>Servers you explicitly attach</td><td>Tool calls you enable. Off by default; each connection is opt-in.</td><td>If you attach tools</td></tr>
-<tr><td>Update check</td><td>getkyu.com (a static file)</td><td>A plain request for the version file. No identifiers are added by the app.</td><td>Not used at launch — the Steam build updates through Steam. This applies only to a direct-download build, if we offer one.</td></tr>
+<!-- ★★★★★★ **라이선스 확인이 이 표에 없었다**(2026-09-03). 이 문서는 "나가는
+       곳은 이 표가 전부" 라고 약속하는데, 직판 열쇠를 확인하러 폴라에 나가는
+       길이 빠져 있었다 — 팔기 전에 반드시 채워야 하는 자리다.
+       ★ 값은 **정직하게** 적는다: 무엇이(열쇠와 활성 번호), 언제(넣을 때 한 번,
+         그 뒤엔 7일 지났을 때만), 못 닿으면 어떻게 되는지(30일은 그대로 쓴다).
+       ★★ 스팀 판은 이 길을 안 쓴다 — 스팀 소유권이 곧 자격이다. -->
+  <tr><td>License</td><td>api.polar.sh</td><td>Your license key and, after the first time, the activation id for this machine. No account, no email, no device fingerprint. Direct-purchase copies only &mdash; the Steam version never makes this call.</td><td>Once when you enter your key, then only if more than 7&nbsp;days have passed since the last check. If it can&rsquo;t reach Polar, Kyu keeps working for 30&nbsp;days.</td></tr>
+  <tr><td>Update check</td><td>getkyu.com (a static file)</td><td>A plain request for the version file. No identifiers are added by the app.</td><td>Not used at launch — the Steam build updates through Steam. This applies only to a direct-download build, if we offer one.</td></tr>
 </table>
 <p>If a feature above is off, the corresponding request simply doesn't happen. As of this version, there are no other network destinations in the app. If we ever add one — for example, an optional way to pass letters between friends — this policy will be updated before that feature ships, and the table above will name it.</p>
 
