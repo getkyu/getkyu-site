@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kyu — your desk just got a companion</title>
-<meta name="description" content="Kyu is a desk companion for macOS. He learns your rhythm, guards your meetings, nudges your breaks, and remembers your days — with no server and no account. One-time purchase.">
+<meta name="description" content="Kyu is a desk companion for macOS and Windows. He learns your rhythm, guards your meetings, nudges your breaks, and remembers your days — with no server and no account. One-time purchase.">
 <meta property="og:title" content="Kyu — your desk just got a companion">
 <meta property="og:description" content="A desk companion that learns you. Meetings guarded. Breaks nudged. Every day remembered.">
 <meta property="og:image" content="https://getkyu.com/assets/art/desktop-screen.png">
@@ -109,6 +109,17 @@ a { color: inherit; text-decoration: none; }
    ★ 판은 1440 폭이고 본문 기둥은 x 61~1379 다. 가운데 정렬한 1318px 상자가
      1440 화면에서 정확히 그 자리에 앉는다 — 판과 같은 기둥이다. */
 .kyu-faq, .kyu-footer .wrap, .kyu-footer .legal { box-sizing: border-box; }
+/* ★★★★★★ **로고 마크**(창업자 2026-09-03: "맥에 애플로고 윈도우는 윈도우 로고
+   마크를 넣어줘"). 글보다 로고가 먼저 읽힌다 — "내 기계가 되나" 는 눈으로 훑는
+   물음이라, 낱말을 읽기 전에 답이 보이는 게 맞다.
+   ★ 색은 `currentColor` — 글과 같은 회색이라 도드라지지 않는다. 로고를 제 색으로
+     칠하면 남의 브랜드가 우리 히어로에서 제일 밝은 것이 된다.
+   ★★ 글 자체는 **한 글자도 안 바꿨다** — 바꾸면 한국어 사전 열쇠가 어긋난다. */
+.pmark { display: inline-block; vertical-align: -2px; margin-right: 7px; opacity: .75 }
+.pmark + .pmark { margin-right: 10px }
+/* ★ 히어로 밑 한 줄 — 어느 기계에서 도는지. 작고 조용하게. */
+.m-plat { margin: 18px 0 0; font: 500 16px/24px Inter, system-ui, sans-serif; color: #6b7280; letter-spacing: .01em; }
+@media (max-width: 860px) { .m-plat { font-size: 14px; margin-top: 14px } }
 .kyu-faq { width: 1318px; margin: 0 auto; padding: 58px 0 120px; color: #121212; }
 .kyu-faq .eyebrow { margin: 0; font: 600 15px/26px Inter, system-ui, sans-serif; letter-spacing: .02em; }
 .kyu-faq h2 { margin: 24px 0 0; font: 400 76px/88px Inter, system-ui, sans-serif; }
@@ -2039,7 +2050,11 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           <!-- 20:4060 는 판 밖에서 흐름으로 그린다(site-build) -->
           <!-- 26:7333 는 판 밖에서 흐름으로 그린다(site-build) -->
           <!-- 26:7335 는 판 밖에서 흐름으로 그린다(site-build) -->
-          <div style="position:absolute;background:#2563eb;align-content:stretch;display:flex;align-items:flex-start;justify-content:center;left:661.19px;padding-bottom:16px;padding-left:24px;padding-right:24.42px;padding-top:14px;border-radius:10px;top:50%;transform:translate(0,-50%)" data-n="Link" data-node-id="20:4068" data-kyu="cta" data-href="#price">
+          <!-- ★ 「Almost ready」 필을 얇게(창업자 2026-09-03). 위아래 14/16 → 8/9.
+               높이가 46 → 35 로 줄어 메뉴 줄과 같은 결이 된다 — 필이 도드라지는
+               자리가 아니라 **상태를 알리는 곁다리**다. 좌우는 거의 그대로 둔다:
+               같이 줄이면 글자가 테에 붙어 답답해 보인다. -->
+          <div style="position:absolute;background:#2563eb;align-content:stretch;display:flex;align-items:flex-start;justify-content:center;left:661.19px;padding-bottom:9px;padding-left:22px;padding-right:22.42px;padding-top:8px;border-radius:10px;top:50%;transform:translate(0,-50%)" data-n="Link" data-node-id="20:4068" data-kyu="cta" data-href="#price">
             <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:700;font-style:normal;font-weight:700;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;font-size:18px;text-align:center;color:#fff;white-space:nowrap" data-node-id="20:4069">
               <p style="line-height:18px" class="kyu-flow">Almost ready</p>
             </div>
@@ -2069,6 +2084,15 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           </div>
           <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:0;font-style:normal;font-size:70px;color:#000;top:229px;letter-spacing:-3.2px;width:687px;transform:translate(0,-50%)" data-node-id="20:4153" data-kyu="ko-flow" data-line="3" data-ord="1">
             <p style="line-height:70px">Make your own Kyu</p>
+          </div>
+          <!-- ★★★★★★ **어느 기계에서 도는지 히어로에서 말한다**(창업자 2026-09-03).
+               좁은 판에는 `.m-plat` 로 넣었는데 **넓은 판은 절대배치**라 흐름에
+               넣으면 안 보인다 — 같은 문장을 여기 한 번 더 둔다.
+               ★ 자리는 마지막 줄(top 229 · line-height 70)의 **밑에서 30px**.
+                 히어로 글과 붙지 않고, 다음 것과도 안 겹친다.
+               ★★ 작고 조용하게. 자랑이 아니라 "나도 쓸 수 있나" 에 답하는 한 줄이다. -->
+          <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:500;font-style:normal;justify-content:center;line-height:0;left:0;color:#6b7280;font-size:17px;top:329px;width:687px;letter-spacing:.01em">
+            <p style="line-height:26px"><svg class="pmark" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.05 12.536c-.026-2.9 2.37-4.29 2.478-4.359-1.35-1.972-3.45-2.242-4.196-2.273-1.786-.18-3.487 1.05-4.394 1.05-.906 0-2.303-1.024-3.786-.996-1.948.029-3.744 1.132-4.746 2.875-2.024 3.508-.517 8.702 1.454 11.549.964 1.393 2.113 2.958 3.62 2.902 1.452-.058 2.001-.939 3.756-.939 1.755 0 2.248.939 3.785.909 1.562-.026 2.552-1.42 3.508-2.818 1.106-1.617 1.56-3.182 1.586-3.262-.035-.014-3.043-1.167-3.073-4.638M14.29 3.9c.8-.97 1.34-2.318 1.192-3.66-1.152.046-2.548.767-3.375 1.736-.741.86-1.39 2.232-1.215 3.55 1.285.1 2.598-.653 3.398-1.626"/></svg><svg class="pmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg><span>For macOS and Windows &middot; one purchase, both.</span></p>
           </div>
         </div>
       </div>
@@ -3262,6 +3286,11 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
   <section class="m-hero">
     <div class="m-herotop">
       <h1>Your <b>desk</b><br>just got a <b class="m-cycle" data-kyu="cycle"><span>companion.</span></b><br>Make your own Kyu <b class="m-blue">+ Pet</b></h1>
+      <!-- ★★★★★★ **어느 기계에서 도는지 히어로에서 말한다**(창업자 2026-09-03).
+           여태 맥만 적혀 있었고, 윈도우스 사람이 이 페이지에서 **자기 기계가
+           되는지 알 길이 없었다** — 아래로 한참 내려가 Q&A 를 열어야 나왔다.
+           ★ 자랑이 아니라 **사실 한 줄**이라 작게 둔다. -->
+      <p class="m-plat"><svg class="pmark" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.05 12.536c-.026-2.9 2.37-4.29 2.478-4.359-1.35-1.972-3.45-2.242-4.196-2.273-1.786-.18-3.487 1.05-4.394 1.05-.906 0-2.303-1.024-3.786-.996-1.948.029-3.744 1.132-4.746 2.875-2.024 3.508-.517 8.702 1.454 11.549.964 1.393 2.113 2.958 3.62 2.902 1.452-.058 2.001-.939 3.756-.939 1.755 0 2.248.939 3.785.909 1.562-.026 2.552-1.42 3.508-2.818 1.106-1.617 1.56-3.182 1.586-3.262-.035-.014-3.043-1.167-3.073-4.638M14.29 3.9c.8-.97 1.34-2.318 1.192-3.66-1.152.046-2.548.767-3.375 1.736-.741.86-1.39 2.232-1.215 3.55 1.285.1 2.598-.653 3.398-1.626"/></svg><svg class="pmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg><span>For macOS and Windows &middot; one purchase, both.</span></p>
       <div class="m-herofigs">
         <video class="kyu-anim m-hk" data-kyu-anim="hero-dance" muted loop playsinline preload="none" data-webm="assets/anim/hero-dance.webm" data-mp4="assets/anim/hero-dance.mp4" data-poster="assets/anim/hero-dance.png" aria-label="Kyu singing and dancing"></video>
         <video class="kyu-anim m-hp" data-kyu-anim="hero-pet" muted loop playsinline preload="none" data-webm="assets/anim/hero-pet.webm" data-mp4="assets/anim/hero-pet.mp4" data-poster="assets/anim/hero-pet.png" aria-label="The pet asking to play"></video>
@@ -3480,7 +3509,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
   <section class="m-tools" id="works">
     <p class="m-kicker">WORKS WITH</p>
     <h2>Friends with your tools.</h2>
-    <p class="m-sub">Plug in your calendar, mail and AI — keys stay on your Mac. The rest comes through MCP servers you already run, read-only and off by default.</p>
+    <p class="m-sub">Plug in your calendar, mail and AI — keys stay on your machine. The rest comes through MCP servers you already run, read-only and off by default.</p>
     <div class="m-logos" aria-label="Tools Kyu works with"></div>
     <video class="kyu-anim m-lie" data-kyu-anim="tools-lie" muted loop playsinline preload="none" data-webm="assets/anim/tools-lie.webm" data-mp4="assets/anim/tools-lie.mp4" data-poster="assets/anim/tools-lie.png" aria-label="Kyu lying among the tools"></video>
   </section>
@@ -3587,7 +3616,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
      까지 포함하도록 고쳤으니, 이 답도 같은 사실을 말해야 한다 — 두 자리가
      갈라지면 둘 중 하나는 반드시 거짓이 된다. 끌 수 있다는 것도 사실이다
      (`main.js` 가 `agenda.config.update === false` 면 아예 안 부른다). -->
-<div><p>No. Kyu runs on your Mac — no sign-up, no server, nothing to log into. If you connect your own AI key or a calendar, that traffic goes from your Mac straight to that service; it never passes through us. The one thing that reaches us at all is a version check — no account, no device id, not even which version you're on — and you can switch that off too.</p></div></div>
+<div><p>No. Kyu runs on your own machine — Mac or PC — with no sign-up, no server, nothing to log into. If you connect your own AI key or a calendar, that traffic goes from your machine straight to that service; it never passes through us. The one thing that reaches us at all is a version check — no account, no device id, not even which version you're on — and you can switch that off too.</p></div></div>
     </div>
 
     <div class="row">
@@ -3614,7 +3643,30 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <span class="t">What do I need to run it?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
-      <div class="a" id="faq-a4" role="region" aria-labelledby="faq-q4"><div><p>A Mac on macOS 13.3 (Ventura) or newer, with Apple silicon.</p></div></div>
+      <div class="a" id="faq-a4" role="region" aria-labelledby="faq-q4"><!-- ★★★★★★ **윈도우스를 적는다**(창업자 2026-09-03). 여태 맥만 있었다.
+           ★ 숫자는 재서 적은 것이다. 윈도우스 10 1809 는 WebView2 가 요구하는
+             최소 판이고, ARM64 판도 따로 굽는다(Copilot+ PC 가 전부 ARM 이다).
+           ★★ 「좋은 그래픽카드가 필요한가」에 먼저 답한다 — 3D 캐릭터라 그렇게
+             묻는 사람이 많고, 답은 아니오다. 내장 그래픽으로 돈다. -->
+<div><p><b>Mac</b> — macOS 13.3 (Ventura) or newer, Apple silicon.<br><b>Windows</b> — Windows 10 (version 1809) or newer, 64-bit; Windows 11 works out of the box. Intel/AMD and ARM (Copilot+) machines each get their own build.</p><p>No graphics card needed. Kyu is one small 3D character, not a game — built-in graphics are plenty, and he idles at a few percent of one core. About 200 MB on disk.</p></div></div>
+    </div>
+
+    <div class="row">
+      <button type="button" class="q" aria-expanded="false" aria-controls="faq-a10" id="faq-q10">
+        <img class="ico" src="assets/art/floorprop-ball.png" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <span class="t">Does it update itself?</span>
+        <span class="plus" aria-hidden="true"><i></i><i></i></span>
+      </button>
+      <!-- ★★★★★★ **여기 「네, 자동입니다」 라고 쓰면 거짓이다**(2026-09-03).
+           `core/src/update.js` 가 하는 일은 **알려주는 것까지**다 — 주석에
+           "받지도 설치하지도 않는다" 라고 적혀 있고, 그 이유도 적혀 있다:
+           자동 설치는 서명이 있어야 성립한다(서명 없는 앱은 갱신 한 판을
+           돌려볼 수조차 없다).
+           ★ 스팀은 다르다 — 거기선 진짜로 자동이다. 두 길을 **갈라서** 적는다.
+             한 문장으로 뭉뚱그리면 둘 중 하나는 반드시 거짓이 된다.
+           ★★ 서명이 붙어 업데이터를 달면 **이 답의 둘째 문단만** 고치면 된다.
+             그때까지는 있는 그대로 적는다 — 사이트가 앱보다 앞서가면 안 된다. -->
+      <div class="a" id="faq-a10" role="region" aria-labelledby="faq-q10"><div><p>On Steam, yes — Steam keeps him current on its own; you never think about it.</p><p>If you bought him here, Kyu tells you when a new version is out and opens the download page for you. One click, then install as usual. (He asks our site one question — "what's the newest?" — and nothing else: no account, no device id, not even which version you're on. You can switch that check off in settings.)</p></div></div>
     </div>
 
     <div class="row">
@@ -3632,7 +3684,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <span class="t">Can I use my own AI?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
-      <div class="a" id="faq-a6" role="region" aria-labelledby="faq-q6"><div><p>Yes. Bring your own key from Claude, ChatGPT, or Gemini, and Kyu talks to it directly from your Mac. Every switch in settings says exactly what would leave this machine — most say 'nothing.'</p></div></div>
+      <div class="a" id="faq-a6" role="region" aria-labelledby="faq-q6"><div><p>Yes. Bring your own key from Claude, ChatGPT, or Gemini, and Kyu talks to it directly from your machine. Every switch in settings says exactly what would leave this machine — most say 'nothing.'</p></div></div>
     </div>
 
     <!-- ★★★★★★ **로고 격자가 말 안 하는 것을 여기서 말한다**(2026-08-30 검토).
@@ -3739,6 +3791,9 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <div class="grp">
           <h3>Download</h3>
           <a href="#price">macOS</a>
+          <!-- ★ 윈도우스도 같은 자리로 간다(2026-09-03) — 한 번 사면 둘 다다.
+               따로 파는 것이 아니라 **같은 물건의 다른 판**이라 링크도 하나다. -->
+          <a href="#price">Windows</a>
           <!-- ★★★★★★ **Steam 과 「What's new」 를 걷어냈다**(창업자 2026-08-30:
                "눌러도 작동 안 되는 버튼들은 다 빼"). 둘 다 `href="#"` 이라
                **누르면 맨 위로 튀는 것 말고는 아무 일도 안 났다.**
@@ -3755,7 +3810,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <div class="col">
         <div class="grp">
           <h3>Privacy</h3>
-          <a href="privacy.html">What leaves your Mac</a>
+          <a href="privacy.html">What leaves your machine</a>
           <a href="privacy.html">Privacy policy</a>
           <a href="terms.html">Terms</a>
         </div>
@@ -3773,7 +3828,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
            뒀는데 **여기 문장에는 단서가 없었다.**
          ★★ 나가는 건 최소다(상수 주소·질의 문자열 없음·판 번호도 안 보냄).
            그래도 "아무것도" 는 아니다. 한 낱말을 더해서 참으로 만든다. -->
-    <p class="promise">No account. No cloud. Nothing leaves your Mac but a version check — every feature waits until you switch it on.</p>
+    <p class="promise">No account. No cloud. Nothing leaves your machine but a version check — every feature waits until you switch it on.</p>
     <!-- ★ 창업자 2026-08-30: "맥에서 만들었다는 건 빼고 웃긴 포인트를 넣자".
          만든 사람 이름도 큐고 만들어진 아이 이름도 큐다 — 그 사실이 곧 농담이다. -->
     <p class="copy">&copy; 2026 GetKyu &middot; Made by Kyu, supervised by Kyu</p>
