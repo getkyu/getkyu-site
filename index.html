@@ -3696,11 +3696,17 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
       <div class="a" id="faq-a4" role="region" aria-labelledby="faq-q4"><!-- ★★★★★★ **윈도우스를 적는다**(창업자 2026-09-03). 여태 맥만 있었다.
-           ★ 숫자는 재서 적은 것이다. 윈도우스 10 1809 는 WebView2 가 요구하는
-             최소 판이고, ARM64 판도 따로 굽는다(Copilot+ PC 가 전부 ARM 이다).
+           ★ 숫자는 재서 적은 것이다. 윈도우스 10 1809 는 WebView2 가 요구하는 최소 판이다.
+           ★★★★★★ **ARM64 를 따로 굽는다고 적었다가 고쳤다**(2026-09-04).
+             그런 파이프라인이 **없었다** — `tauri.windows.conf.json` 은 nsis 하나뿐이고
+             워크플로 어디에도 aarch64 가 없다. 즉 Copilot+ PC 로 산 사람이
+             「내 빌드」를 찾다가 못 찾는다. **파는 글이 없는 물건을 약속하면 안 된다.**
+             ★ 다행히 거짓말만 지우면 된다: 윈도우스 온 ARM 은 x64 앱을
+               에뮬레이션으로 돌린다 — 지금 빌드가 Copilot+ 에서도 **돌아간다**.
+               그래서 「각각 제 빌드」가 아니라 「하나가 둘 다에서 돈다」가 사실이다.
            ★★ 「좋은 그래픽카드가 필요한가」에 먼저 답한다 — 3D 캐릭터라 그렇게
              묻는 사람이 많고, 답은 아니오다. 내장 그래픽으로 돈다. -->
-<div><p><b>Mac</b> — macOS 13.3 (Ventura) or newer, Apple silicon.<br><b>Windows</b> — Windows 10 (version 1809) or newer, 64-bit; Windows 11 works out of the box. Intel/AMD and ARM (Copilot+) machines each get their own build.</p><p>No graphics card needed. Kyu is one small 3D character, not a game — built-in graphics are plenty, and he idles at a few percent of one core. About 200 MB on disk.</p></div></div>
+<div><p><b>Mac</b> — macOS 13.3 (Ventura) or newer, Apple silicon.<br><b>Windows</b> — Windows 10 (version 1809) or newer, 64-bit; Windows 11 works out of the box. One build runs on both Intel/AMD and ARM (Copilot+) machines.</p><p>No graphics card needed. Kyu is one small 3D character, not a game — built-in graphics are plenty, and he idles at a few percent of one core. About 200 MB on disk.</p></div></div>
       <!-- ★★★★★★ **첫 설치에서 윈도우스가 경고를 낸다**(2026-09-03).
            설치 파일은 실명 인증서로 서명돼 있는데(CN=Kyu Kim), 갓 만든 인증서는
            **평판이 없어서** 마이크로소프트가 쌓일 때까지 경고를 띄운다.

@@ -108,7 +108,7 @@
   "Mac": "맥",
   "Windows": "윈도우",
   "— macOS 13.3 (Ventura) or newer, Apple silicon.": "— macOS 13.3 (Ventura) 이상, 애플 실리콘.",
-  "— Windows 10 (version 1809) or newer, 64-bit; Windows 11 works out of the box. Intel/AMD and ARM (Copilot+) machines each get their own build.": "— 윈도우 10(1809) 이상 64비트, 윈도우 11은 그대로 됩니다. 인텔/AMD와 ARM(Copilot+) 기계는 각각 제 판이 있습니다.",
+  "— Windows 10 (version 1809) or newer, 64-bit; Windows 11 works out of the box. One build runs on both Intel/AMD and ARM (Copilot+) machines.": "— 윈도우 10(1809) 이상 64비트, 윈도우 11은 그대로 됩니다. 하나의 빌드가 인텔/AMD와 ARM(Copilot+) 양쪽에서 돕니다.",
   "Does it update itself?": "자동으로 업데이트되나요?",
   "On Steam, yes — Steam keeps him current on its own; you never think about it.": "스팀에서 받으셨다면 네 — 스팀이 알아서 최신으로 지켜 줍니다. 신경 쓸 일이 없습니다.",
   "If you bought him here, Kyu tells you when a new version is out and opens the download page for you. One click, then install as usual. (He asks our site one question — \"what's the newest?\" — and nothing else: no account, no device id, not even which version you're on. You can switch that check off in settings.)": "여기서 사셨다면, 새 판이 나왔을 때 큐가 알려 주고 받는 곳을 열어 줍니다. 한 번 누르고 평소처럼 깔면 됩니다. (큐가 우리 사이트에 묻는 것은 「제일 새 판이 무엇인가」 하나뿐입니다 — 계정도, 기기 식별자도, 지금 몇 판인지도 안 보냅니다. 이 확인도 설정에서 끌 수 있습니다.)",
