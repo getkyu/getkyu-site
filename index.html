@@ -472,7 +472,15 @@ a { color: inherit; text-decoration: none; }
    세로는 제일 위 판(y93)을 0 으로 잡아 옮겼다 — 우리 글이 피그마보다 한 줄 길다.
    ★ 큐와 아이는 안 건드렸다. 창업자가 지난 판에서 **UI 만** 피그마로 하라고 했고,
      큐 크기·아이 자리는 그때 직접 정한 값이다. */
-#m .m-away .a1 { left: 2.0%; top: 0; width: 38.7%; border-radius: 11px; clip-path: inset(13.5% 0 0 0); }
+/* ★★★★★★ **자르는 값을 그림에서 다시 쟀다**(창업자 2026-09-04: "While you were away에
+   UI쪽에 막 이상한 선들이 있는데"). 이 그림들은 카드 한 장이 아니라 **앱 화면을
+   통째로 오려온 것**이다 — 위에 MUTE 알약과 ✕, 아래 오른쪽에 ↰ 화살표가 같이 들어 있다.
+   ★ 위쪽 13.5% 는 **모자랐다.** 카드는 580×566 짜리에서 y=91(16.1%)에 시작한다 —
+     2.6% 만큼 MUTE 알약의 밑동이 남아 그게 빈 곳에 뜬 **가는 선**으로 보였다.
+   ★★ 아래는 **아예 안 자르고 있었다.** 그래서 ↰ 화살표가 카드 밑에 홀로 떠 있었다.
+   ★★★ 값은 짐작이 아니라 잰 것이다: 밝고 불투명한 덩어리(=카드)의 상자를 찾아
+     34,91 .. 389,486 을 얻었다. 여백은 1px 만 남긴다. */
+#m .m-away .a1 { left: 2.0%; top: -3px; width: 38.7%; border-radius: 11px; clip-path: inset(16.2% 0 14.5% 0); }
 /* ★ 창업자 2026-08-30: "주식 UI를 좀 더 키우고 밑으로 좀 내려줘". 피그마 값(52.5%/12px/41.9%)
    에서 폭 1.24배, 아래로 26px. 오른끝이 카드를 넘지 않게 왼쪽도 같이 당겼다. */
 /* ★★★★★★ **시세는 두 장만 보인다**(창업자 2026-08-30: "영상들에 흰색 테두리가
@@ -501,9 +509,13 @@ a { color: inherit; text-decoration: none; }
 /* ★★ 창업자 2026-08-31: "주식창을 오른쪽으로 밀어줘 큐뒤에 머리까지 오게끔
    겹쳐도되." 8% → 34%. 셋째 칸(Dow)이 큐의 몸·머리 뒤로 들어간다 —
    큐가 `z-index: 3` 이라 순서는 이미 맞다. */
-#m .m-away .a2 { left: 34.0%; top: 24px; width: 60.0%; }
+/* ★ 시세 그림에도 위아래로 실선이 한 줄씩 있다(526×150 짜리에서 카드는 y=10..139).
+   안 자르면 카드 위에 가는 줄이 하나 더 뜬다 — 위와 같은 갈래다. */
+#m .m-away .a2 { left: 34.0%; top: 23px; width: 60.0%; clip-path: inset(6.7% 0 7.3% 0); }
 /* 메일 — 조금 줄였다(창업자: "중간 카드가 너무 커서"). 49.8% → 44.5% */
-#m .m-away .a3 { left: 21.0%; top: 66px; width: 44.5%; border-radius: 10px; clip-path: inset(13.5% 0 0 0); z-index: 2; }
+/* ★ a1 과 같은 갈래 — 카드는 580×626 짜리에서 34,90 .. 545,547 이다. 위는 13.5%
+   로 모자랐고(→14.6%) 아래 화살표는 안 잘리고 있었다(→12.6%). */
+#m .m-away .a3 { left: 21.0%; top: 64px; width: 44.5%; border-radius: 10px; clip-path: inset(14.6% 0 12.6% 0); z-index: 2; }
 /* ★ 큐가 **제일 앞**이다(창업자가 그렇게 말했다). 메일 카드가 z-index:2 라
    그냥 두면 손과 컵이 카드 뒤로 들어간다. */
 #m .m-away .a4 { right: -8%; top: 26px; height: 300px; width: auto; z-index: 3; }   /* 큐 — 크게 · 차트를 안 가리게 조금 오른쪽 */
@@ -888,14 +900,21 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
-#m .m-bagwrap img { position: absolute; max-width: none; }
+/* ★★★★★★ **영상도 같이 잡아야 한다**(2026-09-04). 여기가 `img` 만이라, 뒤돌아선
+   정지 그림을 `bag-reveal` 영상으로 바꾸자 `position` 이 static 으로 남아
+   **left·top·width 가 통째로 무시됐다** — 큐가 감싸개 왼쪽 끝에 가서 섰다.
+   오류도 경고도 없다. 바로 위 `.m-away` 는 처음부터 `img, video` 둘 다 잡는다. */
+#m .m-bagwrap img, #m .m-bagwrap video { position: absolute; max-width: none; }
 /* 가방과 그 뒤판 — 뒤판이 먼저(뒤), 가방이 나중(앞) */
 /* ★ 창업자 2026-08-31: "중간 UI가 작아졋어 큐랑 겹쳐도 되니까 다시 키워줘."
    가방 판을 29.6% → 42%, 뒤에 선 큐도 같은 배로. 겹치는 건 의도다. */
 /* ★★ 창업자 2026-08-31: "UI를 좀더 키워주고 큐 가방옆으로 좀더 가까이 살짝
    짤랴도되." 42% → 52%, 오른쪽으로 밀어 큐의 가방에 붙인다. 왼쪽이 카드 밖으로
    조금 나가는데 가장자리 페이드가 받아 준다 — 잘리는 게 아니라 흘러나간다. */
-#m .m-bagwrap .m-bagback { left: 58.0%; top: 4px;  width: 33.0%; }
+/* ★ 영상은 정지 그림보다 **넓다**(가로세로 0.532 대 0.392) — 돌아서는 호(弧)가
+   같이 들어 있기 때문이다. 넓은 판이 쓰는 비율 그대로 옮긴다: 폭 33.0×1.326 = 43.8%,
+   왼쪽 58.0 − 33.0×0.159 = 52.7%. 그래야 **돌아선 뒤의 자세**가 전과 같은 자리에 선다. */
+#m .m-bagwrap .m-bagback { left: 52.7%; top: 4px;  width: 43.8%; }
 /* ★ 그림 위쪽 12%는 **앱 창의 「MUTE ×」 줄**이다(재서 잘랐다: 잉크가 y16~70,
    판은 y80 부터). 작을 땐 안 보였는데 키우니 엉뚱한 단추처럼 보였다.
    ★ `clip-path` 는 자리를 안 바꾸므로 그만큼 `top` 을 올려 준다. */
@@ -2143,7 +2162,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
            ★★★ 제목이 가운데 정렬이라 이 줄도 가운데다(`text-align:center`).
              왼쪽에 붙이면 제목과 짝이 아니라 **딴 것**으로 읽힌다. -->
       <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:600;font-style:normal;justify-content:center;line-height:0;left:0;right:0;color:#374151;font-size:17px;top:714px;text-align:center;letter-spacing:.01em">
-        <p style="line-height:26px">For <svg class="pmark" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.05 12.536c-.026-2.9 2.37-4.29 2.478-4.359-1.35-1.972-3.45-2.242-4.196-2.273-1.786-.18-3.487 1.05-4.394 1.05-.906 0-2.303-1.024-3.786-.996-1.948.029-3.744 1.132-4.746 2.875-2.024 3.508-.517 8.702 1.454 11.549.964 1.393 2.113 2.958 3.62 2.902 1.452-.058 2.001-.939 3.756-.939 1.755 0 2.248.939 3.785.909 1.562-.026 2.552-1.42 3.508-2.818 1.106-1.617 1.56-3.182 1.586-3.262-.035-.014-3.043-1.167-3.073-4.638M14.29 3.9c.8-.97 1.34-2.318 1.192-3.66-1.152.046-2.548.767-3.375 1.736-.741.86-1.39 2.232-1.215 3.55 1.285.1 2.598-.653 3.398-1.626"/></svg>macOS and <svg class="pmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>Windows &middot; one purchase, both.</p>
+        <p style="line-height:26px">For <svg class="pmark" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.05 12.536c-.026-2.9 2.37-4.29 2.478-4.359-1.35-1.972-3.45-2.242-4.196-2.273-1.786-.18-3.487 1.05-4.394 1.05-.906 0-2.303-1.024-3.786-.996-1.948.029-3.744 1.132-4.746 2.875-2.024 3.508-.517 8.702 1.454 11.549.964 1.393 2.113 2.958 3.62 2.902 1.452-.058 2.001-.939 3.756-.939 1.755 0 2.248.939 3.785.909 1.562-.026 2.552-1.42 3.508-2.818 1.106-1.617 1.56-3.182 1.586-3.262-.035-.014-3.043-1.167-3.073-4.638M14.29 3.9c.8-.97 1.34-2.318 1.192-3.66-1.152.046-2.548.767-3.375 1.736-.741.86-1.39 2.232-1.215 3.55 1.285.1 2.598-.653 3.398-1.626"/></svg>macOS and <svg class="pmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>Windows.</p>
       </div>
       <div style="position:absolute;background:rgba(162,198,255,0.2);height:53.625px;left:39.5px;border-radius:50px;top:810.75px;width:117px" data-node-id="39:7161">
       </div>
@@ -3329,7 +3348,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
     <h2 data-kyu="rise">Every desk is different.</h2>
     <!-- ★ 제목 **바로 밑**이다(창업자 2026-09-03: "사이에 패딩이 너무 커, 붙여줘").
          절 밖에 두었더니 그림 뒤로 밀려서 제목과 짝이 안 보였다. 넓은 판과 같은 자리. -->
-    <p class="m-plat">For <svg class="pmark" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.05 12.536c-.026-2.9 2.37-4.29 2.478-4.359-1.35-1.972-3.45-2.242-4.196-2.273-1.786-.18-3.487 1.05-4.394 1.05-.906 0-2.303-1.024-3.786-.996-1.948.029-3.744 1.132-4.746 2.875-2.024 3.508-.517 8.702 1.454 11.549.964 1.393 2.113 2.958 3.62 2.902 1.452-.058 2.001-.939 3.756-.939 1.755 0 2.248.939 3.785.909 1.562-.026 2.552-1.42 3.508-2.818 1.106-1.617 1.56-3.182 1.586-3.262-.035-.014-3.043-1.167-3.073-4.638M14.29 3.9c.8-.97 1.34-2.318 1.192-3.66-1.152.046-2.548.767-3.375 1.736-.741.86-1.39 2.232-1.215 3.55 1.285.1 2.598-.653 3.398-1.626"/></svg>macOS and <svg class="pmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>Windows &middot; one purchase, both.</p>
+    <p class="m-plat">For <svg class="pmark" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.05 12.536c-.026-2.9 2.37-4.29 2.478-4.359-1.35-1.972-3.45-2.242-4.196-2.273-1.786-.18-3.487 1.05-4.394 1.05-.906 0-2.303-1.024-3.786-.996-1.948.029-3.744 1.132-4.746 2.875-2.024 3.508-.517 8.702 1.454 11.549.964 1.393 2.113 2.958 3.62 2.902 1.452-.058 2.001-.939 3.756-.939 1.755 0 2.248.939 3.785.909 1.562-.026 2.552-1.42 3.508-2.818 1.106-1.617 1.56-3.182 1.586-3.262-.035-.014-3.043-1.167-3.073-4.638M14.29 3.9c.8-.97 1.34-2.318 1.192-3.66-1.152.046-2.548.767-3.375 1.736-.741.86-1.39 2.232-1.215 3.55 1.285.1 2.598-.653 3.398-1.626"/></svg>macOS and <svg class="pmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>Windows.</p>
     <div class="m-desks">
       <img class="d-kyu flip" src="assets/art/kyu-sing.webp" alt="" loading="lazy" decoding="async">
       <img class="d-dea" src="assets/art/cast-dea.webp" alt="" loading="lazy" decoding="async">
@@ -3404,7 +3423,15 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <img class="f f-zip" src="assets/art/file-zip.svg" alt="" loading="lazy" decoding="async">
         <img class="f f-avi" src="assets/art/file-avi.svg" alt="" loading="lazy" decoding="async">
         <img class="f f-svg" src="assets/art/file-svg.svg" alt="" loading="lazy" decoding="async">
-        <img class="m-bagback" src="assets/art/bag-back34.webp" alt="" loading="lazy" decoding="async">
+        <!-- ★★★★★★ **정지 그림이 아니라 영상이다**(창업자 2026-09-04: "모바일 버전에
+             Hands it back 에 큐가 등돌리는 모션이 없는데?"). 넓은 판은 처음부터
+             `bag-reveal` 을 틀고 있었는데(돌아서서 가방을 보여주는 동작) 모바일만
+             뒤돌아선 **한 장**이었다. 같은 소재를 같은 자리에 놓는다.
+             ★ 자리는 넓은 판이 이미 맞춰 둔 관계를 그대로 옮겼다:
+               영상 폭 = 정지 그림 폭 × 1.326 · 왼쪽으로 그 폭의 15.9% 만큼. -->
+        <video class="kyu-anim m-bagback" data-kyu-anim="bag-reveal" muted loop playsinline preload="none"
+               data-webm="assets/anim/bag-reveal.webm" data-mp4="assets/anim/bag-reveal.mp4"
+               data-poster="assets/anim/bag-reveal.png" aria-label="Kyu turning around to show the bag"></video>
         <img class="m-bag" src="assets/art/ui-bag.webp" alt="Four things in the bag" loading="lazy" decoding="async">
       </div>
     </article>

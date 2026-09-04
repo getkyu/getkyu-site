@@ -103,7 +103,7 @@
   "$9.99 Yours forever": "$9.99 계속 네 것",
   "Almost ready": "거의 다 됐어요",
   "Coming soon": "곧 나와요",
-  "For macOS and Windows · one purchase, both.": "맥과 윈도우 모두 · 한 번 사면 둘 다.",
+  "For macOS and Windows.": "맥과 윈도우 모두.",
   "No. Kyu runs on your own machine — Mac or PC — with no sign-up, no server, nothing to log into. If you connect your own AI key or a calendar, that traffic goes from your machine straight to that service; it never passes through us. The one thing that reaches us at all is a version check — no account, no device id, not even which version you're on — and you can switch that off too.": "아니요. 큐는 당신 기계에서 돕니다 — 맥이든 PC든. 가입도, 서버도, 로그인할 곳도 없습니다. AI 키나 캘린더를 붙이면 그 통신은 당신 기계에서 그 서비스로 바로 가고, 우리를 거치지 않습니다. 우리에게 닿는 것은 새 판 확인 하나뿐입니다 — 계정도, 기기 식별자도, 지금 몇 판인지도 안 보냅니다. 그것도 끌 수 있습니다.",
   "Mac": "맥",
   "Windows": "윈도우",
