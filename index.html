@@ -112,7 +112,11 @@ a { color: inherit; text-decoration: none; }
 .kyu-faq { width: 1318px; margin: 0 auto; padding: 58px 0 120px; color: #121212; }
 .kyu-faq .eyebrow { margin: 0; font: 600 15px/26px Inter, system-ui, sans-serif; letter-spacing: .02em; }
 .kyu-faq h2 { margin: 24px 0 0; font: 400 76px/88px Inter, system-ui, sans-serif; }
-.kyu-faq .rows { margin-top: 49px; }
+.kyu-faq .rows { margin-top: 49px; border-top: 1px solid #e5e5e5; }
+/* ★★★★★★ **맨 위 질문만 선이 없었다**(창업자 2026-09-05: "질문에 선이 없는
+     것들이 있어"). 열넷을 다 재 보니 `border-bottom` 은 전부 1px 로 있었다 —
+     빠진 건 줄이 아니라 **목록의 윗변**이다. 아래만 그으면 첫 줄은 위가 열려
+     있어서, 그 한 줄만 목록 밖에 떠 있는 것처럼 보인다. */
 .kyu-faq .row { border-bottom: 1px solid #e5e5e5; }
 .kyu-faq .q {
   display: flex; align-items: center; gap: 10px;
@@ -124,6 +128,13 @@ a { color: inherit; text-decoration: none; }
 /* ★ 소품은 알파 여백이 넓다 — 상자를 72 로 잡아야 디자인만큼 보인다.
      상자 72 + 사이 10 = 글자가 x 143 에서 시작한다(디자인과 같은 값). */
 .kyu-faq .ico { width: 72px; height: 72px; flex: none; object-fit: contain; }
+/* ★★★★★★ **꽉 찬 로고는 같은 상자에서 혼자 커 보인다**(창업자 2026-09-05:
+     "디스코드 로고가 너무 커"). 상자는 다 72px 로 같았다 — 다른 건 **여백**이다.
+     소품 사진은 둘레가 투명해서 64칸에 잉크가 11~16% 인데, 디스코드는 벡터라
+     41.7% 였다. 크기가 아니라 **밀도**가 세 배다.
+   ★ 그래서 상자를 줄이지 않고 그림만 줄인다 — 퍼센트라 72px 판과 44px 판이
+     같은 비율로 따라온다. 0.68² ≈ 0.46 → 잉크 41.7 × 0.46 ≈ 19%. */
+.kyu-faq .ico.logo { transform: scale(.68); }
 /* ★ 호버하면 **우리 파랑**으로(창업자 2026-08-30: "질문들 호버하면 우리 브랜드
    파랑색으로 바꿔줘"). 앞 판은 흐려지기만 해서(opacity .6) 「눌린다」 보다
    「꺼졌다」 로 읽혔다. 더하기 표시도 같이 물든다 — 둘이 한 단추다. */
@@ -1152,9 +1163,9 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
 @media (max-width: 700px) { .kyu-faq .a .kyu-copy { margin-left: 56px } }
 .kyu-copy {
   display: inline-flex; align-items: center; gap: 8px;
-  max-width: 100%; margin: 6px 0; padding: 7px 8px 7px 12px;
-  border: 1px solid #dbe4f0; border-radius: 12px; background: #f6f9fe;
-  font: 500 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  max-width: 100%; margin: 10px 0 14px; padding: 12px 10px 13px 16px;
+  border: 1px solid #dbe4f0; border-bottom-color: #c3d3ea; border-radius: 12px; background: #f6f9fe;
+  font: 500 14px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace;
   color: #2f6bd8; vertical-align: middle;
 }
 .kyu-copy code { font: inherit; color: inherit; background: none; overflow-wrap: anywhere; }
@@ -1171,7 +1182,11 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
 .kyu-copy.done { border-color: #9fd3b4; background: #f2fbf6 }
 .kyu-copy.done button { color: #2c8a5b }
 @media (max-width: 700px) {
-  .kyu-copy { font-size: 13px; padding: 6px 6px 6px 10px }
+  /* ★★★★★★ **두 줄로 접히면 글이 상자 벽에 닿았다**(창업자 2026-09-05:
+       "밑에 선이랑 패딩이 좀더 들어가야 해"). 좁은 판에서 잰 값은 위아래
+       6px · 줄사이 19.5px 였고, 두 줄짜리 상자 높이가 53px 이라 아랫줄의
+       g·y 꼬리가 테두리에 붙었다. 아래를 위보다 더 준다 — 꼬리가 내려온다. */
+  .kyu-copy { font-size: 13px; line-height: 1.7; padding: 10px 8px 12px 14px; margin: 10px 0 12px }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -3634,7 +3649,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
            자리」로 읽힌다. -->
     <div class="row">
       <button type="button" class="q" aria-expanded="false" aria-controls="faq-a0" id="faq-q0">
-        <img class="ico" src="assets/art/flat-discord.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <img class="ico logo" src="assets/art/flat-discord.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
         <span class="t">Want to just ask someone?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
@@ -3730,7 +3745,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
          ★ 새 문항을 넣을 땐 `<div class="row">` 부터 연다. 단추만 더하면 조용히 붙는다. -->
     <div class="row">
       <button type="button" class="q" aria-expanded="false" aria-controls="faq-a10" id="faq-q10">
-        <img class="ico" src="assets/art/floorprop-biscuit.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <img class="ico" src="assets/art/floorprop-tablet.png" alt="" width="72" height="72" loading="lazy" decoding="async">
         <span class="t">Does it update itself?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
@@ -3834,7 +3849,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
            마지막 줄은 자랑 대신 **건네는 말**이다. -->
     <div class="row">
       <button type="button" class="q" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">
-        <img class="ico" src="assets/art/floorprop-sausage3.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <img class="ico" src="assets/art/floorprop-mic.png" alt="" width="72" height="72" loading="lazy" decoding="async">
         <span class="t">Who made this, and why "Kyu"?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
@@ -3843,7 +3858,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
 
     <div class="row">
       <button type="button" class="q" aria-expanded="false" aria-controls="faq-a8" id="faq-q8">
-        <img class="ico" src="assets/art/floorprop-sausage1.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <img class="ico" src="assets/art/floorprop-groceries.png" alt="" width="72" height="72" loading="lazy" decoding="async">
         <span class="t">Something's broken, or you want a feature?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
