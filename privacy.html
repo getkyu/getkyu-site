@@ -36,7 +36,7 @@
 <p>Kyu's network access goes through a single module with a short, fixed list of purposes. As of this version:</p>
 <table>
 <tr><th>Purpose</th><th>Where</th><th>What is sent</th><th>When</th></tr>
-<tr><td>Weather</td><td>api.open-meteo.com</td><td>Your latitude/longitude rounded to one decimal (~11&nbsp;km, neighborhood-level) and timezone name. No key, no account, no cookies.</td><td>If weather is on</td></tr>
+<tr><td>Weather</td><td>api.open-meteo.com</td><td>Your latitude/longitude rounded to two decimals (~1.1&nbsp;km &mdash; a square that holds thousands of homes) and timezone name. No key, no account, no cookies.</td><td>If weather is on</td></tr>
 <tr><td>Location setup</td><td>geocoding-api.open-meteo.com</td><td>The place name you type (e.g. a city) is sent once to look up its coordinates; afterwards only the rounded coordinates above are used. If you use the Mac's own location service instead, that lookup happens on-device and nothing is sent here.</td><td>Only when you set your location by name</td></tr>
 <tr><td>Calendar</td><td>The ICS URL you provide (Google/Apple/other)</td><td>A fetch of that URL. The URL stays on your device and is stripped from exports.</td><td>If you add a calendar</td></tr>
 <tr><td>News</td><td>Official publisher RSS feeds</td><td>A plain feed request. Headlines and links are shown with sources.</td><td>If news is on</td></tr>

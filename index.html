@@ -1138,6 +1138,42 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
   #m .m-dayart .d-num.tick i { animation: none }
 }
 
+/* ── 복사할 수 있는 것 ────────────────────────────────────────────
+   ★★★★★★ **손으로 긁어 쓰라고 두지 않는다**(창업자 2026-09-05). FAQ 에 붙이는
+     경로와 명령이 있는데 여태 그냥 글이었다 — 사람이 드래그로 긁다가 앞뒤를
+     같이 집거나 한 글자를 빠뜨린다. 그러면 붙여도 안 되고, 안 되면 우리 탓이 된다.
+   ★ 곡선 상자 + 파란 글 + 복사 아이콘. 아이콘은 **누르는 것**이라 손가락 자리
+     (40px)를 준다 — 좁은 판에서 옆의 글을 안 건드리고 눌러야 한다. */
+/* ★★★★★★ **답 문단과 같은 자리에 선다**(2026-09-05, 화면으로 보고 고쳤다).
+     FAQ 답의 `p` 는 왼쪽 여백이 82px(좁은 판 56px)인데 이 상자는 안 가져서
+     **글보다 왼쪽으로 튀어나왔다.** 상자만 딴 데서 시작하면 한 답 안에서
+     두 개의 왼쪽 선이 생긴다 — 읽는 눈이 걸린다. */
+.kyu-faq .a .kyu-copy { margin-left: 82px }
+@media (max-width: 700px) { .kyu-faq .a .kyu-copy { margin-left: 56px } }
+.kyu-copy {
+  display: inline-flex; align-items: center; gap: 8px;
+  max-width: 100%; margin: 6px 0; padding: 7px 8px 7px 12px;
+  border: 1px solid #dbe4f0; border-radius: 12px; background: #f6f9fe;
+  font: 500 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #2f6bd8; vertical-align: middle;
+}
+.kyu-copy code { font: inherit; color: inherit; background: none; overflow-wrap: anywhere; }
+/* ★ 단추는 상자 안에 산다 — 밖에 두면 어디까지가 복사되는 건지 안 보인다. */
+.kyu-copy button {
+  flex: none; width: 30px; height: 30px; display: grid; place-items: center;
+  border: 0; border-radius: 8px; background: transparent; color: #6b7f9c;
+  cursor: pointer; padding: 0; transition: background .15s, color .15s;
+}
+.kyu-copy button:hover { background: #e6eefb; color: #2f6bd8 }
+.kyu-copy button:focus-visible { outline: 2px solid #2f6bd8; outline-offset: 2px }
+.kyu-copy button svg { width: 16px; height: 16px; pointer-events: none }
+/* ★ 눌렀다는 걸 **그 자리에서** 말한다. 토스트를 띄우면 눈이 딴 데로 간다. */
+.kyu-copy.done { border-color: #9fd3b4; background: #f2fbf6 }
+.kyu-copy.done button { color: #2c8a5b }
+@media (max-width: 700px) {
+  .kyu-copy { font-size: 13px; padding: 6px 6px 6px 10px }
+}
+
 /* ═══════════════════════════════════════════════════════════════
    움직임 층 — 창업자(2026-08-29) 의 열다섯 가지.
 
@@ -2232,13 +2268,13 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <img src="assets/art/dock-appicon4.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
       <div style="position:absolute;left:575.46px;width:91.904px;height:91.904px;top:1398.79px" data-n="App Icon 5" data-node-id="46:1438">
-        <img src="assets/art/dock-appicon5.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+        <img src="assets/art/dock-chatgpt.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
       <div style="position:absolute;left:673.6px;width:91.904px;height:91.904px;top:1398.79px" data-n="App Icon 6" data-node-id="46:1439">
-        <img src="assets/art/dock-appicon6.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+        <img src="assets/art/dock-claude.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
       <div style="position:absolute;left:771.73px;width:91.904px;height:91.904px;top:1398.79px" data-n="App Icon 7" data-node-id="46:1440">
-        <img src="assets/art/dock-appicon7.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
+        <img src="assets/art/dock-gemini.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
       </div>
       <div style="position:absolute;left:1162.72px;width:91.904px;height:91.904px;top:1398.79px" data-n="Folder" data-node-id="46:1441">
         <img src="assets/art/dock-folder.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%">
@@ -3295,6 +3331,9 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
        ★★ 넓은 판의 같은 띠와 **한 문장**이다 — "Every desk is different." -->
   <section class="m-everydesk">
     <h2 data-kyu="rise">Every desk is different.</h2>
+<!-- ★ 제목 **바로 밑**이다(창업자 2026-09-03: "사이에 패딩이 너무 커, 붙여줘").
+         절 밖에 두었더니 그림 뒤로 밀려서 제목과 짝이 안 보였다. 넓은 판과 같은 자리. -->
+    <p class="m-plat">For <svg class="pmark" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.05 12.536c-.026-2.9 2.37-4.29 2.478-4.359-1.35-1.972-3.45-2.242-4.196-2.273-1.786-.18-3.487 1.05-4.394 1.05-.906 0-2.303-1.024-3.786-.996-1.948.029-3.744 1.132-4.746 2.875-2.024 3.508-.517 8.702 1.454 11.549.964 1.393 2.113 2.958 3.62 2.902 1.452-.058 2.001-.939 3.756-.939 1.755 0 2.248.939 3.785.909 1.562-.026 2.552-1.42 3.508-2.818 1.106-1.617 1.56-3.182 1.586-3.262-.035-.014-3.043-1.167-3.073-4.638M14.29 3.9c.8-.97 1.34-2.318 1.192-3.66-1.152.046-2.548.767-3.375 1.736-.741.86-1.39 2.232-1.215 3.55 1.285.1 2.598-.653 3.398-1.626"/></svg>macOS and <svg class="pmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>Windows.</p>
     <div class="m-desks">
       <img class="d-kyu flip" src="assets/art/kyu-sing.webp" alt="" loading="lazy" decoding="async">
       <img class="d-dea" src="assets/art/cast-dea.webp" alt="" loading="lazy" decoding="async">
@@ -3340,9 +3379,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
     <article class="m-card m-magic">
       <h3>Desk Magic<i class="m-new beta">BETA</i></h3>
       <p>Screenshots piling up? He'll offer to tidy.<br>He asks first — and never deletes.</p>
-<!-- ★ 제목 **바로 밑**이다(창업자 2026-09-03: "사이에 패딩이 너무 커, 붙여줘").
-         절 밖에 두었더니 그림 뒤로 밀려서 제목과 짝이 안 보였다. 넓은 판과 같은 자리. -->
-    <p class="m-plat">For <svg class="pmark" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.05 12.536c-.026-2.9 2.37-4.29 2.478-4.359-1.35-1.972-3.45-2.242-4.196-2.273-1.786-.18-3.487 1.05-4.394 1.05-.906 0-2.303-1.024-3.786-.996-1.948.029-3.744 1.132-4.746 2.875-2.024 3.508-.517 8.702 1.454 11.549.964 1.393 2.113 2.958 3.62 2.902 1.452-.058 2.001-.939 3.756-.939 1.755 0 2.248.939 3.785.909 1.562-.026 2.552-1.42 3.508-2.818 1.106-1.617 1.56-3.182 1.586-3.262-.035-.014-3.043-1.167-3.073-4.638M14.29 3.9c.8-.97 1.34-2.318 1.192-3.66-1.152.046-2.548.767-3.375 1.736-.741.86-1.39 2.232-1.215 3.55 1.285.1 2.598-.653 3.398-1.626"/></svg>macOS and <svg class="pmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>Windows.</p>
+
       <img class="m-trash" src="assets/art/ui-trash.webp" alt="" width="125" height="125" loading="lazy" decoding="async">
     </article>
 
@@ -3591,6 +3628,20 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
   <h2 id="faq-h">Questions?</h2>
   <div class="rows">
 
+    <!-- ★★★★★★ **맨 앞에 둔다**(창업자 2026-09-05). Q&A 를 여는 사람은 대개 막혀서
+         온 사람이고, 그때 제일 빠른 길은 읽는 게 아니라 **묻는 것**이다.
+         ★ 여기만 소품이 아니라 디스코드 제 로고를 쓴다 — 한눈에 「밖으로 나가는
+           자리」로 읽힌다. -->
+    <div class="row">
+      <button type="button" class="q" aria-expanded="false" aria-controls="faq-a0" id="faq-q0">
+        <img class="ico" src="assets/art/flat-discord.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <span class="t">Want to just ask someone?</span>
+        <span class="plus" aria-hidden="true"><i></i><i></i></span>
+      </button>
+      <div class="a" id="faq-a0" role="region" aria-labelledby="faq-q0"><div><p>Come say hi on Discord &mdash; questions, bugs, or what you wish Kyu did. I&rsquo;m in there.</p>
+        <span class="kyu-copy" data-copy="https://discord.gg/EqasYRRjn"><code><a href="https://discord.gg/EqasYRRjn" target="_blank" rel="noopener">discord.gg/EqasYRRjn</a></code></span></div></div>
+    </div>
+
     <div class="row">
       <button type="button" class="q" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
         <img class="ico" src="assets/art/floorprop-ball.png" alt="" width="72" height="72" loading="lazy" decoding="async">
@@ -3601,16 +3652,18 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
      까지 포함하도록 고쳤으니, 이 답도 같은 사실을 말해야 한다 — 두 자리가
      갈라지면 둘 중 하나는 반드시 거짓이 된다. 끌 수 있다는 것도 사실이다
      (`main.js` 가 `agenda.config.update === false` 면 아예 안 부른다). -->
-<div><p>No. Kyu runs on your own machine — Mac or PC — with no sign-up, no server, nothing to log into. If you connect your own AI key or a calendar, that traffic goes from your machine straight to that service; it never passes through us. Two things go out on their own. A version check to getkyu.com — no account, no device id, not even which version you're on — and you can switch that off. And if you bought Kyu directly, a licence check that carries your key and nothing else: once when you enter it, then only if a week has gone by. Offline, Kyu keeps working for a month. Everything else stays on your machine.</p></div></div>
+<div><p>No. Kyu runs on your own machine &mdash; Mac or PC. No sign-up, no server, nothing to log into.</p>
+        <p>Two things go out on their own: a version check (no account, no device id) and, if you bought here, a licence check about once a week. Both are listed on the <a href="privacy.html">privacy page</a>.</p></div></div>
     </div>
 
     <div class="row">
       <button type="button" class="q" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
-        <img class="ico" src="assets/art/floorprop-suitcase.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <img class="ico" src="assets/art/floorprop-coffee.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
         <span class="t">Will he interrupt me while I'm working?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
-      <div class="a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div><p>Five things, and they are the only ones he decides on his own: a meeting about to start, meds, sitting too long, water, and the end of the day. That list is written into the code, not hidden in a setting. There is a sixth, but you have to set it up yourself — if you register Kyu as a tool in Claude Code or Cursor, he'll tell you when their work finishes. Even that one waits while you're deep in something. Nothing you didn't ask for ever reaches you.</p></div></div>
+      <div class="a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div><p>Five things, and they are the only ones he decides on his own: a meeting starting, meds, sitting too long, water, end of day. That list is in the code, not in a setting.</p>
+        <p>There is a sixth, but <b>you</b> set it up &mdash; register Kyu as a tool in Claude Code or Cursor and he&rsquo;ll say when their work finishes. Even that waits while you&rsquo;re deep in something. Nothing you didn&rsquo;t ask for reaches you.</p></div></div>
     </div>
 
     <div class="row">
@@ -3647,7 +3700,8 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <span class="t">What happens after I buy?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
-      <div class="a" id="faq-a12" role="region" aria-labelledby="faq-q12"><div><p>A licence key arrives by email. You paste it in once and that&rsquo;s it &mdash; no account to make, nothing to sign into. <b>One key, one machine.</b> Moving to a new computer is a click: open Settings on the old one and remove the key, and it&rsquo;s free to use again. If that machine is gone for good, rotate the key from your purchase page and you get a fresh one.</p><p>Kyu checks the key when you enter it, then at most once a week. If you&rsquo;re offline, or we are, he keeps working for a month before he asks again.</p></div></div>
+      <div class="a" id="faq-a12" role="region" aria-labelledby="faq-q12"><div><p>A licence key arrives by email. Paste it in once &mdash; no account, nothing to sign into. <b>One key, one machine.</b></p>
+        <p>Moving computers is a click: remove the key in Settings on the old one, and it&rsquo;s free again. Kyu checks the key when you enter it, then at most weekly &mdash; offline, he keeps working for a month.</p></div></div>
     </div>
 
     <div class="row">
@@ -3676,7 +3730,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
          ★ 새 문항을 넣을 땐 `<div class="row">` 부터 연다. 단추만 더하면 조용히 붙는다. -->
     <div class="row">
       <button type="button" class="q" aria-expanded="false" aria-controls="faq-a10" id="faq-q10">
-        <img class="ico" src="assets/art/floorprop-ball.png" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <img class="ico" src="assets/art/floorprop-biscuit.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
         <span class="t">Does it update itself?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
@@ -3689,7 +3743,8 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
              한 문장으로 뭉뚱그리면 둘 중 하나는 반드시 거짓이 된다.
            ★★ 서명이 붙어 업데이터를 달면 **이 답의 둘째 문단만** 고치면 된다.
              그때까지는 있는 그대로 적는다 — 사이트가 앱보다 앞서가면 안 된다. -->
-      <div class="a" id="faq-a10" role="region" aria-labelledby="faq-q10"><div><p>On Steam, yes — Steam keeps him current on its own; you never think about it.</p><p>If you bought him here, Kyu tells you when a new version is out and opens the download page for you. One click, then install as usual. (He asks our site one question — "what's the newest?" — and nothing else: no account, no device id, not even which version you're on. You can switch that check off in settings.)</p></div>
+      <div class="a" id="faq-a10" role="region" aria-labelledby="faq-q10"><div><p>On Steam, yes &mdash; Steam keeps him current.</p>
+        <p>Bought here? Kyu tells you when a new version is out and opens the download page. One click, then install as usual. He asks our site one question &mdash; &ldquo;what&rsquo;s the newest?&rdquo; &mdash; and nothing else. You can switch that off.</p></div>
       <!-- ★★★★★★ **첫 설치에서 윈도우스가 경고를 낸다**(2026-09-03).
            설치 파일은 실명 인증서로 서명돼 있는데(CN=Kyu Kim), 갓 만든 인증서는
            **평판이 없어서** 마이크로소프트가 쌓일 때까지 경고를 띄운다.
@@ -3717,7 +3772,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
 
     <div class="row">
       <button type="button" class="q" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
-        <img class="ico" src="assets/art/floorprop-coffee.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <img class="ico" src="assets/art/floorprop-knot.png" alt="" width="72" height="72" loading="lazy" decoding="async">
         <span class="t">How do I get the pet?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
@@ -3726,7 +3781,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
 
     <div class="row">
       <button type="button" class="q" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">
-        <img class="ico" src="assets/art/floorprop-bowl3.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <img class="ico" src="assets/art/floorprop-bowl1.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
         <span class="t">Can I use my own AI?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
@@ -3749,7 +3804,8 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <span class="t">Does Kyu connect to all those apps by itself?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
-      <div class="a" id="faq-a9" role="region" aria-labelledby="faq-q9"><div><p>Seven of them, yes: your calendar, your mail over IMAP, the weather, and Claude, ChatGPT or Gemini with your own key. Claude Code and Cursor he reads the config of. The other eleven — Slack, Notion, GitHub, Figma, Linear, Shopify, Spotify, Discord, Todoist, Vercel, Meet — arrive through MCP servers you already run yourself. Kyu doesn't ship those connections; he speaks the protocol and uses the ones you've set up, read-only, off until you switch them on.</p></div></div>
+      <div class="a" id="faq-a9" role="region" aria-labelledby="faq-q9"><div><p>Seven directly: your calendar, mail over IMAP, weather, and Claude, ChatGPT or Gemini with your own key. Claude Code and Cursor he reads the config of.</p>
+        <p>The other eleven &mdash; Slack, Notion, GitHub, Figma, Linear, Shopify, Spotify, Discord, Todoist, Vercel, Meet &mdash; come through MCP servers <b>you already run</b>. Kyu speaks the protocol; he reads only, and stays off until you switch them on.</p></div></div>
     </div>
     <!-- ★★★★★★ **큐가 MCP 서버라는 걸 사이트에 한 번도 안 적었다**(2026-09-05).
          `--mcp` 는 진작 배포돼 있고 설정 창엔 붙이는 법이 둘이나 있는데, 사이트의
@@ -3759,11 +3815,15 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
          ★★ ChatGPT 웹이 안 된다는 걸 **적는다.** 안 적으면 해 보고 안 되는 사람이 나온다. -->
     <div class="row">
       <button type="button" class="q" aria-expanded="false" aria-controls="faq-a13" id="faq-q13">
-        <img class="ico" src="assets/art/floorprop-suitcase.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <img class="ico" src="assets/art/floorprop-newspaper.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
         <span class="t">Can my AI tools talk to Kyu?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
-      <div class="a" id="faq-a13" role="region" aria-labelledby="faq-q13"><div><p>Yes — Kyu is an MCP server too, not just a client. Point Claude Code, Claude Desktop or Cursor at <code>GetKyu.app/Contents/MacOS/GetKyu --mcp</code> and they can reach him. He hands them three things: tell you something finished, write one line into his journal, and the one nothing else can answer — <b>whether this is a good moment to talk to you</b>. A chatbot in a window has no body on your desk. Kyu knows when you're deep in something, and he holds the message until you surface. If you'd rather not edit any JSON, one line in a hook does it: <code>…/GetKyu --notify="Build finished"</code>. ChatGPT on the web can't reach local servers, so this is for tools that speak MCP over stdio.</p></div></div>
+      <div class="a" id="faq-a13" role="region" aria-labelledby="faq-q13"><div><p>Yes &mdash; Kyu speaks MCP <b>both ways</b>. Point Claude Code, Claude Desktop or Cursor at this:</p>
+        <span class="kyu-copy" data-copy="/Applications/GetKyu.app/Contents/MacOS/GetKyu --mcp"><code>/Applications/GetKyu.app/Contents/MacOS/GetKyu --mcp</code></span>
+        <p>He gives them three things: say something finished, write a line in his journal, and the one nothing else can answer &mdash; <b>whether this is a good moment to talk to you</b>. A chatbot in a window has no body on your desk.</p>
+        <p>Don&rsquo;t want to edit JSON? One line in a hook does it:</p>
+        <span class="kyu-copy" data-copy='/Applications/GetKyu.app/Contents/MacOS/GetKyu --notify="Build finished"'><code>GetKyu --notify=&quot;Build finished&quot;</code></span></div></div>
     </div>
 
     <!-- ★★★★★★ **창업자의 이야기**(2026-08-29). 창업자가 준 사실 그대로다 —
@@ -3774,7 +3834,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
            마지막 줄은 자랑 대신 **건네는 말**이다. -->
     <div class="row">
       <button type="button" class="q" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">
-        <img class="ico" src="assets/art/floorprop-knot.png" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <img class="ico" src="assets/art/floorprop-sausage3.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
         <span class="t">Who made this, and why "Kyu"?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
@@ -3783,11 +3843,12 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
 
     <div class="row">
       <button type="button" class="q" aria-expanded="false" aria-controls="faq-a8" id="faq-q8">
-        <img class="ico" src="assets/art/floorprop-frisbee.png" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <img class="ico" src="assets/art/floorprop-sausage1.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
         <span class="t">Something's broken, or you want a feature?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
-      <div class="a" id="faq-a8" role="region" aria-labelledby="faq-q8"><div><p><a href="mailto:getkyu.ai@gmail.com" data-todo="mail-address">getkyu.ai@gmail.com</a><span> — a question, a feature you wish Kyu had, or he won't start at all. It comes straight to me, and I read every one.</span></p></div></div>
+      <div class="a" id="faq-a8" role="region" aria-labelledby="faq-q8"><div><p><a href="mailto:getkyu.ai@gmail.com">getkyu.ai@gmail.com</a> &mdash; a question, a feature you wish Kyu had, or he won&rsquo;t start at all. It comes straight to me, and I read every one.</p>
+        <span class="kyu-copy" data-copy="getkyu.ai@gmail.com"><code>getkyu.ai@gmail.com</code></span></div></div>
     </div>
 
   </div>
@@ -5362,6 +5423,37 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         g.beginPath(); g.moveTo(똥별.x, 똥별.y); g.lineTo(똥별.x - 똥별.길이, 똥별.y - 똥별.길이 * 0.42); g.stroke()
         if (산다 <= 0 || 똥별.x > w + 40) { 똥별 = null; 다음 = 초 + 2.5 + Math.random() * 4 }
       }
+    })
+  }
+})()
+
+/* ── 복사 단추 ────────────────────────────────────────────────────
+   ★ 글은 `data-copy` 에 **그대로** 둔다. 화면의 글자를 긁어 쓰면 줄바꿈·말줄임이
+     같이 딸려 간다 — 붙여넣기가 안 되는 건 대개 그것 때문이다.
+   ★★ 클립보드가 막힌 자리(옛 사파리·http)에서도 죽지 않게 옛 길을 남긴다. */
+;(() => {
+  const 아이콘 = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V5.5A2.5 2.5 0 0 1 7.5 3H15"/></svg>'
+  const 됐다 = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6.5"/></svg>'
+  for (const box of document.querySelectorAll('.kyu-copy')) {
+    if (box.querySelector('button')) continue
+    const b = document.createElement('button')
+    b.type = 'button'
+    b.setAttribute('aria-label', 'Copy')
+    b.innerHTML = 아이콘
+    box.append(b)
+    b.addEventListener('click', async () => {
+      const t = box.getAttribute('data-copy') ?? box.textContent.trim()
+      try {
+        await navigator.clipboard.writeText(t)
+      } catch {
+        const ta = document.createElement('textarea')
+        ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'
+        document.body.append(ta); ta.select()
+        try { document.execCommand('copy') } catch { /* 못 해도 화면은 안 깨진다 */ }
+        ta.remove()
+      }
+      box.classList.add('done'); b.innerHTML = 됐다
+      setTimeout(() => { box.classList.remove('done'); b.innerHTML = 아이콘 }, 1400)
     })
   }
 })()
