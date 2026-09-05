@@ -109,18 +109,6 @@ a { color: inherit; text-decoration: none; }
    ★ 판은 1440 폭이고 본문 기둥은 x 61~1379 다. 가운데 정렬한 1318px 상자가
      1440 화면에서 정확히 그 자리에 앉는다 — 판과 같은 기둥이다. */
 .kyu-faq, .kyu-footer .wrap, .kyu-footer .legal { box-sizing: border-box; }
-/* ★★★★★★ **로고 마크**(창업자 2026-09-03: "맥에 애플로고 윈도우는 윈도우 로고
-   마크를 넣어줘"). 글보다 로고가 먼저 읽힌다 — "내 기계가 되나" 는 눈으로 훑는
-   물음이라, 낱말을 읽기 전에 답이 보이는 게 맞다.
-   ★ 색은 `currentColor` — 글과 같은 회색이라 도드라지지 않는다. 로고를 제 색으로
-     칠하면 남의 브랜드가 우리 히어로에서 제일 밝은 것이 된다.
-   ★★ 글 자체는 **한 글자도 안 바꿨다** — 바꾸면 한국어 사전 열쇠가 어긋난다. */
-.pmark { display: inline-block; vertical-align: -2px; margin-right: 5px; opacity: .9 }
-/* ★ 히어로 밑 한 줄 — 어느 기계에서 도는지. 작고 조용하게. */
-.m-plat { margin: 7px 0 0; padding: 0 var(--pad, 24px); text-align: center; font: 600 16px/24px Inter, system-ui, sans-serif; color: #374151; letter-spacing: .01em; }
-/* ★ 14px 은 좁은 판에서 **너무 작다**(움직임 자의 문턱 14.5). 오늘 아침 내가
-       넣은 줄이고, 창업자는 이 글씨를 "좀더 찐하게" 라고 했었다 — 1px 올린다. */
-    @media (max-width: 860px) { .m-plat { font-size: 15px; margin-top: 14px } }
 .kyu-faq { width: 1318px; margin: 0 auto; padding: 58px 0 120px; color: #121212; }
 .kyu-faq .eyebrow { margin: 0; font: 600 15px/26px Inter, system-ui, sans-serif; letter-spacing: .02em; }
 .kyu-faq h2 { margin: 24px 0 0; font: 400 76px/88px Inter, system-ui, sans-serif; }
@@ -472,15 +460,7 @@ a { color: inherit; text-decoration: none; }
    세로는 제일 위 판(y93)을 0 으로 잡아 옮겼다 — 우리 글이 피그마보다 한 줄 길다.
    ★ 큐와 아이는 안 건드렸다. 창업자가 지난 판에서 **UI 만** 피그마로 하라고 했고,
      큐 크기·아이 자리는 그때 직접 정한 값이다. */
-/* ★★★★★★ **자르는 값을 그림에서 다시 쟀다**(창업자 2026-09-04: "While you were away에
-   UI쪽에 막 이상한 선들이 있는데"). 이 그림들은 카드 한 장이 아니라 **앱 화면을
-   통째로 오려온 것**이다 — 위에 MUTE 알약과 ✕, 아래 오른쪽에 ↰ 화살표가 같이 들어 있다.
-   ★ 위쪽 13.5% 는 **모자랐다.** 카드는 580×566 짜리에서 y=91(16.1%)에 시작한다 —
-     2.6% 만큼 MUTE 알약의 밑동이 남아 그게 빈 곳에 뜬 **가는 선**으로 보였다.
-   ★★ 아래는 **아예 안 자르고 있었다.** 그래서 ↰ 화살표가 카드 밑에 홀로 떠 있었다.
-   ★★★ 값은 짐작이 아니라 잰 것이다: 밝고 불투명한 덩어리(=카드)의 상자를 찾아
-     34,91 .. 389,486 을 얻었다. 여백은 1px 만 남긴다. */
-#m .m-away .a1 { left: 2.0%; top: -3px; width: 38.7%; border-radius: 11px; clip-path: inset(16.2% 0 14.5% 0); }
+#m .m-away .a1 { left: 2.0%; top: 0; width: 38.7%; border-radius: 11px; clip-path: inset(13.5% 0 0 0); }
 /* ★ 창업자 2026-08-30: "주식 UI를 좀 더 키우고 밑으로 좀 내려줘". 피그마 값(52.5%/12px/41.9%)
    에서 폭 1.24배, 아래로 26px. 오른끝이 카드를 넘지 않게 왼쪽도 같이 당겼다. */
 /* ★★★★★★ **시세는 두 장만 보인다**(창업자 2026-08-30: "영상들에 흰색 테두리가
@@ -509,13 +489,9 @@ a { color: inherit; text-decoration: none; }
 /* ★★ 창업자 2026-08-31: "주식창을 오른쪽으로 밀어줘 큐뒤에 머리까지 오게끔
    겹쳐도되." 8% → 34%. 셋째 칸(Dow)이 큐의 몸·머리 뒤로 들어간다 —
    큐가 `z-index: 3` 이라 순서는 이미 맞다. */
-/* ★ 시세 그림에도 위아래로 실선이 한 줄씩 있다(526×150 짜리에서 카드는 y=10..139).
-   안 자르면 카드 위에 가는 줄이 하나 더 뜬다 — 위와 같은 갈래다. */
-#m .m-away .a2 { left: 34.0%; top: 23px; width: 60.0%; clip-path: inset(6.7% 0 7.3% 0); }
+#m .m-away .a2 { left: 34.0%; top: 24px; width: 60.0%; }
 /* 메일 — 조금 줄였다(창업자: "중간 카드가 너무 커서"). 49.8% → 44.5% */
-/* ★ a1 과 같은 갈래 — 카드는 580×626 짜리에서 34,90 .. 545,547 이다. 위는 13.5%
-   로 모자랐고(→14.6%) 아래 화살표는 안 잘리고 있었다(→12.6%). */
-#m .m-away .a3 { left: 21.0%; top: 64px; width: 44.5%; border-radius: 10px; clip-path: inset(14.6% 0 12.6% 0); z-index: 2; }
+#m .m-away .a3 { left: 21.0%; top: 66px; width: 44.5%; border-radius: 10px; clip-path: inset(13.5% 0 0 0); z-index: 2; }
 /* ★ 큐가 **제일 앞**이다(창업자가 그렇게 말했다). 메일 카드가 z-index:2 라
    그냥 두면 손과 컵이 카드 뒤로 들어간다. */
 #m .m-away .a4 { right: -8%; top: 26px; height: 300px; width: auto; z-index: 3; }   /* 큐 — 크게 · 차트를 안 가리게 조금 오른쪽 */
@@ -900,21 +876,14 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
-/* ★★★★★★ **영상도 같이 잡아야 한다**(2026-09-04). 여기가 `img` 만이라, 뒤돌아선
-   정지 그림을 `bag-reveal` 영상으로 바꾸자 `position` 이 static 으로 남아
-   **left·top·width 가 통째로 무시됐다** — 큐가 감싸개 왼쪽 끝에 가서 섰다.
-   오류도 경고도 없다. 바로 위 `.m-away` 는 처음부터 `img, video` 둘 다 잡는다. */
-#m .m-bagwrap img, #m .m-bagwrap video { position: absolute; max-width: none; }
+#m .m-bagwrap img { position: absolute; max-width: none; }
 /* 가방과 그 뒤판 — 뒤판이 먼저(뒤), 가방이 나중(앞) */
 /* ★ 창업자 2026-08-31: "중간 UI가 작아졋어 큐랑 겹쳐도 되니까 다시 키워줘."
    가방 판을 29.6% → 42%, 뒤에 선 큐도 같은 배로. 겹치는 건 의도다. */
 /* ★★ 창업자 2026-08-31: "UI를 좀더 키워주고 큐 가방옆으로 좀더 가까이 살짝
    짤랴도되." 42% → 52%, 오른쪽으로 밀어 큐의 가방에 붙인다. 왼쪽이 카드 밖으로
    조금 나가는데 가장자리 페이드가 받아 준다 — 잘리는 게 아니라 흘러나간다. */
-/* ★ 영상은 정지 그림보다 **넓다**(가로세로 0.532 대 0.392) — 돌아서는 호(弧)가
-   같이 들어 있기 때문이다. 넓은 판이 쓰는 비율 그대로 옮긴다: 폭 33.0×1.326 = 43.8%,
-   왼쪽 58.0 − 33.0×0.159 = 52.7%. 그래야 **돌아선 뒤의 자세**가 전과 같은 자리에 선다. */
-#m .m-bagwrap .m-bagback { left: 52.7%; top: 4px;  width: 43.8%; }
+#m .m-bagwrap .m-bagback { left: 58.0%; top: 4px;  width: 33.0%; }
 /* ★ 그림 위쪽 12%는 **앱 창의 「MUTE ×」 줄**이다(재서 잘랐다: 잉크가 y16~70,
    판은 y80 부터). 작을 땐 안 보였는데 키우니 엉뚱한 단추처럼 보였다.
    ★ `clip-path` 는 자리를 안 바꾸므로 그만큼 `top` 을 올려 준다. */
@@ -1041,18 +1010,12 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
 #m .m-adopt h2 {
   margin: 0; font: 400 24px/1.2 Inter, system-ui, sans-serif; color: #111;
 }
-/* ★ 설명 — `m-daylist p` 와 같은 결로 둔다. 절마다 다른 크기를 쓰면 화면이 삐뚤어진다. */
-#m .m-adopt p {
-  margin: 10px auto 0; max-width: 30ch;
-  font: 400 15px/1.45 Inter, system-ui, sans-serif; color: var(--dim);
-}
 /* ★ 알약 — 채움 없이 **테두리만**. 왼 칸에 비스킷, 구분선, 오른 칸에 자리글.
    ★★ 피그마의 알약 가운데는 판 가운데에서 9.5px 왼쪽인데, 제목도 강아지도
      정가운데라 그 하나만 어긋나면 **끌다 만 것**으로 읽힌다. 가운데로 맞춘다. */
 #m .m-namepill {
   position: relative; box-sizing: border-box;
-  /* ★ 50px 이었다 — 설명이 없던 시절 빈칸을 메우려던 값이다. 글이 들어왔으니 당긴다. */
-  width: 95px; height: 30px; margin: 22px auto 0;
+  width: 95px; height: 30px; margin: 50px auto 0;
   border: 1px solid #a6a6a6; border-radius: 50px;
 }
 /* 두 칸을 가르는 선 — 테두리와 같은 색이라 끝까지 그어도 안 보인다 */
@@ -1931,26 +1894,16 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
   transform: rotate(-14deg);
   animation: kyu-wandwave 4.8s infinite;
 }
-/* ★★★★★★ **더 빠르게 올리고, 내려치듯 내린다**(창업자 2026-09-03: "지팡이가
-   위로 휠때 더 빨리 그리고 내려치듯이 좀 더 빠르게 내려와야해").
-   ★ 앞판은 준비 336ms · 휘두름 480ms 였다. 휘두름이 **튀어나가듯 시작해서
-     감속**하는 이징이라(ease-out) 「내려친다」가 아니라 「스윽 지나간다」로 읽혔다.
-   ★★ 내려치는 것은 **가속해서 부딪힌다**(ease-in). 그래서 ②의 이징을 뒤집었다 —
-     느리게 떠나 빠르게 도착한다. 도착의 세기는 ③의 되튐이 받는다.
-   ★★★ 준비는 192ms 로, 내려치기는 240ms 로 줄였다(각각 −43% · −50%).
-     각도는 오히려 넓혔다(-32° → +22°, 54°) — 빠른데 짧으면 툭 치는 것으로 보인다.
-   ★★★★ 쉼은 그대로 남긴다. 움직임이 1.25초, 쉼이 3.55초 — 쉬지 않으면 휘두름이
-     「한 번 있었던 일」이 아니라 「계속되는 떨림」이 된다. */
 @keyframes kyu-wandwave {
-  /* ① 준비 — 뒤로. 짧고 단단하게 뺀다(가속해서 끝에서 멈칫) */
-  0%   { transform: rotate(-14deg); animation-timing-function: cubic-bezier(.5, 0, .6, .22) }
-  /* ② 내려치기 — 54° 를 240ms 에. **가속해서 도착한다**(ease-in) */
-  4%   { transform: rotate(-32deg); animation-timing-function: cubic-bezier(.55, .06, .68, .19) }
-  /* ③ 되튐 — 세게 도착했으니 튄다. 빠르게 되돌아온다 */
-  9%   { transform: rotate(22deg);  animation-timing-function: cubic-bezier(.3, 0, .4, 1) }
-  14%  { transform: rotate(2deg);   animation-timing-function: cubic-bezier(.25, .9, .35, 1) }
-  /* ④ 쉼 — 한 바퀴의 4분의 3 */
-  26%  { transform: rotate(-14deg) }
+  /* ① 준비 — 뒤로. 느리게 들어가서 끝에서 멈칫한다(ease-in) */
+  0%   { transform: rotate(-14deg); animation-timing-function: cubic-bezier(.35, 0, .75, .28) }
+  /* ② 휘두름 — 여기서 49° 를 한 번에 지난다. 튀어나가듯 빠르게 시작해서 감속한다 */
+  7%   { transform: rotate(-29deg); animation-timing-function: cubic-bezier(.14, .86, .3, 1) }
+  /* ③ 넘어감 — 관성. 멈추려다 지나친 자리 */
+  17%  { transform: rotate(20deg);  animation-timing-function: cubic-bezier(.4, 0, .5, 1) }
+  24%  { transform: rotate(4deg);   animation-timing-function: cubic-bezier(.25, .9, .35, 1) }
+  /* ④ 쉼 — 한 바퀴의 3분의 2 */
+  33%  { transform: rotate(-14deg) }
   100% { transform: rotate(-14deg) }
 }
 
@@ -2086,11 +2039,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           <!-- 20:4060 는 판 밖에서 흐름으로 그린다(site-build) -->
           <!-- 26:7333 는 판 밖에서 흐름으로 그린다(site-build) -->
           <!-- 26:7335 는 판 밖에서 흐름으로 그린다(site-build) -->
-          <!-- ★ 「Almost ready」 필을 얇게(창업자 2026-09-03). 위아래 14/16 → 8/9.
-               높이가 46 → 35 로 줄어 메뉴 줄과 같은 결이 된다 — 필이 도드라지는
-               자리가 아니라 **상태를 알리는 곁다리**다. 좌우는 거의 그대로 둔다:
-               같이 줄이면 글자가 테에 붙어 답답해 보인다. -->
-          <div style="position:absolute;background:#2563eb;align-content:stretch;display:flex;align-items:flex-start;justify-content:center;left:661.19px;padding-bottom:9px;padding-left:24px;padding-right:24.42px;padding-top:8px;border-radius:10px;top:50%;transform:translate(0,-50%)" data-n="Link" data-node-id="20:4068" data-kyu="cta" data-href="#price">
+          <div style="position:absolute;background:#2563eb;align-content:stretch;display:flex;align-items:flex-start;justify-content:center;left:661.19px;padding-bottom:16px;padding-left:24px;padding-right:24.42px;padding-top:14px;border-radius:10px;top:50%;transform:translate(0,-50%)" data-n="Link" data-node-id="20:4068" data-kyu="cta" data-href="#price">
             <div style="word-break:break-word;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:700;font-style:normal;font-weight:700;justify-content:center;line-height:0;font-style:normal;position:relative;flex-shrink:0;font-size:18px;text-align:center;color:#fff;white-space:nowrap" data-node-id="20:4069">
               <p style="line-height:18px" class="kyu-flow">Almost ready</p>
             </div>
@@ -2153,7 +2102,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <div style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-family:Inter,'Onest',system-ui,sans-serif;font-weight:400;font-style:normal;font-weight:400;justify-content:center;line-height:0;left:425px;font-style:normal;font-size:64px;color:#000;top:653px;letter-spacing:-3.2px;white-space:nowrap;transform:translate(0,-50%)" data-node-id="39:7159" data-kyu="rise">
         <p style="line-height:88px">Every desk is different.</p>
       </div>
-      <!-- ★★★★★★ **어느 기계에서 도는지 — 두 판 모두 「Every desk」 밑에**
+<!-- ★★★★★★ **어느 기계에서 도는지 — 두 판 모두 「Every desk」 밑에**
            (창업자 2026-09-03: "아 사실 데스크탑도 그 밑으로 그냥 옮기자").
            ★ 히어로 안에 있을 때는 첫 화면에서 답이 보였지만, 제목 셋과 그림
              사이에 낀 넉 줄째라 **읽는 리듬을 끊었다.** 한 장면이 끝난 뒤,
@@ -3346,9 +3295,6 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
        ★★ 넓은 판의 같은 띠와 **한 문장**이다 — "Every desk is different." -->
   <section class="m-everydesk">
     <h2 data-kyu="rise">Every desk is different.</h2>
-    <!-- ★ 제목 **바로 밑**이다(창업자 2026-09-03: "사이에 패딩이 너무 커, 붙여줘").
-         절 밖에 두었더니 그림 뒤로 밀려서 제목과 짝이 안 보였다. 넓은 판과 같은 자리. -->
-    <p class="m-plat">For <svg class="pmark" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.05 12.536c-.026-2.9 2.37-4.29 2.478-4.359-1.35-1.972-3.45-2.242-4.196-2.273-1.786-.18-3.487 1.05-4.394 1.05-.906 0-2.303-1.024-3.786-.996-1.948.029-3.744 1.132-4.746 2.875-2.024 3.508-.517 8.702 1.454 11.549.964 1.393 2.113 2.958 3.62 2.902 1.452-.058 2.001-.939 3.756-.939 1.755 0 2.248.939 3.785.909 1.562-.026 2.552-1.42 3.508-2.818 1.106-1.617 1.56-3.182 1.586-3.262-.035-.014-3.043-1.167-3.073-4.638M14.29 3.9c.8-.97 1.34-2.318 1.192-3.66-1.152.046-2.548.767-3.375 1.736-.741.86-1.39 2.232-1.215 3.55 1.285.1 2.598-.653 3.398-1.626"/></svg>macOS and <svg class="pmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>Windows.</p>
     <div class="m-desks">
       <img class="d-kyu flip" src="assets/art/kyu-sing.webp" alt="" loading="lazy" decoding="async">
       <img class="d-dea" src="assets/art/cast-dea.webp" alt="" loading="lazy" decoding="async">
@@ -3394,6 +3340,9 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
     <article class="m-card m-magic">
       <h3>Desk Magic<i class="m-new beta">BETA</i></h3>
       <p>Screenshots piling up? He'll offer to tidy.<br>He asks first — and never deletes.</p>
+<!-- ★ 제목 **바로 밑**이다(창업자 2026-09-03: "사이에 패딩이 너무 커, 붙여줘").
+         절 밖에 두었더니 그림 뒤로 밀려서 제목과 짝이 안 보였다. 넓은 판과 같은 자리. -->
+    <p class="m-plat">For <svg class="pmark" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.05 12.536c-.026-2.9 2.37-4.29 2.478-4.359-1.35-1.972-3.45-2.242-4.196-2.273-1.786-.18-3.487 1.05-4.394 1.05-.906 0-2.303-1.024-3.786-.996-1.948.029-3.744 1.132-4.746 2.875-2.024 3.508-.517 8.702 1.454 11.549.964 1.393 2.113 2.958 3.62 2.902 1.452-.058 2.001-.939 3.756-.939 1.755 0 2.248.939 3.785.909 1.562-.026 2.552-1.42 3.508-2.818 1.106-1.617 1.56-3.182 1.586-3.262-.035-.014-3.043-1.167-3.073-4.638M14.29 3.9c.8-.97 1.34-2.318 1.192-3.66-1.152.046-2.548.767-3.375 1.736-.741.86-1.39 2.232-1.215 3.55 1.285.1 2.598-.653 3.398-1.626"/></svg>macOS and <svg class="pmark" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>Windows.</p>
       <img class="m-trash" src="assets/art/ui-trash.webp" alt="" width="125" height="125" loading="lazy" decoding="async">
     </article>
 
@@ -3423,15 +3372,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <img class="f f-zip" src="assets/art/file-zip.svg" alt="" loading="lazy" decoding="async">
         <img class="f f-avi" src="assets/art/file-avi.svg" alt="" loading="lazy" decoding="async">
         <img class="f f-svg" src="assets/art/file-svg.svg" alt="" loading="lazy" decoding="async">
-        <!-- ★★★★★★ **정지 그림이 아니라 영상이다**(창업자 2026-09-04: "모바일 버전에
-             Hands it back 에 큐가 등돌리는 모션이 없는데?"). 넓은 판은 처음부터
-             `bag-reveal` 을 틀고 있었는데(돌아서서 가방을 보여주는 동작) 모바일만
-             뒤돌아선 **한 장**이었다. 같은 소재를 같은 자리에 놓는다.
-             ★ 자리는 넓은 판이 이미 맞춰 둔 관계를 그대로 옮겼다:
-               영상 폭 = 정지 그림 폭 × 1.326 · 왼쪽으로 그 폭의 15.9% 만큼. -->
-        <video class="kyu-anim m-bagback" data-kyu-anim="bag-reveal" muted loop playsinline preload="none"
-               data-webm="assets/anim/bag-reveal.webm" data-mp4="assets/anim/bag-reveal.mp4"
-               data-poster="assets/anim/bag-reveal.png" aria-label="Kyu turning around to show the bag"></video>
+        <img class="m-bagback" src="assets/art/bag-back34.webp" alt="" loading="lazy" decoding="async">
         <img class="m-bag" src="assets/art/ui-bag.webp" alt="Four things in the bag" loading="lazy" decoding="async">
       </div>
     </article>
@@ -3527,14 +3468,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
          다른 자세가 나온다. -->
   <section class="m-adopt">
     <h2>Adopt me</h2>
-    <!-- ★★★★★★ **좁은 판엔 설명이 없었다**(창업자 2026-09-03: "모바일에서 Adopt me
-         이름 바뀌는게 위치가 이상한데잇어"). 자리가 이상한 게 아니라 **그 자리에
-         있어야 할 글이 없어서** 알약이 허공에 혼자 떠 있었다 — 제목과 알약 사이가
-         50px 비어 있었고, 그 빈칸이 설명 자리였다.
-         ★ 넓은 판과 **같은 말**을 쓴다. 좁은 판만 다른 약속을 하면 안 된다
-           (고양이 얘기까지 그대로 — 그게 없으면 고양이를 좋아하는 사람은 모른다). -->
-    <p>Feed her, name her &mdash; and she&rsquo;s yours. She&rsquo;ll nap next to Kyu while you work. (Cat person? A kitten finds you instead.)</p>
-    <div class="m-namepill"><img class="np-bite" src="assets/art/floorprop-biscuit.webp" alt="" loading="lazy" decoding="async"><span class="np-txt"><b class="np-ph">Name</b><b class="np-typed" data-name="Bori" data-names="Bori · Mochi · Pepper · Yuzu"></b><i class="np-caret" aria-hidden="true"></i></span></div>
+    <div class="m-namepill"><img class="np-bite" src="assets/art/floorprop-biscuit.webp" alt="" loading="lazy" decoding="async"><span class="np-txt"><b class="np-ph">Name</b><b class="np-typed" data-name="Bori"></b><i class="np-caret" aria-hidden="true"></i></span></div>
     <!-- ★ 뒹구는 아이(창업자 2026-08-31: "얘 둥구는 애니메이션 없어?").
          정지 그림(`pets-pompup-sit`)을 `Flip` 클립으로 바꿨다 — 같은 흰 포메다. -->
     <video class="kyu-anim m-adoptpup" data-kyu-anim="adopt-roll" muted loop playsinline preload="none"
@@ -3676,7 +3610,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <span class="t">Will he interrupt me while I'm working?</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
-      <div class="a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div><p>Only five things ever break through: a meeting about to start, meds, sitting too long, water, and the end of the day. That list is written into the code, not hidden in a setting. Everything else waits until you look at him.</p></div></div>
+      <div class="a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div><p>Five things, and they are the only ones he decides on his own: a meeting about to start, meds, sitting too long, water, and the end of the day. That list is written into the code, not hidden in a setting. There is a sixth, but you have to set it up yourself — if you register Kyu as a tool in Claude Code or Cursor, he'll tell you when their work finishes. Even that one waits while you're deep in something. Nothing you didn't ask for ever reaches you.</p></div></div>
     </div>
 
     <div class="row">
@@ -3734,6 +3668,28 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
            ★★ 「좋은 그래픽카드가 필요한가」에 먼저 답한다 — 3D 캐릭터라 그렇게
              묻는 사람이 많고, 답은 아니오다. 내장 그래픽으로 돈다. -->
 <div><p><b>Mac</b> — macOS 13.3 (Ventura) or newer, Apple silicon.<br><b>Windows</b> — Windows 10 (version 1809) or newer, 64-bit; Windows 11 works out of the box. One build runs on both Intel/AMD and ARM (Copilot+) machines.</p><p>No graphics card needed. Kyu is one small 3D character, not a game — built-in graphics are plenty, and he idles at a few percent of one core. About 200 MB on disk.</p></div></div>
+
+    <!-- ★★★★★★ **제 칸을 준다**(2026-09-03). 이 문항은 앞 항목과 **같은 `.row` 안**에
+         들어가 있었다. 선(`border-bottom`)은 칸에 걸려 있으므로, 한 칸에 둘이 들어가면
+         그 사이에 **선이 안 그어진다** — 창업자가 화면에서 그걸 봤다
+         ("큐앤에이에 선이 없는것들도 잇고, 옆에 아이템이 없거든").
+         ★ 새 문항을 넣을 땐 `<div class="row">` 부터 연다. 단추만 더하면 조용히 붙는다. -->
+    <div class="row">
+      <button type="button" class="q" aria-expanded="false" aria-controls="faq-a10" id="faq-q10">
+        <img class="ico" src="assets/art/floorprop-ball.png" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <span class="t">Does it update itself?</span>
+        <span class="plus" aria-hidden="true"><i></i><i></i></span>
+      </button>
+      <!-- ★★★★★★ **여기 「네, 자동입니다」 라고 쓰면 거짓이다**(2026-09-03).
+           `core/src/update.js` 가 하는 일은 **알려주는 것까지**다 — 주석에
+           "받지도 설치하지도 않는다" 라고 적혀 있고, 그 이유도 적혀 있다:
+           자동 설치는 서명이 있어야 성립한다(서명 없는 앱은 갱신 한 판을
+           돌려볼 수조차 없다).
+           ★ 스팀은 다르다 — 거기선 진짜로 자동이다. 두 길을 **갈라서** 적는다.
+             한 문장으로 뭉뚱그리면 둘 중 하나는 반드시 거짓이 된다.
+           ★★ 서명이 붙어 업데이터를 달면 **이 답의 둘째 문단만** 고치면 된다.
+             그때까지는 있는 그대로 적는다 — 사이트가 앱보다 앞서가면 안 된다. -->
+      <div class="a" id="faq-a10" role="region" aria-labelledby="faq-q10"><div><p>On Steam, yes — Steam keeps him current on its own; you never think about it.</p><p>If you bought him here, Kyu tells you when a new version is out and opens the download page for you. One click, then install as usual. (He asks our site one question — "what's the newest?" — and nothing else: no account, no device id, not even which version you're on. You can switch that check off in settings.)</p></div>
       <!-- ★★★★★★ **첫 설치에서 윈도우스가 경고를 낸다**(2026-09-03).
            설치 파일은 실명 인증서로 서명돼 있는데(CN=Kyu Kim), 갓 만든 인증서는
            **평판이 없어서** 마이크로소프트가 쌓일 때까지 경고를 띄운다.
@@ -3756,25 +3712,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <span class="t">Installing on Windows</span>
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
-      <div class="a" id="faq-a11" role="region" aria-labelledby="faq-q11"><div><p>The first time you run the installer, Windows SmartScreen may show &ldquo;Windows protected your PC.&rdquo; This appears for any newly released app while Microsoft builds reputation for its certificate &mdash; the installer is signed and verified (publisher: Kyu Kim). Click <b>More info</b> &rarr; <b>Run anyway</b> to continue. This warning disappears on its own as more people install Kyu.</p></div></div>
-    </div>
-
-    <div class="row">
-      <button type="button" class="q" aria-expanded="false" aria-controls="faq-a10" id="faq-q10">
-        <img class="ico" src="assets/art/floorprop-ball.png" alt="" width="72" height="72" loading="lazy" decoding="async">
-        <span class="t">Does it update itself?</span>
-        <span class="plus" aria-hidden="true"><i></i><i></i></span>
-      </button>
-      <!-- ★★★★★★ **여기 「네, 자동입니다」 라고 쓰면 거짓이다**(2026-09-03).
-           `core/src/update.js` 가 하는 일은 **알려주는 것까지**다 — 주석에
-           "받지도 설치하지도 않는다" 라고 적혀 있고, 그 이유도 적혀 있다:
-           자동 설치는 서명이 있어야 성립한다(서명 없는 앱은 갱신 한 판을
-           돌려볼 수조차 없다).
-           ★ 스팀은 다르다 — 거기선 진짜로 자동이다. 두 길을 **갈라서** 적는다.
-             한 문장으로 뭉뚱그리면 둘 중 하나는 반드시 거짓이 된다.
-           ★★ 서명이 붙어 업데이터를 달면 **이 답의 둘째 문단만** 고치면 된다.
-             그때까지는 있는 그대로 적는다 — 사이트가 앱보다 앞서가면 안 된다. -->
-      <div class="a" id="faq-a10" role="region" aria-labelledby="faq-q10"><div><p>On Steam, yes — Steam keeps him current on its own; you never think about it.</p><p>If you bought him here, Kyu tells you when a new version is out and opens the download page for you. One click, then install as usual. (He asks our site one question — "what's the newest?" — and nothing else: no account, no device id, not even which version you're on. You can switch that check off in settings.)</p></div></div>
+      <div class="a" id="faq-a11" role="region" aria-labelledby="faq-q11"><div><p>The first time you run the installer, Windows SmartScreen may show &ldquo;Windows protected your PC.&rdquo; This appears for any newly released app while Microsoft builds reputation for its certificate &mdash; the installer is signed and verified (publisher: Kyu Kim). Click <b>More info</b> &rarr; <b>Run anyway</b> to continue. This warning disappears on its own as more people install Kyu.</p></div></div></div>
     </div>
 
     <div class="row">
@@ -3812,6 +3750,20 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <span class="plus" aria-hidden="true"><i></i><i></i></span>
       </button>
       <div class="a" id="faq-a9" role="region" aria-labelledby="faq-q9"><div><p>Seven of them, yes: your calendar, your mail over IMAP, the weather, and Claude, ChatGPT or Gemini with your own key. Claude Code and Cursor he reads the config of. The other eleven — Slack, Notion, GitHub, Figma, Linear, Shopify, Spotify, Discord, Todoist, Vercel, Meet — arrive through MCP servers you already run yourself. Kyu doesn't ship those connections; he speaks the protocol and uses the ones you've set up, read-only, off until you switch them on.</p></div></div>
+    </div>
+    <!-- ★★★★★★ **큐가 MCP 서버라는 걸 사이트에 한 번도 안 적었다**(2026-09-05).
+         `--mcp` 는 진작 배포돼 있고 설정 창엔 붙이는 법이 둘이나 있는데, 사이트의
+         MCP 두 군데는 **둘 다 반대 방향**(남의 서버를 큐가 읽는다)이었다.
+         ★ `kyu_status` 를 가운데 둔다 — 「지금 말 걸어도 되나」는 창 밖에 몸이 있는
+           이 앱만 답할 수 있다. 알림은 흔하지만 그건 안 흔하다.
+         ★★ ChatGPT 웹이 안 된다는 걸 **적는다.** 안 적으면 해 보고 안 되는 사람이 나온다. -->
+    <div class="row">
+      <button type="button" class="q" aria-expanded="false" aria-controls="faq-a13" id="faq-q13">
+        <img class="ico" src="assets/art/floorprop-suitcase.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <span class="t">Can my AI tools talk to Kyu?</span>
+        <span class="plus" aria-hidden="true"><i></i><i></i></span>
+      </button>
+      <div class="a" id="faq-a13" role="region" aria-labelledby="faq-q13"><div><p>Yes — Kyu is an MCP server too, not just a client. Point Claude Code, Claude Desktop or Cursor at <code>GetKyu.app/Contents/MacOS/GetKyu --mcp</code> and they can reach him. He hands them three things: tell you something finished, write one line into his journal, and the one nothing else can answer — <b>whether this is a good moment to talk to you</b>. A chatbot in a window has no body on your desk. Kyu knows when you're deep in something, and he holds the message until you surface. If you'd rather not edit any JSON, one line in a hook does it: <code>…/GetKyu --notify="Build finished"</code>. ChatGPT on the web can't reach local servers, so this is for tools that speak MCP over stdio.</p></div></div>
     </div>
 
     <!-- ★★★★★★ **창업자의 이야기**(2026-08-29). 창업자가 준 사실 그대로다 —
@@ -3899,7 +3851,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <div class="grp">
           <h3>Download</h3>
           <a href="#price">macOS</a>
-          <!-- ★ 윈도우스도 같은 자리로 간다(2026-09-03) — 한 번 사면 둘 다다.
+      <!-- ★ 윈도우스도 같은 자리로 간다(2026-09-03) — 한 번 사면 둘 다다.
                따로 파는 것이 아니라 **같은 물건의 다른 판**이라 링크도 하나다. -->
           <a href="#price">Windows</a>
           <!-- ★★★★★★ **Steam 과 「What's new」 를 걷어냈다**(창업자 2026-08-30:
@@ -3912,8 +3864,6 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         <div class="grp">
           <h3>Support</h3>
           <a href="#faq">FAQ</a>
-          <!-- ★ 짧은 주소로 보낸다(`/discord` → 초대). 초대가 바뀌면 거기 한 줄만 고친다. -->
-          <a href="/discord">Discord</a>
           <a href="mailto:getkyu.ai@gmail.com">Email us</a>
         </div>
       </div>
@@ -4609,7 +4559,7 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
         const p2 = 절.querySelector('p') ?? 절
         p2.textContent = ''
         const ph = document.createElement('b'); ph.className = 'np-ph'; ph.textContent = 'Name'
-        const ty = document.createElement('b'); ty.className = 'np-typed'; ty.dataset.name = 'Bori'; ty.dataset.names = 'Bori · Mochi · Pepper · Yuzu'
+        const ty = document.createElement('b'); ty.className = 'np-typed'; ty.dataset.name = 'Bori'
         const ca = document.createElement('i'); ca.className = 'np-caret'; ca.setAttribute('aria-hidden', 'true')
         p2.append(ph, ty, ca)
       }
@@ -4632,44 +4582,13 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
           if (!e.isIntersecting) continue
           눈5.unobserve(e.target)
           절.classList.add('짓는다')
-          // ★★★★★★ **이름은 하나가 아니다**(창업자 2026-09-03: "보리를 치고 커서로
-          //   지우고 다른 이름 치고, 지우고 다른 이름 치고 루핑으로").
-          //   여기 적힌 건 「이름을 지어준다」는 이야기다 — 한 이름을 치고 멈추면
-          //   그건 **그 아이의 이름**처럼 읽힌다. 지웠다 다시 치면 비로소
-          //   「네가 정한다」가 된다.
-          //   ★ 지우기는 치기보다 **빠르다**(65ms vs 130ms). 사람이 지울 때도 그렇고,
-          //     같은 속도로 지우면 기다리는 시간이 두 배가 된다.
-          //   ★★ 다 치고 **1.1초 머문다** — 읽을 틈이다. 바로 지우면 이름을 못 읽는다.
-          //   ★★★ 화면 밖으로 나가면 **멈춘다.** 안 보이는 곳에서 도는 타이머는
-          //     배터리만 먹는다(상주 앱을 파는 사람들이 제일 싫어하는 것).
-          const 이름들 = (칸.dataset.names || 이름).split('·').map((x) => x.trim()).filter(Boolean)
-          let n = 0
-          let 타이머 = null
-          const 멈춰 = () => { clearTimeout(타이머); 타이머 = null }
-          const 치기 = () => {
-            const 말 = 이름들[n % 이름들.length]
-            let i = 0
-            const 한글자 = () => {
-              칸.textContent = 말.slice(0, ++i)
-              타이머 = setTimeout(i >= 말.length ? 머물기 : 한글자, 130)
-            }
-            const 머물기 = () => { 타이머 = setTimeout(지우기, 1100) }
-            const 지우기 = () => {
-              if (i <= 0) { n++; 타이머 = setTimeout(치기, 260); return }
-              칸.textContent = 말.slice(0, --i)
-              타이머 = setTimeout(지우기, 65)
-            }
-            타이머 = setTimeout(한글자, 0)
-          }
-          타이머 = setTimeout(치기, 300)
-          // ★ **탭이 숨으면 멈춘다.** 처음엔 화면 밖으로 나가도 멈추게 눈을 하나 더
-          //   달았는데, 그 눈의 첫 콜백이 「아직 안 보인다」로 와서 **막 시작한
-          //   타이머를 죽였다** — 좁은 판에서 이름이 한 글자도 안 쳐졌다.
-          //   갈래를 줄인다: 배터리를 먹는 건 숨은 탭이지 스크롤한 자리가 아니다.
-          document.addEventListener('visibilitychange', () => {
-            if (document.hidden) 멈춰()
-            else if (!타이머) 치기()
-          })
+          let i = 0
+          setTimeout(() => {
+            const t = setInterval(() => {
+              칸.textContent = 이름.slice(0, ++i)
+              if (i >= 이름.length) clearInterval(t)
+            }, 130)
+          }, 300)
         }
       //   ★★★ 문턱만으로는 모자랐다(재서 알았다): 알약이 **화면 맨 밑 줄**에
       //     걸친 순간 90% 가 보이므로 거기서 시작한다. 치는 데 0.8초가 걸리는데
