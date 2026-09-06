@@ -187,7 +187,13 @@ a { color: inherit; text-decoration: none; }
 .kyu-footer .legal { width: 1440px; margin: 96px auto 0; padding: 0 60px 0 464px; }
 .kyu-footer .legal p { margin: 0; }
 .kyu-footer .promise { font: 500 14px/16px Inter, system-ui, sans-serif; }
-.kyu-footer .copy { margin-top: 12px !important; font: 400 14px/16px Inter, system-ui, sans-serif; color: #999; }
+/* ★★★★★★ **#999 는 흰 바탕에서 2.85 다**(2026-09-05, 라이브를 훑어서 잰 값).
+   작은 글씨의 문턱은 4.5 라 미달이었다 — 저작권 줄이라 안 읽어도 그만인 것 같지만,
+   「안 읽어도 되는 글」과 「못 읽는 글」은 다르다.
+   ★ 그렇다고 진하게 하면 곁글이 본문만큼 소리를 낸다. 문턱을 **막 넘는** 값을
+     고른다: #6b7280 은 4.83 이고, 회색에 사이트의 파란 기운을 살짝 섞은 색이라
+     맨 회색보다 판에 붙는다(#767676 은 4.54 로 아슬아슬해서 안 골랐다). */
+.kyu-footer .copy { margin-top: 12px !important; font: 400 14px/16px Inter, system-ui, sans-serif; color: #6b7280; }
 /* ★ 디자인의 절 높이는 **812** 다. 아래 여백으로 맞추면 글이 한 줄만 늘어도
    틀어진다(재보니 793 이었다) — 그러니 **키를 못 박는다.** 좁아지면 푼다. */
 .kyu-footer { padding-bottom: 120px; min-height: 812px; box-sizing: border-box; }
@@ -461,7 +467,8 @@ a { color: inherit; text-decoration: none; }
 /* ④ 없는 사이 — 피그마처럼 UI 셋이 겹치고 오른쪽에 큐, 왼쪽 아래 아이 */
 /* ★ 창업자 2026-08-30: "주식 UI를 크게 · 중간 UI를 좀 더 작게 · 애완견은 왼쪽으로 ·
    큐는 조금 사이즈 키우고". 큐가 커진 만큼 통도 키운다. */
-#m .m-away { position: relative; height: 322px; margin-top: 14px; }
+/* ★ 322 → 362. 아래 `a4`(큐)를 시세 띠 밑으로 내리느라 40px 더 든다. */
+#m .m-away { position: relative; height: 362px; margin-top: 14px; }
 #m .m-away img, #m .m-away video { position: absolute; }
 /* ★★★★★★ **피그마 32:3004 그대로**(창업자 2026-08-30: "UI는 피그마 디자인 그대로
    가져와 줘"). 358×425 틀 안의 값이고, 이 마디는 **좌표가 렌더와 맞는다**
@@ -500,12 +507,20 @@ a { color: inherit; text-decoration: none; }
 /* ★★ 창업자 2026-08-31: "주식창을 오른쪽으로 밀어줘 큐뒤에 머리까지 오게끔
    겹쳐도되." 8% → 34%. 셋째 칸(Dow)이 큐의 몸·머리 뒤로 들어간다 —
    큐가 `z-index: 3` 이라 순서는 이미 맞다. */
-#m .m-away .a2 { left: 34.0%; top: 24px; width: 60.0%; }
+/* ★★★★★★ **큐가 시세를 덮고 있었다**(2026-09-05, 폰으로 재서 잡았다).
+   바로 아래 `a4` 주석이 「**차트를 안 가리게** 조금 오른쪽」이라고 적혀 있는데,
+   실제로는 193px 짜리 띠의 **114px** 을 덮었다 — 셋째 칸(Dow)이 통째로 가려진다.
+   2026-08-31에 창업자가 「주식창이 3개엿는데 2개인데?」라고 짚어서 **줄여서 셋을
+   다 넣은** 바로 그 자리인데, 이번엔 잘린 게 아니라 **가려져** 있었다.
+   ★ 옆으로는 못 피한다 — 통이 321px 인데 띠가 193, 큐가 159 라 가로로는 반드시
+     겹친다. 그래서 **세로로 뗀다**: 띠를 위로(24→2), 큐를 아래로(26→66).
+     띠의 아랫변이 57 이고 큐의 윗변이 66 이라 이제 안 만난다. */
+#m .m-away .a2 { left: 34.0%; top: 2px; width: 60.0%; }
 /* 메일 — 조금 줄였다(창업자: "중간 카드가 너무 커서"). 49.8% → 44.5% */
 #m .m-away .a3 { left: 21.0%; top: 66px; width: 44.5%; border-radius: 10px; clip-path: inset(13.5% 0 0 0); z-index: 2; }
 /* ★ 큐가 **제일 앞**이다(창업자가 그렇게 말했다). 메일 카드가 z-index:2 라
    그냥 두면 손과 컵이 카드 뒤로 들어간다. */
-#m .m-away .a4 { right: -8%; top: 26px; height: 300px; width: auto; z-index: 3; }   /* 큐 — 크게 · 차트를 안 가리게 조금 오른쪽 */
+#m .m-away .a4 { right: -8%; top: 66px; height: 300px; width: auto; z-index: 3; }   /* 큐 — 크게 · 차트 **밑**으로(2026-09-05) */
 #m .m-away .a5 { left: 4%; bottom: 0; height: 58px; width: auto; }    /* 아이 — 작게 */
 
 /* ⑤ 지나간다 — 피그마 32:3010(358×291): 다섯이 겹친다.
