@@ -935,6 +935,22 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
    8 → 34px. 히어로의 아이 발밑과 띠의 제목이 붙어 있었다. */
 #m .m-everydesk { margin: 34px 0 0; overflow: hidden; }
 #m .m-everydesk h2 { margin: 0; padding: 0 var(--pad); font: 400 24px/1.2 Inter, system-ui, sans-serif; color: #111; text-align: center; }
+/* ★★★★★★ **딱지에 규칙이 아예 없었다**(창업자 2026-09-05: "모바일에서 윈도우 맥
+   다운로드 글이 이상한 위치에 있어"). 마크업만 있고 `.m-plat` 규칙이 없어서
+   맨 `p` 로 떨어졌다 — 제목은 가운데 정렬에 좌우 여백이 있는데 이 줄만
+   **왼쪽 끝에 붙어** 제목과 짝이 아니라 딴 것으로 읽혔다.
+   ★ 넓은 판 조각(`inject/plat-wide.html`)의 주석이 이미 답을 적어 놨다:
+     「제목이 가운데 정렬이라 이 줄도 가운데다. 왼쪽에 붙이면 제목과 짝이 아니라
+     **딴 것**으로 읽힌다」 — 그리고 「좁은 판도 같은 자리다(`.m-platrow`)」라고
+     했는데 **그 클래스는 어디에도 없었다.** 약속만 있고 코드가 없었던 것이다.
+   ★★ 넓은 판과 같은 결: 굵기 600 · 색 #374151 · 자간 .01em. 크기만 판에 맞춘다.
+   ★★★ 제목에 **붙여 둔다**(창업자 2026-09-03: "사이에 패딩이 너무 커, 붙여줘"). */
+#m .m-everydesk .m-plat {
+  margin: 6px 0 0; padding: 0 var(--pad);
+  font: 600 15px/22px Inter, system-ui, sans-serif;
+  color: #374151; letter-spacing: .01em; text-align: center;
+}
+#m .m-everydesk .m-plat .pmark { vertical-align: -2px; margin: 0 3px 0 1px; }
 /* 띠 자체 — 판보다 넓게 왼쪽으로 밀어 놓는다(49/390) */
 #m .m-desks {
   position: relative; width: 119.231%; margin-left: -12.564%;
@@ -969,21 +985,35 @@ html[lang="ko"] #shell [data-line] p { white-space: nowrap; }
   border-radius: 6px; background: #d8d8d8; border: 1px solid rgba(255,255,255,.15);
   box-shadow: 0 0 2px rgba(0,0,0,.30), 0 0 40px rgba(0,0,0,.25); }
 #m .m-desks .d-ic { top: 280.5px; width: 8.884%; }
+/* ★★★★★★ **좁은 판 닥에도 AI 앱을 놓는다**(창업자 2026-09-05: "모바일에서 앱
+   닥들이 데스크탑처럼 교체가 안 됐어"). 넓은 판은 지도·사진·페이스타임
+   (`appicon5·6·7`)을 갈았는데 **좁은 판엔 그 셋이 없다** — 여덟 칸짜리 다른
+   묶음이라 빌드의 갈아끼우기가 하나도 안 걸렸다.
+   ★ 여기서 뺀 것: 런치패드(`appicon1`) · 메시지(`appicon3`) · 폴더.
+     **메일은 남긴다** — 큐가 실제로 붙는 것이라 이 장면에서 뜻이 있다.
+     파인더·휴지통은 판의 테두리라 남긴다.
+   ★★ 자리는 그대로 여덟 칸이고 **AI 셋을 붙여 놓는다** — 넓은 판도 셋이 붙어
+     있어서, 두 판이 같은 것을 말하게 된다.
+   ★★★ 클래스 이름을 **내용에 맞게** 바꿨다(`d-app1` 이 메일을 들고 있으면
+     다음 사람이 자리를 못 찾는다). */
 #m .m-desks .d-finder { left: 15.376%; }
-#m .m-desks .d-app1 { left: 24.86%; }
-#m .m-desks .d-app3 { left: 34.323%; }
-#m .m-desks .d-app4 { left: 43.183%; }
-#m .m-desks .d-slack { left: 52.065%; }
-#m .m-desks .d-figma { left: 61.613%; }
-#m .m-desks .d-folder { left: 70.989%; }
+#m .m-desks .d-mail { left: 24.86%; }
+#m .m-desks .d-chatgpt { left: 34.323%; }
+#m .m-desks .d-claude { left: 43.183%; }
+#m .m-desks .d-gemini { left: 52.065%; }
+#m .m-desks .d-slack { left: 61.613%; }
+#m .m-desks .d-figma { left: 70.989%; }
 #m .m-desks .d-trash { left: 80.473%; }
 /* 알림 방울 — 빨간 원에 흰 숫자. 그림이 아니라 글자다(선명하게 남는다). */
 #m .m-desks .d-badge { top: 280.0px; width: 14.5px; height: 14.33px;
   border-radius: 50%; background: #ff3b30; color: #fff; font: 700 9px/14.33px Inter, system-ui, sans-serif;
   text-align: center; }
-#m .m-desks .d-b1 { left: 49.247%; }
-#m .m-desks .d-b2 { left: 58.065%; }
-#m .m-desks .d-b3 { left: 67.742%; }
+/* ★ 방울은 **알림이 오는 앱**을 따라간다 — 메일·슬랙·피그마. 아이콘 왼쪽에서
+   +6.064%(옛 값에서 잰 간격) 자리다. 아이콘이 옮겨졌으니 방울도 같이 옮긴다 —
+   안 옮기면 AI 아이콘 위에 남의 숫자가 뜬다. */
+#m .m-desks .d-b1 { left: 30.924%; }
+#m .m-desks .d-b2 { left: 67.677%; }
+#m .m-desks .d-b3 { left: 77.053%; }
 /* 좌우 가장자리 — 넓은 판과 같은 이유다(창업자 2026-08-31). 띠는 화면보다
    119.231% 넓게 깔려 개들이 양옆으로 **뚝 잘린다.** 흰색으로 흐리게 풀어 준다.
    ★ 띠는 -12.564% 부터 시작하므로 **띠 기준 0% 가 화면 왼쪽 끝이 아니다.**
@@ -3366,12 +3396,12 @@ video.kyu-anim[data-kyu-anim="screen-arrive"].놓였다 { visibility: visible; a
       <img class="d-pom flip" src="assets/art/pets-pom-sleep.webp" alt="" loading="lazy" decoding="async">
       <div class="d-dock"></div>
       <img class="d-ic d-finder" src="assets/art/dock-finder.webp" alt="" loading="lazy" decoding="async">
-      <img class="d-ic d-app1" src="assets/art/dock-appicon1.webp" alt="" loading="lazy" decoding="async">
-      <img class="d-ic d-app3" src="assets/art/dock-appicon3.webp" alt="" loading="lazy" decoding="async">
-      <img class="d-ic d-app4" src="assets/art/dock-appicon4.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-ic d-mail" src="assets/art/dock-appicon4.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-ic d-chatgpt" src="assets/art/dock-chatgpt.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-ic d-claude" src="assets/art/dock-claude.webp" alt="" loading="lazy" decoding="async">
+      <img class="d-ic d-gemini" src="assets/art/dock-gemini.webp" alt="" loading="lazy" decoding="async">
       <img class="d-ic d-slack" src="assets/art/dock-slack.webp" alt="" loading="lazy" decoding="async">
       <img class="d-ic d-figma" src="assets/art/dock-figma.webp" alt="" loading="lazy" decoding="async">
-      <img class="d-ic d-folder" src="assets/art/dock-folder.webp" alt="" loading="lazy" decoding="async">
       <img class="d-ic d-trash" src="assets/art/dock-trash.webp" alt="" loading="lazy" decoding="async">
       <span class="d-badge d-b1">4</span>
       <span class="d-badge d-b2">9</span>
